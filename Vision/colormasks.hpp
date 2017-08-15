@@ -17,6 +17,7 @@ public:
     void setupMasks(FramesHolder* frames);
     void openMaskFile(const char* filename);
     void saveMaskFile(const char* filename);
+    void printMask(void);
 };
 
 #endif // COLORMASKS_HPP

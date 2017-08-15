@@ -9,7 +9,7 @@ typedef struct
     int s_max;
     int v_min;
     int v_max;
-    int active_color;
+    int active;
 }HSVMask;
 
 #endif // HSVMASK_H

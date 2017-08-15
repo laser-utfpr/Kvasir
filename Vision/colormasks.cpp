@@ -11,7 +11,7 @@ ColorMasks::ColorMasks()
         mask[i].s_max = MAX_MASK_VALUE;
         mask[i].v_min = 0;
         mask[i].v_max = MAX_MASK_VALUE;
-        mask[i].active_color = false;
+        mask[i].active = false;
     }
 }
 
@@ -57,11 +57,26 @@ void ColorMasks::openMaskFile(const char* filename)
             while(input_file.get()!='=')
                 ;
             std::getline(input_file,value);
-
-            //Some confusing pointer usage to save code lines
-            *(&(mask[i].h_min)+j*sizeof(int)) = std::atoi(value.c_str());
+            switch(j)
+            {
+                case 0:
+                    mask[i].h_min = std::atoi(value.c_str()); break;
+                case 1:
+                    mask[i].h_max = std::atoi(value.c_str()); break;
+                case 2:
+                    mask[i].s_min = std::atoi(value.c_str()); break;
+                case 3:
+                    mask[i].s_max = std::atoi(value.c_str()); break;
+                case 4:
+                    mask[i].v_min = std::atoi(value.c_str()); break;
+                case 5:
+                    mask[i].v_max = std::atoi(value.c_str()); break;
+                case 6:
+                    mask[i].active = std::atoi(value.c_str()); break;
+            }
         }
     }
+    input_file.close();
 }
 
 /**
@@ -104,6 +119,49 @@ void ColorMasks::saveMaskFile(const char* filename)
         output_file << color << "_S_MAX=" << mask[i].s_max << std::endl;
         output_file << color << "_V_MIN=" << mask[i].v_min << std::endl;
         output_file << color << "_V_MAX=" << mask[i].v_max << std::endl;
-        output_file << color << "_ACTIVE=" << mask[i].active_color << std::endl;
+        output_file << color << "_ACTIVE=" << mask[i].active << std::endl;
+    }
+    output_file.close();
+}
+
+/**
+    void ColorMasks::saveMaskFile(const char* filename)
+
+    Saves a file with the object's masks.
+
+    @author Lucca Rawlyk
+    @version 2017.08.15-1
+*/
+
+void ColorMasks::printMask(void)
+{
+    int i;
+    std::string color;
+
+    for(i=0; i<N_COLOR_MASKS; i++)
+    {
+        switch(i)
+        {
+            case RED:
+                color = "RED"; break;
+            case ORANGE:
+                color = "ORANGE"; break;
+            case YELLOW:
+                color = "YELLOW"; break;
+            case GREEN:
+                color = "GREEN"; break;
+            case BLUE:
+                color = "BLUE"; break;
+            case VIOLET:
+                color = "VIOLET"; break;
+        }
+        std::cout << std::endl;
+        std::cout << color << "_H_MIN=" << mask[i].h_min << std::endl;
+        std::cout << color << "_H_MAX=" << mask[i].h_max << std::endl;
+        std::cout << color << "_S_MIN=" << mask[i].s_min << std::endl;
+        std::cout << color << "_S_MAX=" << mask[i].s_max << std::endl;
+        std::cout << color << "_V_MIN=" << mask[i].v_min << std::endl;
+        std::cout << color << "_V_MAX=" << mask[i].v_max << std::endl;
+        std::cout << color << "_ACTIVE=" << mask[i].active;
     }
 }

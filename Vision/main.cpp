@@ -11,8 +11,11 @@ int main()
 
     frames.setCameraToDefault();
 
-    masks.setupMasks(&frames);
-    masks.saveMaskFile(COLOR_MASK_FILENAME);
+    //masks.setupMasks(&frames);
+    //masks.saveMaskFile(COLOR_MASKS_FILENAME);
+
+    masks.openMaskFile(COLOR_MASKS_FILENAME);
+    masks.printMask();
 
     return 0;
 }

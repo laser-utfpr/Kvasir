@@ -139,7 +139,7 @@ void FramesHolder::setupHSVMaskFromWindow(HSVMask* mask, objectColor color)
     createTrackbar(S_MAX_TRACKBAR_NAME, window_name, &(mask->s_max), MAX_MASK_VALUE, NULL);
     createTrackbar(V_MIN_TRACKBAR_NAME, window_name, &(mask->v_min), MAX_MASK_VALUE, NULL);
     createTrackbar(V_MAX_TRACKBAR_NAME, window_name, &(mask->v_max), MAX_MASK_VALUE, NULL);
-    createTrackbar(ACTIVE_TRACKBAR_NAME, window_name, &(mask->active_color), true, NULL);
+    createTrackbar(ACTIVE_TRACKBAR_NAME, window_name, &(mask->active), true, NULL);
 
     while(1)
     {
