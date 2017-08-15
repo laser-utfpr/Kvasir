@@ -2,6 +2,8 @@
 #define COLORMASKS_HPP
 
 #include "framesholder.hpp"
+class FramesHolder;
+
 #include "visionconstants.h"
 #include "hsvmask.h"
 
@@ -10,8 +12,9 @@
 
 class ColorMasks
 {
+private:
     HSVMask mask[N_COLOR_MASKS];
-    //bool active_color[N_COLOR_MASKS];
+    friend class FramesHolder;
 public:
     ColorMasks();
     void setupMasks(FramesHolder* frames);

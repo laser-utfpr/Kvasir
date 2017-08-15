@@ -105,7 +105,7 @@ void FramesHolder::showThresholdedImage(void)
     and ajust the mask using sliders.
 
     @author Lucca Rawlyk
-    @version 2017.08.14-1
+    @version 2017.08.15-1
 */
 
 void FramesHolder::setupHSVMaskFromWindow(HSVMask* mask, objectColor color)
@@ -161,4 +161,85 @@ void FramesHolder::setupHSVMaskFromWindow(HSVMask* mask, objectColor color)
     }
 
     destroyWindow(window_name);
+}
+
+/**
+    void FramesHolder::findObjectsFromMasks(ColorMasks* masks, SightedObjects* objects)
+
+    Creates a sighted object list using the masks.
+
+    @author Lucca Rawlyk
+    @version 2017.08.15-1
+*/
+
+void FramesHolder::findObjectsFromMasks(ColorMasks* masks, SightedObjects* objects)
+{
+    int i,j;
+
+    vector< vector<Point> > contours;
+    vector<Vec4i> hierarchy;
+
+    Moments moment;
+    double x,y,area;
+
+    for(i=0; i<N_COLOR_MASKS; i++)
+    {
+        if(masks->mask[i].active)
+        {
+            updateRawAndHSVImages();
+            updateThresholdedImage(&(masks->mask[i]));
+
+            vector< vector<Point> > contours;
+            vector<Vec4i> hierarchy;
+
+            findContours(thresholded_image,contours,hierarchy,CV_RETR_CCOMP,CV_CHAIN_APPROX_SIMPLE);
+
+            if(hierarchy.size()>0)
+            {
+                for(j=0; j>=0; j=hierarchy[j][0])
+                {
+                    moment = moments((Mat)contours[j]);
+                    area = moment.m00;
+                    if(area > MINIMUM_OBJECT_AREA)
+                    {
+                        x = moment.m10/area;
+                        y = moment.m01/area;
+                        objects->addObject(x,y,area,i);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+    void FramesHolder::paintObjects(int x, int y, int area, int color)
+
+    Paints the object atributes on the screen;
+
+    @author Lucca Rawlyk
+    @version 2017.08.15-1
+*/
+
+void FramesHolder::paintObject(int x, int y, int area, int color)
+{
+    std::stringstream text;
+    switch(color)
+    {
+        case RED:
+        text << "RED"; break;
+        case ORANGE:
+        text << "RED"; break;
+        case YELLOW:
+        text << "RED"; break;
+        case GREEN:
+        text << "RED"; break;
+        case BLUE:
+        text << "RED"; break;
+        case VIOLET:
+        text << "RED"; break;
+    }
+    text << "," << area;
+    circle(raw_image,Point(x,y),OBJECT_CURSOR_RADIUS,Scalar(0,255,0),OBJECT_CURSOR_THICKNESS);
+    putText(raw_image,text.str(),Point(x,y+OBJECT_TEXT_OFFSET),1,1,Scalar(0,255,0),2);
 }

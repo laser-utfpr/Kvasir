@@ -8,6 +8,12 @@
 #include <iostream>
 #include <string>
 
+#include "colormasks.hpp"
+class ColorMasks;
+
+#include "sightedobjects.hpp"
+class SightedObjects;
+
 #include "visionconstants.h"
 #include "hsvmask.h"
 
@@ -29,6 +35,8 @@ public:
     void showHSVImage(void);
     void showThresholdedImage(void);
     void setupHSVMaskFromWindow(HSVMask *mask, objectColor color);
+    void findObjectsFromMasks(ColorMasks* masks, SightedObjects* objects);
+    void paintObject(int x, int y, int area, int color);
 };
 
 #endif // FRAMESHOLDER_HPP

@@ -1,5 +1,14 @@
 #include "colormasks.hpp"
 
+/**
+    ColorMasks::ColorMasks()
+
+    The default constructor, initializes all masks as inactive and with the maximum band allowance.
+
+    @author Lucca Rawlyk
+    @version 2017.08.15-1
+*/
+
 ColorMasks::ColorMasks()
 {
     int i;
@@ -21,16 +30,14 @@ ColorMasks::ColorMasks()
     Sets up the masks from a windowed interface.
 
     @author Lucca Rawlyk
-    @version 2017.08.14-1
+    @version 2017.08.15-1
 */
 
 void ColorMasks::setupMasks(FramesHolder* frames)
 {
     int i;
     for(i=0; i<N_COLOR_MASKS; i++)
-    {
         frames->setupHSVMaskFromWindow(&(mask[i]),(objectColor)i);
-    }
 }
 
 /**
@@ -39,7 +46,7 @@ void ColorMasks::setupMasks(FramesHolder* frames)
     Sets up the masks from a file.
 
     @author Lucca Rawlyk
-    @version 2017.08.14-1
+    @version 2017.08.15-1
 */
 
 void ColorMasks::openMaskFile(const char* filename)
@@ -85,7 +92,7 @@ void ColorMasks::openMaskFile(const char* filename)
     Saves a file with the object's masks.
 
     @author Lucca Rawlyk
-    @version 2017.08.14-1
+    @version 2017.08.15-1
 */
 
 void ColorMasks::saveMaskFile(const char* filename)
@@ -125,9 +132,9 @@ void ColorMasks::saveMaskFile(const char* filename)
 }
 
 /**
-    void ColorMasks::saveMaskFile(const char* filename)
+    void ColorMasks::printMask(void)
 
-    Saves a file with the object's masks.
+    Prints the mask's parameters.
 
     @author Lucca Rawlyk
     @version 2017.08.15-1
