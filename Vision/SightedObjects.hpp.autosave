@@ -1,0 +1,26 @@
+#ifndef SIGHTEDOBJECTS_HPP
+#define SIGHTEDOBJECTS_HPP
+
+enum class objectColor{RED,ORANGE,YELLOW,GREEN,BLUE,VIOLET};
+
+typedef struct
+{
+    double x;
+    double y;
+    double area;
+    objectColor color;
+}sightedObject;
+
+class SightedObjects
+{
+private:
+    sightedObject *object;
+    int n_objects;
+    
+    static SightedObjects* instance;
+    SightedObjects();
+public:
+    SightedObjects* getInstance();
+};
+
+#endif // SIGHTEDOBJECTS_H
