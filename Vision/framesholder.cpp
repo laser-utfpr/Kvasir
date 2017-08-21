@@ -169,7 +169,7 @@ void FramesHolder::setupHSVMaskFromWindow(HSVMask* mask, objectColor color)
     Creates a sighted object list using the masks.
 
     @author Lucca Rawlyk
-    @version 2017.08.15-1
+    @version 2017.08.21-1
 */
 
 void FramesHolder::findObjectsFromMasks(ColorMasks* masks, SightedObjects* objects)
@@ -179,6 +179,7 @@ void FramesHolder::findObjectsFromMasks(ColorMasks* masks, SightedObjects* objec
     vector< vector<Point> > contours;
     vector<Vec4i> hierarchy;
 
+    Mat temp;
     Moments moment;
     double x,y,area;
 
@@ -189,22 +190,23 @@ void FramesHolder::findObjectsFromMasks(ColorMasks* masks, SightedObjects* objec
             updateRawAndHSVImages();
             updateThresholdedImage(&(masks->mask[i]));
 
+            thresholded_image.copyTo(temp);
             vector< vector<Point> > contours;
             vector<Vec4i> hierarchy;
 
-            findContours(thresholded_image,contours,hierarchy,CV_RETR_CCOMP,CV_CHAIN_APPROX_SIMPLE);
+            findContours(temp,contours,hierarchy,CV_RETR_CCOMP,CV_CHAIN_APPROX_SIMPLE);
 
             if(hierarchy.size()>0)
             {
                 for(j=0; j>=0; j=hierarchy[j][0])
                 {
-                    moment = moments((Mat)contours[j]);
+                    moment = moments((Mat)contours[j], true);
                     area = moment.m00;
                     if(area > MINIMUM_OBJECT_AREA)
                     {
                         x = moment.m10/area;
                         y = moment.m01/area;
-                        objects->addObject(x,y,area,i);
+                        objects->addObject(x,y,area,(objectColor)i);
                     }
                 }
             }
@@ -218,10 +220,10 @@ void FramesHolder::findObjectsFromMasks(ColorMasks* masks, SightedObjects* objec
     Paints the object atributes on the screen;
 
     @author Lucca Rawlyk
-    @version 2017.08.15-1
+    @version 2017.08.17-1
 */
 
-void FramesHolder::paintObject(int x, int y, int area, int color)
+void FramesHolder::paintObject(int x, int y, int area, objectColor color)
 {
     std::stringstream text;
     switch(color)
@@ -229,15 +231,15 @@ void FramesHolder::paintObject(int x, int y, int area, int color)
         case RED:
         text << "RED"; break;
         case ORANGE:
-        text << "RED"; break;
+        text << "ORANGE"; break;
         case YELLOW:
-        text << "RED"; break;
+        text << "YELLOW"; break;
         case GREEN:
-        text << "RED"; break;
+        text << "GREEN"; break;
         case BLUE:
-        text << "RED"; break;
+        text << "BLUE"; break;
         case VIOLET:
-        text << "RED"; break;
+        text << "VIOLET"; break;
     }
     text << "," << area;
     circle(raw_image,Point(x,y),OBJECT_CURSOR_RADIUS,Scalar(0,255,0),OBJECT_CURSOR_THICKNESS);

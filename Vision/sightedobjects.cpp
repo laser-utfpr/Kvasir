@@ -1,16 +1,16 @@
 #include "sightedobjects.hpp"
 
-#include <iostream>
-
 SightedObjects::SightedObjects()
 {
-    object = NULL;
+    list = NULL;
     n_objects = 0;
+    micros = 0;
 }
 
 SightedObjects::~SightedObjects()
 {
-    destroyList(object);
+    if(list!=NULL)
+        destroyList(list);
 }
 
 /**
@@ -19,7 +19,7 @@ SightedObjects::~SightedObjects()
     Recursively destroys the list.
 
     @author Lucca Rawlyk
-    @version 2017.08.15-1
+    @version 2017.08.16-1
 */
 
 void SightedObjects::destroyList(sightedObject* node)
@@ -29,16 +29,24 @@ void SightedObjects::destroyList(sightedObject* node)
     delete node;
 }
 
+void SightedObjects::destroyList(void)
+{
+    if(list!=NULL)
+        destroyList(list);
+    list = NULL;
+    n_objects = 0;
+}
+
 /**
     void SightedObjects::addObject(double x, double y, double area, int color)
 
     Adds an object to the list.
 
     @author Lucca Rawlyk
-    @version 2017.08.15-1
+    @version 2017.08.16-1
 */
 
-void SightedObjects::addObject(double x, double y, double area, int color)
+void SightedObjects::addObject(double x, double y, double area, objectColor color)
 {
     sightedObject *new_object = new sightedObject;
     new_object->x = x;
@@ -46,30 +54,85 @@ void SightedObjects::addObject(double x, double y, double area, int color)
     new_object->area = area;
     new_object->color = color;
     new_object->prev = NULL;
-    new_object->next = object;
-    if(object!=NULL)
-        object->prev = new_object;
+    new_object->next = list;
+    if(list!=NULL)
+        list->prev = new_object;
+    list = new_object;
+    n_objects++;
 }
 
 /**
     void SightedObjects::paintObjects(FramesHolder *frames)
 
-    Paints all the objects of the list
+    Paints all the objects of the list.
 
     @author Lucca Rawlyk
-    @version 2017.08.15-1
+    @version 2017.08.17-1
 */
 
 void SightedObjects::paintObjects(FramesHolder *frames)
 {
     sightedObject *obj;
-    if(object!=NULL)
+    if(list!=NULL)
     {
-        obj = object;
+        obj = list;
         while(obj!=NULL)
         {
-            frames->paintObject(obj->x,obj->y,obj->area,obj->color);
+            frames->paintObject((int)obj->x,(int)obj->y,(int)obj->area,obj->color);
             obj = obj->next;
         }
     }
+}
+
+/**
+    void printObjects(void)
+
+    Recursively prints the parameters of all the objects in the list.
+
+    @author Lucca Rawlyk
+    @version 2017.08.17-1
+*/
+
+void SightedObjects::printObjects(void)
+{
+    if(list!=NULL)
+        printObjects(list);
+    else
+        std::cout << std::endl << "No objects found" << std::endl;
+}
+
+void SightedObjects::printObjects(sightedObject *obj)
+{
+    if(obj!=NULL)
+    {
+        std::cout << std::endl;
+        std::cout << "x=" << obj->x << std::endl;
+        std::cout << "y=" << obj->y << std::endl;
+        std::cout << "area=" << obj->area << std::endl;
+        std::cout << "color=";
+        switch(obj->color)
+        {
+            case RED:
+                std::cout << "RED"; break;
+            case ORANGE:
+                std::cout << "ORANGE"; break;
+            case YELLOW:
+                std::cout << "YELLOW"; break;
+            case GREEN:
+                std::cout << "GREEN"; break;
+            case BLUE:
+                std::cout << "BLUE"; break;
+            case VIOLET:
+                std::cout << "VIOLET"; break;
+            default:
+                std::cout << "ERROR"; break;
+        }
+        std::cout << std::endl;
+        printObjects(obj->next);
+    }
+}
+
+void SightedObjects::incrementTime(void)
+{
+    micros += SAMPLING_PERIOD;
 }

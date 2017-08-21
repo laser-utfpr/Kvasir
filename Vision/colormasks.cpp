@@ -92,7 +92,7 @@ void ColorMasks::openMaskFile(const char* filename)
     Saves a file with the object's masks.
 
     @author Lucca Rawlyk
-    @version 2017.08.15-1
+    @version 2017.08.17-1
 */
 
 void ColorMasks::saveMaskFile(const char* filename)
@@ -119,6 +119,8 @@ void ColorMasks::saveMaskFile(const char* filename)
                 color = "BLUE"; break;
             case VIOLET:
                 color = "VIOLET"; break;
+            default:
+                color = "ERROR"; break;
         }
         output_file << color << "_H_MIN=" << mask[i].h_min << std::endl;
         output_file << color << "_H_MAX=" << mask[i].h_max << std::endl;
@@ -137,10 +139,10 @@ void ColorMasks::saveMaskFile(const char* filename)
     Prints the mask's parameters.
 
     @author Lucca Rawlyk
-    @version 2017.08.15-1
+    @version 2017.08.17-1
 */
 
-void ColorMasks::printMask(void)
+void ColorMasks::printMasks(void)
 {
     int i;
     std::string color;
@@ -161,6 +163,8 @@ void ColorMasks::printMask(void)
                 color = "BLUE"; break;
             case VIOLET:
                 color = "VIOLET"; break;
+            default:
+                color = "ERROR"; break;
         }
         std::cout << std::endl;
         std::cout << color << "_H_MIN=" << mask[i].h_min << std::endl;
@@ -169,6 +173,6 @@ void ColorMasks::printMask(void)
         std::cout << color << "_S_MAX=" << mask[i].s_max << std::endl;
         std::cout << color << "_V_MIN=" << mask[i].v_min << std::endl;
         std::cout << color << "_V_MAX=" << mask[i].v_max << std::endl;
-        std::cout << color << "_ACTIVE=" << mask[i].active;
+        std::cout << color << "_ACTIVE=" << mask[i].active << std::endl;
     }
 }

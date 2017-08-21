@@ -6,7 +6,8 @@ CONFIG -= qt
 SOURCES += main.cpp \
     sightedobjects.cpp \
     framesholder.cpp \
-    colormasks.cpp
+    colormasks.cpp \
+    vision.cpp
 
 HEADERS += \
     sightedobjects.hpp \
@@ -14,7 +15,8 @@ HEADERS += \
     framesholder.hpp \
     ../hsvmask.h \
     hsvmask.h \
-    colormasks.hpp
+    colormasks.hpp \
+    vision.hpp
 
 INCLUDEPATH += /usr/local/include/opencv
 LIBS += -L/usr/local/lib \

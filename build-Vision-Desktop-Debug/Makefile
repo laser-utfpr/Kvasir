@@ -48,11 +48,13 @@ OBJECTS_DIR   = ./
 SOURCES       = ../Vision/main.cpp \
 		../Vision/sightedobjects.cpp \
 		../Vision/framesholder.cpp \
-		../Vision/colormasks.cpp 
+		../Vision/colormasks.cpp \
+		../Vision/vision.cpp 
 OBJECTS       = main.o \
 		sightedobjects.o \
 		framesholder.o \
-		colormasks.o
+		colormasks.o \
+		vision.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -287,26 +289,42 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../Vision/main.cpp ../Vision/framesholder.hpp \
+main.o: ../Vision/main.cpp ../Vision/vision.hpp \
+		../Vision/framesholder.hpp \
+		../Vision/colormasks.hpp \
 		../Vision/visionconstants.h \
 		../Vision/hsvmask.h \
 		../Vision/sightedobjects.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Vision/main.cpp
 
 sightedobjects.o: ../Vision/sightedobjects.cpp ../Vision/sightedobjects.hpp \
-		../Vision/visionconstants.h
+		../Vision/framesholder.hpp \
+		../Vision/colormasks.hpp \
+		../Vision/visionconstants.h \
+		../Vision/hsvmask.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sightedobjects.o ../Vision/sightedobjects.cpp
 
 framesholder.o: ../Vision/framesholder.cpp ../Vision/framesholder.hpp \
+		../Vision/colormasks.hpp \
 		../Vision/visionconstants.h \
-		../Vision/hsvmask.h
+		../Vision/hsvmask.h \
+		../Vision/sightedobjects.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o framesholder.o ../Vision/framesholder.cpp
 
 colormasks.o: ../Vision/colormasks.cpp ../Vision/colormasks.hpp \
 		../Vision/framesholder.hpp \
+		../Vision/sightedobjects.hpp \
 		../Vision/visionconstants.h \
 		../Vision/hsvmask.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o colormasks.o ../Vision/colormasks.cpp
+
+vision.o: ../Vision/vision.cpp ../Vision/vision.hpp \
+		../Vision/framesholder.hpp \
+		../Vision/colormasks.hpp \
+		../Vision/visionconstants.h \
+		../Vision/hsvmask.h \
+		../Vision/sightedobjects.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vision.o ../Vision/vision.cpp
 
 ####### Install
 

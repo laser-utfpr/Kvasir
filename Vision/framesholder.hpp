@@ -36,7 +36,7 @@ public:
     void showThresholdedImage(void);
     void setupHSVMaskFromWindow(HSVMask *mask, objectColor color);
     void findObjectsFromMasks(ColorMasks* masks, SightedObjects* objects);
-    void paintObject(int x, int y, int area, int color);
+    void paintObject(int x, int y, int area, objectColor color);
 };
 
 #endif // FRAMESHOLDER_HPP
