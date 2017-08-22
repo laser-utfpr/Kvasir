@@ -1,7 +1,22 @@
 #include "sightedobjects.hpp"
 
+using namespace boost::interprocess;
+
+SightedObjects* SightedObjects::instance = NULL;
+
+SightedObjects* SightedObjects::getInstance(void)
+{
+    if(instance==NULL)
+        instance = new SightedObjects;
+    return instance;
+}
+
+
 SightedObjects::SightedObjects()
 {
+    //shared_memory = new managed_shared_memory(open_or_create,SHARED_MEMORY_NAME,SHARED_MEMORY_SIZE);
+    //SightedObjects* new_instance = shared_memory->construct<SightedObjects>("SightedObjects");
+    //instance = new_instance;
     list = NULL;
     n_objects = 0;
     micros = 0;
@@ -19,7 +34,7 @@ SightedObjects::~SightedObjects()
     Recursively destroys the list.
 
     @author Lucca Rawlyk
-    @version 2017.08.16-1
+    @version 2017.08.22-1
 */
 
 void SightedObjects::destroyList(sightedObject* node)
@@ -27,6 +42,7 @@ void SightedObjects::destroyList(sightedObject* node)
     if(node->next!=NULL)
         destroyList(node->next);
     delete node;
+    //shared_memory->deallocate(node);
 }
 
 void SightedObjects::destroyList(void)
@@ -43,12 +59,13 @@ void SightedObjects::destroyList(void)
     Adds an object to the list.
 
     @author Lucca Rawlyk
-    @version 2017.08.16-1
+    @version 2017.08.22-1
 */
 
 void SightedObjects::addObject(double x, double y, double area, objectColor color)
 {
     sightedObject *new_object = new sightedObject;
+    //sightedObject *new_object = static_cast<sightedObject*>(shared_memory->allocate(sizeof(sightedObject)));
     new_object->x = x;
     new_object->y = y;
     new_object->area = area;

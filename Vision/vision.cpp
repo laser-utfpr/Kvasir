@@ -4,7 +4,7 @@ void visionStart(bool setupMasks, bool printMasks, bool trackObjects, bool print
 {
     FramesHolder frames;
     ColorMasks masks;
-    SightedObjects objects;
+    SightedObjects *objects = SightedObjects::getInstance();
 
     frames.setCameraToDefault();
 
@@ -24,24 +24,22 @@ void visionStart(bool setupMasks, bool printMasks, bool trackObjects, bool print
     while(trackObjects)
     {
         clock_start = clock();
-        objects.destroyList();
-        frames.findObjectsFromMasks(&masks,&objects);
+        objects->destroyList();
+        frames.findObjectsFromMasks(&masks,objects);
         if(printObjects)
-            objects.printObjects();
+            objects->printObjects();
 
         if(showImage)
         {
-            objects.paintObjects(&frames);
+            objects->paintObjects(&frames);
             frames.showRawImage();
         }
-
-        std::cout << (clock()-clock_start)/(CLOCKS_PER_SEC*0.000001) << std::endl;
 
         if(cv::waitKey(WAIT_KEY_PRESS_TIME) == DONE_KEY)
             break;
 
         while((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001) < SAMPLING_PERIOD)
             ;
-        objects.incrementTime();
+        objects->incrementTime();
     }
 }

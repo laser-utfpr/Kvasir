@@ -2,9 +2,9 @@
 
 #include "vision.hpp"
 
-#define SETUP_MASKS true
+#define SETUP_MASKS false
 #define PRINT_MASKS false
-#define TRACK_OBJECTS false
+#define TRACK_OBJECTS true
 #define PRINT_OBJECTS false
 #define SHOW_IMAGE true
 
