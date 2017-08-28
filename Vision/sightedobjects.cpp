@@ -14,43 +14,46 @@ SightedObjects* SightedObjects::getInstance(void)
 
 SightedObjects::SightedObjects()
 {
-    //shared_memory = new managed_shared_memory(open_or_create,SHARED_MEMORY_NAME,SHARED_MEMORY_SIZE);
-    //SightedObjects* new_instance = shared_memory->construct<SightedObjects>("SightedObjects");
-    //instance = new_instance;
+    shared_memory_object::remove(SHARED_MEMORY_NAME);
+    shared_memory = new managed_shared_memory(open_or_create,SHARED_MEMORY_NAME,SHARED_MEMORY_SIZE);
     list = NULL;
-    n_objects = 0;
-    micros = 0;
+    n_objects = static_cast<int*>(shared_memory->allocate(sizeof(int)));
+    *n_objects = 0;
+    micros = static_cast<useconds_t*>(shared_memory->allocate(sizeof(useconds_t)));
+    *micros = 0;
 }
 
 SightedObjects::~SightedObjects()
 {
-    if(list!=NULL)
+    if(list.get()!=NULL)
         destroyList(list);
 }
 
 /**
-    void SightedObjects::destroyList(sightedObject* node)
+    void SightedObjects::destroyList(offset_ptr<sightedObject*> node)
 
     Recursively destroys the list.
 
     @author Lucca Rawlyk
-    @version 2017.08.22-1
+    @version 2017.08.25-1
 */
 
-void SightedObjects::destroyList(sightedObject* node)
+void SightedObjects::destroyList(boost::interprocess::offset_ptr<sightedObject> node)
 {
-    if(node->next!=NULL)
+    if((node->next).get()!=NULL)
         destroyList(node->next);
-    delete node;
-    //shared_memory->deallocate(node);
+    //delete node;
+    //std::cout << "node deleted" << std::endl;
+    shared_memory->deallocate(node.get());
 }
 
 void SightedObjects::destroyList(void)
 {
+    //std::cout << "starting deletion" << std::endl;
     if(list!=NULL)
         destroyList(list);
     list = NULL;
-    n_objects = 0;
+    *n_objects = 0;
 }
 
 /**
@@ -64,8 +67,8 @@ void SightedObjects::destroyList(void)
 
 void SightedObjects::addObject(double x, double y, double area, objectColor color)
 {
-    sightedObject *new_object = new sightedObject;
-    //sightedObject *new_object = static_cast<sightedObject*>(shared_memory->allocate(sizeof(sightedObject)));
+    //sightedObject *new_object = new sightedObject;
+    offset_ptr<sightedObject> new_object = static_cast<sightedObject*>(shared_memory->allocate(sizeof(sightedObject)));
     new_object->x = x;
     new_object->y = y;
     new_object->area = area;
@@ -75,7 +78,7 @@ void SightedObjects::addObject(double x, double y, double area, objectColor colo
     if(list!=NULL)
         list->prev = new_object;
     list = new_object;
-    n_objects++;
+    *n_objects++;
 }
 
 /**
@@ -84,16 +87,16 @@ void SightedObjects::addObject(double x, double y, double area, objectColor colo
     Paints all the objects of the list.
 
     @author Lucca Rawlyk
-    @version 2017.08.17-1
+    @version 2017.08.25-1
 */
 
 void SightedObjects::paintObjects(FramesHolder *frames)
 {
-    sightedObject *obj;
-    if(list!=NULL)
+    offset_ptr<sightedObject> obj;
+    if(list.get()!=NULL)
     {
         obj = list;
-        while(obj!=NULL)
+        while(obj.get()!=NULL)
         {
             frames->paintObject((int)obj->x,(int)obj->y,(int)obj->area,obj->color);
             obj = obj->next;
@@ -107,20 +110,20 @@ void SightedObjects::paintObjects(FramesHolder *frames)
     Recursively prints the parameters of all the objects in the list.
 
     @author Lucca Rawlyk
-    @version 2017.08.17-1
+    @version 2017.08.25-1
 */
 
 void SightedObjects::printObjects(void)
 {
-    if(list!=NULL)
+    if(list.get()!=NULL)
         printObjects(list);
     else
         std::cout << std::endl << "No objects found" << std::endl;
 }
 
-void SightedObjects::printObjects(sightedObject *obj)
+void SightedObjects::printObjects(boost::interprocess::offset_ptr<sightedObject> obj)
 {
-    if(obj!=NULL)
+    if(obj.get()!=NULL)
     {
         std::cout << std::endl;
         std::cout << "x=" << obj->x << std::endl;
@@ -151,5 +154,5 @@ void SightedObjects::printObjects(sightedObject *obj)
 
 void SightedObjects::incrementTime(void)
 {
-    micros += SAMPLING_PERIOD;
+    *micros += SAMPLING_PERIOD;
 }

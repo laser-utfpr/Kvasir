@@ -19,21 +19,21 @@ typedef struct node
     double y;
     double area;
     objectColor color;
-    struct node* next;
-    struct node* prev;
+    boost::interprocess::offset_ptr<struct node> next;
+    boost::interprocess::offset_ptr<struct node> prev;
 }sightedObject;
 
 class SightedObjects
 {
 private:
-    sightedObject *list;
-    int n_objects;
-    useconds_t micros;
+    boost::interprocess::offset_ptr<sightedObject> list;
+    boost::interprocess::offset_ptr<int> n_objects;
+    boost::interprocess::offset_ptr<useconds_t> micros;
     boost::interprocess::managed_shared_memory* shared_memory;
     static SightedObjects* instance;
     SightedObjects();
-    void destroyList(sightedObject *node);
-    void printObjects(sightedObject *obj);
+    void destroyList(boost::interprocess::offset_ptr<sightedObject> node);
+    void printObjects(boost::interprocess::offset_ptr<sightedObject> obj);
 public:
     static SightedObjects* getInstance(void);
     ~SightedObjects();
