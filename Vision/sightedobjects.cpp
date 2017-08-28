@@ -15,7 +15,7 @@ SightedObjects* SightedObjects::getInstance(void)
 SightedObjects::SightedObjects()
 {
     shared_memory_object::remove(SHARED_MEMORY_NAME);
-    shared_memory = new managed_shared_memory(open_or_create,SHARED_MEMORY_NAME,SHARED_MEMORY_SIZE);
+    shared_memory = new managed_shared_memory(create_only,SHARED_MEMORY_NAME,SHARED_MEMORY_SIZE);
     list = NULL;
     n_objects = static_cast<int*>(shared_memory->allocate(sizeof(int)));
     *n_objects = 0;
@@ -78,7 +78,7 @@ void SightedObjects::addObject(double x, double y, double area, objectColor colo
     if(list!=NULL)
         list->prev = new_object;
     list = new_object;
-    *n_objects++;
+    (*n_objects)++;
 }
 
 /**
