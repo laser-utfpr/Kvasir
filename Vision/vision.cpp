@@ -1,6 +1,7 @@
 #include "vision.hpp"
 
-void visionStart(bool setupMasks, bool printMasks, bool trackObjects, bool printObjects, bool showImage)
+void visionStart(bool setupMasks, bool printMasks, bool trackObjects,
+                 bool printObjects, bool showImage, bool printTime)
 {
     FramesHolder frames;
     ColorMasks masks;
@@ -24,8 +25,13 @@ void visionStart(bool setupMasks, bool printMasks, bool trackObjects, bool print
     while(trackObjects)
     {
         clock_start = clock();
+
+        //objects->sharedMemoryTest();
+
         objects->destroyList();
+
         frames.findObjectsFromMasks(&masks,objects);
+
         if(printObjects)
             objects->printObjects();
 
@@ -38,8 +44,12 @@ void visionStart(bool setupMasks, bool printMasks, bool trackObjects, bool print
         if(cv::waitKey(WAIT_KEY_PRESS_TIME) == DONE_KEY)
             break;
 
+        if(printTime)
+            std::cout << std::endl << "Object finding time: " << (clock()-clock_start)/(CLOCKS_PER_SEC*0.000001) << std::endl;
+
         while((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001) < SAMPLING_PERIOD)
             ;
+
         objects->incrementTime();
     }
 }

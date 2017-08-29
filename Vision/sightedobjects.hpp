@@ -27,8 +27,9 @@ class SightedObjects
 {
 private:
     boost::interprocess::offset_ptr<sightedObject> list;
-    boost::interprocess::offset_ptr<int> n_objects;
-    boost::interprocess::offset_ptr<useconds_t> micros;
+    boost::interprocess::offset_ptr<sightedObject> *list_head;
+    int *n_objects;
+    useconds_t *micros;
     boost::interprocess::managed_shared_memory* shared_memory;
     static SightedObjects* instance;
     SightedObjects();
@@ -42,6 +43,8 @@ public:
     void printObjects(void);
     void destroyList(void);
     void incrementTime(void);
+    void saveListHead(void);
+    void sharedMemoryTest(void);
 };
 
 #endif // SIGHTEDOBJECTS_HPP

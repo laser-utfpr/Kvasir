@@ -7,6 +7,7 @@
 #include "visionconstants.h"
 #include "hsvmask.h"
 
-void visionStart(bool setupMasks, bool printMasks, bool trackObjects, bool printObjects, bool showImage);
+void visionStart(bool setupMasks, bool printMasks, bool trackObjects,
+                 bool printObjects, bool showImage, bool printTime);
 
 #endif // VISION_HPP

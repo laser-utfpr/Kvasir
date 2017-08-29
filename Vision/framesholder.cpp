@@ -212,6 +212,8 @@ void FramesHolder::findObjectsFromMasks(ColorMasks* masks, SightedObjects* objec
             }
         }
     }
+
+    objects->saveListHead();
 }
 
 /**

@@ -1,8 +1,8 @@
 #ifndef VISIONCONSTANTS_H
 #define VISIONCONSTANTS_H
 
-#define FRAME_WIDTH 1080
-#define FRAME_HEIGHT 720
+#define FRAME_WIDTH 640
+#define FRAME_HEIGHT 480
 
 #define RAW_IMAGE_WINDOW_NAME "Raw Image"
 #define HSV_IMAGE_WINDOW_NAME "HSV Image"
@@ -39,15 +39,18 @@ enum objectColor {RED=0,ORANGE=1,YELLOW=2,GREEN=3,BLUE=4,VIOLET=5};
 #define WAIT_KEY_PRESS_TIME 10
 #define DONE_KEY 13
 
-#define MINIMUM_OBJECT_AREA 50
+#define MINIMUM_OBJECT_AREA (FRAME_HEIGHT*FRAME_WIDTH)/15552
 
 #define OBJECT_CURSOR_RADIUS 0
 #define OBJECT_CURSOR_THICKNESS 5
 #define OBJECT_TEXT_OFFSET 30
 
-#define SAMPLING_PERIOD 100000 //in micro seconds
+#define SAMPLING_PERIOD 90000 //in micro seconds
 
-#define SHARED_MEMORY_NAME "Sighted_Objects"
+#define SHARED_MEMORY_NAME "sighted_objects"
 #define SHARED_MEMORY_SIZE 131072
+#define N_OBJECTS_MEMORY_NAME "n_objects"
+#define MICROS_MEMORY_NAME "micros"
+#define LIST_HEAD_MEMORY_NAME "list_head"
 
 #endif // VISIONCONSTANTS_H
