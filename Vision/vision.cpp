@@ -1,7 +1,7 @@
 #include "vision.hpp"
 
 void visionStart(bool setupMasks, bool printMasks, bool trackObjects,
-                 bool printObjects, bool showImage, bool printTime)
+                 bool printObjects, bool showImage, bool printTime, bool fixedSamplingPeriod)
 {
     FramesHolder frames;
     ColorMasks masks;
@@ -45,11 +45,13 @@ void visionStart(bool setupMasks, bool printMasks, bool trackObjects,
             break;
 
         if(printTime)
-            std::cout << std::endl << "Object finding time: " << (clock()-clock_start)/(CLOCKS_PER_SEC*0.000001) << std::endl;
+            std::cout << std::endl << "Object finding time: "
+                      << (clock()-clock_start)/(CLOCKS_PER_SEC*0.000001) << std::endl;
 
-        while((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001) < SAMPLING_PERIOD)
-            ;
+        if(fixedSamplingPeriod)
+            while((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001) < SAMPLING_PERIOD)
+                ;
 
-        objects->incrementTime();
+        objects->incrementTime((useconds_t)((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001)));
     }
 }

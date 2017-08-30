@@ -157,9 +157,9 @@ void SightedObjects::printObjects(boost::interprocess::offset_ptr<sightedObject>
     }
 }
 
-void SightedObjects::incrementTime(void)
+void SightedObjects::incrementTime(useconds_t time_increment)
 {
-    *micros += SAMPLING_PERIOD;
+    *micros += time_increment;
 }
 
 /**

@@ -8,6 +8,6 @@
 #include "hsvmask.h"
 
 void visionStart(bool setupMasks, bool printMasks, bool trackObjects,
-                 bool printObjects, bool showImage, bool printTime);
+                 bool printObjects, bool showImage, bool printTime, bool fixedSamplingPeriod);
 
 #endif // VISION_HPP

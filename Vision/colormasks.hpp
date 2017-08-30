@@ -15,6 +15,7 @@ class ColorMasks
 private:
     HSVMask mask[N_COLOR_MASKS];
     friend class FramesHolder;
+    inline bool fileExists(const std::string& name);
 public:
     ColorMasks();
     void setupMasks(FramesHolder* frames);

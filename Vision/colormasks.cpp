@@ -52,7 +52,14 @@ void ColorMasks::setupMasks(FramesHolder* frames)
 void ColorMasks::openMaskFile(const char* filename)
 {
     std::ifstream input_file;
-    input_file.open(filename);
+
+    if(fileExists(filename))
+        input_file.open(filename);
+    else
+    {
+        std::cout << "No masks file found";
+        exit(1);
+    }
 
     int i,j;
     std::string value;
@@ -175,4 +182,10 @@ void ColorMasks::printMasks(void)
         std::cout << color << "_V_MAX=" << mask[i].v_max << std::endl;
         std::cout << color << "_ACTIVE=" << mask[i].active << std::endl;
     }
+}
+
+inline bool ColorMasks::fileExists(const std::string& name)
+{
+    struct stat buffer;
+    return (stat (name.c_str(), &buffer) == 0);
 }

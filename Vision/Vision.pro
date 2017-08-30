@@ -1,7 +1,3 @@
-TEMPLATE = app
-CONFIG += console
-CONFIG -= app_bundle
-CONFIG -= qt
 
 SOURCES += main.cpp \
     sightedobjects.cpp \
@@ -16,7 +12,8 @@ HEADERS += \
     ../hsvmask.h \
     hsvmask.h \
     colormasks.hpp \
-    vision.hpp
+    vision.hpp \
+    sightedobject.h
 
 CONFIG += link_pkgconfig
 PKGCONFIG += opencv

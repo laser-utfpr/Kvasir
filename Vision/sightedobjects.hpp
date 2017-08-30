@@ -4,24 +4,15 @@
 #include "framesholder.hpp"
 class FramesHolder;
 
+#include <ctime>
+#include <iostream>
+
+#include "sightedobject.h"
+
 #include "visionconstants.h"
 
 #include <boost/interprocess/managed_shared_memory.hpp>
 #include <boost/interprocess/offset_ptr.hpp>
-//#include <boost/interprocess/mapped_region.hpp>
-
-#include <ctime>
-#include <iostream>
-
-typedef struct node
-{
-    double x;
-    double y;
-    double area;
-    objectColor color;
-    boost::interprocess::offset_ptr<struct node> next;
-    boost::interprocess::offset_ptr<struct node> prev;
-}sightedObject;
 
 class SightedObjects
 {
@@ -42,7 +33,7 @@ public:
     void paintObjects(FramesHolder *frames);
     void printObjects(void);
     void destroyList(void);
-    void incrementTime(void);
+    void incrementTime(useconds_t time_increment);
     void saveListHead(void);
     void sharedMemoryTest(void);
 };
