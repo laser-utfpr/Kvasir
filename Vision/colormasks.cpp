@@ -57,7 +57,7 @@ void ColorMasks::openMaskFile(const char* filename)
         input_file.open(filename);
     else
     {
-        std::cout << "No masks file found";
+        std::cout << "No masks file found" << std::endl;
         exit(1);
     }
 
