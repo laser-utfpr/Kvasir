@@ -19,8 +19,8 @@ SightedObjects::SightedObjects()
 
     n_objects = shared_memory->construct<int>(N_OBJECTS_MEMORY_NAME)();
     *n_objects = 0;
-    micros = shared_memory->construct<useconds_t>(MICROS_MEMORY_NAME)();
-    *micros = 0;
+    time_us = shared_memory->construct<useconds_t>(TIME_US_MEMORY_NAME)();
+    *time_us = 0;
 
     list_head = shared_memory->construct< offset_ptr<sightedObject> >(LIST_HEAD_MEMORY_NAME)();
 
@@ -47,13 +47,11 @@ void SightedObjects::destroyList(boost::interprocess::offset_ptr<sightedObject> 
 {
     if((node->next).get()!=NULL)
         destroyList(node->next);
-    //std::cout << "node deleted" << std::endl;
     shared_memory->deallocate(node.get());
 }
 
 void SightedObjects::destroyList(void)
 {
-    //std::cout << "starting deletion" << std::endl;
     if(list!=NULL)
         destroyList(list);
     list = NULL;
@@ -120,9 +118,8 @@ void SightedObjects::paintObjects(FramesHolder *frames)
 void SightedObjects::printObjects(void)
 {
     std::cout << std::endl << "n_objects=" << *n_objects << std::endl;
-    std::cout << "micros=" << *micros << std::endl;
-    if(list.get()!=NULL)
-        printObjects(list);
+    std::cout << "time_us=" << *time_us << std::endl;
+    printObjects(list);
     std::cout << "- - - - - - - - - - - - - - - - -" << std::endl;
 }
 
@@ -159,7 +156,7 @@ void SightedObjects::printObjects(boost::interprocess::offset_ptr<sightedObject>
 
 void SightedObjects::incrementTime(useconds_t time_increment)
 {
-    *micros += time_increment;
+    *time_us += time_increment;
 }
 
 /**
@@ -191,8 +188,8 @@ void SightedObjects::sharedMemoryTest(void)
     num_objects = shared_memory->find<int>(N_OBJECTS_MEMORY_NAME);
     std::cout << std::endl << "n_objects=" << *(num_objects.first) << std::endl;
     std::pair<useconds_t*, managed_shared_memory::size_type> micro_secs;
-    micro_secs = shared_memory->find<useconds_t>(MICROS_MEMORY_NAME);
-    std::cout << "micros=" << *(micro_secs.first) << std::endl;
+    micro_secs = shared_memory->find<useconds_t>(TIME_US_MEMORY_NAME);
+    std::cout << "time_us=" << *(micro_secs.first) << std::endl;
 
     std::pair<offset_ptr<sightedObject>*, managed_shared_memory::size_type> objects;
     objects = shared_memory->find< offset_ptr<sightedObject> >(LIST_HEAD_MEMORY_NAME);

@@ -20,7 +20,7 @@ private:
     boost::interprocess::offset_ptr<sightedObject> list;
     boost::interprocess::offset_ptr<sightedObject> *list_head;
     int *n_objects;
-    useconds_t *micros;
+    useconds_t *time_us;
     boost::interprocess::managed_shared_memory* shared_memory;
     static SightedObjects* instance;
     SightedObjects();

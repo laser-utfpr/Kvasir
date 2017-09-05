@@ -8,7 +8,7 @@
 #define HSV_IMAGE_WINDOW_NAME "HSV Image"
 #define THRESHOLDED_IMAGE_WINDOW_NAME "Thresholded Image"
 
-#define COLOR_MASKS_FILENAME "colormasks.msk"
+#define COLOR_MASKS_FILENAME "../Vision/colormasks.msk"
 
 #define N_COLOR_MASKS 6
 enum objectColor {RED=0,ORANGE=1,YELLOW=2,GREEN=3,BLUE=4,VIOLET=5};
@@ -50,7 +50,7 @@ enum objectColor {RED=0,ORANGE=1,YELLOW=2,GREEN=3,BLUE=4,VIOLET=5};
 #define SHARED_MEMORY_NAME "sighted_objects"
 #define SHARED_MEMORY_SIZE 131072
 #define N_OBJECTS_MEMORY_NAME "n_objects"
-#define MICROS_MEMORY_NAME "micros"
+#define TIME_US_MEMORY_NAME "time_us"
 #define LIST_HEAD_MEMORY_NAME "list_head"
 
 #endif // VISIONCONSTANTS_H

@@ -26,9 +26,10 @@ void visionStart(bool setupMasks, bool printMasks, bool trackObjects,
     {
         clock_start = clock();
 
-        //objects->sharedMemoryTest();
+        objects->sharedMemoryTest();
 
         objects->destroyList();
+        objects->saveListHead();
 
         frames.findObjectsFromMasks(&masks,objects);
 
@@ -42,7 +43,10 @@ void visionStart(bool setupMasks, bool printMasks, bool trackObjects,
         }
 
         if(cv::waitKey(WAIT_KEY_PRESS_TIME) == DONE_KEY)
+        {
+            objects->destroyList();
             break;
+        }
 
         if(printTime)
             std::cout << std::endl << "Object finding time: "
@@ -54,4 +58,5 @@ void visionStart(bool setupMasks, bool printMasks, bool trackObjects,
 
         objects->incrementTime((useconds_t)((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001)));
     }
+    objects->~SightedObjects();
 }

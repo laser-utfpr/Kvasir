@@ -1,10 +1,14 @@
-#include <iostream>
-
-using namespace std;
+#include "objectlist.hpp"
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    ObjectList *objects = ObjectList::getInstance();
+    while(1)
+    {
+        objects->updateObjects();
+        objects->printObjects();
+        usleep(700000);
+    }
     return 0;
 }
 

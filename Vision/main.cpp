@@ -7,7 +7,7 @@
 #define TRACK_OBJECTS true
 #define PRINT_OBJECTS false
 #define SHOW_IMAGE true
-#define PRINT_TIME true
+#define PRINT_TIME false
 #define FIXED_SAMPLING_PERIOD false
 
 int main()
