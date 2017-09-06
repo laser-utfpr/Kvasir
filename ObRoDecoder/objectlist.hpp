@@ -4,13 +4,15 @@
 #include "../Vision/visionconstants.h"
 #include "../Vision/sightedobject.h"
 
+#include "colorobject.h"
+
 #include <iostream>
 #include <ctime>
 
 #include <boost/interprocess/managed_shared_memory.hpp>
 #include <boost/interprocess/offset_ptr.hpp>
 
-typedef struct co_node
+/*typedef struct co_node
 {
     double x;
     double y;
@@ -18,7 +20,7 @@ typedef struct co_node
     objectColor color;
     struct co_node* next;
     struct co_node* prev;
-}colorObject;
+}colorObject;*/
 
 class ObjectList
 {

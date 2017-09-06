@@ -7,7 +7,7 @@ int main()
     {
         objects->updateObjects();
         objects->printObjects();
-        usleep(700000);
+        //usleep(700000);
     }
     return 0;
 }
