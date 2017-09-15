@@ -132,14 +132,14 @@ void FramesHolder::setupHSVMaskFromWindow(HSVMask* mask, objectColor color)
 
     int displayed_image = 0;
 
-    createTrackbar(DISPLAYED_IMAGE_TRACKBAR_NAME, window_name, &displayed_image, 2, NULL);
-    createTrackbar(H_MIN_TRACKBAR_NAME, window_name, &(mask->h_min), MAX_MASK_VALUE, NULL);
-    createTrackbar(H_MAX_TRACKBAR_NAME, window_name, &(mask->h_max), MAX_MASK_VALUE, NULL);
-    createTrackbar(S_MIN_TRACKBAR_NAME, window_name, &(mask->s_min), MAX_MASK_VALUE, NULL);
-    createTrackbar(S_MAX_TRACKBAR_NAME, window_name, &(mask->s_max), MAX_MASK_VALUE, NULL);
-    createTrackbar(V_MIN_TRACKBAR_NAME, window_name, &(mask->v_min), MAX_MASK_VALUE, NULL);
-    createTrackbar(V_MAX_TRACKBAR_NAME, window_name, &(mask->v_max), MAX_MASK_VALUE, NULL);
-    createTrackbar(ACTIVE_TRACKBAR_NAME, window_name, &(mask->active), true, NULL);
+    createTrackbar(DISPLAYED_IMAGE_TRACKBAR_NAME, window_name, &displayed_image, 2, nullptr);
+    createTrackbar(H_MIN_TRACKBAR_NAME, window_name, &(mask->h_min), MAX_MASK_VALUE, nullptr);
+    createTrackbar(H_MAX_TRACKBAR_NAME, window_name, &(mask->h_max), MAX_MASK_VALUE, nullptr);
+    createTrackbar(S_MIN_TRACKBAR_NAME, window_name, &(mask->s_min), MAX_MASK_VALUE, nullptr);
+    createTrackbar(S_MAX_TRACKBAR_NAME, window_name, &(mask->s_max), MAX_MASK_VALUE, nullptr);
+    createTrackbar(V_MIN_TRACKBAR_NAME, window_name, &(mask->v_min), MAX_MASK_VALUE, nullptr);
+    createTrackbar(V_MAX_TRACKBAR_NAME, window_name, &(mask->v_max), MAX_MASK_VALUE, nullptr);
+    createTrackbar(ACTIVE_TRACKBAR_NAME, window_name, &(mask->active), true, nullptr);
 
     while(1)
     {

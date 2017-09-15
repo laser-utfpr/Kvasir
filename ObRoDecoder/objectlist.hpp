@@ -5,22 +5,13 @@
 #include "../Vision/sightedobject.h"
 
 #include "colorobject.h"
+#include "obroconstants.h"
 
 #include <iostream>
 #include <ctime>
 
 #include <boost/interprocess/managed_shared_memory.hpp>
 #include <boost/interprocess/offset_ptr.hpp>
-
-/*typedef struct co_node
-{
-    double x;
-    double y;
-    double area;
-    objectColor color;
-    struct co_node* next;
-    struct co_node* prev;
-}colorObject;*/
 
 class ObjectList
 {
@@ -39,6 +30,7 @@ public:
     void openSharedMemory(void);
     void updateObjects(void);
     void printObjects(void);
+    colorObject* findObjectsWithColor(objectColor color);
 };
 
 #endif // OBJECTLIST_HPP

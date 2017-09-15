@@ -2,7 +2,7 @@
 
 using namespace boost::interprocess;
 
-ObjectList* ObjectList::instance = NULL;
+ObjectList* ObjectList::instance = nullptr;
 
 ObjectList::ObjectList()
 {
@@ -19,14 +19,14 @@ ObjectList::ObjectList()
             ;
         }
     }
-    list_head = NULL;
+    list_head = nullptr;
     n_objects = 0;
     time_us = 0;
 }
 
 ObjectList* ObjectList::getInstance(void)
 {
-    if(instance==NULL)
+    if(instance==nullptr)
         instance = new ObjectList;
     return instance;
 }
@@ -109,10 +109,10 @@ void ObjectList::updateObjects(void)
         }
         obj = *(vision_objects.first);
 
-        colorObject *new_object = NULL, *prev_object = NULL;
+        colorObject *new_object = nullptr, *prev_object = nullptr;
         destroyList();
 
-        while(obj.get()!=NULL)
+        while(obj.get()!=nullptr)
         {
             new_object = new colorObject;
 
@@ -120,10 +120,11 @@ void ObjectList::updateObjects(void)
             new_object->y = obj->y;
             new_object->area = obj->area;
             new_object->color = obj->color;
+            new_object->entity_type = DEFAULT;
 
             new_object->next = prev_object;
-            new_object->prev = NULL;
-            if(prev_object!=NULL)
+            new_object->prev = nullptr;
+            if(prev_object!=nullptr)
                 prev_object->prev = new_object;
             prev_object = new_object;
 
@@ -135,7 +136,7 @@ void ObjectList::updateObjects(void)
 
 void ObjectList::destroyList(colorObject *node)
 {
-    if(node!=NULL)
+    if(node!=nullptr)
         destroyList(node->next);
     delete node;
 }
@@ -143,7 +144,7 @@ void ObjectList::destroyList(colorObject *node)
 void ObjectList::destroyList(void)
 {
     destroyList(list_head);
-    list_head = NULL;
+    list_head = nullptr;
 }
 
 void ObjectList::printObjects(void)
@@ -157,7 +158,7 @@ void ObjectList::printObjects(void)
 
 void ObjectList::printObjects(colorObject *obj)
 {
-    if(obj!=NULL)
+    if(obj!=nullptr)
     {
         std::cout << std::endl;
         std::cout << "x=" << obj->x << std::endl;
@@ -184,4 +185,28 @@ void ObjectList::printObjects(colorObject *obj)
         std::cout << std::endl;
         printObjects(obj->next);
     }
+}
+
+colorObject* ObjectList::findObjectsWithColor(objectColor color)
+{
+    colorObject *list = list_head, *new_list = nullptr, *prev = nullptr;
+    while(list!=nullptr)
+    {
+        if(list->color == color)
+        {
+            new_list = new colorObject;
+            new_list->next = prev;
+            new_list->prev = nullptr;
+            if(prev!=nullptr)
+                prev->prev = new_list;
+
+            new_list->x = list->x;
+            new_list->y = list->y;
+            new_list->area = list->area;
+            new_list->color = list->color;
+            new_list->entity_type = list->entity_type;
+        }
+        list = list->next;
+    }
+    return new_list;
 }
