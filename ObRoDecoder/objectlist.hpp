@@ -31,6 +31,7 @@ public:
     void updateObjects(void);
     void printObjects(void);
     colorObject* findObjectsWithColor(objectColor color);
+    void setObjectEntityType(double x, double y, entityNum type);
 };
 
 #endif // OBJECTLIST_HPP

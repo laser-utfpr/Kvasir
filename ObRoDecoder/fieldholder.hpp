@@ -14,6 +14,9 @@ class FieldHolder
 {
 private:
     field sighted_field;
+    std::pair<double,double> expected_ball_coord;
+    std::pair<double,double> expected_player_coord[N_PLAYERS];
+    double distanceSquared(double x1, double y1, double x2, double y2);
     void findEntity(entity* ent, entityNum num, ObjectList *objects);
     void findBall(entity* ent, ObjectList *objects);
     void findRobot1(entity* ent, ObjectList *objects);

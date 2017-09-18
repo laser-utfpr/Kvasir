@@ -85,10 +85,7 @@ void ObjectList::updateObjects(void)
                 openSharedMemory();
             }
         }
-        //std::cout << num_objects.first << std::endl;
-        //std::cout << std::endl << "n_objects=" << *(num_objects.first) << std::endl;
         n_objects = *(num_objects.first);
-        //std::cout << std::endl << "n_objects=" << n_objects << std::endl;
 
         std::pair<offset_ptr<sightedObject>*, managed_shared_memory::size_type> vision_objects;
         offset_ptr<sightedObject> obj;
@@ -209,4 +206,15 @@ colorObject* ObjectList::findObjectsWithColor(objectColor color)
         list = list->next;
     }
     return new_list;
+}
+
+void ObjectList::setObjectEntityType(double x, double y, entityNum type)
+{
+    colorObject* list = list_head;
+    while(list!=nullptr)
+    {
+        if(x==list->x && y==list->y)
+            list->entity_type = type;
+        list = list->next;
+    }
 }
