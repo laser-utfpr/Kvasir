@@ -8,7 +8,6 @@
 #include "obroconstants.h"
 
 #include <iostream>
-#include <ctime>
 
 #include <boost/interprocess/managed_shared_memory.hpp>
 #include <boost/interprocess/offset_ptr.hpp>
@@ -21,6 +20,7 @@ private:
     int n_objects;
     useconds_t time_us;
     static ObjectList* instance;
+    double distanceSquared(double x1, double y1, double x2, double y2);
     void destroyList(colorObject *node);
     void printObjects(colorObject *obj);
     ObjectList();
@@ -30,8 +30,10 @@ public:
     void openSharedMemory(void);
     void updateObjects(void);
     void printObjects(void);
+    useconds_t getTimeUs(void);
     colorObject* findObjectsWithColor(objectColor color);
-    void setObjectEntityType(double x, double y, entityNum type);
+    colorObject* findIdentifiersWithinRange(colorObject *object);
+    void setObjectEntityType(double x, double y, entityType type);
 };
 
 #endif // OBJECTLIST_HPP

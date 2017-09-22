@@ -31,6 +31,12 @@ ObjectList* ObjectList::getInstance(void)
     return instance;
 }
 
+double ObjectList::distanceSquared(double x1, double y1, double x2, double y2)
+{
+    return (x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
+}
+
+
 void ObjectList::openSharedMemory(void)
 {
     bool opened = false;
@@ -184,9 +190,15 @@ void ObjectList::printObjects(colorObject *obj)
     }
 }
 
+useconds_t ObjectList::getTimeUs(void)
+{
+    return time_us;
+}
+
 colorObject* ObjectList::findObjectsWithColor(objectColor color)
 {
     colorObject *list = list_head, *new_list = nullptr, *prev = nullptr;
+
     while(list!=nullptr)
     {
         if(list->color == color)
@@ -203,12 +215,41 @@ colorObject* ObjectList::findObjectsWithColor(objectColor color)
             new_list->color = list->color;
             new_list->entity_type = list->entity_type;
         }
+        prev = new_list;
         list = list->next;
     }
     return new_list;
 }
 
-void ObjectList::setObjectEntityType(double x, double y, entityNum type)
+colorObject* ObjectList::findIdentifiersWithinRange(colorObject *object)
+{
+    colorObject *list = list_head, *new_list = nullptr, *prev = nullptr;
+
+    while(list!=nullptr)
+    {
+        if((list->color == IDENTIFIER_COLOR_1 || list->color == IDENTIFIER_COLOR_2)
+            && distanceSquared(list->x,list->y,object->x,object->y) < MAX_IDENTIFIER_SQUARED_DISTANCE
+            && (object->x != list->x || object->y != list->y))
+        {
+            new_list = new colorObject;
+            new_list->next = prev;
+            new_list->prev = nullptr;
+            if(prev!=nullptr)
+                prev->prev = new_list;
+
+            new_list->x = list->x;
+            new_list->y = list->y;
+            new_list->area = list->area;
+            new_list->color = list->color;
+            new_list->entity_type = list->entity_type;
+        }
+        prev = new_list;
+        list = list->next;
+    }
+    return new_list;
+}
+
+void ObjectList::setObjectEntityType(double x, double y, entityType type)
 {
     colorObject* list = list_head;
     while(list!=nullptr)

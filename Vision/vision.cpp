@@ -26,7 +26,7 @@ void visionStart(bool setupMasks, bool printMasks, bool trackObjects,
     {
         clock_start = clock();
 
-        objects->sharedMemoryTest();
+        //objects->sharedMemoryTest();
 
         objects->destroyTempList();
         objects->saveListHead();

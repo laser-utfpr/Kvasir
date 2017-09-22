@@ -9,6 +9,7 @@
 #include "objectlist.hpp"
 
 #include <iostream>
+#include <cmath>
 
 class FieldHolder
 {
@@ -16,8 +17,14 @@ private:
     field sighted_field;
     std::pair<double,double> expected_ball_coord;
     std::pair<double,double> expected_player_coord[N_PLAYERS];
+    std::pair<double,double> expected_enemy_coord[N_PLAYERS];
     double distanceSquared(double x1, double y1, double x2, double y2);
-    void findEntity(entity* ent, entityNum num, ObjectList *objects);
+    void findEntity(entity* ent, entityType num, ObjectList *objects);
+    void setFoundEntity(entity* ent, ObjectList *objects,
+                        colorObject *obj, std::pair<double,double> *expected_coord, entityType type);
+    colorObject* findBestCandidate(colorObject *candidates, std::pair<double,double> *expected_coord);
+    void destroyList(colorObject* list);
+    int countColorObjectNodes(colorObject *list);
     void findBall(entity* ent, ObjectList *objects);
     void findRobot1(entity* ent, ObjectList *objects);
     void findRobot2(entity* ent, ObjectList *objects);
@@ -41,6 +48,8 @@ private:
 public:
     FieldHolder();
     void findEntities(ObjectList *objects);
+    useconds_t getTimeUs(void);
+    void printField(void);
 };
 
 #endif // FIELDHOLDER_HPP
