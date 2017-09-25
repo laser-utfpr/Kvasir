@@ -93,7 +93,7 @@ void FieldHolder::findEntity(entity* ent, entityType num, ObjectList *objects)
     }
 }
 
-void setNotFoundEntity(entity* ent)
+void FieldHolder::setNotFoundEntity(entity* ent)
 {
     ent->x = NAN;
     ent->y = NAN;
@@ -146,6 +146,23 @@ int FieldHolder::countColorObjectNodes(colorObject *list)
         return (1 + countColorObjectNodes(list->next));
     else
         return 0;
+}
+
+colorObject* FieldHolder::findMiddleIdentifier(colorObject* identifiers)
+{
+    double sq_dist1, sq_dist2, sq_dist3;
+    sq_dist1 = (identifiers->x-identifiers->next->x)*(identifiers->x-identifiers->next->x)+
+            (identifiers->y-identifiers->next->y)*(identifiers->y-identifiers->next->y);
+    sq_dist2 = (identifiers->x-identifiers->next->next->x)*(identifiers->x-identifiers->next->next->x)+
+            (identifiers->y-identifiers->next->next->y)*(identifiers->y-identifiers->next->next->y);
+    sq_dist3 = (identifiers->next->x-identifiers->next->next->x)*(identifiers->next->x-identifiers->next->next->x)+
+            (identifiers->next->y-identifiers->next->next->y)*(identifiers->next->y-identifiers->next->next->y);
+    if(sq_dist1>sq_dist2 && sq_dist1>sq_dist3)
+        return identifiers->next->next;
+    if(sq_dist2>sq_dist1 && sq_dist2>sq_dist3)
+        return identifiers->next;
+    if(sq_dist3>sq_dist1 && sq_dist3>sq_dist2)
+        return identifiers;
 }
 
 std::pair<double,double> findBisector(double x_mid, double y_mid, double x1, double y1, double x2, double y2)
@@ -225,16 +242,19 @@ void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
                 identifiers = objects->findIdentifiersWithinRange(best_candidate);
                 if(identifiers!=nullptr)
                 {
-                    if(countColorObjectNodes(identifiers) == 1 && identifiers->color == IDENTIFIER_COLOR_1)
+                    if(countColorObjectNodes(identifiers) == 1)
                     {
-                        setFoundEntity(ent,objects,best_candidate,&(expected_player_coord[0]),ROBOT_1);
+                        if(identifiers->color == IDENTIFIER_COLOR_1)
+                        {
+                            setFoundEntity(ent,objects,best_candidate,&(expected_player_coord[0]),ROBOT_1);
 
-                        //adjusting to reference listed in obroconstants.h
-                        ent->angle = atan2(identifiers->x - best_candidate->x,identifiers->y - best_candidate->y)
-                                - 3.0*M_PI_4;
-                        destroyList(candidates);
-                        destroyList(identifiers);
-                        return;
+                            //adjusting to reference listed in obroconstants.h
+                            ent->angle = atan2(identifiers->x - best_candidate->x,identifiers->y - best_candidate->y)
+                                    + 3.0*M_PI_4;
+                            destroyList(candidates);
+                            destroyList(identifiers);
+                            return;
+                        }
                     }
                     destroyList(identifiers);
                     identifiers = nullptr;
@@ -250,15 +270,18 @@ void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
                 identifiers = objects->findIdentifiersWithinRange(aux);
                 if(identifiers!=nullptr)
                 {
-                    if(countColorObjectNodes(identifiers) == 1 && identifiers->color == IDENTIFIER_COLOR_1)
+                    if(countColorObjectNodes(identifiers) == 1)
                     {
-                        setFoundEntity(ent,objects,aux,&(expected_player_coord[0]),ROBOT_1);
+                        if(identifiers->color == IDENTIFIER_COLOR_1)
+                        {
+                            setFoundEntity(ent,objects,aux,&(expected_player_coord[0]),ROBOT_1);
 
-                        //adjusting to reference listed in obroconstants.h
-                        ent->angle = atan2(identifiers->x - aux->x,identifiers->y - aux->y) - 3.0*M_PI_4;
-                        destroyList(candidates);
-                        destroyList(identifiers);
-                        return;
+                            //adjusting to reference listed in obroconstants.h
+                            ent->angle = atan2(identifiers->x - aux->x,identifiers->y - aux->y) + 3.0*M_PI_4;
+                            destroyList(candidates);
+                            destroyList(identifiers);
+                            return;
+                        }
                     }
                     destroyList(identifiers);
                     identifiers = nullptr;
@@ -287,19 +310,22 @@ void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
                 identifiers = objects->findIdentifiersWithinRange(best_candidate);
                 if(identifiers!=nullptr)
                 {
-                    if(countColorObjectNodes(identifiers) == 2 && identifiers->color == IDENTIFIER_COLOR_1
-                       && identifiers->next->color == IDENTIFIER_COLOR_1)
+                    if(countColorObjectNodes(identifiers) == 2)
                     {
-                        setFoundEntity(ent,objects,best_candidate,&(expected_player_coord[1]),ROBOT_2);
+                        if(identifiers->color == IDENTIFIER_COLOR_1
+                           && identifiers->next->color == IDENTIFIER_COLOR_1)
+                        {
+                            setFoundEntity(ent,objects,best_candidate,&(expected_player_coord[1]),ROBOT_2);
 
-                        //adjusting to reference listed in obroconstants.h
-                        std::pair<double,double> bisector =
-                                findBisector(best_candidate->x,best_candidate->y,identifiers->x,identifiers->y,
-                                             identifiers->next->x,identifiers->next->y);
-                        ent->angle = atan2(bisector.first,bisector.second) - M_PI_2;
-                        destroyList(candidates);
-                        destroyList(identifiers);
-                        return;
+                            //adjusting to reference listed in obroconstants.h
+                            std::pair<double,double> bisector =
+                                    findBisector(best_candidate->x,best_candidate->y,identifiers->x,identifiers->y,
+                                                 identifiers->next->x,identifiers->next->y);
+                            ent->angle = atan2(bisector.second,bisector.first) + M_PI_2;
+                            destroyList(candidates);
+                            destroyList(identifiers);
+                            return;
+                        }
                     }
                     destroyList(identifiers);
                     identifiers = nullptr;
@@ -315,19 +341,22 @@ void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
                 identifiers = objects->findIdentifiersWithinRange(aux);
                 if(identifiers!=nullptr)
                 {
-                    if(countColorObjectNodes(identifiers) == 2 && identifiers->color == IDENTIFIER_COLOR_1
-                       && identifiers->next->color == IDENTIFIER_COLOR_1)
+                    if(countColorObjectNodes(identifiers) == 2)
                     {
-                        setFoundEntity(ent,objects,aux,&(expected_player_coord[1]),ROBOT_2);
+                        if(identifiers->color == IDENTIFIER_COLOR_1
+                           && identifiers->next->color == IDENTIFIER_COLOR_1)
+                        {
+                            setFoundEntity(ent,objects,aux,&(expected_player_coord[1]),ROBOT_2);
 
-                        //adjusting to reference listed in obroconstants.h
-                        std::pair<double,double> bisector =
-                                findBisector(aux->x,aux->y,identifiers->x,identifiers->y,
-                                             identifiers->next->x,identifiers->next->y);
-                        ent->angle = atan2(bisector.first,bisector.second) - M_PI_2;
-                        destroyList(candidates);
-                        destroyList(identifiers);
-                        return;
+                            //adjusting to reference listed in obroconstants.h
+                            std::pair<double,double> bisector =
+                                    findBisector(aux->x,aux->y,identifiers->x,identifiers->y,
+                                                 identifiers->next->x,identifiers->next->y);
+                            ent->angle = atan2(bisector.second,bisector.first) + M_PI_2;
+                            destroyList(candidates);
+                            destroyList(identifiers);
+                            return;
+                        }
                     }
                     destroyList(identifiers);
                     identifiers = nullptr;
@@ -343,7 +372,75 @@ void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
 
 void FieldHolder::findRobot3(entity* ent, ObjectList *objects)
 {
+    colorObject *candidates = objects->findObjectsWithColor(ALLY_CENTER_COLOR);
+    colorObject *best_candidate = nullptr, *aux = nullptr, *identifiers = nullptr;
 
+    if(candidates!=nullptr)
+    {
+        best_candidate = findBestCandidate(candidates,&(expected_player_coord[0]));
+        if(best_candidate != nullptr)
+        {
+            if(best_candidate->area >= MIN_CENTER_AREA && best_candidate->area <= MAX_CENTER_AREA)
+            {
+                identifiers = objects->findIdentifiersWithinRange(best_candidate);
+                if(identifiers!=nullptr)
+                {
+                    if(countColorObjectNodes(identifiers) == 3)
+                    {
+                        if(identifiers->color == IDENTIFIER_COLOR_1
+                           && identifiers->next->color == IDENTIFIER_COLOR_1
+                           && identifiers->next->next->color == IDENTIFIER_COLOR_1)
+                        {
+                            setFoundEntity(ent,objects,best_candidate,&(expected_player_coord[1]),ROBOT_3);
+
+                            //adjusting to reference listed in obroconstants.h
+                            colorObject* middle = findMiddleIdentifier(identifiers);
+                            ent->angle = atan2(middle->y-best_candidate->y,middle->x-best_candidate->x) + 3.0*M_PI_4;
+                            destroyList(candidates);
+                            destroyList(identifiers);
+                            return;
+                        }
+                    }
+                    destroyList(identifiers);
+                    identifiers = nullptr;
+                }
+            }
+        }
+
+        aux = candidates;
+        while(aux!=nullptr)
+        {
+            if(aux->area >= MIN_CENTER_AREA && aux->area <= MAX_CENTER_AREA)
+            {
+                identifiers = objects->findIdentifiersWithinRange(aux);
+                if(identifiers!=nullptr)
+                {
+                    if(countColorObjectNodes(identifiers) == 3)
+                    {
+                        if(identifiers->color == IDENTIFIER_COLOR_1
+                           && identifiers->next->color == IDENTIFIER_COLOR_1
+                           && identifiers->next->next->color == IDENTIFIER_COLOR_1)
+                        {
+                            setFoundEntity(ent,objects,aux,&(expected_player_coord[1]),ROBOT_3);
+
+                            //adjusting to reference listed in obroconstants.h
+                            colorObject* middle = findMiddleIdentifier(identifiers);
+                            ent->angle = atan2(middle->y-best_candidate->y,middle->x-best_candidate->x) + 3.0*M_PI_4;
+                            destroyList(candidates);
+                            destroyList(identifiers);
+                            return;
+                        }
+                    }
+                    destroyList(identifiers);
+                    identifiers = nullptr;
+                }
+            }
+            aux = aux->next;
+        }
+    }
+    setNotFoundEntity(ent);
+    destroyList(candidates);
+    destroyList(identifiers);
 }
 
 void FieldHolder::findRobot4(entity* ent, ObjectList *objects)

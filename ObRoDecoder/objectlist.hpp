@@ -20,7 +20,7 @@ private:
     int n_objects;
     useconds_t time_us;
     static ObjectList* instance;
-    double distanceSquared(double x1, double y1, double x2, double y2);
+    double distance(double x1, double y1, double x2, double y2);
     void destroyList(colorObject *node);
     void printObjects(colorObject *obj);
     ObjectList();

@@ -31,9 +31,9 @@ ObjectList* ObjectList::getInstance(void)
     return instance;
 }
 
-double ObjectList::distanceSquared(double x1, double y1, double x2, double y2)
+double ObjectList::distance(double x1, double y1, double x2, double y2)
 {
-    return (x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
+    return sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 }
 
 
@@ -228,7 +228,7 @@ colorObject* ObjectList::findIdentifiersWithinRange(colorObject *object)
     while(list!=nullptr)
     {
         if((list->color == IDENTIFIER_COLOR_1 || list->color == IDENTIFIER_COLOR_2)
-            && distanceSquared(list->x,list->y,object->x,object->y) < MAX_IDENTIFIER_SQUARED_DISTANCE
+            && distance(list->x,list->y,object->x,object->y) < MAX_IDENTIFIER_DISTANCE
             && (object->x != list->x || object->y != list->y))
         {
             new_list = new colorObject;

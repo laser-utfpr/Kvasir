@@ -22,6 +22,8 @@ private:
     void findEntity(entity* ent, entityType num, ObjectList *objects);
     void setFoundEntity(entity* ent, ObjectList *objects,
                         colorObject *obj, std::pair<double,double> *expected_coord, entityType type);
+    void setNotFoundEntity(entity* ent);
+    colorObject* findMiddleIdentifier(colorObject* identifiers);
     colorObject* findBestCandidate(colorObject *candidates, std::pair<double,double> *expected_coord);
     void destroyList(colorObject* list);
     int countColorObjectNodes(colorObject *list);
