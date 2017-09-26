@@ -1,5 +1,14 @@
 #include "fieldholder.hpp"
 
+/**
+    FieldHolder::FieldHolder()
+
+    The default constructor, initializes the field variables and expected coordinates.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
 FieldHolder::FieldHolder()
 {
     int i;
@@ -29,10 +38,28 @@ FieldHolder::FieldHolder()
         sighted_field.enemy_robot[i].type = ENEMY_ROBOT;
 }
 
+/**
+    FieldHolder::distanceSquared()
+
+    Calculates the distance squared between two coordinates.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
 double FieldHolder::distanceSquared(double x1, double y1, double x2, double y2)
 {
     return (x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
 }
+
+/**
+    FieldHolder::findEntities()
+
+    The public method that calls the specific methods for each entity.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void FieldHolder::findEntities(ObjectList *objects)
 {
@@ -45,6 +72,15 @@ void FieldHolder::findEntities(ObjectList *objects)
         findEntity(&(sighted_field.enemy_robot[i]),ENEMY_ROBOT,objects);*/
 
 }
+
+/**
+    FieldHolder::findEntity()
+
+    Selects which entity finding function to call based on it's type.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void FieldHolder::findEntity(entity* ent, entityType num, ObjectList *objects)
 {
@@ -93,6 +129,15 @@ void FieldHolder::findEntity(entity* ent, entityType num, ObjectList *objects)
     }
 }
 
+/**
+    FieldHolder::setNotFoundEntity()
+
+    Sets entity as not found.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
 void FieldHolder::setNotFoundEntity(entity* ent)
 {
     ent->x = NAN;
@@ -101,6 +146,14 @@ void FieldHolder::setNotFoundEntity(entity* ent)
     ent->found = false;
 }
 
+/**
+    FieldHolder::setFoundEntity()
+
+    Sets entity as found.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void FieldHolder::setFoundEntity(entity* ent, ObjectList *objects,
                                  colorObject *obj, std::pair<double,double> *expected_coord, entityType type)
@@ -112,6 +165,15 @@ void FieldHolder::setFoundEntity(entity* ent, ObjectList *objects,
     expected_coord->second =  obj->y;
     objects->setObjectEntityType(obj->x,obj->y,type);
 }
+
+/**
+    FieldHolder::findBestCandidate()
+
+    Finds the closest object to the expected coordinate.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 colorObject* FieldHolder::findBestCandidate(colorObject *candidates, std::pair<double,double> *expected_coord)
 {
@@ -140,6 +202,15 @@ colorObject* FieldHolder::findBestCandidate(colorObject *candidates, std::pair<d
     return best_candidate;
 }
 
+/**
+    FieldHolder::countColorObjectNodes()
+
+    Recursively counts the number of objects in the list.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
 int FieldHolder::countColorObjectNodes(colorObject *list)
 {
     if(list!=nullptr)
@@ -147,6 +218,15 @@ int FieldHolder::countColorObjectNodes(colorObject *list)
     else
         return 0;
 }
+
+/**
+    FieldHolder::findMiddleIdentifier()
+
+    Finds the middle identifier of an L shaped triplet by finding the opposite vertice of the biggest edge.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 colorObject* FieldHolder::findMiddleIdentifier(colorObject* identifiers)
 {
@@ -164,6 +244,15 @@ colorObject* FieldHolder::findMiddleIdentifier(colorObject* identifiers)
     if(sq_dist3>sq_dist1 && sq_dist3>sq_dist2)
         return identifiers;
 }
+
+/**
+    FieldHolder::findBisector()
+
+    Finds the bisector of an angle given 3 coordinates.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 std::pair<double,double> findBisector(double x_mid, double y_mid, double x1, double y1, double x2, double y2)
 {
@@ -184,6 +273,15 @@ std::pair<double,double> findBisector(double x_mid, double y_mid, double x1, dou
     return bisec;
 }
 
+/**
+    FieldHolder::destroyList()
+
+    Recursively destroys an object list.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
 void FieldHolder::destroyList(colorObject* list)
 {
     if(list!=nullptr)
@@ -192,6 +290,15 @@ void FieldHolder::destroyList(colorObject* list)
         delete list;
     }
 }
+
+/**
+    FieldHolder::findBall()
+
+    Finds entityType: BALL.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void FieldHolder::findBall(entity* ent, ObjectList *objects)
 {
@@ -226,6 +333,15 @@ void FieldHolder::findBall(entity* ent, ObjectList *objects)
     setNotFoundEntity(ent);
     destroyList(ball_candidates);
 }
+
+/**
+    FieldHolder::findRobot1()
+
+    Finds entityType: ROBOT_1.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
 {
@@ -294,6 +410,15 @@ void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
     destroyList(candidates);
     destroyList(identifiers);
 }
+
+/**
+    FieldHolder::findRobot2()
+
+    Finds entityType: ROBOT_2.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
 {
@@ -369,6 +494,15 @@ void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
     destroyList(candidates);
     destroyList(identifiers);
 }
+
+/**
+    FieldHolder::findRobot3()
+
+    Finds entityType: ROBOT_3.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void FieldHolder::findRobot3(entity* ent, ObjectList *objects)
 {
@@ -523,10 +657,28 @@ void FieldHolder::findEnemyRobot(entity* ent, ObjectList *objects)
 
 }
 
+/**
+    FieldHolder::getTimeUs()
+
+    Returns the time of the field's last sample.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
 useconds_t FieldHolder::getTimeUs(void)
 {
     return sighted_field.time_us;
 }
+
+/**
+    FieldHolder::printField()
+
+    Prints the field.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void FieldHolder::printField(void)
 {

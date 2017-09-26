@@ -4,6 +4,15 @@ using namespace boost::interprocess;
 
 ObjectList* ObjectList::instance = nullptr;
 
+/**
+    ObjectList::findRobot1()
+
+    The default constructor, initializes stuff and tries to open the shared memory.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
 ObjectList::ObjectList()
 {
     bool opened = false;
@@ -24,6 +33,15 @@ ObjectList::ObjectList()
     time_us = 0;
 }
 
+/**
+    ObjectList::getInstance()
+
+    Returns the singleton's instance.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
 ObjectList* ObjectList::getInstance(void)
 {
     if(instance==nullptr)
@@ -31,11 +49,28 @@ ObjectList* ObjectList::getInstance(void)
     return instance;
 }
 
+/**
+    ObjectList::distance()
+
+    Returns the distance between two coordinates.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
 double ObjectList::distance(double x1, double y1, double x2, double y2)
 {
     return sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 }
 
+/**
+    ObjectList::openSharedMemory()
+
+    Tries to open the shared memory.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void ObjectList::openSharedMemory(void)
 {
@@ -53,6 +88,15 @@ void ObjectList::openSharedMemory(void)
         }
     }
 }
+
+/**
+    ObjectList::updateObjects()
+
+    Updates the objects from the shared memory.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void ObjectList::updateObjects(void)
 {
@@ -137,6 +181,15 @@ void ObjectList::updateObjects(void)
     }
 }
 
+/**
+    ObjectList::destroyList()
+
+    Recursively destroys the list.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
 void ObjectList::destroyList(colorObject *node)
 {
     if(node!=nullptr)
@@ -149,6 +202,15 @@ void ObjectList::destroyList(void)
     destroyList(list_head);
     list_head = nullptr;
 }
+
+/**
+    ObjectList::printObjects()
+
+    Prints the objects.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void ObjectList::printObjects(void)
 {
@@ -190,10 +252,28 @@ void ObjectList::printObjects(colorObject *obj)
     }
 }
 
+/**
+    ObjectList::getTimeUs()
+
+    Returns the time of the last sample.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
 useconds_t ObjectList::getTimeUs(void)
 {
     return time_us;
 }
+
+/**
+    ObjectList::findObjectsWithColor()
+
+    Returns a list of objects with the searched color.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 colorObject* ObjectList::findObjectsWithColor(objectColor color)
 {
@@ -220,6 +300,15 @@ colorObject* ObjectList::findObjectsWithColor(objectColor color)
     }
     return new_list;
 }
+
+/**
+    ObjectList::findIdentifiersWithinRange()
+
+    Finds all objects with the identifier colors within the range of another object.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 colorObject* ObjectList::findIdentifiersWithinRange(colorObject *object)
 {
@@ -248,6 +337,15 @@ colorObject* ObjectList::findIdentifiersWithinRange(colorObject *object)
     }
     return new_list;
 }
+
+/**
+    ObjectList::setObjectEntityType()
+
+    Sets an object's entityType.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
 
 void ObjectList::setObjectEntityType(double x, double y, entityType type)
 {

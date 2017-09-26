@@ -1,4 +1,3 @@
-///TO DO - DEFENSIVE PROGRAMMING
 
 #include "vision.hpp"
 
