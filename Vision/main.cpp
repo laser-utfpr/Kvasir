@@ -1,4 +1,3 @@
-
 #include "vision.hpp"
 
 #define SETUP_MASKS false

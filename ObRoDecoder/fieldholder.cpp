@@ -1,5 +1,9 @@
 #include "fieldholder.hpp"
 
+using namespace boost::interprocess;
+
+FieldHolder* FieldHolder::instance = nullptr;
+
 /**
     FieldHolder::FieldHolder()
 
@@ -36,10 +40,53 @@ FieldHolder::FieldHolder()
         sighted_field.robot[i].type = (entityType)((int)ROBOT_1 + i);
     for(i=0; i<N_PLAYERS; i++)
         sighted_field.enemy_robot[i].type = ENEMY_ROBOT;
+
+    shared_memory_object::remove(OBRO_SHARED_MEMORY_NAME);
+    shared_memory = new managed_shared_memory(open_or_create,OBRO_SHARED_MEMORY_NAME,OBRO_SHARED_MEMORY_SIZE);
+    shared_memory_field = shared_memory->construct<field>(FIELD_MEMORY_NAME)();
+
+    shared_memory_field->time_us = NAN;
+    shared_memory_field->image_height = NAN;
+    shared_memory_field->image_width = NAN;
+}
+
+FieldHolder::~FieldHolder()
+{
+    shared_memory_object::remove(OBRO_SHARED_MEMORY_NAME);
 }
 
 /**
-    FieldHolder::distanceSquared()
+    FieldHolder::getInstance(void)
+
+    Returns the singleton's instance.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
+FieldHolder* FieldHolder::getInstance(void)
+{
+    if(instance==nullptr)
+        instance = new FieldHolder;
+    return instance;
+}
+
+/**
+    FieldHolder::updatedSharedMemory(void)
+
+    Updates the field in the shared memory.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
+void FieldHolder::updateSharedMemory(void)
+{
+    *shared_memory_field = sighted_field;
+}
+
+/**
+    FieldHolder::distanceSquared(double x1, double y1, double x2, double y2)
 
     Calculates the distance squared between two coordinates.
 
@@ -53,7 +100,7 @@ double FieldHolder::distanceSquared(double x1, double y1, double x2, double y2)
 }
 
 /**
-    FieldHolder::findEntities()
+    FieldHolder::findEntities(ObjectList *objects)
 
     The public method that calls the specific methods for each entity.
 
@@ -65,16 +112,16 @@ void FieldHolder::findEntities(ObjectList *objects)
 {
     int i;
     sighted_field.time_us = objects->getTimeUs();
-    findEntity(&(sighted_field.ball),BALL,objects);
+    findEntity(&(sighted_field.ball),BALL,objects,NAN);
     for(i=ROBOT_1; i<ROBOT_1+N_PLAYERS; i++)
-        findEntity(&(sighted_field.robot[i-(int)ROBOT_1]),(entityType)i,objects);
-    /*for(i=0; i<N_PLAYERS; i++)
-        findEntity(&(sighted_field.enemy_robot[i]),ENEMY_ROBOT,objects);*/
+        findEntity(&(sighted_field.robot[i-(int)ROBOT_1]),(entityType)i,objects,NAN);
+    for(i=0; i<N_PLAYERS; i++)
+        findEntity(&(sighted_field.enemy_robot[i]),ENEMY_ROBOT,objects,i);
 
 }
 
 /**
-    FieldHolder::findEntity()
+    FieldHolder::findEntity(entity* ent, entityType num, ObjectList *objects, int enemy_num)
 
     Selects which entity finding function to call based on it's type.
 
@@ -82,7 +129,7 @@ void FieldHolder::findEntities(ObjectList *objects)
     @version 2017.09.26-1
 */
 
-void FieldHolder::findEntity(entity* ent, entityType num, ObjectList *objects)
+void FieldHolder::findEntity(entity* ent, entityType num, ObjectList *objects, int enemy_num)
 {
     switch(num)
     {
@@ -125,12 +172,12 @@ void FieldHolder::findEntity(entity* ent, entityType num, ObjectList *objects)
         case ROBOT_18:
             findRobot18(ent,objects); break;
         case ENEMY_ROBOT:
-            findEnemyRobot(ent,objects); break;
+            findEnemyRobot(ent,objects,enemy_num); break;
     }
 }
 
 /**
-    FieldHolder::setNotFoundEntity()
+    FieldHolder::setNotFoundEntity(entity* ent)
 
     Sets entity as not found.
 
@@ -147,7 +194,8 @@ void FieldHolder::setNotFoundEntity(entity* ent)
 }
 
 /**
-    FieldHolder::setFoundEntity()
+    FieldHolder::setFoundEntity(entity* ent, ObjectList *objects,
+                                colorObject *obj, std::pair<double,double> *expected_coord, entityType type)
 
     Sets entity as found.
 
@@ -167,7 +215,7 @@ void FieldHolder::setFoundEntity(entity* ent, ObjectList *objects,
 }
 
 /**
-    FieldHolder::findBestCandidate()
+    FieldHolder::findBestCandidate(colorObject *candidates, std::pair<double,double> *expected_coord)
 
     Finds the closest object to the expected coordinate.
 
@@ -203,7 +251,7 @@ colorObject* FieldHolder::findBestCandidate(colorObject *candidates, std::pair<d
 }
 
 /**
-    FieldHolder::countColorObjectNodes()
+    FieldHolder::countColorObjectNodes(colorObject *list)
 
     Recursively counts the number of objects in the list.
 
@@ -220,7 +268,7 @@ int FieldHolder::countColorObjectNodes(colorObject *list)
 }
 
 /**
-    FieldHolder::findMiddleIdentifier()
+    FieldHolder::findMiddleIdentifier(colorObject* identifiers)
 
     Finds the middle identifier of an L shaped triplet by finding the opposite vertice of the biggest edge.
 
@@ -246,7 +294,7 @@ colorObject* FieldHolder::findMiddleIdentifier(colorObject* identifiers)
 }
 
 /**
-    FieldHolder::findBisector()
+    FieldHolder::findBisector(double x_mid, double y_mid, double x1, double y1, double x2, double y2)
 
     Finds the bisector of an angle given 3 coordinates.
 
@@ -274,7 +322,7 @@ std::pair<double,double> findBisector(double x_mid, double y_mid, double x1, dou
 }
 
 /**
-    FieldHolder::destroyList()
+    FieldHolder::destroyList(colorObject* list)
 
     Recursively destroys an object list.
 
@@ -292,7 +340,7 @@ void FieldHolder::destroyList(colorObject* list)
 }
 
 /**
-    FieldHolder::findBall()
+    FieldHolder::findBall(entity* ent, ObjectList *objects)
 
     Finds entityType: BALL.
 
@@ -335,7 +383,7 @@ void FieldHolder::findBall(entity* ent, ObjectList *objects)
 }
 
 /**
-    FieldHolder::findRobot1()
+    FieldHolder::findRobot1(entity* ent, ObjectList *objects)
 
     Finds entityType: ROBOT_1.
 
@@ -412,7 +460,7 @@ void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
 }
 
 /**
-    FieldHolder::findRobot2()
+    FieldHolder::findRobot2(entity* ent, ObjectList *objects)
 
     Finds entityType: ROBOT_2.
 
@@ -496,7 +544,7 @@ void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
 }
 
 /**
-    FieldHolder::findRobot3()
+    FieldHolder::findRobot3(entity* ent, ObjectList *objects)
 
     Finds entityType: ROBOT_3.
 
@@ -652,13 +700,51 @@ void FieldHolder::findRobot18(entity* ent, ObjectList *objects)
 
 }
 
-void FieldHolder::findEnemyRobot(entity* ent, ObjectList *objects)
-{
+/**
+    FieldHolder::findEnemyRobot(entity* ent, ObjectList *objects, int enemy_num)
 
+    Finds entityType: ENEMY_ROBOT.
+
+    @author Lucca Rawlyk
+    @version 2017.09.26-1
+*/
+
+void FieldHolder::findEnemyRobot(entity* ent, ObjectList *objects, int enemy_num)
+{
+    colorObject *candidates = objects->findObjectsWithColor(ENEMY_CENTER_COLOR);
+    colorObject *best_candidate = nullptr, *aux = nullptr;
+
+    if(candidates != nullptr)
+    {
+        best_candidate = findBestCandidate(candidates,&(expected_enemy_coord[enemy_num]));
+        if(best_candidate != nullptr)
+        {
+            if(best_candidate->area >= MIN_CENTER_AREA && best_candidate->area <= MAX_CENTER_AREA)
+            {
+                setFoundEntity(ent,objects,best_candidate,&expected_enemy_coord[enemy_num],ENEMY_ROBOT);
+                destroyList(candidates);
+                return;
+            }
+        }
+
+        aux = candidates;
+        while(aux != nullptr)
+        {
+            if(aux->area >= MIN_CENTER_AREA && aux->area <= MAX_CENTER_AREA)
+            {
+                setFoundEntity(ent,objects,aux,&expected_enemy_coord[enemy_num],ENEMY_ROBOT);
+                destroyList(candidates);
+                return;
+            }
+            aux = aux->next;
+        }
+    }
+    setNotFoundEntity(ent);
+    destroyList(candidates);
 }
 
 /**
-    FieldHolder::getTimeUs()
+    FieldHolder::getTimeUs(void)
 
     Returns the time of the field's last sample.
 
@@ -672,7 +758,7 @@ useconds_t FieldHolder::getTimeUs(void)
 }
 
 /**
-    FieldHolder::printField()
+    FieldHolder::printField(void)
 
     Prints the field.
 
@@ -698,11 +784,11 @@ void FieldHolder::printField(void)
         std::cout << "angle=" << sighted_field.robot[i].angle << std::endl;
     }
 
-    /*for(i=0;i<N_PLAYERS;i++)
+    for(i=0;i<N_PLAYERS;i++)
     {
         std::cout << std::endl << "ENEMY_ROBOT:" << std::endl;
-        std::cout << "x=" << sighted_field.robot[i].x << std::endl;
-        std::cout << "y=" << sighted_field.robot[i].y << std::endl;
-        std::cout << "angle=" << sighted_field.robot[i].angle << std::endl;
-    }*/
+        std::cout << "x=" << sighted_field.enemy_robot[i].x << std::endl;
+        std::cout << "y=" << sighted_field.enemy_robot[i].y << std::endl;
+        std::cout << "angle=" << sighted_field.enemy_robot[i].angle << std::endl;
+    }
 }

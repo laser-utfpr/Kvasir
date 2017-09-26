@@ -1,20 +1,11 @@
-#include "objectlist.hpp"
-#include "fieldholder.hpp"
+#include "obro.hpp"
+
+#define PRINT_OBJECTS false
+#define PRINT_FIELD true
 
 int main()
 {
-    ObjectList *objects = ObjectList::getInstance();
-    FieldHolder field;
-    while(1)
-    {
-        objects->updateObjects();
-        //objects->printObjects();
-        if(objects->getTimeUs() != field.getTimeUs())
-        {
-            field.findEntities(objects);
-            field.printField();
-        }
-    }
+    obroStart(PRINT_OBJECTS,PRINT_FIELD);
     return 0;
 }
 

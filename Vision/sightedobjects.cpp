@@ -14,8 +14,8 @@ SightedObjects* SightedObjects::getInstance(void)
 
 SightedObjects::SightedObjects()
 {
-    shared_memory_object::remove(SHARED_MEMORY_NAME);
-    shared_memory = new managed_shared_memory(open_or_create,SHARED_MEMORY_NAME,SHARED_MEMORY_SIZE);
+    shared_memory_object::remove(VISION_SHARED_MEMORY_NAME);
+    shared_memory = new managed_shared_memory(open_or_create,VISION_SHARED_MEMORY_NAME,VISION_SHARED_MEMORY_SIZE);
 
     n_objects = shared_memory->construct<int>(N_OBJECTS_MEMORY_NAME)();
     *n_objects = 0;
@@ -34,7 +34,7 @@ SightedObjects::~SightedObjects()
 {
     if(list.get()!=nullptr)
         destroyList(list);
-    shared_memory_object::remove(SHARED_MEMORY_NAME);
+    shared_memory_object::remove(VISION_SHARED_MEMORY_NAME);
 }
 
 /**

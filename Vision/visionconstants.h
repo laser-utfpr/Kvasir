@@ -47,8 +47,8 @@ enum objectColor {RED=0,ORANGE=1,YELLOW=2,GREEN=3,BLUE=4,VIOLET=5};
 
 #define SAMPLING_PERIOD 100000 //in micro seconds
 
-#define SHARED_MEMORY_NAME "sighted_objects"
-#define SHARED_MEMORY_SIZE 131072
+#define VISION_SHARED_MEMORY_NAME "sighted_objects"
+#define VISION_SHARED_MEMORY_SIZE 131072
 #define N_OBJECTS_MEMORY_NAME "n_objects"
 #define TIME_US_MEMORY_NAME "time_us"
 #define LIST_HEAD_MEMORY_NAME "list_head"

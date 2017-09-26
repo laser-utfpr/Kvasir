@@ -25,6 +25,7 @@ private:
     void printObjects(colorObject *obj);
     ObjectList();
 public:
+    ~ObjectList();
     static ObjectList* getInstance(void);
     void destroyList(void);
     void openSharedMemory(void);

@@ -5,7 +5,7 @@ using namespace boost::interprocess;
 ObjectList* ObjectList::instance = nullptr;
 
 /**
-    ObjectList::findRobot1()
+    ObjectList::ObjectList()
 
     The default constructor, initializes stuff and tries to open the shared memory.
 
@@ -20,7 +20,7 @@ ObjectList::ObjectList()
     {
         try
         {
-            shared_memory = new managed_shared_memory(open_only,SHARED_MEMORY_NAME);
+            shared_memory = new managed_shared_memory(open_only,VISION_SHARED_MEMORY_NAME);
             opened = true;
         }
         catch(interprocess_exception &ex)
@@ -33,8 +33,14 @@ ObjectList::ObjectList()
     time_us = 0;
 }
 
+ObjectList::~ObjectList()
+{
+    if(list_head!=nullptr)
+        destroyList(list_head);
+}
+
 /**
-    ObjectList::getInstance()
+    ObjectList::getInstance(void)
 
     Returns the singleton's instance.
 
@@ -50,7 +56,7 @@ ObjectList* ObjectList::getInstance(void)
 }
 
 /**
-    ObjectList::distance()
+    ObjectList::distance(double x1, double y1, double x2, double y2)
 
     Returns the distance between two coordinates.
 
@@ -64,7 +70,7 @@ double ObjectList::distance(double x1, double y1, double x2, double y2)
 }
 
 /**
-    ObjectList::openSharedMemory()
+    ObjectList::openSharedMemory(void)
 
     Tries to open the shared memory.
 
@@ -79,7 +85,7 @@ void ObjectList::openSharedMemory(void)
     {
         try
         {
-            shared_memory = new managed_shared_memory(open_only,SHARED_MEMORY_NAME);
+            shared_memory = new managed_shared_memory(open_only,VISION_SHARED_MEMORY_NAME);
             opened = true;
         }
         catch(...)
@@ -90,7 +96,7 @@ void ObjectList::openSharedMemory(void)
 }
 
 /**
-    ObjectList::updateObjects()
+    ObjectList::updateObjects(void)
 
     Updates the objects from the shared memory.
 
@@ -182,7 +188,7 @@ void ObjectList::updateObjects(void)
 }
 
 /**
-    ObjectList::destroyList()
+    ObjectList::destroyList(colorObject *node)
 
     Recursively destroys the list.
 
@@ -204,7 +210,7 @@ void ObjectList::destroyList(void)
 }
 
 /**
-    ObjectList::printObjects()
+    ObjectList::printObjects(void)
 
     Prints the objects.
 
@@ -253,7 +259,7 @@ void ObjectList::printObjects(colorObject *obj)
 }
 
 /**
-    ObjectList::getTimeUs()
+    ObjectList::getTimeUs(void)
 
     Returns the time of the last sample.
 
@@ -267,7 +273,7 @@ useconds_t ObjectList::getTimeUs(void)
 }
 
 /**
-    ObjectList::findObjectsWithColor()
+    ObjectList::findObjectsWithColor(objectColor color)
 
     Returns a list of objects with the searched color.
 
@@ -281,7 +287,7 @@ colorObject* ObjectList::findObjectsWithColor(objectColor color)
 
     while(list!=nullptr)
     {
-        if(list->color == color)
+        if(list->color == color && list->entity_type == DEFAULT)
         {
             new_list = new colorObject;
             new_list->next = prev;
@@ -302,7 +308,7 @@ colorObject* ObjectList::findObjectsWithColor(objectColor color)
 }
 
 /**
-    ObjectList::findIdentifiersWithinRange()
+    ObjectList::findIdentifiersWithinRange(colorObject *object)
 
     Finds all objects with the identifier colors within the range of another object.
 
@@ -318,7 +324,7 @@ colorObject* ObjectList::findIdentifiersWithinRange(colorObject *object)
     {
         if((list->color == IDENTIFIER_COLOR_1 || list->color == IDENTIFIER_COLOR_2)
             && distance(list->x,list->y,object->x,object->y) < MAX_IDENTIFIER_DISTANCE
-            && (object->x != list->x || object->y != list->y))
+            && (object->x != list->x || object->y != list->y) && list->entity_type == DEFAULT)
         {
             new_list = new colorObject;
             new_list->next = prev;
@@ -339,7 +345,7 @@ colorObject* ObjectList::findIdentifiersWithinRange(colorObject *object)
 }
 
 /**
-    ObjectList::setObjectEntityType()
+    ObjectList::setObjectEntityType(double x, double y, entityType type)
 
     Sets an object's entityType.
 
@@ -353,7 +359,10 @@ void ObjectList::setObjectEntityType(double x, double y, entityType type)
     while(list!=nullptr)
     {
         if(x==list->x && y==list->y)
+        {
             list->entity_type = type;
+            break;
+        }
         list = list->next;
     }
 }

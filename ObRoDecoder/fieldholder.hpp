@@ -3,6 +3,9 @@
 
 #include "../Vision/visionconstants.h"
 
+#include <boost/interprocess/managed_shared_memory.hpp>
+#include <boost/interprocess/offset_ptr.hpp>
+
 #include "obroconstants.h"
 #include "field.h"
 #include "colorobject.h"
@@ -15,11 +18,13 @@ class FieldHolder
 {
 private:
     field sighted_field;
+    boost::interprocess::managed_shared_memory* shared_memory;
+    field *shared_memory_field;
     std::pair<double,double> expected_ball_coord;
     std::pair<double,double> expected_player_coord[N_PLAYERS];
     std::pair<double,double> expected_enemy_coord[N_PLAYERS];
     double distanceSquared(double x1, double y1, double x2, double y2);
-    void findEntity(entity* ent, entityType num, ObjectList *objects);
+    void findEntity(entity* ent, entityType num, ObjectList *objects, int enemy_num);
     void setFoundEntity(entity* ent, ObjectList *objects,
                         colorObject *obj, std::pair<double,double> *expected_coord, entityType type);
     void setNotFoundEntity(entity* ent);
@@ -46,9 +51,13 @@ private:
     void findRobot16(entity* ent, ObjectList *objects);
     void findRobot17(entity* ent, ObjectList *objects);
     void findRobot18(entity* ent, ObjectList *objects);
-    void findEnemyRobot(entity* ent, ObjectList *objects);
-public:
+    void findEnemyRobot(entity* ent, ObjectList *objects, int enemy_num);
+    static FieldHolder* instance;
     FieldHolder();
+public:
+    ~FieldHolder();
+    static FieldHolder* getInstance(void);
+    void updateSharedMemory(void);
     void findEntities(ObjectList *objects);
     useconds_t getTimeUs(void);
     void printField(void);
