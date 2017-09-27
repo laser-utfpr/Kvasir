@@ -17,10 +17,12 @@ FieldHolder::FieldHolder()
 {
     int i;
 
+    //initializing global field variables
     sighted_field.time_us = 0;
     sighted_field.image_height = FRAME_HEIGHT;
     sighted_field.image_width = FRAME_WIDTH;
 
+    //initializing expected coordinates
     expected_ball_coord.first = -1.0;
     expected_ball_coord.second = -1.0;
     for(i=0; i<N_PLAYERS; i++)
@@ -35,12 +37,14 @@ FieldHolder::FieldHolder()
         expected_enemy_coord[i].second = -1.0;
     }
 
+    //initializing the entities' types
     sighted_field.ball.type = BALL;
     for(i=0; i<N_PLAYERS; i++)
         sighted_field.robot[i].type = (entityType)((int)ROBOT_1 + i);
     for(i=0; i<N_PLAYERS; i++)
         sighted_field.enemy_robot[i].type = ENEMY_ROBOT;
 
+    //creating the obro shared memory
     shared_memory_object::remove(OBRO_SHARED_MEMORY_NAME);
     shared_memory = new managed_shared_memory(open_or_create,OBRO_SHARED_MEMORY_NAME,OBRO_SHARED_MEMORY_SIZE);
     shared_memory_field = shared_memory->construct<field>(FIELD_MEMORY_NAME)();
@@ -227,18 +231,19 @@ colorObject* FieldHolder::findBestCandidate(colorObject *candidates, std::pair<d
 {
     colorObject *best_candidate = candidates;
     double min_distance_squared, current_distance_squared;
+
     if(candidates!=nullptr)
     {
-        if(expected_coord->first>0)
+        if(expected_coord->first>0) //if there is an expected coordinate
         {
             min_distance_squared = distanceSquared(candidates->x,candidates->y,
                                        expected_coord->first,expected_coord->second);
             candidates = candidates->next;
-            while(candidates!=nullptr)
+            while(candidates!=nullptr) //goes through the list
             {
                 current_distance_squared = distanceSquared(candidates->x,candidates->y,
                                            expected_coord->first,expected_coord->second);
-                if(current_distance_squared < min_distance_squared)
+                if(current_distance_squared < min_distance_squared) //saves the closest object
                 {
                     min_distance_squared = current_distance_squared;
                     best_candidate = candidates;
@@ -394,7 +399,7 @@ void FieldHolder::findBall(entity* ent, ObjectList *objects)
 void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
 {
     colorObject *candidates = objects->findObjectsWithColor(ALLY_CENTER_COLOR);
-    colorObject *best_candidate = nullptr, *aux = nullptr, *identifiers = nullptr;
+    colorObject *best_candidate = nullptr, *aux = nullptr, *aux2 = nullptr, *identifiers = nullptr;
 
     if(candidates!=nullptr)
     {
@@ -411,6 +416,14 @@ void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
                         if(identifiers->color == IDENTIFIER_COLOR_1)
                         {
                             setFoundEntity(ent,objects,best_candidate,&(expected_player_coord[0]),ROBOT_1);
+
+                            //setting the identifiers' type
+                            aux2 = identifiers;
+                            while(aux2!=nullptr)
+                            {
+                                objects->setObjectEntityType(aux2->x,aux2->y,IDENTIFIER);
+                                aux2 = aux2->next;
+                            }
 
                             //adjusting to reference listed in obroconstants.h
                             ent->angle = atan2(identifiers->x - best_candidate->x,identifiers->y - best_candidate->y)
@@ -439,6 +452,14 @@ void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
                         if(identifiers->color == IDENTIFIER_COLOR_1)
                         {
                             setFoundEntity(ent,objects,aux,&(expected_player_coord[0]),ROBOT_1);
+
+                            //setting the identifiers' type
+                            aux2 = identifiers;
+                            while(aux2!=nullptr)
+                            {
+                                objects->setObjectEntityType(aux2->x,aux2->y,IDENTIFIER);
+                                aux2 = aux2->next;
+                            }
 
                             //adjusting to reference listed in obroconstants.h
                             ent->angle = atan2(identifiers->x - aux->x,identifiers->y - aux->y) + 3.0*M_PI_4;
@@ -471,7 +492,7 @@ void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
 void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
 {
     colorObject *candidates = objects->findObjectsWithColor(ALLY_CENTER_COLOR);
-    colorObject *best_candidate = nullptr, *aux = nullptr, *identifiers = nullptr;
+    colorObject *best_candidate = nullptr, *aux = nullptr, *aux2 = nullptr, *identifiers = nullptr;
 
     if(candidates!=nullptr)
     {
@@ -489,6 +510,14 @@ void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
                            && identifiers->next->color == IDENTIFIER_COLOR_1)
                         {
                             setFoundEntity(ent,objects,best_candidate,&(expected_player_coord[1]),ROBOT_2);
+
+                            //setting the identifiers' type
+                            aux2 = identifiers;
+                            while(aux2!=nullptr)
+                            {
+                                objects->setObjectEntityType(aux2->x,aux2->y,IDENTIFIER);
+                                aux2 = aux2->next;
+                            }
 
                             //adjusting to reference listed in obroconstants.h
                             std::pair<double,double> bisector =
@@ -520,6 +549,14 @@ void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
                            && identifiers->next->color == IDENTIFIER_COLOR_1)
                         {
                             setFoundEntity(ent,objects,aux,&(expected_player_coord[1]),ROBOT_2);
+
+                            //setting the identifiers' type
+                            aux2 = identifiers;
+                            while(aux2!=nullptr)
+                            {
+                                objects->setObjectEntityType(aux2->x,aux2->y,IDENTIFIER);
+                                aux2 = aux2->next;
+                            }
 
                             //adjusting to reference listed in obroconstants.h
                             std::pair<double,double> bisector =
@@ -555,7 +592,7 @@ void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
 void FieldHolder::findRobot3(entity* ent, ObjectList *objects)
 {
     colorObject *candidates = objects->findObjectsWithColor(ALLY_CENTER_COLOR);
-    colorObject *best_candidate = nullptr, *aux = nullptr, *identifiers = nullptr;
+    colorObject *best_candidate = nullptr, *aux = nullptr, *aux2 = nullptr, *identifiers = nullptr;
 
     if(candidates!=nullptr)
     {
@@ -574,6 +611,14 @@ void FieldHolder::findRobot3(entity* ent, ObjectList *objects)
                            && identifiers->next->next->color == IDENTIFIER_COLOR_1)
                         {
                             setFoundEntity(ent,objects,best_candidate,&(expected_player_coord[1]),ROBOT_3);
+
+                            //setting the identifiers' type
+                            aux2 = identifiers;
+                            while(aux2!=nullptr)
+                            {
+                                objects->setObjectEntityType(aux2->x,aux2->y,IDENTIFIER);
+                                aux2 = aux2->next;
+                            }
 
                             //adjusting to reference listed in obroconstants.h
                             colorObject* middle = findMiddleIdentifier(identifiers);
@@ -604,6 +649,14 @@ void FieldHolder::findRobot3(entity* ent, ObjectList *objects)
                            && identifiers->next->next->color == IDENTIFIER_COLOR_1)
                         {
                             setFoundEntity(ent,objects,aux,&(expected_player_coord[1]),ROBOT_3);
+
+                            //setting the identifiers' type
+                            aux2 = identifiers;
+                            while(aux2!=nullptr)
+                            {
+                                objects->setObjectEntityType(aux2->x,aux2->y,IDENTIFIER);
+                                aux2 = aux2->next;
+                            }
 
                             //adjusting to reference listed in obroconstants.h
                             colorObject* middle = findMiddleIdentifier(identifiers);

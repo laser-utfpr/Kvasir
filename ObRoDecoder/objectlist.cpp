@@ -15,19 +15,9 @@ ObjectList* ObjectList::instance = nullptr;
 
 ObjectList::ObjectList()
 {
-    bool opened = false;
-    while(!opened)
-    {
-        try
-        {
-            shared_memory = new managed_shared_memory(open_only,VISION_SHARED_MEMORY_NAME);
-            opened = true;
-        }
-        catch(interprocess_exception &ex)
-        {
-            ;
-        }
-    }
+    shared_memory = nullptr;
+    openSharedMemory();
+
     list_head = nullptr;
     n_objects = 0;
     time_us = 0;
@@ -80,10 +70,13 @@ double ObjectList::distance(double x1, double y1, double x2, double y2)
 
 void ObjectList::openSharedMemory(void)
 {
+    if(shared_memory!=nullptr) //deletes the last opened vision shared memory if it exists
+        delete shared_memory;
+
     bool opened = false;
     while(!opened)
     {
-        try
+        try //tries to open the vision shared memory until it succeeds
         {
             shared_memory = new managed_shared_memory(open_only,VISION_SHARED_MEMORY_NAME);
             opened = true;
@@ -107,17 +100,20 @@ void ObjectList::openSharedMemory(void)
 void ObjectList::updateObjects(void)
 {
     bool opened = false;
+
+    //the type of return when searching for a labled object in boost::interprocess
     std::pair<useconds_t*, managed_shared_memory::size_type> micro_secs;
+
     while(!opened)
     {
-        try
+        try //tries to find the time variable in the shared memory
         {
             micro_secs = shared_memory->find<useconds_t>(TIME_US_MEMORY_NAME);
             opened = true;
         }
-        catch(...)
+        catch(...) //if an exception is thrown tries to reload the shared memory
         {
-            std::cout << std::endl << "trying to open memory again" << n_objects << std::endl;
+            std::cout << std::endl << "trying to reload the shared memory" << n_objects << std::endl;
             openSharedMemory();
         }
     }
@@ -126,41 +122,44 @@ void ObjectList::updateObjects(void)
     {
         time_us = *(micro_secs.first);
 
+        //the type of return when searching for a labled object in boost::interprocess
         std::pair<int*, managed_shared_memory::size_type> num_objects;
+
         opened = false;
         while(!opened)
         {
-            try
+            try //tries to find the number of objects variable in the shared memory
             {
                 num_objects = shared_memory->find<int>(N_OBJECTS_MEMORY_NAME);
                 opened = true;
             }
-            catch(...)
+            catch(...) //if an exception is thrown tries to reload the shared memory
             {
-                std::cout << std::endl << "trying to open memory again" << n_objects << std::endl;
+                std::cout << std::endl << "trying to reload the shared memory" << n_objects << std::endl;
                 openSharedMemory();
             }
         }
         n_objects = *(num_objects.first);
 
+        //the type of return when searching for a labled object in boost::interprocess
         std::pair<offset_ptr<sightedObject>*, managed_shared_memory::size_type> vision_objects;
         offset_ptr<sightedObject> obj;
 
         opened = false;
         while(!opened)
         {
-            try
+            try //tries to find the object list head pointer variable in the shared memory
             {
                 vision_objects = shared_memory->find< offset_ptr<sightedObject> >(LIST_HEAD_MEMORY_NAME);
                 opened = true;
             }
-            catch(...)
+            catch(...) //if an exception is thrown tries to reload the shared memory
             {
-                std::cout << std::endl << "trying to open memory again" << n_objects << std::endl;
+                std::cout << std::endl << "trying to reload the shared memory" << n_objects << std::endl;
                 openSharedMemory();
             }
         }
-        obj = *(vision_objects.first);
+        obj = *(vision_objects.first); //obj receives the list head
 
         colorObject *new_object = nullptr, *prev_object = nullptr;
         destroyList();
@@ -287,8 +286,11 @@ colorObject* ObjectList::findObjectsWithColor(objectColor color)
 
     while(list!=nullptr)
     {
+        //if the object's color is the one being search and the object has not been assigned to an entity yet
         if(list->color == color && list->entity_type == DEFAULT)
         {
+            //adds a copy of the object to the new list being returned
+
             new_list = new colorObject;
             new_list->next = prev;
             new_list->prev = nullptr;
@@ -322,10 +324,14 @@ colorObject* ObjectList::findIdentifiersWithinRange(colorObject *object)
 
     while(list!=nullptr)
     {
+        //if the object's color is one the identifiers',
+        //is within the identifier range and has not been assigned to an entity yet
         if((list->color == IDENTIFIER_COLOR_1 || list->color == IDENTIFIER_COLOR_2)
             && distance(list->x,list->y,object->x,object->y) < MAX_IDENTIFIER_DISTANCE
             && (object->x != list->x || object->y != list->y) && list->entity_type == DEFAULT)
         {
+            //adds a copy of the object to the new list being returned
+
             new_list = new colorObject;
             new_list->next = prev;
             new_list->prev = nullptr;
