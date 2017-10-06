@@ -1,4 +1,5 @@
 #include "vision.hpp"
+//#include "../include/vision.hpp"
 
 void visionStart(bool setupMasks, bool printMasks, bool trackObjects,
                  bool printObjects, bool showImage, bool printTime, bool fixedSamplingPeriod)
@@ -48,7 +49,7 @@ void visionStart(bool setupMasks, bool printMasks, bool trackObjects,
             frames.showRawImage();
         }
 
-        if(cv::waitKey(WAIT_KEY_PRESS_TIME) == DONE_KEY)
+        if(cv::waitKey(WAIT_KEY_PRESS_TIME)%256 == DONE_KEY)
         {
             objects->destroyTempList();
             break;

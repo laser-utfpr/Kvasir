@@ -1,4 +1,5 @@
 #include "sightedobjects.hpp"
+//#include "../include/sightedobjects.hpp"
 
 using namespace boost::interprocess;
 

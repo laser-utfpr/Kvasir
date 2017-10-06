@@ -1,0 +1,3 @@
+/home/odin/Desktop/Kvasir/Vision-build/CMakeFiles/edit_cache.dir
+/home/odin/Desktop/Kvasir/Vision-build/CMakeFiles/rebuild_cache.dir
+/home/odin/Desktop/Kvasir/Vision-build/CMakeFiles/Vision.dir

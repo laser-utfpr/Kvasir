@@ -1,4 +1,5 @@
 #include "colormasks.hpp"
+//#include "../include/colormasks.hpp"
 
 /**
     ColorMasks::ColorMasks()

@@ -5,10 +5,23 @@ add_executable(${PROJECT_NAME} ${SRC_LIST})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/libs/opencv-install/lib/pkgconfig")
-set(ENV{PKG_CONFIG_PATH}  "${CMAKE_SOURCE_DIR}/libs/opencv-install/lib/pkgconfig")
+find_package(OpenCV REQUIRED)
 
-find_package(PkgConfig REQUIRED)
-pkg_search_module(PKG_OPENCV REQUIRED opencv)
-include_directories(${PKG_OPENCV_INCLUDE_DIRS})
-target_link_libraries (Vision ${PKG_OPENCV_LDFLAGS})
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -lrt")
+
+target_link_libraries (Vision ${OpenCV_LIBS} rt )
+
+
+
+
+
+
+#set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/libs/opencv-install/lib/pkgconfig")
+#set(ENV{PKG_CONFIG_PATH}  "${CMAKE_SOURCE_DIR}/libs/opencv-install/lib/pkgconfig")
+
+#find_package(PkgConfig REQUIRED)
+#pkg_search_module(PKG_OPENCV REQUIRED opencv)
+#include_directories(${PKG_OPENCV_INCLUDE_DIRS})
+#target_link_libraries (Vision ${PKG_OPENCV_LDFLAGS})
+
+#SET(CMAKE_VERBOSE_MAKEFILE 1)

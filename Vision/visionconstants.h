@@ -9,6 +9,7 @@
 #define THRESHOLDED_IMAGE_WINDOW_NAME "Thresholded Image"
 
 #define COLOR_MASKS_FILENAME "../Vision/colormasks.msk"
+//#define COLOR_MASKS_FILENAME "../Vision/masks/colormasks.msk"
 
 #define N_COLOR_MASKS 6
 enum objectColor {RED=0,ORANGE=1,YELLOW=2,GREEN=3,BLUE=4,VIOLET=5};
@@ -36,8 +37,8 @@ enum objectColor {RED=0,ORANGE=1,YELLOW=2,GREEN=3,BLUE=4,VIOLET=5};
 
 #define MAX_MASK_VALUE 256
 
-#define WAIT_KEY_PRESS_TIME 10
-#define DONE_KEY 13
+#define WAIT_KEY_PRESS_TIME 11
+#define DONE_KEY 32
 
 #define MINIMUM_OBJECT_AREA (FRAME_HEIGHT*FRAME_WIDTH)/15552
 

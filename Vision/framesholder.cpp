@@ -1,4 +1,5 @@
 #include "framesholder.hpp"
+//#include "../include/framesholder.hpp"
 
 using namespace cv;
 
@@ -156,8 +157,10 @@ void FramesHolder::setupHSVMaskFromWindow(HSVMask* mask, objectColor color)
                 imshow(window_name,hsv_image); break;
         }
 
-        if(waitKey(WAIT_KEY_PRESS_TIME) == DONE_KEY)
+        if(waitKey(WAIT_KEY_PRESS_TIME)%256 == DONE_KEY)
+        {
             break;
+        }
     }
 
     destroyWindow(window_name);

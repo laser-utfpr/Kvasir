@@ -1,4 +1,5 @@
 #include "vision.hpp"
+//#include "../include/vision.hpp"
 
 #define SETUP_MASKS false
 #define PRINT_MASKS false
@@ -14,4 +15,3 @@ int main()
                 SHOW_IMAGE, PRINT_TIME, FIXED_SAMPLING_PERIOD);
     return 0;
 }
-
