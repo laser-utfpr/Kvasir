@@ -1,0 +1,1 @@
+/home/odin/Desktop/Kvasir/build-Vision-Desktop-Default/CMakeFiles/Vision.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11    CMakeFiles/ObRoDecoder.dir/objectlist.cpp.o CMakeFiles/ObRoDecoder.dir/main.cpp.o CMakeFiles/ObRoDecoder.dir/fieldholder.cpp.o CMakeFiles/ObRoDecoder.dir/obro.cpp.o  -o ObRoDecoder -rdynamic -lpthread -lrt 
