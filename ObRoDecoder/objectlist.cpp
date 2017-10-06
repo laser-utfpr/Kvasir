@@ -10,7 +10,7 @@ ObjectList* ObjectList::instance = nullptr;
     The default constructor, initializes stuff and tries to open the shared memory.
 
     @author Lucca Rawlyk
-    @version 2017.09.26-1
+    @version 2017.09.27-1
 */
 
 ObjectList::ObjectList()
@@ -65,7 +65,7 @@ double ObjectList::distance(double x1, double y1, double x2, double y2)
     Tries to open the shared memory.
 
     @author Lucca Rawlyk
-    @version 2017.09.26-1
+    @version 2017.09.27-1
 */
 
 void ObjectList::openSharedMemory(void)

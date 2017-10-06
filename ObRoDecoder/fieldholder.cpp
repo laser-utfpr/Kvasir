@@ -49,7 +49,7 @@ FieldHolder::FieldHolder()
     shared_memory = new managed_shared_memory(open_or_create,OBRO_SHARED_MEMORY_NAME,OBRO_SHARED_MEMORY_SIZE);
     shared_memory_field = shared_memory->construct<field>(FIELD_MEMORY_NAME)();
 
-    shared_memory_field->time_us = NAN;
+    shared_memory_field->time_us = 0;
     shared_memory_field->image_height = NAN;
     shared_memory_field->image_width = NAN;
 }
@@ -393,7 +393,7 @@ void FieldHolder::findBall(entity* ent, ObjectList *objects)
     Finds entityType: ROBOT_1.
 
     @author Lucca Rawlyk
-    @version 2017.09.26-1
+    @version 2017.09.27-1
 */
 
 void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
@@ -486,7 +486,7 @@ void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
     Finds entityType: ROBOT_2.
 
     @author Lucca Rawlyk
-    @version 2017.09.26-1
+    @version 2017.09.27-1
 */
 
 void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
@@ -586,7 +586,7 @@ void FieldHolder::findRobot2(entity* ent, ObjectList *objects)
     Finds entityType: ROBOT_3.
 
     @author Lucca Rawlyk
-    @version 2017.09.26-1
+    @version 2017.09.27-1
 */
 
 void FieldHolder::findRobot3(entity* ent, ObjectList *objects)
