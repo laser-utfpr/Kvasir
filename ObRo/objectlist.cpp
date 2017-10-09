@@ -28,6 +28,7 @@ ObjectList::~ObjectList()
 {
     if(list_head!=nullptr)
         destroyList(list_head);
+    delete instance;
 }
 
 /**

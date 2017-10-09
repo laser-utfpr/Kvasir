@@ -13,7 +13,7 @@ void obroStart(bool printObjects, bool printField)
         if(objects->getTimeUs() != field->getTimeUs())
         {
             field->findEntities(objects);
-            //field->updateSharedMemory();
+            field->updateSharedMemory();
             if(printField)
                 field->printField();
         }
