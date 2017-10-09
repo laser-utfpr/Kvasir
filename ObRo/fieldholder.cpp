@@ -117,9 +117,9 @@ void FieldHolder::findEntities(ObjectList *objects)
 {
     int i;
     sighted_field.time_us = objects->getTimeUs();
-    findEntity(&(sighted_field.ball),BALL,objects,NAN);
+    findEntity(&(sighted_field.ball),BALL,objects,-1);
     for(i=ROBOT_1; i<ROBOT_1+N_PLAYERS; i++)
-        findEntity(&(sighted_field.robot[i-(int)ROBOT_1]),(entityType)i,objects,NAN);
+        findEntity(&(sighted_field.robot[i-(int)ROBOT_1]),(entityType)i,objects,-1);
     for(i=0; i<N_PLAYERS; i++)
         findEntity(&(sighted_field.enemy_robot[i]),ENEMY_ROBOT,objects,i);
 
