@@ -17,7 +17,19 @@ FramesHolder::FramesHolder(){}
 
 void FramesHolder::setCameraToDefault(void)
 {
-    camera.open(0);
+    bool opened = false;
+    while(!opened)
+    {
+        try //tries to open the default camera until it succeeds
+        {
+            camera.open(0);
+            opened = true;
+        }
+        catch(...)
+        {
+            ;
+        }
+    }
     camera.set(CV_CAP_PROP_FRAME_WIDTH,FRAME_WIDTH);
     camera.set(CV_CAP_PROP_FRAME_HEIGHT,FRAME_HEIGHT);
 }
