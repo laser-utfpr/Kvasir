@@ -16,13 +16,13 @@ class FieldLoader
 {
 private:
     boost::interprocess::managed_shared_memory *shared_memory;
-    field *sigthed_field;
     static FieldLoader* instance;
     void openSharedMemory(void);
     FieldLoader();
 public:
     ~FieldLoader();
     static FieldLoader* getInstance(void);
+    field getField(void);
 };
 
 #endif // FIELDLOADER_HPP

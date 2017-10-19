@@ -2,6 +2,8 @@
 #define AI_HPP
 
 #include "fieldloader.hpp"
+#include "strategy.hpp"
+
 
 void AIStart();
 

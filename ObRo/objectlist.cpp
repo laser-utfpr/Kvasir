@@ -115,7 +115,7 @@ void ObjectList::updateObjects(void)
         }
         catch(...) //if an exception is thrown tries to reload the shared memory
         {
-            std::cout << std::endl << "trying to reload the shared memory" << n_objects << std::endl;
+            std::cout << std::endl << "trying to reload the shared memory" << std::endl;
             openSharedMemory();
         }
     }
@@ -137,7 +137,7 @@ void ObjectList::updateObjects(void)
             }
             catch(...) //if an exception is thrown tries to reload the shared memory
             {
-                std::cout << std::endl << "trying to reload the shared memory" << n_objects << std::endl;
+                std::cout << std::endl << "trying to reload the shared memory" << std::endl;
                 openSharedMemory();
             }
         }
@@ -157,7 +157,7 @@ void ObjectList::updateObjects(void)
             }
             catch(...) //if an exception is thrown tries to reload the shared memory
             {
-                std::cout << std::endl << "trying to reload the shared memory" << n_objects << std::endl;
+                std::cout << std::endl << "trying to reload the shared memory" << std::endl;
                 openSharedMemory();
             }
         }
