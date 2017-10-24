@@ -5,6 +5,13 @@ using namespace boost::interprocess;
 
 FieldLoader* FieldLoader::instance = nullptr;
 
+FieldLoader* FieldLoader::getInstance(void)
+{
+    if(instance==nullptr)
+        instance = new FieldLoader;
+    return instance;
+}
+
 /**
     FieldLoader::FieldLoader()
 

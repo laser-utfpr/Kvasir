@@ -8,49 +8,41 @@ class Mode
 {
 private:
 public:
+    virtual ~Mode();
+    virtual bool inProgress(Strategy* strat);
     virtual void calculateVelocities(Strategy* strat);
-}
+};
 
 class AttackMode : public Mode
 {
 private:
 public:
+    virtual bool inProgress(Strategy* strat);
     virtual void calculateVelocities(Strategy* strat);
-}
+};
 
 class DefendMode : public Mode
 {
 private:
 public:
+    virtual bool inProgress(Strategy* strat);
     virtual void calculateVelocities(Strategy* strat);
-}
+};
 
 class FreeBallMode : public Mode
 {
 private:
 public:
+    virtual bool inProgress(Strategy* strat);
     virtual void calculateVelocities(Strategy* strat);
-}
+};
 
-class FreeKickMode : public Mode
+class InterruptMode : public Mode
 {
 private:
 public:
+    virtual bool inProgress(Strategy* strat);
     virtual void calculateVelocities(Strategy* strat);
-}
-
-class PenaltyMode : public Mode
-{
-private:
-public:
-    virtual void calculateVelocities(Strategy* strat);
-}
-
-class GoalKickMode : public Mode
-{
-private:
-public:
-    virtual void calculateVelocities(Strategy* strat);
-}
+};
 
 #endif //MODES_HPP

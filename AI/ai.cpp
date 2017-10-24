@@ -3,5 +3,11 @@
 
 void AIStart()
 {
-
+    Strategy strat;
+    //while(game still going on)
+    {
+      //update field
+      //decide mode
+      //execute mode
+    }
 }

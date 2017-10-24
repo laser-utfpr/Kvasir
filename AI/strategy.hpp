@@ -1,25 +1,33 @@
 #ifndef STRATEGY_HPP
 #define STRATEGY_HPP
 
-#include "../obro/field.h"
-#include "../obro/obroconstants.h"
+#include "../ObRo/field.h"
+#include "../ObRo/obroconstants.h"
 
 #include "velocity.h"
 
+#include "aiconstants.h"
 #include "fieldloader.hpp"
 
 #include "modes.hpp"
 class Mode;
 
+#include <iostream>
+#include <sys/select.h>
+
 class Strategy
 {
 private:
     field current_field;
-    velocity objective_vel[N_PLAYERS];
+    velocity desired_vel[N_PLAYERS];
+    roles role[N_PLAYERS];
     Mode *mode;
+    bool kbhit(void);
+    bool shouldWeDefend(void);
 public:
     Strategy();
-    updateField();
-}
+    void updateField(void);
+    void decideMode(void);
+};
 
 #endif //STRATEGY_HPP
