@@ -21,13 +21,18 @@ private:
     field current_field;
     velocity desired_vel[N_PLAYERS];
     roles role[N_PLAYERS];
-    Mode *mode;
+    Mode *mode[N_MODES];
+    modes active_mode;
     bool kbhit(void);
     bool shouldWeDefend(void);
 public:
     Strategy();
+    ~Strategy();
     void updateField(void);
     void decideMode(void);
+    void setDesiredXVel(int player, double x);
+    void setDesiredYVel(int player, double y);
+    void setDesiredAngVel(int player, double ang);
 };
 
 #endif //STRATEGY_HPP

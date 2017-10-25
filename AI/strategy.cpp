@@ -6,7 +6,17 @@ Strategy::Strategy()
     role[ROBOT_2-ROBOT_1] = DEFENDER;
     role[ROBOT_3-ROBOT_1] = ATTACKER;
 
-    mode = nullptr;
+    mode[ATTACK_MODE] = new AttackMode;
+    mode[DEFEND_MODE] = new DefendMode;
+    mode[INTERRUPT_MODE] = new InterruptMode;
+    mode[FREEBALL_MODE] = new FreeBallMode;
+}
+
+Strategy::~Strategy()
+{
+    int i;
+    for(i=0; i<N_MODES; i++)
+      delete mode[i];
 }
 
 /**
@@ -37,6 +47,11 @@ bool Strategy::kbhit(void)
     return 0;
 }
 
+bool Strategy::shouldWeDefend(void)
+{
+
+}
+
 /**
     void Strategy::updateField(void)
 
@@ -63,28 +78,71 @@ void Strategy::updateField(void)
 
 void Strategy::decideMode(void)
 {
-    if(!mode->inProgress(this))
+    if(!mode[active_mode]->inProgress(this))
     {
-        if(mode!=nullptr)
-            delete mode;
         if(kbhit())
         {
             char key = std::cin.get();
             switch(key)
             {
                 case 'i':
-                mode = new InterruptMode; break;
+                active_mode = INTERRUPT_MODE; break;
 
                 case 'f':
-                mode = new FreeBallMode; break;
+                active_mode = FREEBALL_MODE; break;
 
                 default:
                 break;
             }
         }
         if(shouldWeDefend())
-            mode = new DefendMode;
+            active_mode = DEFEND_MODE;
         else
-            mode = new AttackMode;
+            active_mode = ATTACK_MODE;
     }
+}
+
+/**
+    void Strategy::setDesiredXVel(int player, double x, double y, double ang)
+
+    Sets a desired x velocity.
+
+    @author Lucca Rawlyk
+    @version 2017.10.25-1
+*/
+
+void Strategy::setDesiredXVel(int player, double x)
+{
+    if(player>0 && player<N_PLAYERS)
+        desired_vel[player].x = x;
+}
+
+/**
+    void Strategy::setDesiredYVel(int player, double y)
+
+    Sets a desired y velocity.
+
+    @author Lucca Rawlyk
+    @version 2017.10.25-1
+*/
+
+void Strategy::setDesiredYVel(int player, double y)
+{
+    if(player>0 && player<N_PLAYERS)
+        desired_vel[player].y = y;
+}
+
+/**
+    void Strategy::setDesiredAngVel(int player, double ang)
+
+    Sets a desired angular velocity.
+
+    @author Lucca Rawlyk
+    @version 2017.10.25-1
+*/
+
+void Strategy::setDesiredAngVel(int player, double ang)
+{
+    if(player>0 && player<N_PLAYERS)
+        desired_vel[player].ang = ang;
 }
