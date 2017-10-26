@@ -23,7 +23,6 @@ private:
     roles role[N_PLAYERS];
     Mode *mode[N_MODES];
     modes active_mode;
-    bool kbhit(void);
     bool shouldWeDefend(void);
 public:
     Strategy();

@@ -6,8 +6,9 @@ void AIStart()
     Strategy strat;
     //while(game still going on)
     {
-      //update field
-      //decide mode
-      //execute mode
+        strat.updateField();
+        strat.decideMode();
+        //execute mode
+        //send velocities
     }
 }
