@@ -5,6 +5,8 @@
 #include "../ObRo/obroconstants.h"
 
 #include "velocity.h"
+#include "kbhit.h"
+#include "geometry.h"
 
 #include "aiconstants.h"
 #include "fieldloader.hpp"
@@ -13,12 +15,12 @@
 class Mode;
 
 #include <iostream>
-#include <sys/select.h>
 
 class Strategy
 {
 private:
     field current_field;
+    field last_seen_field;
     velocity desired_vel[N_PLAYERS];
     roles role[N_PLAYERS];
     Mode *mode[N_MODES];

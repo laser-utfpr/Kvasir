@@ -19,35 +19,51 @@ Strategy::~Strategy()
       delete mode[i];
 }
 
-/**
-    int Strategy::kbhit(void)
-
-    Manual implementaion of conio.h's kbhit.
-
-    @author Lucca Rawlyk
-    @version 2017.10.24-1
-*/
-
-
-
 bool Strategy::shouldWeDefend(void)
 {
-
+    int i;
+    for(i=0; i<N_PLAYERS; i++)
+    {
+        if(role[i] != GOALKEEPER &&
+          distance(field.robot[i].x, field.robot[i].y,
+                    field.ball.x, field.ball.y) < MIN_ATTACKING_DIST)
+            return false;
+    }
+    else
+    {
+        for(i=0; i<N_PLAYERS; i++)
+        {
+            if(distance(field.enemy_robot[i].x, field.enemy_robot[i].y,
+                      field.ball.x, field.ball.y) < MIN_ATTACKING_DIST)
+                return true;
+        }
+    }
+    return false;
 }
 
 /**
     void Strategy::updateField(void)
 
-    Updates the field using the FieldLoader class.
+    Updates the current field using the FieldLoader class,
+    then updates the found entities to the last seen field.
 
     @author Lucca Rawlyk
-    @version 2017.10.17-1
+    @version 2017.10.27-1
 */
 
 void Strategy::updateField(void)
 {
     FieldLoader *loader = FieldLoader::getInstance();
     current_field = loader->getField();
+    if(current_field.ball.found)
+        last_seen_field.ball = current_field.ball;
+    int i;
+    for(i=0; i<N_PLAYERS; i++)
+        if(current_field.robot[i].found)
+            last_seen_field.robot[i] = current_field.robot[i];
+    for(i=0; i<N_PLAYERS; i++)
+        if(current_field.enemy_robot[i].found)
+            last_seen_field.enemy_robot[i] = current_field.enemy_robot[i];
 }
 
 /**
@@ -63,7 +79,7 @@ void Strategy::decideMode(void)
 {
     if(!mode[active_mode]->inProgress(this))
     {
-        if(kbhit())
+        if(_kbhit())
         {
             char key = std::cin.get();
             switch(key)

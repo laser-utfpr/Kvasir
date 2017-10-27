@@ -1,6 +1,9 @@
 #ifndef MODES_HPP
 #define MODES_HPP
 
+#include "kbhit.h"
+#include "geometry.h"
+
 #include "strategy.hpp"
 class Strategy;
 

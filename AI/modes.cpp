@@ -43,7 +43,7 @@ void AttackMode::calculateVelocities(Strategy* strat)
 bool AttackMode::inProgress(Strategy* strat)
 {
     //AttackMode is not sequencial
-    reuturn false;
+    return false;
 }
 
 
@@ -77,7 +77,7 @@ void DefendMode::calculateVelocities(Strategy* strat)
 bool DefendMode::inProgress(Strategy* strat)
 {
     //AttackMode is not sequencial
-    reuturn false;
+    return false;
 }
 
 
@@ -116,7 +116,7 @@ void InterruptMode::calculateVelocities(Strategy* strat)
 
 bool InterruptMode::inProgress(Strategy* strat)
 {
-    if(kbhit())
+    if(_kbhit())
     {
         char key = std::cin.get();
         if(key == 'r')
@@ -125,7 +125,7 @@ bool InterruptMode::inProgress(Strategy* strat)
             return true;
     }
     else
-        return true
+        return true;
 }
 
 
