@@ -32,12 +32,30 @@ AttackMode::~AttackMode()
     to do
 
     @author Lucca Rawlyk
-    @version 2017.10.25-1
+    @version 2017.10.29-1
 */
 
 void AttackMode::calculateVelocities(Strategy* strat)
 {
-
+    entity goalkeeper_destination;
+    field seen_field = strat.getLastSeenField();
+    if(SIDE == LEFT)
+    {
+        //if goalkeeper is out of the goalkeeper area in the x axis
+        if(seen_field.robot[GOALKEEPER].x > seen_field.image_width - GOAL_X ||
+           seen_field.robot[GOALKEEPER].x < seen_field.image_width - (GOAL_X + GOALKEEPER_AREA_X) ||
+        //or goalkeeper is out of the goalkeeper area in the y axis
+           seen_field.robot[GOALKEEPER].y > (seen_field.image_width/2.0) + (GOAL_Y/2.0) ||
+           seen_field.robot[GOALKEEPER].y < (seen_field.image_width/2.0) - (GOAL_Y/2.0))
+        {
+            //goalkeeper goes to the goalkeeper area
+        }
+        else
+        {
+            //goalkeeper goes in position to intercept the ball
+        }
+    }
+    else //if(SIDE == RIGHT)
 }
 
 bool AttackMode::inProgress(Strategy* strat)

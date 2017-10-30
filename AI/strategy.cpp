@@ -145,3 +145,13 @@ void Strategy::setDesiredAngVel(int player, double ang)
     if(player>0 && player<N_PLAYERS)
         desired_vel[player].ang = ang;
 }
+
+field getCurrentField(void)
+{
+    return current_field;
+}
+
+field getLastSeenField(void)
+{
+    return last_seen_field;
+}
