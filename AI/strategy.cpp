@@ -19,6 +19,16 @@ Strategy::~Strategy()
       delete mode[i];
 }
 
+/**
+    void Strategy::shouldWeDefend(void)
+
+    Decides if the defend mode should be activated based if there aren't
+    any allies near the ball and there is an enemy.
+
+    @author Lucca Rawlyk
+    @version 2017.10.27-1
+*/
+
 bool Strategy::shouldWeDefend(void)
 {
     int i;
@@ -101,6 +111,16 @@ void Strategy::decideMode(void)
     }
 }
 
+field Strategy::getCurrentField(void)
+{
+    return current_field;
+}
+
+field Strategy::getLastSeenField(void)
+{
+    return last_seen_field;
+}
+
 /**
     void Strategy::setDesiredXVel(int player, double x, double y, double ang)
 
@@ -144,14 +164,4 @@ void Strategy::setDesiredAngVel(int player, double ang)
 {
     if(player>0 && player<N_PLAYERS)
         desired_vel[player].ang = ang;
-}
-
-field getCurrentField(void)
-{
-    return current_field;
-}
-
-field getLastSeenField(void)
-{
-    return last_seen_field;
 }

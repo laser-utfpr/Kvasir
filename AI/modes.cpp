@@ -37,7 +37,22 @@ AttackMode::~AttackMode()
 
 void AttackMode::calculateVelocities(Strategy* strat)
 {
-    entity goalkeeper_destination;
+    std::pair<double,double> goalkeeper_destination = findGoalkeeperDestination(strat);
+
+}
+
+/**
+    std::pair<double,double> AttackMode::findGoalkeeperDestination(Strategy *strat)
+
+    to do
+
+    @author Lucca Rawlyk
+    @version 2017.10.29-1
+*/
+
+std::pair<double,double> AttackMode::findGoalkeeperDestination(Strategy* strat)
+{
+    std::pair<double,double> goalkeeper_destination;
     field seen_field = strat.getLastSeenField();
     if(SIDE == LEFT)
     {
@@ -45,10 +60,14 @@ void AttackMode::calculateVelocities(Strategy* strat)
         if(seen_field.robot[GOALKEEPER].x > seen_field.image_width - GOAL_X ||
            seen_field.robot[GOALKEEPER].x < seen_field.image_width - (GOAL_X + GOALKEEPER_AREA_X) ||
         //or goalkeeper is out of the goalkeeper area in the y axis
-           seen_field.robot[GOALKEEPER].y > (seen_field.image_width/2.0) + (GOAL_Y/2.0) ||
-           seen_field.robot[GOALKEEPER].y < (seen_field.image_width/2.0) - (GOAL_Y/2.0))
+           seen_field.robot[GOALKEEPER].y > (seen_field.image_height/2.0) + (GOAL_Y/2.0) ||
+           seen_field.robot[GOALKEEPER].y < (seen_field.image_height/2.0) - (GOAL_Y/2.0))
         {
-            //goalkeeper goes to the goalkeeper area
+            //sets destination as the middle of the goalkeeper area
+            //to be changed to the minimum distance to the area at some point
+            goalkeeper_destination.first = seen_field.image_width - GOAL_X -
+                                           (GOALKEEPER_AREA_X/2);
+            goalkeeper_destination.second = seen_field.image_height/2;
         }
         else
         {
@@ -56,6 +75,24 @@ void AttackMode::calculateVelocities(Strategy* strat)
         }
     }
     else //if(SIDE == RIGHT)
+    {
+        //if goalkeeper is out of the goalkeeper area in the x axis
+        if(seen_field.robot[GOALKEEPER].x < GOAL_X ||
+           seen_field.robot[GOALKEEPER].x > GOAL_X + GOALKEEPER_AREA_X ||
+        //or goalkeeper is out of the goalkeeper area in the y axis
+           seen_field.robot[GOALKEEPER].y > (seen_field.image_height/2.0) + (GOAL_Y/2.0) ||
+           seen_field.robot[GOALKEEPER].y < (seen_field.image_height/2.0) - (GOAL_Y/2.0))
+        {
+            //sets destination as the middle of the goalkeeper area
+            //to be changed to the minimum distance to the area at some point
+            goalkeeper_destination.first = GOAL_X + (GOALKEEPER_AREA_X/2);
+            goalkeeper_destination.second = seen_field.image_height/2;
+        }
+        else
+        {
+            //goalkeeper goes in position to intercept the ball
+        }
+    }
 }
 
 bool AttackMode::inProgress(Strategy* strat)

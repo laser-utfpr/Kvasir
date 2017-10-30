@@ -31,11 +31,11 @@ public:
     ~Strategy();
     void updateField(void);
     void decideMode(void);
+    field getCurrentField(void);
+    field getLastSeenField(void);
     void setDesiredXVel(int player, double x);
     void setDesiredYVel(int player, double y);
     void setDesiredAngVel(int player, double ang);
-    field getCurrentField(void);
-    field getLastSeenField(void);
 };
 
 #endif //STRATEGY_HPP
