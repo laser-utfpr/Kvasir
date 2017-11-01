@@ -31,20 +31,31 @@ Strategy::~Strategy()
 
 bool Strategy::shouldWeDefend(void)
 {
-    int i;
+    int i,j;
+    //***This part of the code assumes 3 Players,
+    //***one with each role and a fixed Goalkeeper
     for(i=0; i<N_PLAYERS; i++)
     {
         if(role[i] != GOALKEEPER &&
           distance(field.robot[i].x, field.robot[i].y,
-                    field.ball.x, field.ball.y) < MIN_ATTACKING_DIST)
+                   field.ball.x, field.ball.y) < MIN_ATTACKING_DIST)
+        {
+            role[i] = ATTACKER;
+            for(j=0; j<N_PLAYERS; j++)
+            {
+                //if it's the left player to set as defender
+                if(role[j]!=GOALKEEPER && j!=i)
+                    role[j] = DEFENDER;
+            }
             return false;
+        }
     }
     else
     {
         for(i=0; i<N_PLAYERS; i++)
         {
             if(distance(field.enemy_robot[i].x, field.enemy_robot[i].y,
-                      field.ball.x, field.ball.y) < MIN_ATTACKING_DIST)
+                        field.ball.x, field.ball.y) < MIN_ATTACKING_DIST)
                 return true;
         }
     }

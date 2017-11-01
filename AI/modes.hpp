@@ -26,6 +26,7 @@ public:
     virtual bool inProgress(Strategy* strat);
     virtual void calculateVelocities(Strategy* strat);
     std::pair<double,double> findGoalkeeperDestination(Strategy *strat);
+    std::pair<double,double> findDefenderDestination(Strategy* strat);
 };
 
 class DefendMode : public Mode
