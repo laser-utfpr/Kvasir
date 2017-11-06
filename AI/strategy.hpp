@@ -16,6 +16,9 @@ class Mode;
 
 #include <iostream>
 
+#include <boost/interprocess/managed_shared_memory.hpp>
+#include <boost/interprocess/offset_ptr.hpp>
+
 class Strategy
 {
 private:
@@ -25,9 +28,13 @@ private:
     roles role[N_PLAYERS];
     Mode *mode[N_MODES];
     modes active_mode;
+    boost::interprocess::managed_shared_memory *shared_memory;
+    velocity *shared_memory_velocities;
+    static Strategy *instance;
     bool shouldWeDefend(void);
-public:
     Strategy();
+public:
+    static Strategy* getInstance(void);
     ~Strategy();
     void updateField(void);
     void decideMode(void);
@@ -36,6 +43,11 @@ public:
     void setDesiredXVel(int player, double x);
     void setDesiredYVel(int player, double y);
     void setDesiredAngVel(int player, double ang);
+    roles getRole(int i);
+    void calculateVelocities(void);
+    void saveVelocities(void);
+    void printMode(void);
+    void printVelocities(void);
 };
 
 #endif //STRATEGY_HPP

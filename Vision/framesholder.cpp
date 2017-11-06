@@ -258,7 +258,7 @@ void FramesHolder::paintObject(int x, int y, int area, objectColor color)
         case VIOLET:
         text << "VIOLET"; break;
     }
-    text << "," << area;
+    text << "," << x << "," << y;
     circle(raw_image,Point(x,y),OBJECT_CURSOR_RADIUS,Scalar(0,255,0),OBJECT_CURSOR_THICKNESS);
     putText(raw_image,text.str(),Point(x,y+OBJECT_TEXT_OFFSET),1,1,Scalar(0,255,0),2);
 }

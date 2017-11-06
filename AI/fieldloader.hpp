@@ -1,7 +1,7 @@
 #ifndef FIELDLOADER_HPP
 #define FIELDLOADER_HPP
 
-#include "../Vision/visionconstants.h"
+//#include "../Vision/visionconstants.h"
 //#include "../Vision/include/visionconstants.h"
 
 #include "../ObRo/obroconstants.h"

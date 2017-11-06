@@ -1,14 +1,18 @@
 #include "ai.hpp"
 //#include "../include/ai.hpp"
 
-void AIStart()
+void AIStart(bool print_mode, bool print_velocities)
 {
-    Strategy strat;
-    //while(game still going on)
+    Strategy* strat = Strategy::getInstance();
+    while(9)
     {
-        strat.updateField();
-        strat.decideMode();
-        //execute mode
-        //send velocities
+        strat->updateField();
+        strat->decideMode();
+        if(print_mode)
+            strat->printMode();
+        strat->calculateVelocities();
+        if(print_velocities)
+            strat->printVelocities();
+        strat->saveVelocities();
     }
 }

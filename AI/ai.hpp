@@ -3,8 +3,9 @@
 
 #include "fieldloader.hpp"
 #include "strategy.hpp"
+#include "modes.hpp"
 
 
-void AIStart();
+void AIStart(bool print_mode, bool print_velocities);
 
 #endif // AI_HPP

@@ -1,15 +1,30 @@
 #include "strategy.hpp"
 
+using namespace boost::interprocess;
+
+Strategy* Strategy::instance = nullptr;
+
+Strategy* Strategy::getInstance(void)
+{
+    if(instance==nullptr)
+        instance = new Strategy;
+    return instance;
+}
+
 Strategy::Strategy()
 {
-    role[ROBOT_1-ROBOT_1] = GOALKEEPER;
+    role[ROBOT_1-ROBOT_1] = ATTACKER;
     role[ROBOT_2-ROBOT_1] = DEFENDER;
-    role[ROBOT_3-ROBOT_1] = ATTACKER;
+    role[ROBOT_3-ROBOT_1] = GOALKEEPER;
 
     mode[ATTACK_MODE] = new AttackMode;
     mode[DEFEND_MODE] = new DefendMode;
     mode[INTERRUPT_MODE] = new InterruptMode;
     mode[FREEBALL_MODE] = new FreeBallMode;
+
+    shared_memory_object::remove(AI_SHARED_MEMORY_NAME);
+    shared_memory = new managed_shared_memory(open_or_create,AI_SHARED_MEMORY_NAME,AI_SHARED_MEMORY_SIZE);
+    shared_memory_velocities = shared_memory->construct<velocity>(VELOCITIES_MEMORY_NAME)[N_PLAYERS]();
 }
 
 Strategy::~Strategy()
@@ -32,33 +47,32 @@ Strategy::~Strategy()
 bool Strategy::shouldWeDefend(void)
 {
     int i,j;
-    //***This part of the code assumes 3 Players,
-    //***one with each role and a fixed Goalkeeper
+    //This part of the code assumes 3 Players,
+    //one with each role and a fixed Goalkeeper
     for(i=0; i<N_PLAYERS; i++)
     {
         if(role[i] != GOALKEEPER &&
-          distance(field.robot[i].x, field.robot[i].y,
-                   field.ball.x, field.ball.y) < MIN_ATTACKING_DIST)
+          distance(last_seen_field.robot[i].x, last_seen_field.robot[i].y,
+                   last_seen_field.ball.x, last_seen_field.ball.y) < MIN_ATTACKING_DIST)
         {
             role[i] = ATTACKER;
             for(j=0; j<N_PLAYERS; j++)
             {
-                //if it's the left player to set as defender
+                //if it's the left player set it as defender
                 if(role[j]!=GOALKEEPER && j!=i)
                     role[j] = DEFENDER;
             }
             return false;
         }
     }
-    else
+
+    for(i=0; i<N_PLAYERS; i++)
     {
-        for(i=0; i<N_PLAYERS; i++)
-        {
-            if(distance(field.enemy_robot[i].x, field.enemy_robot[i].y,
-                        field.ball.x, field.ball.y) < MIN_ATTACKING_DIST)
-                return true;
-        }
+        if(distance(last_seen_field.enemy_robot[i].x, last_seen_field.enemy_robot[i].y,
+                    last_seen_field.ball.x, last_seen_field.ball.y) < MIN_ATTACKING_DIST)
+            return true;
     }
+
     return false;
 }
 
@@ -106,10 +120,10 @@ void Strategy::decideMode(void)
             switch(key)
             {
                 case 'i':
-                active_mode = INTERRUPT_MODE; break;
+                active_mode = INTERRUPT_MODE; return; break;
 
-                case 'f':
-                active_mode = FREEBALL_MODE; break;
+                /*case 'f':
+                active_mode = FREEBALL_MODE; return; break;*/
 
                 default:
                 break;
@@ -175,4 +189,54 @@ void Strategy::setDesiredAngVel(int player, double ang)
 {
     if(player>0 && player<N_PLAYERS)
         desired_vel[player].ang = ang;
+}
+
+roles Strategy::getRole(int i)
+{
+    return role[i];
+}
+
+void Strategy::calculateVelocities(void)
+{
+    mode[active_mode]->calculateVelocities(this);
+}
+
+void Strategy::saveVelocities(void)
+{
+    int i;
+    for(i=0; i<N_PLAYERS; i++)
+    {
+        shared_memory_velocities[i] = desired_vel[i];
+    }
+}
+
+void Strategy::printMode(void)
+{
+    std::cout << std::endl << "Mode: ";
+    switch(active_mode)
+    {
+        case ATTACK_MODE:
+            std::cout << "ATTACK_MODE" << std::endl; break;
+        case DEFEND_MODE:
+            std::cout << "DEFEND_MODE" << std::endl; break;
+        case INTERRUPT_MODE:
+            std::cout << "INTERRUPT_MODE" << std::endl; break;
+        case FREEBALL_MODE:
+            std::cout << "FREEBALL_MODE" << std::endl; break;
+        default:
+            break;
+    }
+}
+
+void Strategy::printVelocities(void)
+{
+    int i;
+    std::cout << std::endl;
+    for(i=0; i<N_PLAYERS; i++)
+    {
+        std::cout << "Robot " << i << " Velocities:" << std::endl;
+        std::cout << "x = " << desired_vel[i].x << std::endl;
+        std::cout << "y = " << desired_vel[i].y << std::endl;
+        std::cout << "ang = " << desired_vel[i].ang << std::endl;
+    }
 }

@@ -1,8 +1,13 @@
 #ifndef MODES_HPP
 #define MODES_HPP
 
+#include "../ObRo/obroconstants.h"
+#include "../ObRo/field.h"
+
 #include "kbhit.h"
 #include "geometry.h"
+
+#include "aiconstants.h"
 
 #include "strategy.hpp"
 class Strategy;
@@ -20,18 +25,22 @@ public:
 class AttackMode : public Mode
 {
 private:
+    std::pair<double,double> findGoalkeeperDestination(Strategy *strat);
+    std::pair<double,double> findDefenderDestination(Strategy* strat);
+    std::pair<double,double> findAttackerDestination(Strategy* strat);
 public:
     AttackMode();
     ~AttackMode();
     virtual bool inProgress(Strategy* strat);
     virtual void calculateVelocities(Strategy* strat);
-    std::pair<double,double> findGoalkeeperDestination(Strategy *strat);
-    std::pair<double,double> findDefenderDestination(Strategy* strat);
 };
 
 class DefendMode : public Mode
 {
 private:
+    std::pair<double,double> findGoalkeeperDestination(Strategy *strat);
+    std::pair<double,double> findDefenderDestination(Strategy* strat);
+    std::pair<double,double> findAttackerDestination(Strategy* strat);
 public:
     DefendMode();
     ~DefendMode();
