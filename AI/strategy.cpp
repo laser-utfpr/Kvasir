@@ -32,6 +32,8 @@ Strategy::~Strategy()
     int i;
     for(i=0; i<N_MODES; i++)
       delete mode[i];
+    shared_memory_object::remove(AI_SHARED_MEMORY_NAME);
+    delete shared_memory;
 }
 
 /**
