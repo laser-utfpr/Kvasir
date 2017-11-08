@@ -88,6 +88,7 @@ void ObjectList::openSharedMemory(void)
             ;
         }
     }
+    std::cout << "kitei";
 }
 
 /**

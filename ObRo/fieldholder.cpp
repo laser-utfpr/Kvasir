@@ -838,11 +838,11 @@ void FieldHolder::printField(void)
         std::cout << "angle=" << sighted_field.robot[i].angle << std::endl;
     }
 
-    for(i=0;i<N_PLAYERS;i++)
+    /*for(i=0;i<N_PLAYERS;i++)
     {
         std::cout << std::endl << "ENEMY_ROBOT:" << std::endl;
         std::cout << "x=" << sighted_field.enemy_robot[i].x << std::endl;
         std::cout << "y=" << sighted_field.enemy_robot[i].y << std::endl;
         std::cout << "angle=" << sighted_field.enemy_robot[i].angle << std::endl;
-    }
+    }*/
 }

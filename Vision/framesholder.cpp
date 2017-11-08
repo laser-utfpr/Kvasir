@@ -22,7 +22,7 @@ void FramesHolder::setCameraToDefault(void)
     {
         try //tries to open the default camera until it succeeds
         {
-            camera.open(0);
+            camera.open(CAMERA_ID);
             opened = true;
         }
         catch(...)

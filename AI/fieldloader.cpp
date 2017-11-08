@@ -59,6 +59,7 @@ void FieldLoader::openSharedMemory(void)
             ;
         }
     }
+    std::cout << "kitei";
 }
 
 /**
