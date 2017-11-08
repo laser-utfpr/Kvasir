@@ -1,0 +1,3 @@
+/home/odin/Desktop/Kvasir/ObRo-build/CMakeFiles/edit_cache.dir
+/home/odin/Desktop/Kvasir/ObRo-build/CMakeFiles/rebuild_cache.dir
+/home/odin/Desktop/Kvasir/ObRo-build/CMakeFiles/ObRo.dir

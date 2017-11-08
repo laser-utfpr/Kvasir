@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/home/odin/Desktop/Kvasir/AI-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/AI.dir/ai.cpp.o -c /home/odin/Desktop/Kvasir/AI/ai.cpp",
+  "file": "/home/odin/Desktop/Kvasir/AI/ai.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/AI-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/AI.dir/geometry.cpp.o -c /home/odin/Desktop/Kvasir/AI/geometry.cpp",
+  "file": "/home/odin/Desktop/Kvasir/AI/geometry.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/AI-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/AI.dir/strategy.cpp.o -c /home/odin/Desktop/Kvasir/AI/strategy.cpp",
+  "file": "/home/odin/Desktop/Kvasir/AI/strategy.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/AI-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/AI.dir/main.cpp.o -c /home/odin/Desktop/Kvasir/AI/main.cpp",
+  "file": "/home/odin/Desktop/Kvasir/AI/main.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/AI-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/AI.dir/modes.cpp.o -c /home/odin/Desktop/Kvasir/AI/modes.cpp",
+  "file": "/home/odin/Desktop/Kvasir/AI/modes.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/AI-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/AI.dir/kbhit.cpp.o -c /home/odin/Desktop/Kvasir/AI/kbhit.cpp",
+  "file": "/home/odin/Desktop/Kvasir/AI/kbhit.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/AI-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/AI.dir/fieldloader.cpp.o -c /home/odin/Desktop/Kvasir/AI/fieldloader.cpp",
+  "file": "/home/odin/Desktop/Kvasir/AI/fieldloader.cpp"
+}
+]

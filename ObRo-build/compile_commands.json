@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/odin/Desktop/Kvasir/ObRo-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/ObRo.dir/fieldholder.cpp.o -c /home/odin/Desktop/Kvasir/ObRo/fieldholder.cpp",
+  "file": "/home/odin/Desktop/Kvasir/ObRo/fieldholder.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/ObRo-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/ObRo.dir/main.cpp.o -c /home/odin/Desktop/Kvasir/ObRo/main.cpp",
+  "file": "/home/odin/Desktop/Kvasir/ObRo/main.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/ObRo-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/ObRo.dir/kbhit.cpp.o -c /home/odin/Desktop/Kvasir/ObRo/kbhit.cpp",
+  "file": "/home/odin/Desktop/Kvasir/ObRo/kbhit.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/ObRo-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/ObRo.dir/objectlist.cpp.o -c /home/odin/Desktop/Kvasir/ObRo/objectlist.cpp",
+  "file": "/home/odin/Desktop/Kvasir/ObRo/objectlist.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/ObRo-build",
+  "command": "/usr/bin/c++      -std=c++11 -g   -o CMakeFiles/ObRo.dir/obro.cpp.o -c /home/odin/Desktop/Kvasir/ObRo/obro.cpp",
+  "file": "/home/odin/Desktop/Kvasir/ObRo/obro.cpp"
+}
+]

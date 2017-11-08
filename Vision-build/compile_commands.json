@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/odin/Desktop/Kvasir/Vision-build",
+  "command": "/usr/bin/c++    -I/usr/include/opencv   -std=c++11 -pthread -lrt -g   -o CMakeFiles/Vision.dir/main.cpp.o -c /home/odin/Desktop/Kvasir/Vision/main.cpp",
+  "file": "/home/odin/Desktop/Kvasir/Vision/main.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/Vision-build",
+  "command": "/usr/bin/c++    -I/usr/include/opencv   -std=c++11 -pthread -lrt -g   -o CMakeFiles/Vision.dir/vision.cpp.o -c /home/odin/Desktop/Kvasir/Vision/vision.cpp",
+  "file": "/home/odin/Desktop/Kvasir/Vision/vision.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/Vision-build",
+  "command": "/usr/bin/c++    -I/usr/include/opencv   -std=c++11 -pthread -lrt -g   -o CMakeFiles/Vision.dir/sightedobjects.cpp.o -c /home/odin/Desktop/Kvasir/Vision/sightedobjects.cpp",
+  "file": "/home/odin/Desktop/Kvasir/Vision/sightedobjects.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/Vision-build",
+  "command": "/usr/bin/c++    -I/usr/include/opencv   -std=c++11 -pthread -lrt -g   -o CMakeFiles/Vision.dir/colormasks.cpp.o -c /home/odin/Desktop/Kvasir/Vision/colormasks.cpp",
+  "file": "/home/odin/Desktop/Kvasir/Vision/colormasks.cpp"
+},
+{
+  "directory": "/home/odin/Desktop/Kvasir/Vision-build",
+  "command": "/usr/bin/c++    -I/usr/include/opencv   -std=c++11 -pthread -lrt -g   -o CMakeFiles/Vision.dir/framesholder.cpp.o -c /home/odin/Desktop/Kvasir/Vision/framesholder.cpp",
+  "file": "/home/odin/Desktop/Kvasir/Vision/framesholder.cpp"
+}
+]

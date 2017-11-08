@@ -1,0 +1,3 @@
+/home/odin/Desktop/Kvasir/AI-build/CMakeFiles/edit_cache.dir
+/home/odin/Desktop/Kvasir/AI-build/CMakeFiles/rebuild_cache.dir
+/home/odin/Desktop/Kvasir/AI-build/CMakeFiles/AI.dir

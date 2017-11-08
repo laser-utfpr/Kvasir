@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11 -g   CMakeFiles/ObRo.dir/fieldholder.cpp.o CMakeFiles/ObRo.dir/main.cpp.o CMakeFiles/ObRo.dir/kbhit.cpp.o CMakeFiles/ObRo.dir/objectlist.cpp.o CMakeFiles/ObRo.dir/obro.cpp.o  -o ObRo -rdynamic -lpthread -lrt 
