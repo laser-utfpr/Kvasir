@@ -5,7 +5,8 @@ void obroStart(bool printObjects, bool printField)
 {
     ObjectList *objects = ObjectList::getInstance();
     FieldHolder *field = FieldHolder::getInstance();
-    while(1)
+    char quit = 0;
+    while(quit != 'q')
     {
         objects->updateObjects();
         if(printObjects)
@@ -17,5 +18,7 @@ void obroStart(bool printObjects, bool printField)
             if(printField)
                 field->printField();
         }
+        if(_kbhit())
+            quit = std::cin.get();
     }
 }

@@ -4,7 +4,8 @@
 void AIStart(bool print_mode, bool print_velocities)
 {
     Strategy* strat = Strategy::getInstance();
-    while(9)
+    char quit = 0;
+    while(quit != 'q')
     {
         strat->updateField();
         strat->decideMode();
@@ -14,5 +15,8 @@ void AIStart(bool print_mode, bool print_velocities)
         if(print_velocities)
             strat->printVelocities();
         strat->saveVelocities();
+        if(_kbhit())
+            quit = std::cin.get();
+        
     }
 }

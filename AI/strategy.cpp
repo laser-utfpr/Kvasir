@@ -51,28 +51,32 @@ bool Strategy::shouldWeDefend(void)
     int i,j;
     //This part of the code assumes 3 Players,
     //one with each role and a fixed Goalkeeper
-    for(i=0; i<N_PLAYERS; i++)
+    if(last_seen_field.ball.found)
     {
-        if(role[i] != GOALKEEPER &&
-          distance(last_seen_field.robot[i].x, last_seen_field.robot[i].y,
-                   last_seen_field.ball.x, last_seen_field.ball.y) < MIN_ATTACKING_DIST)
+        for(i=0; i<N_PLAYERS; i++)
         {
-            role[i] = ATTACKER;
-            for(j=0; j<N_PLAYERS; j++)
+            if(role[i] != GOALKEEPER &&
+              distance(last_seen_field.robot[i].x, last_seen_field.robot[i].y,
+                       last_seen_field.ball.x, last_seen_field.ball.y) < MIN_ATTACKING_DIST)
             {
-                //if it's the left player set it as defender
-                if(role[j]!=GOALKEEPER && j!=i)
-                    role[j] = DEFENDER;
+                role[i] = ATTACKER;
+                for(j=0; j<N_PLAYERS; j++)
+                {
+                    //if it's the left player set it as defender
+                    if(role[j] != GOALKEEPER && j != i)
+                        role[j] = DEFENDER;
+                }
+                return false;
             }
-            return false;
         }
-    }
 
-    for(i=0; i<N_PLAYERS; i++)
-    {
-        if(distance(last_seen_field.enemy_robot[i].x, last_seen_field.enemy_robot[i].y,
-                    last_seen_field.ball.x, last_seen_field.ball.y) < MIN_ATTACKING_DIST)
-            return true;
+        for(i=0; i<N_PLAYERS; i++)
+        {
+            if(last_seen_field.enemy_robot[i].found)
+                if(distance(last_seen_field.enemy_robot[i].x, last_seen_field.enemy_robot[i].y,
+                            last_seen_field.ball.x, last_seen_field.ball.y) < MIN_ATTACKING_DIST)
+                    return true;
+        }
     }
 
     return false;
