@@ -33,8 +33,9 @@ SightedObjects::SightedObjects()
 
 SightedObjects::~SightedObjects()
 {
-    if(list.get()!=nullptr)
-        destroyList(list);
+    destroyTempList();
+    //if(list.get()!=nullptr)
+        //destroyList(list);
     shared_memory_object::remove(VISION_SHARED_MEMORY_NAME);
     delete instance;
 }

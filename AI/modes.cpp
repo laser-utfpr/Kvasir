@@ -39,7 +39,7 @@ void AttackMode::calculateVelocities(Strategy* strat)
 {
     std::pair<double,double> goalkeeper_destination = findGoalkeeperDestination(strat);
     std::pair<double,double> defender_destination = findDefenderDestination(strat);
-    std::pair<double,double> attacker_destination = findDefenderDestination(strat);
+    std::pair<double,double> attacker_destination = findAttackerDestination(strat);
 
     field seen_field = strat->getLastSeenField();
 
@@ -53,6 +53,8 @@ void AttackMode::calculateVelocities(Strategy* strat)
             break;
         }
     }
+    //std::cout << std::endl << "goalkeeper = " << goalkeeper << std::endl;
+    //std::cout << std::endl << "goalkeeper dest = " << goalkeeper_destination.first << ',' << goalkeeper_destination.second << std::endl;
     velocity goalkeeper_vel = calculateVelocity(seen_field.robot[goalkeeper],goalkeeper_destination);
 
     for(i=0; i<N_PLAYERS; i++)
@@ -63,6 +65,8 @@ void AttackMode::calculateVelocities(Strategy* strat)
             break;
         }
     }
+    //std::cout << std::endl << "defender = " << defender << std::endl;
+    //std::cout << std::endl << "defender dest = " << defender_destination.first << ',' << defender_destination.second << std::endl;
     velocity defender_vel = calculateVelocity(seen_field.robot[defender],defender_destination);
 
     for(i=0; i<N_PLAYERS; i++)
@@ -73,6 +77,8 @@ void AttackMode::calculateVelocities(Strategy* strat)
             break;
         }
     }
+    //std::cout << std::endl << "attacker = " << attacker << std::endl;
+    //std::cout << std::endl << "attacker dest = " << attacker_destination.first << ',' << attacker_destination.second << std::endl;
     velocity attacker_vel = calculateVelocity(seen_field.robot[attacker],attacker_destination);
 
     strat->setDesiredXVel(goalkeeper,goalkeeper_vel.x);
@@ -119,7 +125,7 @@ std::pair<double,double> AttackMode::findGoalkeeperDestination(Strategy* strat)
             break;
         }
     }
-    if(seen_field.robot[goalkeeper].found)
+    if(seen_field.robot[goalkeeper].found && seen_field.ball.found)
     {
         if(SIDE == LEFT)
         {
@@ -216,7 +222,7 @@ std::pair<double,double> AttackMode::findDefenderDestination(Strategy* strat)
         }
     }
 
-    if(seen_field.robot[defender].found)
+    if(seen_field.robot[defender].found && seen_field.ball.found)
     {
         if(SIDE == LEFT)
         {
@@ -288,7 +294,7 @@ std::pair<double,double> AttackMode::findAttackerDestination(Strategy* strat)
         }
     }
 
-    if(seen_field.robot[attacker].found)
+    if(seen_field.robot[attacker].found && seen_field.ball.found)
     {
         if(SIDE == LEFT)
         {
@@ -358,7 +364,7 @@ void DefendMode::calculateVelocities(Strategy* strat)
 {
     std::pair<double,double> goalkeeper_destination = findGoalkeeperDestination(strat);
     std::pair<double,double> defender_destination = findDefenderDestination(strat);
-    std::pair<double,double> attacker_destination = findDefenderDestination(strat);
+    std::pair<double,double> attacker_destination = findAttackerDestination(strat);
 
     field seen_field = strat->getLastSeenField();
 
@@ -438,7 +444,7 @@ std::pair<double,double> DefendMode::findGoalkeeperDestination(Strategy* strat)
             break;
         }
     }
-    if(seen_field.robot[goalkeeper].found)
+    if(seen_field.robot[goalkeeper].found && seen_field.ball.found)
     {
         if(SIDE == LEFT)
         {
@@ -535,7 +541,7 @@ std::pair<double,double> DefendMode::findDefenderDestination(Strategy* strat)
         }
     }
 
-    if(seen_field.robot[defender].found)
+    if(seen_field.robot[defender].found && seen_field.ball.found)
     {
         if(SIDE == LEFT)
         {
@@ -607,7 +613,7 @@ std::pair<double,double> DefendMode::findAttackerDestination(Strategy* strat)
         }
     }
 
-    if(seen_field.robot[attacker].found)
+    if(seen_field.robot[attacker].found && seen_field.ball.found)
     {
         attacker_destination.first = seen_field.ball.x;
         attacker_destination.second = seen_field.ball.y;

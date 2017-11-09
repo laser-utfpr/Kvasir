@@ -5,6 +5,8 @@
 #include "strategy.hpp"
 #include "modes.hpp"
 
+#include <iostream>
+#include "kbhit.h"
 
 void AIStart(bool print_mode, bool print_velocities);
 

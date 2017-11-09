@@ -6,7 +6,7 @@
 #include "objectlist.hpp"
 #include "fieldholder.hpp"
 
-#include "../AI/kbhit.h"
+#include "kbhit.h"
 
 void obroStart(bool printObjects, bool printField);
 

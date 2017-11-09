@@ -90,5 +90,25 @@ field FieldLoader::getField(void)
         }
     }
 
+    /*field le_test;
+    le_test.image_width = 1920.0;
+    le_test.image_height = 1080.0;
+    le_test.ball.x = 500.0;
+    le_test.ball.y = 600.0;
+    le_test.ball.found = true;
+    le_test.robot[0].x = 500.0;
+    le_test.robot[0].y = 1000.0;
+    le_test.robot[0].angle = 0.3;
+    le_test.robot[0].found = true;
+    le_test.robot[1].x = 500.0;
+    le_test.robot[1].y = 500.0;
+    le_test.robot[1].angle = 0.3;
+    le_test.robot[1].found = true;
+    le_test.robot[2].found = false;
+    le_test.enemy_robot[0].found = false;
+    le_test.enemy_robot[1].found = false;
+    le_test.enemy_robot[2].found = false;
+    return le_test;*/
+    
     return *(stored_field.first);
 }

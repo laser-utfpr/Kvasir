@@ -51,28 +51,32 @@ bool Strategy::shouldWeDefend(void)
     int i,j;
     //This part of the code assumes 3 Players,
     //one with each role and a fixed Goalkeeper
-    for(i=0; i<N_PLAYERS; i++)
+    if(last_seen_field.ball.found)
     {
-        if(role[i] != GOALKEEPER &&
-          distance(last_seen_field.robot[i].x, last_seen_field.robot[i].y,
-                   last_seen_field.ball.x, last_seen_field.ball.y) < MIN_ATTACKING_DIST)
+        for(i=0; i<N_PLAYERS; i++)
         {
-            role[i] = ATTACKER;
-            for(j=0; j<N_PLAYERS; j++)
+            if(role[i] != GOALKEEPER &&
+              distance(last_seen_field.robot[i].x, last_seen_field.robot[i].y,
+                       last_seen_field.ball.x, last_seen_field.ball.y) < MIN_ATTACKING_DIST)
             {
-                //if it's the left player set it as defender
-                if(role[j]!=GOALKEEPER && j!=i)
-                    role[j] = DEFENDER;
+                role[i] = ATTACKER;
+                for(j=0; j<N_PLAYERS; j++)
+                {
+                    //if it's the left player set it as defender
+                    if(role[j] != GOALKEEPER && j != i)
+                        role[j] = DEFENDER;
+                }
+                return false;
             }
-            return false;
         }
-    }
 
-    for(i=0; i<N_PLAYERS; i++)
-    {
-        if(distance(last_seen_field.enemy_robot[i].x, last_seen_field.enemy_robot[i].y,
-                    last_seen_field.ball.x, last_seen_field.ball.y) < MIN_ATTACKING_DIST)
-            return true;
+        for(i=0; i<N_PLAYERS; i++)
+        {
+            if(last_seen_field.enemy_robot[i].found)
+                if(distance(last_seen_field.enemy_robot[i].x, last_seen_field.enemy_robot[i].y,
+                            last_seen_field.ball.x, last_seen_field.ball.y) < MIN_ATTACKING_DIST)
+                    return true;
+        }
     }
 
     return false;
@@ -92,6 +96,9 @@ void Strategy::updateField(void)
 {
     FieldLoader *loader = FieldLoader::getInstance();
     current_field = loader->getField();
+    last_seen_field.image_width = current_field.image_width;
+    last_seen_field.image_height = current_field.image_height;
+    last_seen_field.time_us = current_field.time_us;
     if(current_field.ball.found)
         last_seen_field.ball = current_field.ball;
     int i;
@@ -159,7 +166,7 @@ field Strategy::getLastSeenField(void)
 
 void Strategy::setDesiredXVel(int player, double x)
 {
-    if(player>0 && player<N_PLAYERS)
+    if(player >= 0 && player < N_PLAYERS)
         desired_vel[player].x = x;
 }
 
@@ -174,7 +181,7 @@ void Strategy::setDesiredXVel(int player, double x)
 
 void Strategy::setDesiredYVel(int player, double y)
 {
-    if(player>0 && player<N_PLAYERS)
+    if(player >= 0 && player <= N_PLAYERS)
         desired_vel[player].y = y;
 }
 
@@ -189,7 +196,7 @@ void Strategy::setDesiredYVel(int player, double y)
 
 void Strategy::setDesiredAngVel(int player, double ang)
 {
-    if(player>0 && player<N_PLAYERS)
+    if(player >= 0 && player <= N_PLAYERS)
         desired_vel[player].ang = ang;
 }
 
