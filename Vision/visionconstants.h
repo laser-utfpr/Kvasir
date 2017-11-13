@@ -1,7 +1,7 @@
 #ifndef VISIONCONSTANTS_H
 #define VISIONCONSTANTS_H
 
-#define CAMERA_ID 0
+#define CAMERA_ID 1
 
 #define FRAME_WIDTH 1920
 #define FRAME_HEIGHT 1080

@@ -77,9 +77,18 @@ void AttackMode::calculateVelocities(Strategy* strat)
             break;
         }
     }
+
     //std::cout << std::endl << "attacker = " << attacker << std::endl;
     //std::cout << std::endl << "attacker dest = " << attacker_destination.first << ',' << attacker_destination.second << std::endl;
     velocity attacker_vel = calculateVelocity(seen_field.robot[attacker],attacker_destination);
+
+    /*entity lol;
+    std::pair<double,double> lul(seen_field.ball.x,seen_field.ball.y);
+    lol.found = true;
+    lol.x = 600.0;
+    lol.y = 600.0;
+    lol.angle = 0.0;
+    velocity attacker_vel = calculateVelocity(lol,lul);*/
 
     strat->setDesiredXVel(goalkeeper,goalkeeper_vel.x);
     strat->setDesiredYVel(goalkeeper,goalkeeper_vel.y);

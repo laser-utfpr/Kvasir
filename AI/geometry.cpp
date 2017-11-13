@@ -45,37 +45,49 @@ velocity calculateVelocity(entity ent, std::pair<double,double> destination)
     vel.y = destination.second - ent.y;
 
     //invert x because of mirroring
-    if(INVERT_X)
-        vel.x = -vel.x;
+    if(INVERT_Y)
+        vel.y = -vel.y;
     //rotating axis to the robot´s orientation
-    double cosine = cos(ent.angle), sine = sin(ent.angle);
-    if(ANGLE_ORIENTATION == ANTI_CLOCKWISE)
+    double cosine = cos(ent.angle), sine = sin(ent.angle), x_backup = vel.x;
+
+    if(ANGLE_ORIENTATION == CLOCKWISE)
     {
-        vel.x = ent.x*cosine - ent.y*sine;
-        vel.y = ent.x*sine + ent.y*cosine;
+        vel.x = vel.x*cosine - vel.y*sine;
+        vel.y = x_backup*sine + vel.y*cosine;
     }
-    else //if(ANGLE_ORIENTATION == CLOCKWISE)
+    else //if(ANGLE_ORIENTATION == ANTI_CLOCKWISE)
     {
-        vel.x = ent.x*cosine + ent.y*sine;
-        vel.y = ent.y*cosine - ent.x*sine;
+        vel.x = vel.x*cosine + vel.y*sine;
+        vel.y = vel.y*cosine - x_backup*sine;
     }
 
-    if(vel.x != 0.0 && vel.y != 0.0)
+    if(vel.x != 0.0)
     {
-        double normalizer;
-        //normalizing to max velocity
-        if(vel.x*vel.x > vel.y*vel.y)
+        if(vel.y != 0.0)
         {
-            normalizer = MAX_VELOCITY/vel.x;
-            vel.x = MAX_VELOCITY;
-            vel.y = vel.y*normalizer;
+            double normalizer;
+            //normalizing to max velocity
+            if(abs(vel.x) > abs(vel.y))
+            {
+                normalizer = MAX_VELOCITY/abs(vel.x);
+                vel.x = vel.x > 0 ? MAX_VELOCITY : -MAX_VELOCITY;
+                vel.y = vel.y*normalizer;
+            }
+            else
+            {
+                normalizer = MAX_VELOCITY/abs(vel.y);
+                vel.y = vel.y > 0 ? MAX_VELOCITY : -MAX_VELOCITY;
+                vel.x = vel.x*normalizer;
+            }
         }
         else
         {
-            normalizer = MAX_VELOCITY/vel.y;
-            vel.y = MAX_VELOCITY;
-            vel.x = vel.x*normalizer;
+            vel.x = vel.x > 0 ? MAX_VELOCITY : -MAX_VELOCITY;
         }
+    }
+    else if(vel.y != 0.0)
+    {
+        vel.y = vel.y > 0 ? MAX_VELOCITY : -MAX_VELOCITY;
     }
 
     //adjusting angle to move with a face to the destination

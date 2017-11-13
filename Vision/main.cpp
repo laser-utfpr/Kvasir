@@ -5,7 +5,7 @@
 #define PRINT_MASKS false
 #define TRACK_OBJECTS true
 #define PRINT_OBJECTS false
-#define SHOW_IMAGE true
+#define SHOW_IMAGE false
 #define PRINT_TIME false
 #define FIXED_SAMPLING_PERIOD false
 

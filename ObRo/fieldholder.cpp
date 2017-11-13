@@ -427,7 +427,7 @@ void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
                             }
 
                             //adjusting to reference listed in obroconstants.h
-                            ent->angle = atan2(identifiers->x - best_candidate->x,identifiers->y - best_candidate->y)
+                            ent->angle = atan2(identifiers->y - best_candidate->y,identifiers->x - best_candidate->x)
                                     + 3.0*M_PI_4;
                             destroyList(candidates);
                             destroyList(identifiers);
@@ -463,7 +463,7 @@ void FieldHolder::findRobot1(entity* ent, ObjectList *objects)
                             }
 
                             //adjusting to reference listed in obroconstants.h
-                            ent->angle = atan2(identifiers->x - aux->x,identifiers->y - aux->y) + 3.0*M_PI_4;
+                            ent->angle = atan2(identifiers->y - aux->y, identifiers->x - aux->x) + 3.0*M_PI_4;
                             destroyList(candidates);
                             destroyList(identifiers);
                             return;
@@ -623,7 +623,7 @@ void FieldHolder::findRobot3(entity* ent, ObjectList *objects)
 
                             //adjusting to reference listed in obroconstants.h
                             colorObject* middle = findMiddleIdentifier(identifiers);
-                            ent->angle = atan2(middle->y-best_candidate->y,middle->x-best_candidate->x) + 3.0*M_PI_4;
+                            ent->angle = atan2(middle->y-best_candidate->y,middle->x-best_candidate->x) + M_PI_4;
                             destroyList(candidates);
                             destroyList(identifiers);
                             return;
@@ -661,7 +661,7 @@ void FieldHolder::findRobot3(entity* ent, ObjectList *objects)
 
                             //adjusting to reference listed in obroconstants.h
                             colorObject* middle = findMiddleIdentifier(identifiers);
-                            ent->angle = atan2(middle->y-best_candidate->y,middle->x-best_candidate->x) + 3.0*M_PI_4;
+                            ent->angle = atan2(middle->y-best_candidate->y,middle->x-best_candidate->x) + M_PI_4;
                             destroyList(candidates);
                             destroyList(identifiers);
                             return;
