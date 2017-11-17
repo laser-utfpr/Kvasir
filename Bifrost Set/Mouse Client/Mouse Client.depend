@@ -1,0 +1,118 @@
+# depslib dependency file v1.0
+1454463974 source:/home/odin/Desktop/Bifrost Project/Bifrost 7/Client/Mouse Client/main.cpp
+	"Principal.h"
+
+1454522303 /home/odin/Desktop/Bifrost Project/Bifrost 7/Client/Mouse Client/Principal.h
+	"MemoryClient.h"
+	"MousePointer.h"
+	<stdio.h>
+
+1454465631 /home/odin/Desktop/Bifrost Project/Bifrost 7/Client/Mouse Client/MousePointer.h
+	<X11/Xlib.h>
+	<time.h>
+	<unistd.h>
+	<stdio.h>
+
+1454465631 source:/home/odin/Desktop/Bifrost Project/Bifrost 7/Client/Mouse Client/MousePointer.cpp
+	"MousePointer.h"
+
+1453961172 source:/home/odin/Desktop/Bifrost Project/Bifrost 7/Client/Mouse Client/MemoryClient.cpp
+	"MemoryClient.h"
+
+1453960554 /home/odin/Desktop/Bifrost Project/Bifrost 7/Client/Mouse Client/MemoryClient.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+
+1454463974 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Mouse Client/main.cpp
+	"Principal.h"
+
+1475950593 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Mouse Client/Principal.h
+	"MemoryClient.h"
+	"MousePointer.h"
+	<stdio.h>
+
+1454465631 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Mouse Client/MousePointer.h
+	<X11/Xlib.h>
+	<time.h>
+	<unistd.h>
+	<stdio.h>
+
+1475948028 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Mouse Client/MousePointer.cpp
+	"MousePointer.h"
+
+1475950148 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Mouse Client/MemoryClient.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+	"RobotMsg.h"
+
+1475950510 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Mouse Client/MemoryClient.cpp
+	"MemoryClient.h"
+
+1475941734 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Mouse Client/RobotMsg.h
+
+1454460374 source:/home/odin/Desktop/Bifrost Set/Mouse Client/main.cpp
+	"Principal.h"
+
+1504551997 /home/odin/Desktop/Bifrost Set/Mouse Client/Principal.h
+	"MemoryClient.h"
+	"MousePointer.h"
+	<stdio.h>
+
+1504034199 /home/odin/Desktop/Bifrost Set/Mouse Client/MemoryClient.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+	"RobotMsg.h"
+
+1475938134 /home/odin/Desktop/Bifrost Set/Mouse Client/RobotMsg.h
+
+1502742070 /home/odin/Desktop/Bifrost Set/Mouse Client/MousePointer.h
+	<X11/Xlib.h>
+	<time.h>
+	<unistd.h>
+	<stdio.h>
+
+1504551745 source:/home/odin/Desktop/Bifrost Set/Mouse Client/MemoryClient.cpp
+	"MemoryClient.h"
+
+1504024560 source:/home/odin/Desktop/Bifrost Set/Mouse Client/MousePointer.cpp
+	"MousePointer.h"
+
+1454460374 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Mouse Client/main.cpp
+	"Principal.h"
+
+1509820777 /home/odin/Desktop/versão 1.2/Bifrost Set/Mouse Client/Principal.h
+	"MemoryClient.h"
+	"MousePointer.h"
+	<stdio.h>
+
+1504034199 /home/odin/Desktop/versão 1.2/Bifrost Set/Mouse Client/MemoryClient.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+	"RobotMsg.h"
+
+1475938134 /home/odin/Desktop/versão 1.2/Bifrost Set/Mouse Client/RobotMsg.h
+
+1502742070 /home/odin/Desktop/versão 1.2/Bifrost Set/Mouse Client/MousePointer.h
+	<X11/Xlib.h>
+	<time.h>
+	<unistd.h>
+	<stdio.h>
+
+1504551745 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Mouse Client/MemoryClient.cpp
+	"MemoryClient.h"
+
+1504024560 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Mouse Client/MousePointer.cpp
+	"MousePointer.h"
+

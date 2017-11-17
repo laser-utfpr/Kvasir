@@ -1,0 +1,3977 @@
+STATS:Robo numero 1 com o MAC ADDRESS 0013a20040c0460e foi adicionado!
+
+-----------------------------------
+
+STATS:Robo numero 0 com o MAC ADDRESS 0013a20040bd9fbe foi adicionado!
+
+-----------------------------------
+
+STATS:O programa Esta travado com hex fixos!!
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a20040bda005' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 f7
+
+-----------------------------------
+
+RADIO: Transmitindo para '1' com MAC '0013a20040c0460e' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 45
+
+-----------------------------------
+
+RADIO: Transmitindo para '0' com MAC '0013a20040bd9fbe' o pacote  a0 00 00 00 00 00 00 00 00 00 00 00 00 3f
+
+-----------------------------------
+
+Robo	|Endereco MAC	|Velocidade X	|Velocidade Y	|Velocidade Ang	|Escrito por	|
+
+-----------------------------------
+
+2	| 0013a20040bda005	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+1	| 0013a20040c0460e	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+0	| 0013a20040bd9fbe	| 0.00m/s	| 0.00m/s	| 0.00angs/s	|SERVIDOR	|
+
+-----------------------------------
+
+RADIO: Transmitindo para '2' com MAC '0013a2

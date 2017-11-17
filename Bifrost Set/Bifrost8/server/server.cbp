@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="server" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/server" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/server" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="Principal.cpp" />
+		<Unit filename="Principal.h" />
+		<Unit filename="ServerConstantes.h" />
+		<Unit filename="display/Colors.h" />
+		<Unit filename="display/Display.cpp" />
+		<Unit filename="display/Display.h" />
+		<Unit filename="listaEncadeada/ListaRobos.cpp" />
+		<Unit filename="listaEncadeada/ListaRobos.h" />
+		<Unit filename="listaEncadeada/MemoryServer.cpp" />
+		<Unit filename="listaEncadeada/MemoryServer.h" />
+		<Unit filename="listaEncadeada/Robo.cpp" />
+		<Unit filename="listaEncadeada/Robo.h" />
+		<Unit filename="listaEncadeada/Robos.h" />
+		<Unit filename="listaEncadeada/RobotMsg.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="radio/Radio.cpp" />
+		<Unit filename="radio/Radio.h" />
+		<Unit filename="radio/XbeeAPI.cpp" />
+		<Unit filename="radio/XbeeAPI.h" />
+		<Unit filename="radio/rs232.cpp" />
+		<Unit filename="radio/rs232.h" />
+		<Unit filename="relacaoRobos/RELACAO.txt" />
+		<Unit filename="relacaoRobos/RelacaoRobos.cpp" />
+		<Unit filename="relacaoRobos/RelacaoRobos.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

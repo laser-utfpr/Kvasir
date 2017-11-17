@@ -1,0 +1,749 @@
+# depslib dependency file v1.0
+1475970299 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/display/Display.cpp
+	"Display.h"
+
+1472611297 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/display/Display.h
+	<stdio.h>
+	<string.h>
+	"Colors.h"
+
+1453855594 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/display/Colors.h
+
+1475947605 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/listaEncadeada/MemoryServer.cpp
+	"MemoryServer.h"
+
+1475951467 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/listaEncadeada/MemoryServer.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+	"RobotMsg.h"
+
+1473963695 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/listaEncadeada/RobotMsg.h
+
+1476204996 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/listaEncadeada/Robo.cpp
+	"Robo.h"
+
+1476198795 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/listaEncadeada/Robo.h
+	"MemoryServer.h"
+	"RobotMsg.h"
+
+1474397067 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/main.cpp
+	"Principal.h"
+
+1476208735 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/Principal.h
+	<unistd.h>
+	"display/Display.h"
+	"listaEncadeada/ListaRobos.h"
+	"relacaoRobos/RelacaoRobos.h"
+	"listaEncadeada/Robo.h"
+	"radio/Radio.h"
+	"radio/XbeeAPI.h"
+	"string.h"
+
+1474410297 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/listaEncadeada/ListaRobos.h
+	"Robo.h"
+
+1474398389 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/relacaoRobos/RelacaoRobos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1474406131 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/relacaoRobos/RelacaoRobos.cpp
+	"RelacaoRobos.h"
+
+1474410911 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/listaEncadeada/ListaRobos.cpp
+	"ListaRobos.h"
+
+1476204479 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/radio/Radio.h
+
+1476205122 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/radio/XbeeAPI.h
+
+1476204459 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/radio/Radio.cpp
+	<stdlib.h>
+	<stdio.h>
+	<sstream>
+	<string>
+	<iostream>
+	"rs232.h"
+	"Radio.h"
+
+1412159526 /home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/radio/rs232.h
+	<stdio.h>
+	<string.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<limits.h>
+	<windows.h>
+
+1412159526 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/radio/rs232.cpp
+	"rs232.h"
+
+1476205126 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/radio/XbeeAPI.cpp
+	"XbeeAPI.h"
+	<stdio.h>
+
+1476214717 source:/home/brenner/Área de Trabalho/Futebol de Robôs/Bifrost/Módulos da nova Bifrost/Bifrost8/server/Principal.cpp
+	"Principal.h"
+
+1476216654 source:/home/odin/Desktop/Bifrost8/server/Principal.cpp
+	"Principal.h"
+
+1476205134 /home/odin/Desktop/Bifrost8/server/Principal.h
+	<unistd.h>
+	"display/Display.h"
+	"listaEncadeada/ListaRobos.h"
+	"relacaoRobos/RelacaoRobos.h"
+	"listaEncadeada/Robo.h"
+	"radio/Radio.h"
+	"radio/XbeeAPI.h"
+	"string.h"
+
+1472607696 /home/odin/Desktop/Bifrost8/server/display/Display.h
+	<stdio.h>
+	<string.h>
+	"Colors.h"
+
+1453851994 /home/odin/Desktop/Bifrost8/server/display/Colors.h
+
+1474406696 /home/odin/Desktop/Bifrost8/server/listaEncadeada/ListaRobos.h
+	"Robo.h"
+
+1476195194 /home/odin/Desktop/Bifrost8/server/listaEncadeada/Robo.h
+	"MemoryServer.h"
+	"RobotMsg.h"
+
+1475947866 /home/odin/Desktop/Bifrost8/server/listaEncadeada/MemoryServer.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+	"RobotMsg.h"
+
+1473960094 /home/odin/Desktop/Bifrost8/server/listaEncadeada/RobotMsg.h
+
+1474394788 /home/odin/Desktop/Bifrost8/server/relacaoRobos/RelacaoRobos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1476200878 /home/odin/Desktop/Bifrost8/server/radio/Radio.h
+
+1476201522 /home/odin/Desktop/Bifrost8/server/radio/XbeeAPI.h
+
+1475966698 source:/home/odin/Desktop/Bifrost8/server/display/Display.cpp
+	"Display.h"
+
+1474407310 source:/home/odin/Desktop/Bifrost8/server/listaEncadeada/ListaRobos.cpp
+	"ListaRobos.h"
+
+1475944004 source:/home/odin/Desktop/Bifrost8/server/listaEncadeada/MemoryServer.cpp
+	"MemoryServer.h"
+
+1476201396 source:/home/odin/Desktop/Bifrost8/server/listaEncadeada/Robo.cpp
+	"Robo.h"
+
+1474393466 source:/home/odin/Desktop/Bifrost8/server/main.cpp
+	"Principal.h"
+
+1476200858 source:/home/odin/Desktop/Bifrost8/server/radio/Radio.cpp
+	<stdlib.h>
+	<stdio.h>
+	<sstream>
+	<string>
+	<iostream>
+	"rs232.h"
+	"Radio.h"
+
+1412155926 /home/odin/Desktop/Bifrost8/server/radio/rs232.h
+	<stdio.h>
+	<string.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<limits.h>
+	<windows.h>
+
+1476201526 source:/home/odin/Desktop/Bifrost8/server/radio/XbeeAPI.cpp
+	"XbeeAPI.h"
+	<stdio.h>
+
+1412155926 source:/home/odin/Desktop/Bifrost8/server/radio/rs232.cpp
+	"rs232.h"
+
+1474402530 source:/home/odin/Desktop/Bifrost8/server/relacaoRobos/RelacaoRobos.cpp
+	"RelacaoRobos.h"
+
+1504031573 source:/home/odin/Desktop/Bifrost Set/Bifrost8/server/display/Display.cpp
+	"Display.h"
+
+1504031561 /home/odin/Desktop/Bifrost Set/Bifrost8/server/display/Display.h
+	<stdio.h>
+	<string.h>
+	"Colors.h"
+
+1453851994 /home/odin/Desktop/Bifrost Set/Bifrost8/server/display/Colors.h
+
+1474407310 source:/home/odin/Desktop/Bifrost Set/Bifrost8/server/listaEncadeada/ListaRobos.cpp
+	"ListaRobos.h"
+
+1474406696 /home/odin/Desktop/Bifrost Set/Bifrost8/server/listaEncadeada/ListaRobos.h
+	"Robo.h"
+
+1476195194 /home/odin/Desktop/Bifrost Set/Bifrost8/server/listaEncadeada/Robo.h
+	"MemoryServer.h"
+	"RobotMsg.h"
+
+1475947866 /home/odin/Desktop/Bifrost Set/Bifrost8/server/listaEncadeada/MemoryServer.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+	"RobotMsg.h"
+
+1473960094 /home/odin/Desktop/Bifrost Set/Bifrost8/server/listaEncadeada/RobotMsg.h
+
+1504033837 source:/home/odin/Desktop/Bifrost Set/Bifrost8/server/listaEncadeada/MemoryServer.cpp
+	"MemoryServer.h"
+
+1504290546 source:/home/odin/Desktop/Bifrost Set/Bifrost8/server/listaEncadeada/Robo.cpp
+	"Robo.h"
+
+1474393466 source:/home/odin/Desktop/Bifrost Set/Bifrost8/server/main.cpp
+	"Principal.h"
+
+1501180486 /home/odin/Desktop/Bifrost Set/Bifrost8/server/Principal.h
+	<unistd.h>
+	"display/Display.h"
+	"listaEncadeada/ListaRobos.h"
+	"relacaoRobos/RelacaoRobos.h"
+	"listaEncadeada/Robo.h"
+	"radio/Radio.h"
+	"radio/XbeeAPI.h"
+	"string.h"
+
+1501180159 /home/odin/Desktop/Bifrost Set/Bifrost8/server/relacaoRobos/RelacaoRobos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1476200878 /home/odin/Desktop/Bifrost Set/Bifrost8/server/radio/Radio.h
+
+1505159515 /home/odin/Desktop/Bifrost Set/Bifrost8/server/radio/XbeeAPI.h
+
+1504636766 source:/home/odin/Desktop/Bifrost Set/Bifrost8/server/Principal.cpp
+	"Principal.h"
+
+1504732357 source:/home/odin/Desktop/Bifrost Set/Bifrost8/server/radio/Radio.cpp
+	<stdlib.h>
+	<stdio.h>
+	<sstream>
+	<string>
+	<iostream>
+	"rs232.h"
+	"Radio.h"
+
+1412155926 /home/odin/Desktop/Bifrost Set/Bifrost8/server/radio/rs232.h
+	<stdio.h>
+	<string.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<limits.h>
+	<windows.h>
+
+1412155926 source:/home/odin/Desktop/Bifrost Set/Bifrost8/server/radio/rs232.cpp
+	"rs232.h"
+
+1504732357 source:/home/odin/Desktop/Bifrost Set/Bifrost8/server/radio/XbeeAPI.cpp
+	"XbeeAPI.h"
+	<stdio.h>
+	<string.h>
+
+1504031346 source:/home/odin/Desktop/Bifrost Set/Bifrost8/server/relacaoRobos/RelacaoRobos.cpp
+	"RelacaoRobos.h"
+
+1504031573 source:/home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/display/Display.cpp
+	"Display.h"
+
+1504031561 /home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/display/Display.h
+	<stdio.h>
+	<string.h>
+	"Colors.h"
+
+1453851994 /home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/display/Colors.h
+
+1474407310 source:/home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/ListaRobos.cpp
+	"ListaRobos.h"
+
+1474406696 /home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/ListaRobos.h
+	"Robo.h"
+
+1476195194 /home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/Robo.h
+	"MemoryServer.h"
+	"RobotMsg.h"
+
+1475947866 /home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/MemoryServer.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+	"RobotMsg.h"
+
+1473960094 /home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/RobotMsg.h
+
+1504033837 source:/home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/MemoryServer.cpp
+	"MemoryServer.h"
+
+1504290546 source:/home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/Robo.cpp
+	"Robo.h"
+
+1474393466 source:/home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/main.cpp
+	"Principal.h"
+
+1501180486 /home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/Principal.h
+	<unistd.h>
+	"display/Display.h"
+	"listaEncadeada/ListaRobos.h"
+	"relacaoRobos/RelacaoRobos.h"
+	"listaEncadeada/Robo.h"
+	"radio/Radio.h"
+	"radio/XbeeAPI.h"
+	"string.h"
+
+1501180159 /home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/relacaoRobos/RelacaoRobos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1476200878 /home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/radio/Radio.h
+
+1505416449 /home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/radio/XbeeAPI.h
+
+1504636766 source:/home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/Principal.cpp
+	"Principal.h"
+
+1504732357 source:/home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/radio/Radio.cpp
+	<stdlib.h>
+	<stdio.h>
+	<sstream>
+	<string>
+	<iostream>
+	"rs232.h"
+	"Radio.h"
+
+1412155926 /home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/radio/rs232.h
+	<stdio.h>
+	<string.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<limits.h>
+	<windows.h>
+
+1412155926 source:/home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/radio/rs232.cpp
+	"rs232.h"
+
+1504031346 source:/home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/relacaoRobos/RelacaoRobos.cpp
+	"RelacaoRobos.h"
+
+1505416449 source:/home/odin/Desktop/vesão 1.1/Bifrost Set/Bifrost8/server/radio/XbeeAPI.cpp
+	"XbeeAPI.h"
+	<stdio.h>
+	<string.h>
+
+1504031573 source:/home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/display/Display.cpp
+	"Display.h"
+
+1504031561 /home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/display/Display.h
+	<stdio.h>
+	<string.h>
+	"Colors.h"
+
+1453851994 /home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/display/Colors.h
+
+1474407310 source:/home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/ListaRobos.cpp
+	"ListaRobos.h"
+
+1474406696 /home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/ListaRobos.h
+	"Robo.h"
+
+1476195194 /home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/Robo.h
+	"MemoryServer.h"
+	"RobotMsg.h"
+
+1475947866 /home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/MemoryServer.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+	"RobotMsg.h"
+
+1473960094 /home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/RobotMsg.h
+
+1504033837 source:/home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/MemoryServer.cpp
+	"MemoryServer.h"
+
+1504290546 source:/home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/listaEncadeada/Robo.cpp
+	"Robo.h"
+
+1474393466 source:/home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/main.cpp
+	"Principal.h"
+
+1501180486 /home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/Principal.h
+	<unistd.h>
+	"display/Display.h"
+	"listaEncadeada/ListaRobos.h"
+	"relacaoRobos/RelacaoRobos.h"
+	"listaEncadeada/Robo.h"
+	"radio/Radio.h"
+	"radio/XbeeAPI.h"
+	"string.h"
+
+1501180159 /home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/relacaoRobos/RelacaoRobos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1476200878 /home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/radio/Radio.h
+
+1509727255 /home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/radio/XbeeAPI.h
+
+1509450038 source:/home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/Principal.cpp
+	"Principal.h"
+
+1509727255 source:/home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/radio/Radio.cpp
+	<stdlib.h>
+	<stdio.h>
+	<sstream>
+	<string>
+	<iostream>
+	"rs232.h"
+	"Radio.h"
+
+1412155926 /home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/radio/rs232.h
+	<stdio.h>
+	<string.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<limits.h>
+	<windows.h>
+
+1412155926 source:/home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/radio/rs232.cpp
+	"rs232.h"
+
+1509726772 source:/home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/radio/XbeeAPI.cpp
+	"XbeeAPI.h"
+	<stdio.h>
+	<string.h>
+
+1504031346 source:/home/odin/Desktop/versão 1.1/Bifrost Set/Bifrost8/server/relacaoRobos/RelacaoRobos.cpp
+	"RelacaoRobos.h"
+
+1504031573 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/display/Display.cpp
+	"Display.h"
+
+1504031561 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/display/Display.h
+	<stdio.h>
+	<string.h>
+	"Colors.h"
+
+1453851994 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/display/Colors.h
+
+1474407310 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/listaEncadeada/ListaRobos.cpp
+	"ListaRobos.h"
+
+1474406696 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/listaEncadeada/ListaRobos.h
+	"Robo.h"
+
+1476195194 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/listaEncadeada/Robo.h
+	"MemoryServer.h"
+	"RobotMsg.h"
+
+1475947866 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/listaEncadeada/MemoryServer.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+	"RobotMsg.h"
+
+1473960094 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/listaEncadeada/RobotMsg.h
+
+1504033837 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/listaEncadeada/MemoryServer.cpp
+	"MemoryServer.h"
+
+1504290546 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/listaEncadeada/Robo.cpp
+	"Robo.h"
+
+1474393466 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/main.cpp
+	"Principal.h"
+
+1501180486 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/Principal.h
+	<unistd.h>
+	"display/Display.h"
+	"listaEncadeada/ListaRobos.h"
+	"relacaoRobos/RelacaoRobos.h"
+	"listaEncadeada/Robo.h"
+	"radio/Radio.h"
+	"radio/XbeeAPI.h"
+	"string.h"
+
+1501180159 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/relacaoRobos/RelacaoRobos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1476200878 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/radio/Radio.h
+
+1509727255 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/radio/XbeeAPI.h
+
+1509450038 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/Principal.cpp
+	"Principal.h"
+
+1509727255 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/radio/Radio.cpp
+	<stdlib.h>
+	<stdio.h>
+	<sstream>
+	<string>
+	<iostream>
+	"rs232.h"
+	"Radio.h"
+
+1412155926 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/radio/rs232.h
+	<stdio.h>
+	<string.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<limits.h>
+	<windows.h>
+
+1412155926 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/radio/rs232.cpp
+	"rs232.h"
+
+1509727319 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/radio/XbeeAPI.cpp
+	"XbeeAPI.h"
+	<stdio.h>
+	<string.h>
+
+1504031346 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8 /server/relacaoRobos/RelacaoRobos.cpp
+	"RelacaoRobos.h"
+
+1504031573 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/display/Display.cpp
+	"Display.h"
+
+1504031561 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/display/Display.h
+	<stdio.h>
+	<string.h>
+	"Colors.h"
+
+1453851994 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/display/Colors.h
+
+1474407310 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/ListaRobos.cpp
+	"ListaRobos.h"
+
+1474406696 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/ListaRobos.h
+	"Robo.h"
+
+1476195194 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/Robo.h
+	"MemoryServer.h"
+	"RobotMsg.h"
+
+1475947866 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/MemoryServer.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+	"RobotMsg.h"
+
+1473960094 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/RobotMsg.h
+
+1504033837 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/MemoryServer.cpp
+	"MemoryServer.h"
+
+1504290546 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/Robo.cpp
+	"Robo.h"
+
+1474393466 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/main.cpp
+	"Principal.h"
+
+1501180486 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/Principal.h
+	<unistd.h>
+	"display/Display.h"
+	"listaEncadeada/ListaRobos.h"
+	"relacaoRobos/RelacaoRobos.h"
+	"listaEncadeada/Robo.h"
+	"radio/Radio.h"
+	"radio/XbeeAPI.h"
+	"string.h"
+
+1501180159 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/relacaoRobos/RelacaoRobos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1476200878 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/Radio.h
+
+1509727255 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/XbeeAPI.h
+
+1509727255 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/Radio.cpp
+	<stdlib.h>
+	<stdio.h>
+	<sstream>
+	<string>
+	<iostream>
+	"rs232.h"
+	"Radio.h"
+
+1412155926 /home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/rs232.h
+	<stdio.h>
+	<string.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<limits.h>
+	<windows.h>
+
+1412155926 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/rs232.cpp
+	"rs232.h"
+
+1509727319 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/XbeeAPI.cpp
+	"XbeeAPI.h"
+	<stdio.h>
+	<string.h>
+
+1504031346 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/relacaoRobos/RelacaoRobos.cpp
+	"RelacaoRobos.h"
+
+1509733224 source:/home/odin/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/Principal.cpp
+	"Principal.h"
+
+1510781515 source:/home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/display/Display.cpp
+	"Display.h"
+
+1510789291 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/display/Display.h
+	<stdio.h>
+	<string.h>
+	"Colors.h"
+	"../ServerConstantes.h"
+
+1510680814 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/display/Colors.h
+
+1510784061 source:/home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/ListaRobos.cpp
+	"ListaRobos.h"
+
+1510781783 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/ListaRobos.h
+	"Robo.h"
+
+1510786065 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/Robo.h
+	"MemoryServer.h"
+	"RobotMsg.h"
+
+1510789319 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/MemoryServer.h
+	<sys/types.h>
+	<sys/ipc.h>
+	<sys/shm.h>
+	<stdio.h>
+	<string.h>
+	"RobotMsg.h"
+	"../ServerConstantes.h"
+
+1510773706 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/RobotMsg.h
+
+1510780963 source:/home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/MemoryServer.cpp
+	"MemoryServer.h"
+
+1510781938 source:/home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/listaEncadeada/Robo.cpp
+	"Robo.h"
+
+1510773706 source:/home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/main.cpp
+	"Principal.h"
+
+1510785957 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/Principal.h
+	<unistd.h>
+	"display/Display.h"
+	"listaEncadeada/ListaRobos.h"
+	"relacaoRobos/RelacaoRobos.h"
+	"listaEncadeada/Robo.h"
+	"radio/Radio.h"
+	"radio/XbeeAPI.h"
+	"string.h"
+	<iostream>
+
+1510789347 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/relacaoRobos/RelacaoRobos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../ServerConstantes.h"
+
+1510789356 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/Radio.h
+	<stdlib.h>
+	<stdio.h>
+	<sstream>
+	<string>
+	<iostream>
+	"rs232.h"
+	"../ServerConstantes.h"
+
+1510789378 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/XbeeAPI.h
+	"../ServerConstantes.h"
+
+1510786736 source:/home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/Principal.cpp
+	"Principal.h"
+
+1510789403 source:/home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/Radio.cpp
+	"Radio.h"
+
+1510680814 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/rs232.h
+	<stdio.h>
+	<string.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<limits.h>
+	<windows.h>
+
+1510680814 source:/home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/rs232.cpp
+	"rs232.h"
+
+1510783825 source:/home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/radio/XbeeAPI.cpp
+	"XbeeAPI.h"
+
+1510781526 source:/home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/relacaoRobos/RelacaoRobos.cpp
+	"RelacaoRobos.h"
+
+1510789457 /home/alefe/Desktop/versão 1.2/Bifrost Set/Bifrost8/server/ServerConstantes.h
+
