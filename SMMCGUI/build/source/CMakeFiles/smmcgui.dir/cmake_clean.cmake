@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "SMMCGUI_automoc.cpp"
   "CMakeFiles/smmcgui.dir/SMMCGUI.cpp.o"
+  "CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.o"
   "../lib/libsmmcgui.pdb"
   "../lib/libsmmcgui.so"
   "../lib/libsmmcgui.so.0.0.0"

@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/laser/Desktop/Kvasir/SMMCGUI/source/GUI/mainwindow.cpp" "/home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.o"
   "/home/laser/Desktop/Kvasir/SMMCGUI/source/SMMCGUI.cpp" "/home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/smmcgui.dir/SMMCGUI.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

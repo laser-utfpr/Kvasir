@@ -1,11 +1,11 @@
 set(LIB_HEADERS
   ../include/SMMCGUI.hpp
-  ../include/mainwindow.hpp
+  ../include/GUI/mainwindow.hpp
 )
 
 set(LIB_SOURCES
   ../source/SMMCGUI.cpp
-  ../source/mainwindow.cpp
+  ../source/GUI/mainwindow.cpp
 )
 
 set(APP_SOURCES

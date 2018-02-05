@@ -1,1 +1,1 @@
-/usr/bin/c++  -fPIC   -shared -Wl,-soname,libsmmcgui.so.0.0.0 -o ../lib/libsmmcgui.so.0.0.0 CMakeFiles/smmcgui.dir/SMMCGUI.cpp.o 
+/usr/bin/c++  -fPIC   -shared -Wl,-soname,libsmmcgui.so.0.0.0 -o ../lib/libsmmcgui.so.0.0.0 CMakeFiles/smmcgui.dir/SMMCGUI.cpp.o CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.o 

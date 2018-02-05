@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/laser/Desktop/Kvasir/SMMCGUI/build
 include source/CMakeFiles/SMMCGUI_automoc.dir/progress.make
 
 source/CMakeFiles/SMMCGUI_automoc:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic moc for target SMMCGUI"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic moc and uic for target SMMCGUI"
 	cd /home/laser/Desktop/Kvasir/SMMCGUI/build/source && /usr/bin/cmake -E cmake_autogen /home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/SMMCGUI_automoc.dir/ ""
 
 SMMCGUI_automoc: source/CMakeFiles/SMMCGUI_automoc
