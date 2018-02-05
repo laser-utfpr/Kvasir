@@ -8,3 +8,5 @@
       try: apt-get install libopencv-dev  
    -Boost Interprocess  
       try: apt-get install libboost-dev  
+   -Qt5  
+      try: apt-get install qttools5-dev  
