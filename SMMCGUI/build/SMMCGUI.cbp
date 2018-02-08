@@ -5,7 +5,7 @@
       <Option title="SMMCGUI" />
       <Option makefile_is_custom="1" />
       <Option compiler="gcc" />
-      <Option virtualFolders="CMake Files\;CMake Files\include\;CMake Files\include\GUI\;CMake Files\include\SMMC\;CMake Files\source\;CMake Files\source\GUI\;CMake Files\source\SMMC\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;" />
+      <Option virtualFolders="CMake Files\;CMake Files\include\;CMake Files\include\GUI\;CMake Files\include\SMMC\;CMake Files\source\;CMake Files\source\GUI\;CMake Files\source\SMMC\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\forms\;" />
       <Build>
       <Target title="all">
          <Option working_dir="/home/laser/Desktop/Kvasir/SMMCGUI/build" />
@@ -56,15 +56,23 @@
          <Compiler>
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/build/include" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/build/source" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/forms" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include/GUI" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include/SMMC" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/source" />
             <Add directory="/usr/include" />
             <Add directory="/usr/include/c++/5" />
             <Add directory="/usr/include/c++/5/backward" />
             <Add directory="/usr/include/x86_64-linux-gnu" />
             <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets" />
             <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
             <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64" />
             <Add directory="/usr/local/include" />
          </Compiler>
          <MakeCommands>
@@ -83,15 +91,23 @@
          <Compiler>
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/build/include" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/build/source" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/forms" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include/GUI" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include/SMMC" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/source" />
             <Add directory="/usr/include" />
             <Add directory="/usr/include/c++/5" />
             <Add directory="/usr/include/c++/5/backward" />
             <Add directory="/usr/include/x86_64-linux-gnu" />
             <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui" />
+            <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets" />
             <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
             <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64" />
             <Add directory="/usr/local/include" />
          </Compiler>
          <MakeCommands>
@@ -114,7 +130,10 @@
             <Add option="-DQT_NO_DEBUG" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/build/include" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/build/source" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/forms" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include/GUI" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include/SMMC" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/source" />
             <Add directory="/usr/include" />
             <Add directory="/usr/include/c++/5" />
@@ -150,7 +169,10 @@
             <Add option="-DQT_NO_DEBUG" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/build/include" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/build/source" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/forms" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include/GUI" />
+            <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/include/SMMC" />
             <Add directory="/home/laser/Desktop/Kvasir/SMMCGUI/source" />
             <Add directory="/usr/include" />
             <Add directory="/usr/include/c++/5" />
@@ -173,6 +195,16 @@
             <DistClean command="/usr/bin/make -f &quot;/home/laser/Desktop/Kvasir/SMMCGUI/build/source/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
+      <Target title="smmcgui_automoc">
+         <Option working_dir="/home/laser/Desktop/Kvasir/SMMCGUI/build/source" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/laser/Desktop/Kvasir/SMMCGUI/build/source/Makefile&quot;  VERBOSE=1 smmcgui_automoc" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/laser/Desktop/Kvasir/SMMCGUI/build/source/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/laser/Desktop/Kvasir/SMMCGUI/build/source/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/laser/Desktop/Kvasir/SMMCGUI/build/source/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
       <Target title="SMMCGUI_automoc">
          <Option working_dir="/home/laser/Desktop/Kvasir/SMMCGUI/build/source" />
          <Option type="4" />
@@ -186,6 +218,7 @@
       </Build>
       <Unit filename="/home/laser/Desktop/Kvasir/SMMCGUI/source/GUI/mainwindow.cpp">
          <Option target="smmcgui"/>
+         <Option target="SMMCGUI"/>
       </Unit>
       <Unit filename="/home/laser/Desktop/Kvasir/SMMCGUI/source/SMMCGUI.cpp">
          <Option target="smmcgui"/>
@@ -256,6 +289,9 @@
       </Unit>
       <Unit filename="/home/laser/Desktop/Kvasir/SMMCGUI/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
           <Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/laser/Desktop/Kvasir/SMMCGUI/forms/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\forms\" />
       </Unit>
    </Project>
 </CodeBlocks_project_file>

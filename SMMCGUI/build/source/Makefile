@@ -152,6 +152,21 @@ SMMCGUI/fast:
 .PHONY : SMMCGUI/fast
 
 # Convenience name for target.
+source/CMakeFiles/smmcgui_automoc.dir/rule:
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/smmcgui_automoc.dir/rule
+.PHONY : source/CMakeFiles/smmcgui_automoc.dir/rule
+
+# Convenience name for target.
+smmcgui_automoc: source/CMakeFiles/smmcgui_automoc.dir/rule
+
+.PHONY : smmcgui_automoc
+
+# fast build rule for target.
+smmcgui_automoc/fast:
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/smmcgui_automoc.dir/build.make source/CMakeFiles/smmcgui_automoc.dir/build
+.PHONY : smmcgui_automoc/fast
+
+# Convenience name for target.
 source/CMakeFiles/SMMCGUI_automoc.dir/rule:
 	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/SMMCGUI_automoc.dir/rule
 .PHONY : source/CMakeFiles/SMMCGUI_automoc.dir/rule
@@ -173,6 +188,7 @@ GUI/mainwindow.o: GUI/mainwindow.cpp.o
 # target to build an object file
 GUI/mainwindow.cpp.o:
 	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/smmcgui.dir/build.make source/CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.o
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/GUI/mainwindow.cpp.o
 .PHONY : GUI/mainwindow.cpp.o
 
 GUI/mainwindow.i: GUI/mainwindow.cpp.i
@@ -182,6 +198,7 @@ GUI/mainwindow.i: GUI/mainwindow.cpp.i
 # target to preprocess a source file
 GUI/mainwindow.cpp.i:
 	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/smmcgui.dir/build.make source/CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.i
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/GUI/mainwindow.cpp.i
 .PHONY : GUI/mainwindow.cpp.i
 
 GUI/mainwindow.s: GUI/mainwindow.cpp.s
@@ -191,6 +208,7 @@ GUI/mainwindow.s: GUI/mainwindow.cpp.s
 # target to generate assembly for a file
 GUI/mainwindow.cpp.s:
 	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/smmcgui.dir/build.make source/CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.s
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/GUI/mainwindow.cpp.s
 .PHONY : GUI/mainwindow.cpp.s
 
 SMMCGUI.o: SMMCGUI.cpp.o
@@ -250,6 +268,60 @@ SMMCGUI_automoc.cpp.s:
 	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/SMMCGUI_automoc.cpp.s
 .PHONY : SMMCGUI_automoc.cpp.s
 
+__/include/GUI/moc_mainwindow.o: __/include/GUI/moc_mainwindow.cpp.o
+
+.PHONY : __/include/GUI/moc_mainwindow.o
+
+# target to build an object file
+__/include/GUI/moc_mainwindow.cpp.o:
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/__/include/GUI/moc_mainwindow.cpp.o
+.PHONY : __/include/GUI/moc_mainwindow.cpp.o
+
+__/include/GUI/moc_mainwindow.i: __/include/GUI/moc_mainwindow.cpp.i
+
+.PHONY : __/include/GUI/moc_mainwindow.i
+
+# target to preprocess a source file
+__/include/GUI/moc_mainwindow.cpp.i:
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/__/include/GUI/moc_mainwindow.cpp.i
+.PHONY : __/include/GUI/moc_mainwindow.cpp.i
+
+__/include/GUI/moc_mainwindow.s: __/include/GUI/moc_mainwindow.cpp.s
+
+.PHONY : __/include/GUI/moc_mainwindow.s
+
+# target to generate assembly for a file
+__/include/GUI/moc_mainwindow.cpp.s:
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/__/include/GUI/moc_mainwindow.cpp.s
+.PHONY : __/include/GUI/moc_mainwindow.cpp.s
+
+__/include/moc_SMMCGUI.o: __/include/moc_SMMCGUI.cpp.o
+
+.PHONY : __/include/moc_SMMCGUI.o
+
+# target to build an object file
+__/include/moc_SMMCGUI.cpp.o:
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/__/include/moc_SMMCGUI.cpp.o
+.PHONY : __/include/moc_SMMCGUI.cpp.o
+
+__/include/moc_SMMCGUI.i: __/include/moc_SMMCGUI.cpp.i
+
+.PHONY : __/include/moc_SMMCGUI.i
+
+# target to preprocess a source file
+__/include/moc_SMMCGUI.cpp.i:
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/__/include/moc_SMMCGUI.cpp.i
+.PHONY : __/include/moc_SMMCGUI.cpp.i
+
+__/include/moc_SMMCGUI.s: __/include/moc_SMMCGUI.cpp.s
+
+.PHONY : __/include/moc_SMMCGUI.s
+
+# target to generate assembly for a file
+__/include/moc_SMMCGUI.cpp.s:
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/__/include/moc_SMMCGUI.cpp.s
+.PHONY : __/include/moc_SMMCGUI.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -277,6 +349,33 @@ main.cpp.s:
 	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+smmcgui_automoc.o: smmcgui_automoc.cpp.o
+
+.PHONY : smmcgui_automoc.o
+
+# target to build an object file
+smmcgui_automoc.cpp.o:
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/smmcgui.dir/build.make source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o
+.PHONY : smmcgui_automoc.cpp.o
+
+smmcgui_automoc.i: smmcgui_automoc.cpp.i
+
+.PHONY : smmcgui_automoc.i
+
+# target to preprocess a source file
+smmcgui_automoc.cpp.i:
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/smmcgui.dir/build.make source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.i
+.PHONY : smmcgui_automoc.cpp.i
+
+smmcgui_automoc.s: smmcgui_automoc.cpp.s
+
+.PHONY : smmcgui_automoc.s
+
+# target to generate assembly for a file
+smmcgui_automoc.cpp.s:
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build && $(MAKE) -f source/CMakeFiles/smmcgui.dir/build.make source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.s
+.PHONY : smmcgui_automoc.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -288,6 +387,7 @@ help:
 	@echo "... SMMCGUI"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... smmcgui_automoc"
 	@echo "... SMMCGUI_automoc"
 	@echo "... GUI/mainwindow.o"
 	@echo "... GUI/mainwindow.i"
@@ -298,9 +398,18 @@ help:
 	@echo "... SMMCGUI_automoc.o"
 	@echo "... SMMCGUI_automoc.i"
 	@echo "... SMMCGUI_automoc.s"
+	@echo "... __/include/GUI/moc_mainwindow.o"
+	@echo "... __/include/GUI/moc_mainwindow.i"
+	@echo "... __/include/GUI/moc_mainwindow.s"
+	@echo "... __/include/moc_SMMCGUI.o"
+	@echo "... __/include/moc_SMMCGUI.i"
+	@echo "... __/include/moc_SMMCGUI.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... smmcgui_automoc.o"
+	@echo "... smmcgui_automoc.i"
+	@echo "... smmcgui_automoc.s"
 .PHONY : help
 
 

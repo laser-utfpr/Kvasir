@@ -130,6 +130,7 @@ source/all: source/SMMC/all
 # Convenience name for "clean" pass in the directory.
 source/clean: source/CMakeFiles/smmcgui.dir/clean
 source/clean: source/CMakeFiles/SMMCGUI.dir/clean
+source/clean: source/CMakeFiles/smmcgui_automoc.dir/clean
 source/clean: source/CMakeFiles/SMMCGUI_automoc.dir/clean
 source/clean: source/GUI/clean
 source/clean: source/SMMC/clean
@@ -146,10 +147,10 @@ source/preinstall: source/SMMC/preinstall
 # Target rules for target source/CMakeFiles/smmcgui.dir
 
 # All Build rule for target.
-source/CMakeFiles/smmcgui.dir/all:
+source/CMakeFiles/smmcgui.dir/all: source/CMakeFiles/smmcgui_automoc.dir/all
 	$(MAKE) -f source/CMakeFiles/smmcgui.dir/build.make source/CMakeFiles/smmcgui.dir/depend
 	$(MAKE) -f source/CMakeFiles/smmcgui.dir/build.make source/CMakeFiles/smmcgui.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=6,7,8 "Built target smmcgui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=11,12,13,14 "Built target smmcgui"
 .PHONY : source/CMakeFiles/smmcgui.dir/all
 
 # Include target in all.
@@ -159,7 +160,7 @@ all: source/CMakeFiles/smmcgui.dir/all
 
 # Build rule for subdir invocation for target.
 source/CMakeFiles/smmcgui.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/smmcgui.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles 0
 .PHONY : source/CMakeFiles/smmcgui.dir/rule
@@ -186,7 +187,7 @@ clean: source/CMakeFiles/smmcgui.dir/clean
 source/CMakeFiles/SMMCGUI.dir/all: source/CMakeFiles/SMMCGUI_automoc.dir/all
 	$(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/depend
 	$(MAKE) -f source/CMakeFiles/SMMCGUI.dir/build.make source/CMakeFiles/SMMCGUI.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=1,2,3,4 "Built target SMMCGUI"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target SMMCGUI"
 .PHONY : source/CMakeFiles/SMMCGUI.dir/all
 
 # Include target in all.
@@ -196,7 +197,7 @@ all: source/CMakeFiles/SMMCGUI.dir/all
 
 # Build rule for subdir invocation for target.
 source/CMakeFiles/SMMCGUI.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles 10
 	$(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/SMMCGUI.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles 0
 .PHONY : source/CMakeFiles/SMMCGUI.dir/rule
@@ -217,13 +218,45 @@ clean: source/CMakeFiles/SMMCGUI.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target source/CMakeFiles/smmcgui_automoc.dir
+
+# All Build rule for target.
+source/CMakeFiles/smmcgui_automoc.dir/all:
+	$(MAKE) -f source/CMakeFiles/smmcgui_automoc.dir/build.make source/CMakeFiles/smmcgui_automoc.dir/depend
+	$(MAKE) -f source/CMakeFiles/smmcgui_automoc.dir/build.make source/CMakeFiles/smmcgui_automoc.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=15 "Built target smmcgui_automoc"
+.PHONY : source/CMakeFiles/smmcgui_automoc.dir/all
+
+# Build rule for subdir invocation for target.
+source/CMakeFiles/smmcgui_automoc.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/smmcgui_automoc.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles 0
+.PHONY : source/CMakeFiles/smmcgui_automoc.dir/rule
+
+# Convenience name for target.
+smmcgui_automoc: source/CMakeFiles/smmcgui_automoc.dir/rule
+
+.PHONY : smmcgui_automoc
+
+# clean rule for target.
+source/CMakeFiles/smmcgui_automoc.dir/clean:
+	$(MAKE) -f source/CMakeFiles/smmcgui_automoc.dir/build.make source/CMakeFiles/smmcgui_automoc.dir/clean
+.PHONY : source/CMakeFiles/smmcgui_automoc.dir/clean
+
+# clean rule for target.
+clean: source/CMakeFiles/smmcgui_automoc.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target source/CMakeFiles/SMMCGUI_automoc.dir
 
 # All Build rule for target.
 source/CMakeFiles/SMMCGUI_automoc.dir/all:
 	$(MAKE) -f source/CMakeFiles/SMMCGUI_automoc.dir/build.make source/CMakeFiles/SMMCGUI_automoc.dir/depend
 	$(MAKE) -f source/CMakeFiles/SMMCGUI_automoc.dir/build.make source/CMakeFiles/SMMCGUI_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=5 "Built target SMMCGUI_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=10 "Built target SMMCGUI_automoc"
 .PHONY : source/CMakeFiles/SMMCGUI_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -283,6 +316,24 @@ source/SMMC/clean:
 source/SMMC/preinstall:
 
 .PHONY : source/SMMC/preinstall
+
+#=============================================================================
+# Directory level rules for directory forms
+
+# Convenience name for "all" pass in the directory.
+forms/all:
+
+.PHONY : forms/all
+
+# Convenience name for "clean" pass in the directory.
+forms/clean:
+
+.PHONY : forms/clean
+
+# Convenience name for "preinstall" pass in the directory.
+forms/preinstall:
+
+.PHONY : forms/preinstall
 
 #=============================================================================
 # Special targets to cleanup operation of make.

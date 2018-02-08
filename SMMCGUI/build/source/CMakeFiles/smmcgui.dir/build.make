@@ -105,19 +105,45 @@ source/CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.o.provides: source/CMakeFiles/s
 source/CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.o.provides.build: source/CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.o
 
 
+source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o: source/CMakeFiles/smmcgui.dir/flags.make
+source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o: source/smmcgui_automoc.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o"
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o -c /home/laser/Desktop/Kvasir/SMMCGUI/build/source/smmcgui_automoc.cpp
+
+source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.i"
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/laser/Desktop/Kvasir/SMMCGUI/build/source/smmcgui_automoc.cpp > CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.i
+
+source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.s"
+	cd /home/laser/Desktop/Kvasir/SMMCGUI/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/laser/Desktop/Kvasir/SMMCGUI/build/source/smmcgui_automoc.cpp -o CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.s
+
+source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o.requires:
+
+.PHONY : source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o.requires
+
+source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o.provides: source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o.requires
+	$(MAKE) -f source/CMakeFiles/smmcgui.dir/build.make source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o.provides.build
+.PHONY : source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o.provides
+
+source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o.provides.build: source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o
+
+
 # Object files for target smmcgui
 smmcgui_OBJECTS = \
 "CMakeFiles/smmcgui.dir/SMMCGUI.cpp.o" \
-"CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.o"
+"CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.o" \
+"CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o"
 
 # External object files for target smmcgui
 smmcgui_EXTERNAL_OBJECTS =
 
 lib/libsmmcgui.so.0.0.0: source/CMakeFiles/smmcgui.dir/SMMCGUI.cpp.o
 lib/libsmmcgui.so.0.0.0: source/CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.o
+lib/libsmmcgui.so.0.0.0: source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o
 lib/libsmmcgui.so.0.0.0: source/CMakeFiles/smmcgui.dir/build.make
 lib/libsmmcgui.so.0.0.0: source/CMakeFiles/smmcgui.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library ../lib/libsmmcgui.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/laser/Desktop/Kvasir/SMMCGUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library ../lib/libsmmcgui.so"
 	cd /home/laser/Desktop/Kvasir/SMMCGUI/build/source && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/smmcgui.dir/link.txt --verbose=$(VERBOSE)
 	cd /home/laser/Desktop/Kvasir/SMMCGUI/build/source && $(CMAKE_COMMAND) -E cmake_symlink_library ../lib/libsmmcgui.so.0.0.0 ../lib/libsmmcgui.so.0.0.0 ../lib/libsmmcgui.so
 
@@ -131,6 +157,7 @@ source/CMakeFiles/smmcgui.dir/build: lib/libsmmcgui.so
 
 source/CMakeFiles/smmcgui.dir/requires: source/CMakeFiles/smmcgui.dir/SMMCGUI.cpp.o.requires
 source/CMakeFiles/smmcgui.dir/requires: source/CMakeFiles/smmcgui.dir/GUI/mainwindow.cpp.o.requires
+source/CMakeFiles/smmcgui.dir/requires: source/CMakeFiles/smmcgui.dir/smmcgui_automoc.cpp.o.requires
 
 .PHONY : source/CMakeFiles/smmcgui.dir/requires
 

@@ -4,8 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/laser/Desktop/Kvasir/SMMCGUI/source/GUI/mainwindow.cpp" "/home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/SMMCGUI.dir/GUI/mainwindow.cpp.o"
   "/home/laser/Desktop/Kvasir/SMMCGUI/source/SMMCGUI.cpp" "/home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/SMMCGUI.dir/SMMCGUI.cpp.o"
   "/home/laser/Desktop/Kvasir/SMMCGUI/build/source/SMMCGUI_automoc.cpp" "/home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/SMMCGUI.dir/SMMCGUI_automoc.cpp.o"
+  "/home/laser/Desktop/Kvasir/SMMCGUI/build/source/__/include/GUI/moc_mainwindow.cpp" "/home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/SMMCGUI.dir/__/include/GUI/moc_mainwindow.cpp.o"
+  "/home/laser/Desktop/Kvasir/SMMCGUI/build/source/__/include/moc_SMMCGUI.cpp" "/home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/SMMCGUI.dir/__/include/moc_SMMCGUI.cpp.o"
   "/home/laser/Desktop/Kvasir/SMMCGUI/source/main.cpp" "/home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/SMMCGUI.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -23,6 +26,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "source"
   "../source"
   "../include"
+  "../include/SMMC"
+  "../include/GUI"
+  "../forms"
   "include"
   "/usr/include/x86_64-linux-gnu/qt5"
   "/usr/include/x86_64-linux-gnu/qt5/QtWidgets"

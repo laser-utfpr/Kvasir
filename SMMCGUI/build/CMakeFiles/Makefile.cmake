@@ -11,6 +11,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.5.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.5.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.5.1/CMakeSystem.cmake"
+  "../forms/CMakeLists.txt"
   "../include/CMakeLists.txt"
   "../include/GUI/CMakeLists.txt"
   "../include/SMMC/CMakeLists.txt"
@@ -67,11 +68,13 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "source/CMakeFiles/CMakeDirectoryInformation.cmake"
   "source/GUI/CMakeFiles/CMakeDirectoryInformation.cmake"
   "source/SMMC/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "forms/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "source/CMakeFiles/smmcgui.dir/DependInfo.cmake"
   "source/CMakeFiles/SMMCGUI.dir/DependInfo.cmake"
+  "source/CMakeFiles/smmcgui_automoc.dir/DependInfo.cmake"
   "source/CMakeFiles/SMMCGUI_automoc.dir/DependInfo.cmake"
   )

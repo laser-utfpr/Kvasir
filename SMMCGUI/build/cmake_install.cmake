@@ -36,6 +36,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/laser/Desktop/Kvasir/SMMCGUI/build/include/cmake_install.cmake")
   include("/home/laser/Desktop/Kvasir/SMMCGUI/build/source/cmake_install.cmake")
+  include("/home/laser/Desktop/Kvasir/SMMCGUI/build/forms/cmake_install.cmake")
 
 endif()
 

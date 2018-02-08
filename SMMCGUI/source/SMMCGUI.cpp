@@ -1,1 +1,1 @@
-#include "../include/SMMCGUI.hpp"
+#include "SMMCGUI.hpp"

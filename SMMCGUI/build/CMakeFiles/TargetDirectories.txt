@@ -15,6 +15,7 @@
 /home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/SMMCGUI.dir
 /home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/rebuild_cache.dir
 /home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/edit_cache.dir
+/home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/smmcgui_automoc.dir
 /home/laser/Desktop/Kvasir/SMMCGUI/build/source/CMakeFiles/SMMCGUI_automoc.dir
 /home/laser/Desktop/Kvasir/SMMCGUI/build/source/GUI/CMakeFiles/test.dir
 /home/laser/Desktop/Kvasir/SMMCGUI/build/source/GUI/CMakeFiles/edit_cache.dir
@@ -22,3 +23,6 @@
 /home/laser/Desktop/Kvasir/SMMCGUI/build/source/SMMC/CMakeFiles/test.dir
 /home/laser/Desktop/Kvasir/SMMCGUI/build/source/SMMC/CMakeFiles/edit_cache.dir
 /home/laser/Desktop/Kvasir/SMMCGUI/build/source/SMMC/CMakeFiles/rebuild_cache.dir
+/home/laser/Desktop/Kvasir/SMMCGUI/build/forms/CMakeFiles/test.dir
+/home/laser/Desktop/Kvasir/SMMCGUI/build/forms/CMakeFiles/edit_cache.dir
+/home/laser/Desktop/Kvasir/SMMCGUI/build/forms/CMakeFiles/rebuild_cache.dir

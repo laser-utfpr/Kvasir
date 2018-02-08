@@ -148,6 +148,19 @@ SMMCGUI/fast:
 .PHONY : SMMCGUI/fast
 
 #=============================================================================
+# Target rules for targets named smmcgui_automoc
+
+# Build rule for target.
+smmcgui_automoc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 smmcgui_automoc
+.PHONY : smmcgui_automoc
+
+# fast build rule for target.
+smmcgui_automoc/fast:
+	$(MAKE) -f source/CMakeFiles/smmcgui_automoc.dir/build.make source/CMakeFiles/smmcgui_automoc.dir/build
+.PHONY : smmcgui_automoc/fast
+
+#=============================================================================
 # Target rules for targets named SMMCGUI_automoc
 
 # Build rule for target.
@@ -171,6 +184,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... smmcgui"
 	@echo "... SMMCGUI"
+	@echo "... smmcgui_automoc"
 	@echo "... SMMCGUI_automoc"
 .PHONY : help
 

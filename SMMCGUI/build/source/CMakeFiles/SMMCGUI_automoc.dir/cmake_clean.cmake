@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "smmcgui_automoc.cpp"
   "SMMCGUI_automoc.cpp"
   "CMakeFiles/SMMCGUI_automoc"
 )
