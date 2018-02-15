@@ -12,3 +12,13 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_button_clicked()
+{
+    ui->label->setText(box_text);
+}
+
+void MainWindow::on_box_textChanged(const QString &arg1)
+{
+    box_text = arg1;
+}
