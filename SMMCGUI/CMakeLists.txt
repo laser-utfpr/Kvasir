@@ -11,7 +11,6 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_SOURCE_DIR}/include/SMMC
     ${PROJECT_SOURCE_DIR}/include/GUI
-    ${PROJECT_SOURCE_DIR}/forms
     ${PROJECT_BINARY_DIR}/include
 )
 
@@ -21,7 +20,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
+#set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 enable_testing()
 add_subdirectory(include)
 add_subdirectory(source)
-add_subdirectory(forms)

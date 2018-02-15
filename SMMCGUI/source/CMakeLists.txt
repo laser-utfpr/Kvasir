@@ -14,15 +14,11 @@ set(APP_SOURCES
   main.cpp
 )
 
-set(FORMS
-  ../forms/mainwindow.ui
-)
+set(APP_LIBRARY_NAME smmcgui)
 
-set(LIBRARY_NAME smmcgui)
+add_library(${APP_LIBRARY_NAME} SHARED ${LIB_SOURCES})
 
-add_library(${LIBRARY_NAME} SHARED ${LIB_SOURCES})
-
-set_target_properties(${LIBRARY_NAME} PROPERTIES
+set_target_properties(${APP_LIBRARY_NAME} PROPERTIES
   VERSION ${VERSION}
   FRAMEWORK FALSE
   PUBLIC_HEADER "${LIB_HEADERS}"
@@ -33,20 +29,19 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
+#set_property(TARGET Qt5::Core APPEND PROPERTY INTERFACE_COMPILE_OPTIONS -fPIC)
 
-set(CMAKE_CXX_FLAGS_COVERAGE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-arcs -ftest-coverage")
+#set(CMAKE_CXX_FLAGS_COVERAGE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-arcs -ftest-coverage")
 
-set_target_properties(Qt5::Core PROPERTIES MAP_IMPORTED_CONFIG_COVERAGE "RELEASE")
+#set_target_properties(Qt5::Core PROPERTIES MAP_IMPORTED_CONFIG_COVERAGE "RELEASE")
 
 include_directories(${Qt5Widgets_INCLUDE_DIRS})
 include_directories(${Qt5Core_INCLUDE_DIRS})
 
-qt5_wrap_cpp(HEADERS_MOC ${LIB_HEADERS})
-
 set(APPLICATION_NAME SMMCGUI)
-add_executable(${APPLICATION_NAME} ${APP_SOURCES} ${FORMS_HEADERS} ${HEADERS_MOC})
+add_executable(${APPLICATION_NAME} ${APP_SOURCES})
 
-target_link_libraries(${APPLICATION_NAME} Qt5::Widgets)
+target_link_libraries(${APPLICATION_NAME} Qt5::Widgets ${APP_LIBRARY_NAME})
 
 add_subdirectory(GUI)
 add_subdirectory(SMMC)
