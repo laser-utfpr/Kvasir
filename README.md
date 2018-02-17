@@ -2,8 +2,9 @@
 
    Dependencies:  
   
-   -CMake 2.8  
-      try: apt-get install cmake  
+   -CMake 3.9  
+      get it at: https://cmake.org/download/
+      (if you have an older version it's advisable to unistall it first)  
    -OpenCV 2  
       try: apt-get install libopencv-dev  
    -Boost Interprocess  
