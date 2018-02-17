@@ -22,3 +22,5 @@ void MainWindow::on_box_textChanged(const QString &arg1)
 {
     box_text = arg1;
 }
+
+#include "moc_mainwindow.cpp"
