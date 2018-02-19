@@ -6,6 +6,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    cam.open(0);
+
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(processFrame()));
+    timer->start(20);
+
+    ui->pauseButton->setText("pause");
 }
 
 MainWindow::~MainWindow()
@@ -13,14 +21,31 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_button_clicked()
+void MainWindow::processFrame()
 {
-    ui->label->setText(box_text);
+    cam.read(cam_image);
+    if(cam_image.empty())
+        return;
+
+    cv::cvtColor(cam_image, cam_image, CV_BGR2RGB);
+    QImage qimage((uchar*)cam_image.data, cam_image.cols, cam_image.rows,
+                  cam_image.step, QImage::Format_RGB888);
+
+    ui->image->setPixmap(QPixmap::fromImage(qimage));
 }
 
-void MainWindow::on_box_textChanged(const QString &arg1)
+void MainWindow::on_pauseButton_clicked()
 {
-    box_text = arg1;
+    if(timer->isActive())
+    {
+        timer->stop();
+        ui->pauseButton->setText("resume");
+    }
+    else
+    {
+        ui->pauseButton->setText("pause");
+        timer->start(20);
+    }
 }
 
 #include "moc_mainwindow.cpp"

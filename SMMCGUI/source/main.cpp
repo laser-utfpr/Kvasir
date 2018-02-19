@@ -1,6 +1,7 @@
 
 #include "SMMCGUI.hpp"
 #include "mainwindow.hpp"
+#include "smmcthread.hpp"
 
 #include <QApplication>
 
@@ -17,6 +18,9 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.setWindowTitle("SMMCGUI");
     w.show();
+
+    SMMCThread smmc;
+    smmc.start();
 
     return a.exec();
 }

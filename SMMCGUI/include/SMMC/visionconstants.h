@@ -1,0 +1,8 @@
+#ifndef VISIONCONSTANTS_H
+#define VISIONCONSTANTS_H
+
+enum color {RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET};
+
+#define N_ROBOTS 3
+
+#endif // VISIONCONSTANTS_H

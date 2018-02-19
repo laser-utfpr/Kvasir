@@ -1,8 +1,13 @@
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
 
+#include <QtCore>
 #include <QWidget>
 #include <QMainWindow>
+
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 namespace Ui
 {
@@ -13,19 +18,21 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+private:
+    Ui::MainWindow *ui;
+
+    cv::VideoCapture cam;
+    cv::Mat cam_image;
+
+    QTimer* timer;
+
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
 private slots:
-
-    void on_button_clicked();
-
-    void on_box_textChanged(const QString &arg1);
-
-private:
-    Ui::MainWindow *ui;
-    QString box_text;
+    void processFrame();
+    void on_pauseButton_clicked();
 };
 
 #endif // MAINWINDOW_HPP

@@ -1,8 +1,9 @@
 #Defining the executable's sources
 set(APP_SOURCES
-  ${SOURCE_DIR}/GUI/mainwindow.cpp
   ${SOURCE_DIR}/SMMCGUI.cpp
   ${SOURCE_DIR}/main.cpp
+  ${SOURCE_DIR}/GUI/mainwindow.cpp
+  ${SOURCE_DIR}/SMMC/smmcthread.cpp
 )
 
 #Creating the executable
