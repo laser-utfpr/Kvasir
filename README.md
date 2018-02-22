@@ -7,7 +7,7 @@
       (if you have an older version it's advisable to unistall it first)  
    -OpenCV 2  
       try: apt-get install libopencv-dev  
-   -Boost Interprocess  
+   -Boost Libraries  
       try: apt-get install libboost-dev  
    -Qt5  
       try: apt-get install qttools5-dev  

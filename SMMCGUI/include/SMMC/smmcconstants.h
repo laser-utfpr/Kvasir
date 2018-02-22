@@ -1,0 +1,6 @@
+#ifndef SMMCCONSTANTS_H
+#define SMMCCONSTANTS_H
+
+#define SAVED_SETTINGS_FILENAME "settings.sp"
+
+#endif // SMMCCONSTANTS_H

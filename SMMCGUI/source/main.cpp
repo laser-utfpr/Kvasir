@@ -15,11 +15,14 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    SharedParameters shared_parameters;
+
     MainWindow w;
     w.setWindowTitle("SMMCGUI");
     w.show();
 
-    SMMCThread smmc;
+    SMMCThread smmc(shared_parameters);
     smmc.start();
 
     return a.exec();

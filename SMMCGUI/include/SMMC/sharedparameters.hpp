@@ -1,23 +1,35 @@
 #ifndef SHAREDPARAMETERS_HPP
 #define SHAREDPARAMETERS_HPP
 
-#include <QtCore>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 
 #include <iostream>
 #include <fstream>
 
-#include "field.hpp"
+#include "visionfield.hpp"
+#include "smmcconstants.h"
 
 class SharedParameters
 {
 private:
-    //Vision
-    Field field;
-    //AI
-    //Communication
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive &ar, const unsigned int /* file_version */);
+
+    void loadDefaults(void);
+
+    //Vision variables
+    VisionField field;
+
+    //AI variables
+
+    //Communication variables
+
 public:
     SharedParameters();
     ~SharedParameters();
+    void loadSettingsFromFile(void);
 };
 
 #endif // SHAREDPARAMETERS_HPP

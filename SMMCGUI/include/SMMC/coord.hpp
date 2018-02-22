@@ -4,10 +4,16 @@
 class Coord
 {
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    inline void serialize(Archive &ar, const unsigned int /* file_version */)
+    {
+        ar & x & y;
+    };
 
 public:
-    int x;
-    int y;
+    double x;
+    double y;
 };
 
 #endif // COORD_HPP

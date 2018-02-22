@@ -4,6 +4,7 @@ set(APP_SOURCES
   ${SOURCE_DIR}/main.cpp
   ${SOURCE_DIR}/GUI/mainwindow.cpp
   ${SOURCE_DIR}/SMMC/smmcthread.cpp
+  ${SOURCE_DIR}/SMMC/sharedparameters.cpp
 )
 
 #Creating the executable
