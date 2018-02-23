@@ -8,6 +8,6 @@
    -OpenCV 2  
       try: apt-get install libopencv-dev  
    -Boost Libraries  
-      try: apt-get install libboost-dev  
+      try: apt-get install libboost-all-dev  
    -Qt5  
       try: apt-get install qttools5-dev  
