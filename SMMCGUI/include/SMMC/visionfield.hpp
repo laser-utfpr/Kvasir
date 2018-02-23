@@ -2,6 +2,9 @@
 #define VISIONFIELD_HPP
 
 #include <opencv2/core/core.hpp>
+
+#include <boost/serialization/utility.hpp>
+
 #include <vector>
 
 #include "visionconstants.h"
@@ -41,6 +44,8 @@ public:
     Coord lower_right_searched_region_corner;
 
     //use filters?
+
+    inline VisionField(){};
 };
 
 #endif // VISIONFIELD_HPP

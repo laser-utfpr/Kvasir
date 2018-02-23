@@ -38,6 +38,7 @@ find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIR})
 
 #Including Boost
+find_package(Boost COMPONENTS serialization REQUIRED)
 include_directories(${Boost_INCLUDE_DIR})
 
 #Including pthread

@@ -1,7 +1,7 @@
 #include "sharedparameters.hpp"
 
 template<class Archive>
-void SharedParameters::serialize(Archive &ar, const unsigned int /* file_version */)
+void SharedParameters::serialize(Archive &ar, const unsigned int version)
 {
     ar & field; // & other stuff to be saved
 }

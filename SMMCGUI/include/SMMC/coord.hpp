@@ -1,6 +1,8 @@
 #ifndef COORD_HPP
 #define COORD_HPP
 
+#include <boost/serialization/utility.hpp>
+
 class Coord
 {
 private:
@@ -14,6 +16,7 @@ private:
 public:
     double x;
     double y;
+    inline Coord(){};
 };
 
 #endif // COORD_HPP

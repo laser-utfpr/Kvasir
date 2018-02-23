@@ -13,6 +13,7 @@ public:
     double angle;
     bool already_found;
     bool found_last_frame;
+    inline Entity(){};
 };
 
 #endif // ENTITY_HPP

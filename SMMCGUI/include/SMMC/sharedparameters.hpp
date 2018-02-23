@@ -1,6 +1,7 @@
 #ifndef SHAREDPARAMETERS_HPP
 #define SHAREDPARAMETERS_HPP
 
+#include <boost/serialization/utility.hpp>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
 
@@ -15,7 +16,7 @@ class SharedParameters
 private:
     friend class boost::serialization::access;
     template<class Archive>
-    void serialize(Archive &ar, const unsigned int /* file_version */);
+    void serialize(Archive &ar, const unsigned int version);
 
     void loadDefaults(void);
 
