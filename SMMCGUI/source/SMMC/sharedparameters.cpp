@@ -3,7 +3,7 @@
 template<class Archive>
 void SharedParameters::serialize(Archive &ar, const unsigned int version)
 {
-    ar & field; // & other stuff to be saved
+    ar & vision_field; // & other stuff to be saved
 }
 
 void SharedParameters::loadDefaults(void)

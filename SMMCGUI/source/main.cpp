@@ -1,17 +1,8 @@
-
-#include "SMMCGUI.hpp"
 #include "mainwindow.hpp"
 #include "smmcthread.hpp"
 #include "sharedparameters.hpp"
 
 #include <QApplication>
-
-/*#include <opencv2/core/core.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/highgui/highgui.hpp>
-
-#include <boost/interprocess/managed_shared_memory.hpp>
-#include <boost/interprocess/offset_ptr.hpp>*/
 
 int main(int argc, char *argv[])
 {
@@ -19,7 +10,7 @@ int main(int argc, char *argv[])
 
     SharedParameters shared_parameters;
     shared_parameters.loadSettingsFromFile();
-    
+
     MainWindow w;
     w.setWindowTitle("SMMCGUI");
     w.show();

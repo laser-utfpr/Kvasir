@@ -8,8 +8,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "visionfield.hpp"
-#include "smmcconstants.h"
+#include "smmclib.hpp"
 
 class SharedParameters
 {
@@ -21,7 +20,7 @@ private:
     void loadDefaults(void);
 
     //Vision variables
-    VisionField field;
+    VisionField vision_field;
 
     //AI variables
 
