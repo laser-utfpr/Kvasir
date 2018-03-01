@@ -9,8 +9,6 @@
 -remember thread brutally stops at end of main
 https://forum.qt.io/topic/20539/what-is-the-correct-way-to-stop-qthread/4
 
--remember to tell the folks that boost doesnt work well on windows
-
 -comment the code a bit as always...
 
 -maybe change smmc constants filename such as "visionconstants.h"
