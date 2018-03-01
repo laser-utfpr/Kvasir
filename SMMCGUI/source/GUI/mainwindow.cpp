@@ -1,11 +1,18 @@
 #include "mainwindow.hpp"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    shared_parameters.loadSettingsFromFile();
+
+    smmc = new SMMCThread(shared_parameters);
+
+    connect(this, SIGNAL(stopSMMC()), smmc, SLOT(stopThread()));
+
+    smmc->start();
 
     cam.open(0);
 
@@ -19,6 +26,9 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    emit stopSMMC();
+    usleep(100);
+    delete smmc;
 }
 
 void MainWindow::processFrame()

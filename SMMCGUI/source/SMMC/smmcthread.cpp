@@ -4,6 +4,8 @@ using namespace boost::interprocess;
 
 SMMCThread::SMMCThread(SharedParameters &sp) : shared_parameters(sp)
 {
+    run_thread = true;
+
     generateKeys();
 
     shared_memory_object::remove(SHARED_MEMORY_BLOCK_NAME);
@@ -12,7 +14,7 @@ SMMCThread::SMMCThread(SharedParameters &sp) : shared_parameters(sp)
 
     constructVisionSMVariables();
     constructAISMVariables();
-    constructCommunicationSMVariables();
+    constructCommSMVariables();
 }
 
 void SMMCThread::generateKeys(void)
@@ -21,13 +23,13 @@ void SMMCThread::generateKeys(void)
         while(vision_write_key == EMPTY_KEY);
     do{ ai_write_key = randomAlphaNumericString(KEY_SIZE); }
         while(vision_write_key == EMPTY_KEY);
-    do{ communication_write_key = randomAlphaNumericString(KEY_SIZE); }
+    do{ comm_write_key = randomAlphaNumericString(KEY_SIZE); }
         while(vision_write_key == EMPTY_KEY);
     do{ vision_read_key = randomAlphaNumericString(KEY_SIZE); }
         while(vision_write_key == EMPTY_KEY);
     do{ ai_read_key = randomAlphaNumericString(KEY_SIZE); }
         while(vision_write_key == EMPTY_KEY);
-    do{ communication_read_key = randomAlphaNumericString(KEY_SIZE); }
+    do{ comm_read_key = randomAlphaNumericString(KEY_SIZE); }
         while(vision_write_key == EMPTY_KEY);
 }
 
@@ -35,20 +37,36 @@ void SMMCThread::constructVisionSMVariables(void)
 {
     sm_vision_write_key = shared_memory->construct<std::string>
                               (VISION_WRITE_KEY_MEMORY_NAME)();
+    *sm_vision_write_key = EMPTY_KEY;
+
     sm_vision_read_key = shared_memory->construct<std::string>
                                (VISION_READ_KEY_MEMORY_NAME)();
+    *sm_vision_read_key = EMPTY_KEY;
+
     sm_vision_field = shared_memory->construct<VisionField>
                               (VISION_FIELD_MEMORY_NAME)();
 }
 
 void SMMCThread::constructAISMVariables(void)
 {
+    sm_ai_write_key = shared_memory->construct<std::string>
+                              (AI_WRITE_KEY_MEMORY_NAME)();
+    *sm_ai_write_key = EMPTY_KEY;
 
+    sm_ai_read_key = shared_memory->construct<std::string>
+                               (AI_READ_KEY_MEMORY_NAME)();
+    *sm_ai_read_key = EMPTY_KEY;
 }
 
-void SMMCThread::constructCommunicationSMVariables(void)
+void SMMCThread::constructCommSMVariables(void)
 {
+    sm_comm_write_key = shared_memory->construct<std::string>
+                              (COMM_WRITE_KEY_MEMORY_NAME)();
+    *sm_comm_write_key = EMPTY_KEY;
 
+    sm_comm_read_key = shared_memory->construct<std::string>
+                               (COMM_READ_KEY_MEMORY_NAME)();
+    *sm_comm_read_key = EMPTY_KEY;
 }
 
 SMMCThread::~SMMCThread()
@@ -92,11 +110,99 @@ std::string SMMCThread::randomAlphaNumericString(int size)
     return str;
 }
 
+void SMMCThread::stopThread(void)
+{
+    run_thread = false;
+}
+
+void SMMCThread::startVision(std::string path)
+{
+    std::string command;
+    command += path;
+    command += ' ';
+    command += vision_write_key;
+    command += ' ';
+    command += vision_read_key;
+    command += " &";
+    int ignored_value = system(command.c_str());
+}
+
+void SMMCThread::startAI(std::string path)
+{
+    std::string command;
+    command += path;
+    command += ' ';
+    command += ai_write_key;
+    command += ' ';
+    command += ai_read_key;
+    command += " &";
+    int ignored_value = system(command.c_str());
+}
+
+void SMMCThread::startComm(std::string path)
+{
+    std::string command;
+    command += path;
+    command += ' ';
+    command += comm_write_key;
+    command += ' ';
+    command += comm_read_key;
+    command += " &";
+    int ignored_value = system(command.c_str());
+}
+
+void SMMCThread::updateVisionOutputSettings(void)
+{
+    //lock shared parameters
+    *sm_vision_read_key = vision_read_key;
+    //output variables to shared memory
+    //unlock shared parameters
+}
+
+void SMMCThread::updateAIOutputSettings(void)
+{
+    //lock shared parameters
+    *sm_ai_read_key = ai_read_key;
+    //output variables to shared memory
+    //unlock shared parameters
+}
+
+void SMMCThread::updateCommOutputSettings(void)
+{
+    //lock shared parameters
+    *sm_comm_read_key = comm_read_key;
+    //output variables to shared memory
+    //unlock shared parameters
+}
+
 void SMMCThread::run()
 {
-    while(1)
+    while(run_thread)
     {
-        ;
+        if(*sm_vision_write_key == vision_write_key)
+        {
+            //lock shared parameters
+            //read variables
+            //unlock shared parameters
+            //emit signal
+            *sm_vision_write_key = EMPTY_KEY;
+        }
+        if(*sm_ai_write_key == ai_write_key)
+        {
+            //lock shared parameters
+            //read variables
+            //unlock shared parameters
+            //emit signal
+            *sm_ai_write_key = EMPTY_KEY;
+        }
+        if(*sm_comm_write_key == comm_write_key)
+        {
+            //lock shared parameters
+            //read variables
+            //unlock shared parameters
+            //emit signal
+            *sm_comm_write_key = EMPTY_KEY;
+        }
     }
 }
 

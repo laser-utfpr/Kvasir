@@ -9,6 +9,7 @@
 #include <string>
 #include <random>
 #include <vector>
+#include <cstdlib>
 
 #include "sharedparameters.hpp"
 #include "smmclib.hpp"
@@ -21,21 +22,24 @@ private:
     //parameters shared between threads
     SharedParameters &shared_parameters;
 
+    //keep running thread flag
+    bool run_thread;
+
     //generated keys
     std::string vision_write_key;
     std::string ai_write_key;
-    std::string communication_write_key;
+    std::string comm_write_key;
     std::string vision_read_key;
     std::string ai_read_key;
-    std::string communication_read_key;
+    std::string comm_read_key;
 
     //shared memory key space
     std::string* sm_vision_write_key;
     std::string* sm_ai_write_key;
-    std::string* sm_communication_write_key;
+    std::string* sm_comm_write_key;
     std::string* sm_vision_read_key;
     std::string* sm_ai_read_key;
-    std::string* sm_communication_read_key;
+    std::string* sm_comm_read_key;
 
     //vision shared memory variables
     VisionField* sm_vision_field;
@@ -53,7 +57,7 @@ private:
     void generateKeys(void);
     void constructVisionSMVariables(void);
     void constructAISMVariables(void);
-    void constructCommunicationSMVariables(void);
+    void constructCommSMVariables(void);
 
 protected:
     void run() override;
@@ -61,8 +65,22 @@ protected:
 public:
     SMMCThread(SharedParameters &sp);
     ~SMMCThread();
+
 signals:
-    //tell GUI something changed
+    void visionInputUpdate(void);
+    void aiInputUpdate(void);
+    void commInputUpdate(void);
+
+public slots:
+    void stopThread(void);
+
+    void startVision(std::string path);
+    void startAI(std::string path);
+    void startComm(std::string path);
+
+    void updateVisionOutputSettings(void);
+    void updateAIOutputSettings(void);
+    void updateCommOutputSettings(void);
 };
 
 #endif // SMMCTHREAD_HPP
