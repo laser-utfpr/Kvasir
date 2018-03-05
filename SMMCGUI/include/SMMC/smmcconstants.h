@@ -22,4 +22,8 @@ enum Color {RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET};
 
 #define VISION_FIELD_MEMORY_NAME "vision_field"
 
+#define AI_FIELD_MEMORY_NAME "ai_field"
+
+#define ROBOT_MOVEMENT_MEMORY_NAME "robot_movement"
+
 #endif // SMMCCONSTANTS_H

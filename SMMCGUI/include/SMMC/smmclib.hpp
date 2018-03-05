@@ -6,5 +6,8 @@
 #include "entity.hpp"
 #include "visionfield.hpp"
 #include "coloredobject.hpp"
+#include "aifield.hpp"
+#include "player.hpp"
+#include "movement.hpp"
 
 #endif // SMMCLIB_HPP

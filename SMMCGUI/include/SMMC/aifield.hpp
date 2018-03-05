@@ -2,12 +2,16 @@
 #define AIFIELD_HPP
 
 #include <boost/serialization/utility.hpp>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 
 #include <vector>
 
 #include "smmcconstants.h"
 #include "coord.hpp"
 #include "entity.hpp"
+#include "player.hpp"
+#include "visionfield.hpp"
 
 class AIField
 {
@@ -17,8 +21,8 @@ private:
     inline void serialize(Archive &ar, const unsigned int /* file_version */)
     {
         ar & left_goal_ulc & left_goal_lrc & right_goal_ulc & right_goal_lrc;
-        left_goalkeeper_area_ulcleft_goalkeeper_area_lrc
-        right_goalkeeper_area_ulc right_goalkeeper_area_lrc;;
+        ar & left_goalkeeper_area_ulc & left_goalkeeper_area_lrc;
+        ar & right_goalkeeper_area_ulc & right_goalkeeper_area_lrc;
     };
 
 public:
@@ -26,7 +30,7 @@ public:
     double image_height;
 
     Entity ball;
-    Entity robot[N_ROBOTS];
+    Player robot[N_ROBOTS];
     Entity enemy_robot[N_ROBOTS];
 
     Coord left_goal_ulc; //upper left corner
@@ -40,6 +44,19 @@ public:
     Coord right_goalkeeper_area_lrc;
 
     inline AIField(){};
+    inline AIField& operator<<(VisionField& vision)
+    {
+        image_width = vision.image_width;
+        image_height = vision.image_height;
+
+        ball = vision.ball;
+        for(int i=0; i<N_ROBOTS; i++)
+            robot[i] = vision.robot[i];
+        for(int i=0; i<N_ROBOTS; i++)
+            enemy_robot[i] = vision.enemy_robot[i];
+
+        return *this;
+    }
 };
 
 #endif // AIFIELD_HPP

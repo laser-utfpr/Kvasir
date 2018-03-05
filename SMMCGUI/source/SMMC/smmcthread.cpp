@@ -56,6 +56,9 @@ void SMMCThread::constructAISMVariables(void)
     sm_ai_read_key = shared_memory->construct<std::string>
                                (AI_READ_KEY_MEMORY_NAME)();
     *sm_ai_read_key = EMPTY_KEY;
+
+    sm_ai_field = shared_memory->construct<AIField>
+                              (AI_FIELD_MEMORY_NAME)();
 }
 
 void SMMCThread::constructCommSMVariables(void)
@@ -67,6 +70,9 @@ void SMMCThread::constructCommSMVariables(void)
     sm_comm_read_key = shared_memory->construct<std::string>
                                (COMM_READ_KEY_MEMORY_NAME)();
     *sm_comm_read_key = EMPTY_KEY;
+
+    sm_robot_movement = shared_memory->construct<Movement>
+                              (ROBOT_MOVEMENT_MEMORY_NAME)[N_ROBOTS]();
 }
 
 SMMCThread::~SMMCThread()
@@ -181,26 +187,19 @@ void SMMCThread::run()
     {
         if(*sm_vision_write_key == vision_write_key)
         {
-            //lock shared parameters
-            //read variables
-            //unlock shared parameters
+            shared_parameters.readVisionParameters(*sm_vision_field);
             //emit signal
             *sm_vision_write_key = EMPTY_KEY;
         }
         if(*sm_ai_write_key == ai_write_key)
         {
-            //lock shared parameters
-            //read variables
-            //unlock shared parameters
+            shared_parameters.readAIParameters(*ai_vision_field);
             //emit signal
             *sm_ai_write_key = EMPTY_KEY;
         }
         if(*sm_comm_write_key == comm_write_key)
         {
-            //lock shared parameters
-            //read variables
-            //unlock shared parameters
-            //emit signal
+            //no comm parameters to be recieved for now
             *sm_comm_write_key = EMPTY_KEY;
         }
     }

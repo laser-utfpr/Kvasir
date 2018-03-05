@@ -4,6 +4,8 @@
 #include <opencv2/core/core.hpp>
 
 #include <boost/serialization/utility.hpp>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 
 #include <vector>
 
@@ -20,7 +22,7 @@ private:
     inline void serialize(Archive &ar, const unsigned int /* file_version */)
     {
         ar & ball_color & ally_center & ally_tag & enemy_center;
-        ar & Coord searched_region_ulc & searched_region_lrc;
+        ar & searched_region_ulc & searched_region_lrc;
     };
 
 public:

@@ -2,6 +2,8 @@
 #define COORD_HPP
 
 #include <boost/serialization/utility.hpp>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 
 class Coord
 {
@@ -16,7 +18,17 @@ private:
 public:
     double x;
     double y;
+
     inline Coord(){};
+    inline Coord& operator=(Coord &copied)
+    {
+        if(this != &copied)
+        {
+            x = copied.x;
+            y = copied.y;
+        }
+        return *this;
+    }
 };
 
 #endif // COORD_HPP

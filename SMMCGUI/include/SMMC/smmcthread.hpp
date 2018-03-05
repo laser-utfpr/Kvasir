@@ -45,8 +45,10 @@ private:
     VisionField* sm_vision_field;
 
     //ai shared memory variables
+    AIField* sm_ai_field;
 
     //communication shared memory variables
+    Movement* sm_robot_movement;
 
     //shared memory block
     boost::interprocess::managed_shared_memory* shared_memory;

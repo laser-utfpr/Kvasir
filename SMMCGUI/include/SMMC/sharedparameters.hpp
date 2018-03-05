@@ -5,6 +5,8 @@
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
 
+#include <QMutex>
+
 #include <iostream>
 #include <fstream>
 
@@ -17,6 +19,8 @@ private:
     template<class Archive>
     void serialize(Archive &ar, const unsigned int version);
 
+    QMutex lock;
+
     void loadDefaults(void);
 
     //Vision variables
@@ -26,11 +30,14 @@ private:
     AIField ai_field;
 
     //Communication variables
+    Movement robot_movement[N_ROBOTS];
 
 public:
     SharedParameters();
     ~SharedParameters();
     void loadSettingsFromFile(void);
+    void readVisionParameters(VisionField v_field);
+    void readAIParameters(AIField a_field);
 };
 
 #endif // SHAREDPARAMETERS_HPP
