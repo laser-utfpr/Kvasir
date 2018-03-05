@@ -23,6 +23,7 @@ private:
     VisionField vision_field;
 
     //AI variables
+    AIField ai_field;
 
     //Communication variables
 

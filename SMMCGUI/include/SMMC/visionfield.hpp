@@ -7,7 +7,7 @@
 
 #include <vector>
 
-#include "visionconstants.h"
+#include "smmcconstants.h"
 #include "coord.hpp"
 #include "entity.hpp"
 #include "coloredobject.hpp"
@@ -20,7 +20,7 @@ private:
     inline void serialize(Archive &ar, const unsigned int /* file_version */)
     {
         ar & ball_color & ally_center & ally_tag & enemy_center;
-        ar & upper_left_searched_region_corner & lower_right_searched_region_corner;
+        ar & Coord searched_region_ulc & searched_region_lrc;
     };
 
 public:
@@ -40,8 +40,8 @@ public:
     Color ally_tag;
     Color enemy_center;
 
-    Coord upper_left_searched_region_corner;
-    Coord lower_right_searched_region_corner;
+    Coord searched_region_ulc; //upper left corner
+    Coord searched_region_lrc; //lower right corner
 
     //use filters?
 

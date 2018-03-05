@@ -2,7 +2,6 @@
 #define SMMCLIB_HPP
 
 #include "smmcconstants.h"
-#include "visionconstants.h"
 #include "coord.hpp"
 #include "entity.hpp"
 #include "visionfield.hpp"

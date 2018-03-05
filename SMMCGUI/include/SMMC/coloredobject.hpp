@@ -2,7 +2,7 @@
 #define COLOREDOBJECT_HPP
 
 #include "coord.hpp"
-#include "visionconstants.h"
+#include "smmcconstants.h"
 
 class ColoredObject
 {

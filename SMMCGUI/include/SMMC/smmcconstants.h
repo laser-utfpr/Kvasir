@@ -1,6 +1,10 @@
 #ifndef SMMCCONSTANTS_H
 #define SMMCCONSTANTS_H
 
+enum Color {RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET};
+
+#define N_ROBOTS 3
+
 #define SAVED_SETTINGS_FILENAME "settings.sp"
 
 #define SHARED_MEMORY_BLOCK_NAME "smmc_memory_block"
