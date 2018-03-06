@@ -12,7 +12,7 @@ public:
     double angular_vel_scaling; //positive for one direction, negative for the other
 
     inline Movement(){};
-    inline Movement& operator=(Movement &copied)
+    inline Movement& operator=(const Movement &copied)
     {
         if(this != &copied)
         {

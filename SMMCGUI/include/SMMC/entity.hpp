@@ -14,7 +14,7 @@ public:
     bool found_last_frame;
 
     inline Entity(){};
-    inline Entity& operator=(Entity &copied)
+    inline Entity& operator=(const Entity &copied)
     {
         if(this != &copied)
         {

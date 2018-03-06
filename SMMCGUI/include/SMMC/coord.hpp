@@ -20,7 +20,7 @@ public:
     double y;
 
     inline Coord(){};
-    inline Coord& operator=(Coord &copied)
+    inline Coord& operator=(const Coord &copied)
     {
         if(this != &copied)
         {

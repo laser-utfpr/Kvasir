@@ -44,7 +44,7 @@ public:
     Coord right_goalkeeper_area_lrc;
 
     inline AIField(){};
-    inline AIField& operator<<(VisionField& vision)
+    inline AIField& operator<<(const VisionField& vision)
     {
         image_width = vision.image_width;
         image_height = vision.image_height;

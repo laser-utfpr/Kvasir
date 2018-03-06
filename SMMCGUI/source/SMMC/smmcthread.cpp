@@ -159,32 +159,27 @@ void SMMCThread::startComm(std::string path)
 
 void SMMCThread::updateVisionOutputSettings(void)
 {
-    //lock shared parameters
     *sm_vision_read_key = vision_read_key;
-    //output variables to shared memory
-    //unlock shared parameters
+    //output settings to shared memory
 }
 
 void SMMCThread::updateAIOutputSettings(void)
 {
-    //lock shared parameters
     *sm_ai_read_key = ai_read_key;
-    //output variables to shared memory
-    //unlock shared parameters
+    //output settings to shared memory
 }
 
 void SMMCThread::updateCommOutputSettings(void)
 {
-    //lock shared parameters
     *sm_comm_read_key = comm_read_key;
-    //output variables to shared memory
-    //unlock shared parameters
+    //no comm setting to be output for now
 }
 
 void SMMCThread::run()
 {
     while(run_thread)
     {
+        //receiving variables
         if(*sm_vision_write_key == vision_write_key)
         {
             shared_parameters.readVisionParameters(*sm_vision_field);
@@ -193,7 +188,7 @@ void SMMCThread::run()
         }
         if(*sm_ai_write_key == ai_write_key)
         {
-            shared_parameters.readAIParameters(*ai_vision_field);
+            shared_parameters.readAIParameters(*sm_ai_field);
             //emit signal
             *sm_ai_write_key = EMPTY_KEY;
         }
@@ -202,6 +197,21 @@ void SMMCThread::run()
             //no comm parameters to be recieved for now
             *sm_comm_write_key = EMPTY_KEY;
         }
+
+        //auto sending variables from Vision to AI
+        AIField sp_ai_field = shared_parameters.getAIField();
+        sm_ai_field->image_width = sp_ai_field.image_width;
+        sm_ai_field->image_height = sp_ai_field.image_height;
+        sm_ai_field->ball = sp_ai_field.ball;
+        for(int i=0; i<N_ROBOTS; i++)
+            sm_ai_field->robot[i] = *(static_cast<Entity*>(&(sp_ai_field.robot[i])));
+        for(int i=0; i<N_ROBOTS; i++)
+            sm_ai_field->enemy_robot[i] = sp_ai_field.enemy_robot[i];
+
+        //auto sending variables from AI to Communication
+        for(int i=0; i<N_ROBOTS; i++)
+            sm_robot_movement[i] = shared_parameters.getRobotMovement(i);
+
     }
 }
 

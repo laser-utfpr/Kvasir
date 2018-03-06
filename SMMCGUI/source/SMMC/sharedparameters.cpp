@@ -35,7 +35,7 @@ void SharedParameters::loadSettingsFromFile(void)
         }
         catch(...)
         {
-            std::cout << "Exception called while trying to load settings file with boost serialization!" << std::endl;
+            std::cout << "Exception called while trying to read settings file with boost serialization!" << std::endl;
         }
     }
 }
@@ -43,11 +43,42 @@ void SharedParameters::loadSettingsFromFile(void)
 void SharedParameters::readVisionParameters(VisionField v_field)
 {
     QMutexLocker m(&lock);
-    //read variables
+
+    vision_field.image = v_field.image;
+    vision_field.image_width = v_field.image_width;
+    vision_field.image_height = v_field.image_height;
+    vision_field.time_us = v_field.time_us;
+
+    vision_field.found_object = v_field.found_object;
+
+    vision_field.ball = v_field.ball;
+    for(int i=0; i<N_ROBOTS; i++)
+        vision_field.robot[i] = v_field.robot[i];
+    for(int i=0; i<N_ROBOTS; i++)
+        vision_field.enemy_robot[i] = v_field.enemy_robot[i];
+
+    //applying changes to ai a_field
+    ai_field << vision_field;
 }
 
 void SharedParameters::readAIParameters(AIField a_field)
 {
     QMutexLocker m(&lock);
-    //read variables
+    for(int i=0; i<N_ROBOTS; i++)
+        ai_field.robot[i].movement = a_field.robot[i].movement;
+
+    //applying changes to comm movements
+    for(int i=0; i<N_ROBOTS; i++)
+        robot_movement[i] = ai_field.robot[i].movement;
+}
+
+AIField SharedParameters::getAIField(void)
+{
+    return ai_field;
+}
+
+Movement SharedParameters::getRobotMovement(int index)
+{
+    if(index >= 0 && index < N_ROBOTS)
+        return robot_movement[index];
 }

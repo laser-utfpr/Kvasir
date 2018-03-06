@@ -20,7 +20,7 @@ public:
     std::string status;
 
     inline Player():Entity() {};
-    inline Player& operator=(Entity &copied)
+    inline Player& operator=(const Entity &copied)
     {
         if(static_cast<Entity*>(this) != &copied)
         {
