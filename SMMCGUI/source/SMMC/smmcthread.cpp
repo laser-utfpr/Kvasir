@@ -121,8 +121,9 @@ void SMMCThread::stopThread(void)
     run_thread = false;
 }
 
-void SMMCThread::startVision(std::string path)
+void SMMCThread::startVision(void)
 {
+    std::string path = shared_parameters.getVisionPath();
     std::string command;
     command += path;
     command += ' ';
@@ -133,8 +134,9 @@ void SMMCThread::startVision(std::string path)
     int ignored_value = system(command.c_str());
 }
 
-void SMMCThread::startAI(std::string path)
+void SMMCThread::startAI(void)
 {
+    std::string path = shared_parameters.getAIPath();
     std::string command;
     command += path;
     command += ' ';
@@ -145,8 +147,9 @@ void SMMCThread::startAI(std::string path)
     int ignored_value = system(command.c_str());
 }
 
-void SMMCThread::startComm(std::string path)
+void SMMCThread::startComm(void)
 {
+    std::string path = shared_parameters.getCommPath();
     std::string command;
     command += path;
     command += ' ';
@@ -172,7 +175,7 @@ void SMMCThread::updateAIOutputSettings(void)
 void SMMCThread::updateCommOutputSettings(void)
 {
     *sm_comm_read_key = comm_read_key;
-    //no comm setting to be output for now
+    //no comm settings to be output for now
 }
 
 void SMMCThread::run()
@@ -207,10 +210,12 @@ void SMMCThread::run()
             sm_ai_field->robot[i] = *(static_cast<Entity*>(&(sp_ai_field.robot[i])));
         for(int i=0; i<N_ROBOTS; i++)
             sm_ai_field->enemy_robot[i] = sp_ai_field.enemy_robot[i];
+        *sm_ai_read_key = ai_read_key;
 
         //auto sending variables from AI to Communication
         for(int i=0; i<N_ROBOTS; i++)
             sm_robot_movement[i] = shared_parameters.getRobotMovement(i);
+        *sm_comm_read_key = comm_read_key;
 
     }
 }

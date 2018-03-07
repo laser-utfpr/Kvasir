@@ -11,6 +11,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     smmc = new SMMCThread(shared_parameters);
 
     connect(this, SIGNAL(stopSMMC()), smmc, SLOT(stopThread()));
+    connect(this, SIGNAL(visionSettingsChanged()), smmc, SLOT(updateVisionOutputSettings()));
+    connect(this, SIGNAL(aiSettingsChanged()), smmc, SLOT(updateAIOutputSettings()));
+    connect(this, SIGNAL(commSettingsChanged()), smmc, SLOT(updateCommOutputSettings()));
 
     smmc->start();
 

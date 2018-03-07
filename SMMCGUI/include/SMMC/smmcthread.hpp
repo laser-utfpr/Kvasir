@@ -76,9 +76,9 @@ signals:
 public slots:
     void stopThread(void);
 
-    void startVision(std::string path);
-    void startAI(std::string path);
-    void startComm(std::string path);
+    void startVision(void);
+    void startAI(void);
+    void startComm(void);
 
     void updateVisionOutputSettings(void);
     void updateAIOutputSettings(void);

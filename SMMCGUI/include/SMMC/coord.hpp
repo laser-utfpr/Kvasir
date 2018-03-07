@@ -1,9 +1,12 @@
 #ifndef COORD_HPP
 #define COORD_HPP
 
+#include <cmath>
+
 #include <boost/serialization/utility.hpp>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/serialization.hpp>
 
 class Coord
 {
@@ -19,7 +22,7 @@ public:
     double x;
     double y;
 
-    inline Coord(){};
+    inline Coord() : x(NAN) : y(NAN);
     inline Coord& operator=(const Coord &copied)
     {
         if(this != &copied)

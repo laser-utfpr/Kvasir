@@ -3,6 +3,7 @@
 template<class Archive>
 void SharedParameters::serialize(Archive &ar, const unsigned int version)
 {
+    ar & vision_path & ai_path & comm_path;
     ar & vision_field & ai_field; // & other stuff to be saved
 }
 
@@ -13,6 +14,9 @@ void SharedParameters::loadDefaults(void)
 
 SharedParameters::SharedParameters()
 {
+    vision_path.clear();
+    ai_path.clear();
+    comm_path.clear();
     loadDefaults();
 }
 
@@ -70,6 +74,21 @@ void SharedParameters::readAIParameters(AIField a_field)
     //applying changes to comm movements
     for(int i=0; i<N_ROBOTS; i++)
         robot_movement[i] = ai_field.robot[i].movement;
+}
+
+std::string SharedParameters::getVisionPath(void)
+{
+    return vision_path;
+}
+
+std::string SharedParameters::getAIPath(void)
+{
+    return ai_path;
+}
+
+std::string SharedParameters::getCommPath(void)
+{
+    return comm_path;
 }
 
 AIField SharedParameters::getAIField(void)

@@ -38,6 +38,9 @@ public:
 
 signals:
     void stopSMMC(void);
+    void visionSettingsChanged(void);
+    void aiSettingsChanged(void);
+    void commSettingsChanged(void);
 
 private slots:
     void processFrame();

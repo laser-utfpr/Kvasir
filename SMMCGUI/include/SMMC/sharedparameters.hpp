@@ -4,6 +4,8 @@
 #include <boost/serialization/utility.hpp>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/string.hpp>
+#include <boost/serialization/serialization.hpp>
 
 #include <QMutex>
 
@@ -23,6 +25,11 @@ private:
 
     void loadDefaults(void);
 
+    //paths
+    std::string vision_path;
+    std::string ai_path;
+    std::string comm_path;
+
     //Vision variables
     VisionField vision_field;
 
@@ -39,6 +46,10 @@ public:
 
     void readVisionParameters(VisionField v_field);
     void readAIParameters(AIField a_field);
+
+    std::string getVisionPath(void);
+    std::string getAIPath(void);
+    std::string getCommPath(void);
 
     AIField getAIField(void);
     Movement getRobotMovement(int index);
