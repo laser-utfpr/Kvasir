@@ -37,7 +37,7 @@ void SharedParameters::loadSettingsFromFile(void)
             boost::archive::text_iarchive archive_loader(opened_file);
             archive_loader >> *this;
         }
-        catch(...)
+        catch(...) //REMEMBER TO TRY BOOST FILESYSTEM FOR FIXING FILE PATH
         {
             std::cout << "Exception called while trying to read settings file with boost serialization!" << std::endl;
         }
