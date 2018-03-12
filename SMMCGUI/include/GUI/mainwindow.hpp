@@ -43,8 +43,11 @@ signals:
     void commSettingsChanged(void);
 
 private slots:
-    void processFrame();
-    void on_pauseButton_clicked();
+    void processFrame(void);
+    void on_pauseButton_clicked(void);
+    void handleVisionUpdate(void);
+    void handleAIUpdate(void);
+    void handleCommUpdate(void);
 };
 
 #endif // MAINWINDOW_HPP

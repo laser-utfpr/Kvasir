@@ -186,13 +186,13 @@ void SMMCThread::run()
         if(*sm_vision_write_key == vision_write_key)
         {
             shared_parameters.readVisionParameters(*sm_vision_field);
-            //emit signal
+            emit visionInputUpdate();
             *sm_vision_write_key = EMPTY_KEY;
         }
         if(*sm_ai_write_key == ai_write_key)
         {
             shared_parameters.readAIParameters(*sm_ai_field);
-            //emit signal
+            emit aiInputUpdate();
             *sm_ai_write_key = EMPTY_KEY;
         }
         if(*sm_comm_write_key == comm_write_key)

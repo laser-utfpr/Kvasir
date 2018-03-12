@@ -14,7 +14,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect(this, SIGNAL(visionSettingsChanged()), smmc, SLOT(updateVisionOutputSettings()));
     connect(this, SIGNAL(aiSettingsChanged()), smmc, SLOT(updateAIOutputSettings()));
     connect(this, SIGNAL(commSettingsChanged()), smmc, SLOT(updateCommOutputSettings()));
-
+    connect(smmc, SIGNAL(visionInputUpdate()), this, SLOT(handleVisionUpdate()));
+    connect(smmc, SIGNAL(aiInputUpdate()), this, SLOT(handleAIUpdate()));
+    connect(smmc, SIGNAL(commInputUpdate()), this, SLOT(handleCommUpdate()));
     smmc->start();
 
     cam.open(0);
@@ -34,7 +36,7 @@ MainWindow::~MainWindow()
     delete smmc;
 }
 
-void MainWindow::processFrame()
+void MainWindow::processFrame(void)
 {
     cam.read(cam_image);
     if(cam_image.empty())
@@ -47,7 +49,7 @@ void MainWindow::processFrame()
     ui->image->setPixmap(QPixmap::fromImage(qimage));
 }
 
-void MainWindow::on_pauseButton_clicked()
+void MainWindow::on_pauseButton_clicked(void)
 {
     if(timer->isActive())
     {
@@ -59,6 +61,21 @@ void MainWindow::on_pauseButton_clicked()
         ui->pauseButton->setText("pause");
         timer->start(20);
     }
+}
+
+void MainWindow::handleVisionUpdate(void)
+{
+
+}
+
+void MainWindow::handleAIUpdate(void)
+{
+
+}
+
+void MainWindow::handleCommUpdate(void)
+{
+    //no comm parameters to be handled for now
 }
 
 #include "moc_mainwindow.cpp"
