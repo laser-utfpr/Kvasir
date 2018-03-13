@@ -30,10 +30,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 MainWindow::~MainWindow()
 {
-    delete ui;
     emit stopSMMC();
     usleep(100);
     delete smmc;
+    delete ui;
 }
 
 void MainWindow::processFrame(void)

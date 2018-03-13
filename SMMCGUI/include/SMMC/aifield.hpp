@@ -44,6 +44,9 @@ public:
     Coord right_goalkeeper_area_ulc;
     Coord right_goalkeeper_area_lrc;
 
+    std::string command;
+    std::string command_feedback;
+
     inline AIField(){};
     inline AIField& operator<<(const VisionField& vision)
     {

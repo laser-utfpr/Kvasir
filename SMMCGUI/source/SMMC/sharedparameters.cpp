@@ -22,14 +22,34 @@ SharedParameters::SharedParameters()
 
 SharedParameters::~SharedParameters()
 {
-    std::ofstream new_file(SAVED_SETTINGS_FILENAME);
-    boost::archive::text_oarchive archive_saver(new_file);
-    archive_saver << *this;
+    QString app_dir_path = QCoreApplication::applicationDirPath();
+    std::string settings_path = app_dir_path.toStdString();
+    settings_path += '/';
+    settings_path += SAVED_SETTINGS_FILENAME;
+    std::ofstream new_file(settings_path);
+
+    if(!new_file.fail())
+    {
+        try
+        {
+            boost::archive::text_oarchive archive_saver(new_file);
+            archive_saver << *this;
+        }
+        catch(...)
+        {
+            std::cout << "Exception called while trying to save settings file with boost serialization!" << std::endl;
+        }
+    }
 }
 
 void SharedParameters::loadSettingsFromFile(void)
 {
-    std::ifstream opened_file(SAVED_SETTINGS_FILENAME);
+    QString app_dir_path = QCoreApplication::applicationDirPath();
+    std::string settings_path = app_dir_path.toStdString();
+    settings_path += '/';
+    settings_path += SAVED_SETTINGS_FILENAME;
+    std::ifstream opened_file(settings_path);
+
     if(!opened_file.fail())
     {
         try
@@ -37,7 +57,7 @@ void SharedParameters::loadSettingsFromFile(void)
             boost::archive::text_iarchive archive_loader(opened_file);
             archive_loader >> *this;
         }
-        catch(...) //REMEMBER TO TRY BOOST FILESYSTEM FOR FIXING FILE PATH
+        catch(...)
         {
             std::cout << "Exception called while trying to read settings file with boost serialization!" << std::endl;
         }

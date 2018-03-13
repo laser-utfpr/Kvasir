@@ -198,6 +198,7 @@ void SMMCThread::run()
         if(*sm_comm_write_key == comm_write_key)
         {
             //no comm parameters to be recieved for now
+            emit commInputUpdate();
             *sm_comm_write_key = EMPTY_KEY;
         }
 
