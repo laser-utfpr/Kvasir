@@ -16,7 +16,6 @@ public:
 
     Movement movement;
 
-    std::string role;
     std::string status;
 
     inline Player():Entity() {};

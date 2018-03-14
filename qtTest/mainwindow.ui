@@ -33,10 +33,10 @@
      <widget class="QLabel" name="vision_path_label">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>80</x>
         <y>260</y>
         <width>100</width>
-        <height>20</height>
+        <height>30</height>
        </rect>
       </property>
       <property name="text">
@@ -49,10 +49,10 @@
      <widget class="QLabel" name="ai_path_label">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>80</x>
         <y>460</y>
         <width>100</width>
-        <height>20</height>
+        <height>30</height>
        </rect>
       </property>
       <property name="text">
@@ -65,10 +65,10 @@
      <widget class="QLabel" name="comm_path_label">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>80</x>
         <y>660</y>
         <width>100</width>
-        <height>20</height>
+        <height>30</height>
        </rect>
       </property>
       <property name="text">
@@ -81,7 +81,7 @@
      <widget class="QLineEdit" name="vision_path_input">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>240</x>
         <y>260</y>
         <width>500</width>
         <height>30</height>
@@ -91,7 +91,7 @@
      <widget class="QLineEdit" name="ai_path_input">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>240</x>
         <y>460</y>
         <width>500</width>
         <height>30</height>
@@ -101,7 +101,7 @@
      <widget class="QLineEdit" name="comm_path_input">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>240</x>
         <y>660</y>
         <width>500</width>
         <height>30</height>
@@ -111,7 +111,7 @@
      <widget class="QPushButton" name="run_vision">
       <property name="geometry">
        <rect>
-        <x>900</x>
+        <x>800</x>
         <y>260</y>
         <width>100</width>
         <height>30</height>
@@ -124,7 +124,7 @@
      <widget class="QPushButton" name="run_ai">
       <property name="geometry">
        <rect>
-        <x>900</x>
+        <x>800</x>
         <y>460</y>
         <width>100</width>
         <height>30</height>
@@ -137,7 +137,7 @@
      <widget class="QPushButton" name="run_comm">
       <property name="geometry">
        <rect>
-        <x>900</x>
+        <x>800</x>
         <y>660</y>
         <width>100</width>
         <height>30</height>
@@ -145,6 +145,45 @@
       </property>
       <property name="text">
        <string>Run</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="vision_message">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>260</y>
+        <width>420</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ai_message">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>460</y>
+        <width>420</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>660</y>
+        <width>420</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -165,17 +204,56 @@
        <string/>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox">
+     <widget class="QCheckBox" name="color_objects_cb">
       <property name="geometry">
        <rect>
         <x>1140</x>
         <y>140</y>
         <width>240</width>
-        <height>22</height>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Show color objects</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="robot_positions_cb">
+      <property name="geometry">
+       <rect>
+        <x>1140</x>
+        <y>200</y>
+        <width>240</width>
+        <height>30</height>
        </rect>
       </property>
       <property name="text">
        <string>Show robot positions</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="player_status_cb">
+      <property name="geometry">
+       <rect>
+        <x>1140</x>
+        <y>260</y>
+        <width>240</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Show player status</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="player_movements_cb">
+      <property name="geometry">
+       <rect>
+        <x>1140</x>
+        <y>320</y>
+        <width>240</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Show player movements</string>
       </property>
      </widget>
     </widget>

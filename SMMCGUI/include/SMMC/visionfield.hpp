@@ -7,6 +7,7 @@
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/serialization/serialization.hpp>
+#include <boost/serialization/vector.hpp>
 
 #include <vector>
 
@@ -40,7 +41,7 @@ public:
 
     Color ball_color;
     Color ally_center;
-    Color ally_tag;
+    std::vector<Color> ally_tag;
     Color enemy_center;
 
     Coord searched_region_ulc; //upper left corner
@@ -49,7 +50,7 @@ public:
     //use filters?
 
     inline VisionField() : ball_color(UNCOLORED), ally_center(UNCOLORED),
-    ally_tag(UNCOLORED), enemy_center(UNCOLORED) {};
+    enemy_center(UNCOLORED) {};
 };
 
 #endif // VISIONFIELD_HPP
