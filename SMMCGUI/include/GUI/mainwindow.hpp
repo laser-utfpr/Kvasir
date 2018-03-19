@@ -4,6 +4,7 @@
 #include <QtCore>
 #include <QWidget>
 #include <QMainWindow>
+#include <QMenu>
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -35,11 +36,15 @@ private:
     QString ai_path;
     QString comm_path;
 
+    QMenu command_menu;
+    QAction **command_menu_action;
+    int n_actions;
+
     //for testing - to be deleted
     cv::VideoCapture cam;
     cv::Mat cam_image;
 
-    QTimer* timer;
+    QTimer* frame_update_timer;
 
     void processGameControlImage(void);
     void processVisionSettingsImage(void);
@@ -76,6 +81,10 @@ private slots:
     void on_shutdown_vision_clicked(void);
     void on_shutdown_ai_clicked(void);
     void on_shutdown_comm_clicked(void);
+
+    void makeCommandMenu(void);
+    void changeCommand(QAction *action);
+    void on_send_command_cliked(void);
 
     void processImages(void);
     void handleVisionUpdate(void);

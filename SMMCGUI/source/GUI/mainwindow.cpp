@@ -5,6 +5,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->command_menu->setMenu(&command_menu);
+    command_menu_action = nullptr;
+    n_actions = 0;
+    connect(&command_menu, SIGNAL(aboutToShow()), this, SLOT(makeCommandMenu()));
+    connect(&command_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeCommand(QAction*)));
 
     shared_parameters.loadSettingsFromFile();
 
@@ -29,20 +34,35 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect(this, SIGNAL(shutdownComm()), smmc, SLOT(shutdownComm()));
 
     smmc->start();
-    usleep(100);
+    usleep(THREAD_START_WAIT_TIME_US);
 
     cam.open(0);
 
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(processImages()));
-    timer->start(20);
+    frame_update_timer = new QTimer(this);
+    connect(frame_update_timer, SIGNAL(timeout()), this, SLOT(processImages()));
+    frame_update_timer->start(FRAME_REFRESH_RATE_MS);
 }
 
 MainWindow::~MainWindow()
 {
     emit stopSMMC();
-    usleep(100);
+    usleep(THREAD_STOP_WAIT_TIME_US);
     delete smmc;
+
+    if(command_menu_action != nullptr)
+    {
+        for(int i=0; i<n_actions; i++)
+        {
+            if(command_menu_action[i] != nullptr)
+            {
+                delete command_menu_action[i];
+                command_menu_action[i] = nullptr;
+            }
+        }
+        delete command_menu_action;
+        command_menu_action = nullptr;
+    }
+
     delete ui;
 }
 
@@ -57,7 +77,22 @@ void MainWindow::processGameControlImage(void)
     cv::Size new_size(ui->game_control_image->width(),ui->game_control_image->height());
     cv::resize(cam_image, resized_image, new_size, INTERPOLATION_METHOD);
 
-    //draw stuff
+    if(ui->color_objects_cb->isChecked())
+    {
+        //draw color objects
+    }
+    if(ui->robot_positions_cb->isChecked())
+    {
+        //draw robot positions
+    }
+    if(ui->player_status_cb->isChecked())
+    {
+        //draw player status
+    }
+    if(ui->player_movements_cb->isChecked())
+    {
+        //draw player movements
+    }
 
     cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
     QImage qimage((uchar*)resized_image.data, resized_image.cols, resized_image.rows,
@@ -140,6 +175,47 @@ void MainWindow::on_shutdown_ai_clicked(void)
 void MainWindow::on_shutdown_comm_clicked(void)
 {
     emit shutdownComm();
+}
+
+void MainWindow::makeCommandMenu(void)
+{
+    command_menu.clear();
+    if(command_menu_action != nullptr)
+    {
+        for(int i=0; i<n_actions; i++)
+        {
+            if(command_menu_action[i] != nullptr)
+            {
+                delete command_menu_action[i];
+                command_menu_action[i] = nullptr;
+            }
+        }
+        delete command_menu_action;
+        command_menu_action = nullptr;
+    }
+
+    std::vector<std::string> command_list = shared_parameters.getCommandList();
+    n_actions = command_list.size();
+    command_menu_action = new QAction*[n_actions];
+
+    QString qstr;
+    for(int i=0; i<n_actions; i++)
+    {
+        qstr = command_list[i].c_str();
+        command_menu_action[i] = new QAction(qstr,this);
+        command_menu.addAction(command_menu_action[i]);
+    }
+}
+
+void MainWindow::changeCommand(QAction *action)
+{
+    ui->command_menu->setText(action->text());
+}
+
+void MainWindow::on_send_command_cliked(void)
+{
+    QString qstr = ui->command_menu->text();
+    shared_parameters.sendAICommand(qstr.toStdString());
 }
 
 void MainWindow::handleVisionUpdate(void)

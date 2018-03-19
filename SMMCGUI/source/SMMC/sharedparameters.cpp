@@ -20,6 +20,12 @@ SharedParameters::SharedParameters()
     ai_path.clear();
     comm_path.clear();
     loadDefaults();
+
+    //test - to be deleted
+    ai_field.command_list.push_back("the");
+    ai_field.command_list.push_back("thing");
+    ai_field.command_list.push_back("goes");
+    ai_field.command_list.push_back("skraa");
 }
 
 SharedParameters::~SharedParameters()
@@ -139,10 +145,22 @@ void SharedParameters::setCommPath(std::string str)
     comm_path = str;
 }
 
+void SharedParameters::sendAICommand(std::string str)
+{
+    QMutexLocker m(&lock);
+    ai_field.command = str;
+}
+
 AIField SharedParameters::getAIField(void)
 {
     QMutexLocker m(&lock);
     return ai_field;
+}
+
+std::vector<std::string> SharedParameters::getCommandList(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.command_list;
 }
 
 Movement SharedParameters::getRobotMovement(int index)

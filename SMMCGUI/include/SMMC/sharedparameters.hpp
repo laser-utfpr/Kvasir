@@ -56,7 +56,10 @@ public:
     void setAIPath(std::string str);
     void setCommPath(std::string str);
 
+    void sendAICommand(std::string str);
+
     AIField getAIField(void);
+    std::vector<std::string> getCommandList(void);
     Movement getRobotMovement(int index);
 };
 

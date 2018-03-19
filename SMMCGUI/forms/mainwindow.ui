@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="run_modules">
      <attribute name="title">
@@ -305,7 +305,7 @@
        </rect>
       </property>
       <property name="text">
-       <string/>
+       <string>Available Commands</string>
       </property>
      </widget>
      <widget class="QLabel" name="label">
