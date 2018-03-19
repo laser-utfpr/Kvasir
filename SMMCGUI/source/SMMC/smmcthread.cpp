@@ -51,7 +51,7 @@ void SMMCThread::constructVisionSMVariables(void)
 
     sm_vision_shutdown_key = shared_memory->construct<std::string>
                                (VISION_SHUTDOWN_KEY_MEMORY_NAME)();
-    *sm_vision_shutdown_key = EMPTY_KEY;
+    *sm_vision_shutdown_key = vision_shutdown_key;
 
     sm_vision_field = shared_memory->construct<VisionField>
                               (VISION_FIELD_MEMORY_NAME)();
@@ -69,7 +69,7 @@ void SMMCThread::constructAISMVariables(void)
 
     sm_ai_shutdown_key = shared_memory->construct<std::string>
                                (AI_SHUTDOWN_KEY_MEMORY_NAME)();
-    *sm_ai_shutdown_key = EMPTY_KEY;
+    *sm_ai_shutdown_key = ai_shutdown_key;
 
     sm_ai_field = shared_memory->construct<AIField>
                               (AI_FIELD_MEMORY_NAME)();
@@ -87,7 +87,7 @@ void SMMCThread::constructCommSMVariables(void)
 
     sm_comm_shutdown_key = shared_memory->construct<std::string>
                                (COMM_SHUTDOWN_KEY_MEMORY_NAME)();
-    *sm_comm_shutdown_key = EMPTY_KEY;
+    *sm_comm_shutdown_key = comm_shutdown_key;
 
     sm_robot_movement = shared_memory->construct<Movement>
                               (ROBOT_MOVEMENT_MEMORY_NAME)[N_ROBOTS]();

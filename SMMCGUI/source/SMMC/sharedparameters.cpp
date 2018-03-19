@@ -9,6 +9,8 @@ void SharedParameters::serialize(Archive &ar, const unsigned int version)
 
 void SharedParameters::loadDefaults(void)
 {
+    QMutexLocker m(&lock);
+
     //find good defaults;
 }
 
@@ -22,6 +24,8 @@ SharedParameters::SharedParameters()
 
 SharedParameters::~SharedParameters()
 {
+    QMutexLocker m(&lock);
+
     QString app_dir_path = QCoreApplication::applicationDirPath();
     std::string settings_path = app_dir_path.toStdString();
     settings_path += '/';
@@ -44,6 +48,8 @@ SharedParameters::~SharedParameters()
 
 void SharedParameters::loadSettingsFromFile(void)
 {
+    QMutexLocker m(&lock);
+
     QString app_dir_path = QCoreApplication::applicationDirPath();
     std::string settings_path = app_dir_path.toStdString();
     settings_path += '/';
@@ -88,6 +94,7 @@ void SharedParameters::readVisionParameters(VisionField v_field)
 void SharedParameters::readAIParameters(AIField a_field)
 {
     QMutexLocker m(&lock);
+
     for(int i=0; i<N_ROBOTS; i++)
         ai_field.robot[i].movement = a_field.robot[i].movement;
 
@@ -98,41 +105,49 @@ void SharedParameters::readAIParameters(AIField a_field)
 
 std::string SharedParameters::getVisionPath(void)
 {
+    QMutexLocker m(&lock);
     return vision_path;
 }
 
 std::string SharedParameters::getAIPath(void)
 {
+    QMutexLocker m(&lock);
     return ai_path;
 }
 
 std::string SharedParameters::getCommPath(void)
 {
+    QMutexLocker m(&lock);
     return comm_path;
 }
 
 void SharedParameters::setVisionPath(std::string str)
 {
+    QMutexLocker m(&lock);
     vision_path = str;
 }
 
 void SharedParameters::setAIPath(std::string str)
 {
+    QMutexLocker m(&lock);
     ai_path = str;
 }
 
 void SharedParameters::setCommPath(std::string str)
 {
+    QMutexLocker m(&lock);
     comm_path = str;
 }
 
 AIField SharedParameters::getAIField(void)
 {
+    QMutexLocker m(&lock);
     return ai_field;
 }
 
 Movement SharedParameters::getRobotMovement(int index)
 {
+    QMutexLocker m(&lock);
     if(index >= 0 && index < N_ROBOTS)
         return robot_movement[index];
 }

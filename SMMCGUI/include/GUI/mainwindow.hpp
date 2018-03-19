@@ -9,6 +9,10 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#include <iostream>
+
+#include "guiconstants.h"
+
 #include "sharedparameters.hpp"
 #include "smmcthread.hpp"
 
@@ -31,10 +35,15 @@ private:
     QString ai_path;
     QString comm_path;
 
+    //for testing - to be deleted
     cv::VideoCapture cam;
     cv::Mat cam_image;
 
     QTimer* timer;
+
+    void processGameControlImage(void);
+    void processVisionSettingsImage(void);
+    void processAISettingsImage(void);
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -68,7 +77,7 @@ private slots:
     void on_shutdown_ai_clicked(void);
     void on_shutdown_comm_clicked(void);
 
-    void processFrame(void);
+    void processImages(void);
     void handleVisionUpdate(void);
     void handleAIUpdate(void);
     void handleCommUpdate(void);
