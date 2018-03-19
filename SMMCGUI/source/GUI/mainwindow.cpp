@@ -18,14 +18,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect(smmc, SIGNAL(aiInputUpdate()), this, SLOT(handleAIUpdate()));
     connect(smmc, SIGNAL(commInputUpdate()), this, SLOT(handleCommUpdate()));
     smmc->start();
+    usleep(100);
 
     cam.open(0);
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(processFrame()));
     timer->start(20);
-
-    ui->pauseButton->setText("pause");
 }
 
 MainWindow::~MainWindow()
@@ -46,21 +45,52 @@ void MainWindow::processFrame(void)
     QImage qimage((uchar*)cam_image.data, cam_image.cols, cam_image.rows,
                   cam_image.step, QImage::Format_RGB888);
 
-    ui->image->setPixmap(QPixmap::fromImage(qimage));
+    ui->game_control_image->setPixmap(QPixmap::fromImage(qimage));
 }
 
-void MainWindow::on_pauseButton_clicked(void)
+void MainWindow::on_vision_path_input_textChanged(const QString &arg1)
 {
-    if(timer->isActive())
-    {
-        timer->stop();
-        ui->pauseButton->setText("resume");
-    }
-    else
-    {
-        ui->pauseButton->setText("pause");
-        timer->start(20);
-    }
+    shared_parameters.setVisionPath(arg1.toStdString());
+}
+
+void MainWindow::on_ai_path_input_textChanged(const QString &arg1)
+{
+    shared_parameters.setAIPath(arg1.toStdString());
+}
+
+void MainWindow::on_comm_path_input_textChanged(const QString &arg1)
+{
+    shared_parameters.setCommPath(arg1.toStdString());
+}
+
+void MainWindow::on_run_vision_clicked(void)
+{
+    emit runVision();
+}
+
+void MainWindow::on_run_ai_clicked(void)
+{
+    emit runAI();
+}
+
+void MainWindow::on_run_comm_clicked(void)
+{
+    emit runComm();
+}
+
+void MainWindow::on_shutdown_vision_clicked(void)
+{
+    emit shutdownVision();
+}
+
+void MainWindow::on_shutdown_ai_clicked(void)
+{
+    emit shutdownAI();
+}
+
+void MainWindow::on_shutdown_comm_clicked(void)
+{
+    emit shutdownComm();
 }
 
 void MainWindow::handleVisionUpdate(void)

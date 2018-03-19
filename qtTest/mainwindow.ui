@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="run_modules">
      <attribute name="title">
@@ -150,9 +150,9 @@
      <widget class="QLabel" name="vision_message">
       <property name="geometry">
        <rect>
-        <x>960</x>
+        <x>1120</x>
         <y>260</y>
-        <width>420</width>
+        <width>280</width>
         <height>30</height>
        </rect>
       </property>
@@ -163,9 +163,9 @@
      <widget class="QLabel" name="ai_message">
       <property name="geometry">
        <rect>
-        <x>960</x>
+        <x>1120</x>
         <y>460</y>
-        <width>420</width>
+        <width>280</width>
         <height>30</height>
        </rect>
       </property>
@@ -173,17 +173,56 @@
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="comm_message">
       <property name="geometry">
        <rect>
-        <x>960</x>
+        <x>1120</x>
         <y>660</y>
-        <width>420</width>
+        <width>280</width>
         <height>30</height>
        </rect>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="shutdown_vision">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>260</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Shutdown</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="shutdown_ai">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>460</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Shutdown</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="shutdown_comm">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>660</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Shutdown</string>
       </property>
      </widget>
     </widget>

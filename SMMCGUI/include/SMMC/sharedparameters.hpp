@@ -52,6 +52,9 @@ public:
     std::string getVisionPath(void);
     std::string getAIPath(void);
     std::string getCommPath(void);
+    void setVisionPath(std::string str);
+    void setAIPath(std::string str);
+    void setCommPath(std::string str);
 
     AIField getAIField(void);
     Movement getRobotMovement(int index);

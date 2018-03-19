@@ -1,16 +1,16 @@
--different write keys and read keys
+DONE-different write keys and read keys
 
 -vision threads with qthreads calibrate with qwidget and store calibration with boost serialization
 
 -find a way to finalize the program correctly
 
--vision/ai/etc shutdown key
+DONE-vision/ai/etc shutdown key
 
--remember thread brutally stops at end of main
+DONE-remember thread brutally stops at end of main
 https://forum.qt.io/topic/20539/what-is-the-correct-way-to-stop-qthread/4
 
 -comment the code a bit as always...
 
--maybe change smmc constants filename such as "visionconstants.h"
+TREATED-maybe change smmc constants filename such as "visionconstants.h"
 
 -think about initializations

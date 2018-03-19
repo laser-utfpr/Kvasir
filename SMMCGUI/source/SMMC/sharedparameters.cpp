@@ -111,6 +111,21 @@ std::string SharedParameters::getCommPath(void)
     return comm_path;
 }
 
+void SharedParameters::setVisionPath(std::string str)
+{
+    vision_path = str;
+}
+
+void SharedParameters::setAIPath(std::string str)
+{
+    ai_path = str;
+}
+
+void SharedParameters::setCommPath(std::string str)
+{
+    comm_path = str;
+}
+
 AIField SharedParameters::getAIField(void)
 {
     return ai_field;

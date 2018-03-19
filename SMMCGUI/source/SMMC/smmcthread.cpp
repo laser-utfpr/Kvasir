@@ -31,6 +31,12 @@ void SMMCThread::generateKeys(void)
         while(vision_write_key == EMPTY_KEY);
     do{ comm_read_key = randomAlphaNumericString(KEY_SIZE); }
         while(vision_write_key == EMPTY_KEY);
+    do{ vision_shutdown_key = randomAlphaNumericString(KEY_SIZE); }
+        while(vision_shutdown_key == EMPTY_KEY);
+    do{ ai_shutdown_key = randomAlphaNumericString(KEY_SIZE); }
+        while(vision_shutdown_key == EMPTY_KEY);
+    do{ comm_shutdown_key = randomAlphaNumericString(KEY_SIZE); }
+        while(vision_shutdown_key == EMPTY_KEY);
 }
 
 void SMMCThread::constructVisionSMVariables(void)
@@ -42,6 +48,10 @@ void SMMCThread::constructVisionSMVariables(void)
     sm_vision_read_key = shared_memory->construct<std::string>
                                (VISION_READ_KEY_MEMORY_NAME)();
     *sm_vision_read_key = EMPTY_KEY;
+
+    sm_vision_shutdown_key = shared_memory->construct<std::string>
+                               (VISION_SHUTDOWN_KEY_MEMORY_NAME)();
+    *sm_vision_shutdown_key = EMPTY_KEY;
 
     sm_vision_field = shared_memory->construct<VisionField>
                               (VISION_FIELD_MEMORY_NAME)();
@@ -57,6 +67,10 @@ void SMMCThread::constructAISMVariables(void)
                                (AI_READ_KEY_MEMORY_NAME)();
     *sm_ai_read_key = EMPTY_KEY;
 
+    sm_ai_shutdown_key = shared_memory->construct<std::string>
+                               (AI_SHUTDOWN_KEY_MEMORY_NAME)();
+    *sm_ai_shutdown_key = EMPTY_KEY;
+
     sm_ai_field = shared_memory->construct<AIField>
                               (AI_FIELD_MEMORY_NAME)();
 }
@@ -70,6 +84,10 @@ void SMMCThread::constructCommSMVariables(void)
     sm_comm_read_key = shared_memory->construct<std::string>
                                (COMM_READ_KEY_MEMORY_NAME)();
     *sm_comm_read_key = EMPTY_KEY;
+
+    sm_comm_shutdown_key = shared_memory->construct<std::string>
+                               (COMM_SHUTDOWN_KEY_MEMORY_NAME)();
+    *sm_comm_shutdown_key = EMPTY_KEY;
 
     sm_robot_movement = shared_memory->construct<Movement>
                               (ROBOT_MOVEMENT_MEMORY_NAME)[N_ROBOTS]();
@@ -123,6 +141,7 @@ void SMMCThread::stopThread(void)
 
 void SMMCThread::startVision(void)
 {
+    *sm_vision_shutdown_key = EMPTY_KEY;
     std::string path = shared_parameters.getVisionPath();
     std::string command;
     command += path;
@@ -130,12 +149,15 @@ void SMMCThread::startVision(void)
     command += vision_write_key;
     command += ' ';
     command += vision_read_key;
+    command += ' ';
+    command += vision_shutdown_key;
     command += " &";
     int ignored_value = system(command.c_str());
 }
 
 void SMMCThread::startAI(void)
 {
+    *sm_ai_shutdown_key = EMPTY_KEY;
     std::string path = shared_parameters.getAIPath();
     std::string command;
     command += path;
@@ -143,12 +165,15 @@ void SMMCThread::startAI(void)
     command += ai_write_key;
     command += ' ';
     command += ai_read_key;
+    command += ' ';
+    command += ai_shutdown_key;
     command += " &";
     int ignored_value = system(command.c_str());
 }
 
 void SMMCThread::startComm(void)
 {
+    *sm_comm_shutdown_key = EMPTY_KEY;
     std::string path = shared_parameters.getCommPath();
     std::string command;
     command += path;
@@ -156,8 +181,25 @@ void SMMCThread::startComm(void)
     command += comm_write_key;
     command += ' ';
     command += comm_read_key;
+    command += ' ';
+    command += comm_shutdown_key;
     command += " &";
     int ignored_value = system(command.c_str());
+}
+
+void SMMCThread::shutdownVision(void)
+{
+    *sm_vision_shutdown_key = vision_shutdown_key;
+}
+
+void SMMCThread::shutdownAI(void)
+{
+    *sm_ai_shutdown_key = ai_shutdown_key;
+}
+
+void SMMCThread::shutdownComm(void)
+{
+    *sm_comm_shutdown_key = comm_shutdown_key;
 }
 
 void SMMCThread::updateVisionOutputSettings(void)

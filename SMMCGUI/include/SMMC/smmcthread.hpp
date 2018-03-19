@@ -32,6 +32,9 @@ private:
     std::string vision_read_key;
     std::string ai_read_key;
     std::string comm_read_key;
+    std::string vision_shutdown_key;
+    std::string ai_shutdown_key;
+    std::string comm_shutdown_key;
 
     //shared memory key space
     std::string* sm_vision_write_key;
@@ -40,6 +43,9 @@ private:
     std::string* sm_vision_read_key;
     std::string* sm_ai_read_key;
     std::string* sm_comm_read_key;
+    std::string* sm_vision_shutdown_key;
+    std::string* sm_ai_shutdown_key;
+    std::string* sm_comm_shutdown_key;
 
     //vision shared memory variables
     VisionField* sm_vision_field;
@@ -79,6 +85,10 @@ public slots:
     void startVision(void);
     void startAI(void);
     void startComm(void);
+
+    void shutdownVision(void);
+    void shutdownAI(void);
+    void shutdownComm(void);
 
     void updateVisionOutputSettings(void);
     void updateAIOutputSettings(void);

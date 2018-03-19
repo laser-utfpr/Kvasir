@@ -27,6 +27,10 @@ private:
     SharedParameters shared_parameters;
     SMMCThread *smmc;
 
+    QString vision_path;
+    QString ai_path;
+    QString comm_path;
+
     cv::VideoCapture cam;
     cv::Mat cam_image;
 
@@ -38,13 +42,33 @@ public:
 
 signals:
     void stopSMMC(void);
+
     void visionSettingsChanged(void);
     void aiSettingsChanged(void);
     void commSettingsChanged(void);
 
+    void runVision(void);
+    void runAI(void);
+    void runComm(void);
+
+    void shutdownVision(void);
+    void shutdownAI(void);
+    void shutdownComm(void);
+
 private slots:
+    void on_vision_path_input_textChanged(const QString &arg1);
+    void on_ai_path_input_textChanged(const QString &arg1);
+    void on_comm_path_input_textChanged(const QString &arg1);
+
+    void on_run_vision_clicked(void);
+    void on_run_ai_clicked(void);
+    void on_run_comm_clicked(void);
+
+    void on_shutdown_vision_clicked(void);
+    void on_shutdown_ai_clicked(void);
+    void on_shutdown_comm_clicked(void);
+
     void processFrame(void);
-    void on_pauseButton_clicked(void);
     void handleVisionUpdate(void);
     void handleAIUpdate(void);
     void handleCommUpdate(void);
