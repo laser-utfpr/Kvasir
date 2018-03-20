@@ -22,21 +22,21 @@ void SMMCThread::generateKeys(void)
     do{ vision_write_key = randomAlphaNumericString(KEY_SIZE); }
         while(vision_write_key == EMPTY_KEY);
     do{ ai_write_key = randomAlphaNumericString(KEY_SIZE); }
-        while(vision_write_key == EMPTY_KEY);
+        while(ai_write_key == EMPTY_KEY);
     do{ comm_write_key = randomAlphaNumericString(KEY_SIZE); }
-        while(vision_write_key == EMPTY_KEY);
+        while(comm_write_key == EMPTY_KEY);
     do{ vision_read_key = randomAlphaNumericString(KEY_SIZE); }
-        while(vision_write_key == EMPTY_KEY);
+        while(vision_read_key == EMPTY_KEY);
     do{ ai_read_key = randomAlphaNumericString(KEY_SIZE); }
-        while(vision_write_key == EMPTY_KEY);
+        while(ai_read_key == EMPTY_KEY);
     do{ comm_read_key = randomAlphaNumericString(KEY_SIZE); }
-        while(vision_write_key == EMPTY_KEY);
+        while(comm_read_key == EMPTY_KEY);
     do{ vision_shutdown_key = randomAlphaNumericString(KEY_SIZE); }
         while(vision_shutdown_key == EMPTY_KEY);
     do{ ai_shutdown_key = randomAlphaNumericString(KEY_SIZE); }
-        while(vision_shutdown_key == EMPTY_KEY);
+        while(ai_shutdown_key == EMPTY_KEY);
     do{ comm_shutdown_key = randomAlphaNumericString(KEY_SIZE); }
-        while(vision_shutdown_key == EMPTY_KEY);
+        while(comm_shutdown_key == EMPTY_KEY);
 }
 
 void SMMCThread::constructVisionSMVariables(void)

@@ -27,6 +27,8 @@ private:
 
     void loadDefaults(void);
 
+    bool force_stop;
+
     //paths
     std::string vision_path;
     std::string ai_path;
@@ -57,6 +59,8 @@ public:
     void setCommPath(std::string str);
 
     void sendAICommand(std::string str);
+
+    void setForceStop(bool stop);
 
     AIField getAIField(void);
     std::vector<std::string> getCommandList(void);

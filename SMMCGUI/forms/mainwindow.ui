@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="run_modules">
      <attribute name="title">
@@ -321,19 +321,6 @@
        <string>AI Commands:</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="send_command">
-      <property name="geometry">
-       <rect>
-        <x>1260</x>
-        <y>500</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Send</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="stop_resume">
       <property name="geometry">
        <rect>
@@ -347,16 +334,113 @@
        <string>Force Stop</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="send_command">
+      <property name="geometry">
+       <rect>
+        <x>1260</x>
+        <y>500</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Send</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="vision_settings">
      <attribute name="title">
       <string>Vision Settings</string>
      </attribute>
+     <widget class="QLabel" name="vision_settings_image">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1080</width>
+        <height>720</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ally_center_menu">
+      <property name="geometry">
+       <rect>
+        <x>1210</x>
+        <y>120</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ally_center_label">
+      <property name="geometry">
+       <rect>
+        <x>1190</x>
+        <y>60</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ally Center Color</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="enemy_center_label">
+      <property name="geometry">
+       <rect>
+        <x>1190</x>
+        <y>200</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Enemy Center Color</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="enemy_center_menu">
+      <property name="geometry">
+       <rect>
+        <x>1210</x>
+        <y>260</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="ai_settings">
      <attribute name="title">
       <string>AI Settings</string>
      </attribute>
+     <widget class="QLabel" name="ai_settings_image">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1080</width>
+        <height>720</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

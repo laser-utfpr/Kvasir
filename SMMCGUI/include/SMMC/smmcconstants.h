@@ -1,7 +1,11 @@
 #ifndef SMMCCONSTANTS_H
 #define SMMCCONSTANTS_H
 
-enum Color {UNCOLORED, RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET};
+//adding a new color requires adding the member name and incrementing N_COLORS!
+//the first color after uncolored needs to be set to 0
+typedef enum {UNCOLORED = -1, RED = 0, ORANGE, YELLOW, GREEN, BLUE, VIOLET} Color;
+#define COLOR_MEMBER_NAMES {"RED","ORANGE","YELLOW","GREEN","BLUE","VIOLET"}
+#define N_COLORS 6
 
 #define N_ROBOTS 3
 

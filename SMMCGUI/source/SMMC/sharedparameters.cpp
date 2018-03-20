@@ -19,6 +19,7 @@ SharedParameters::SharedParameters()
     vision_path.clear();
     ai_path.clear();
     comm_path.clear();
+    force_stop = false;
     loadDefaults();
 
     //test - to be deleted
@@ -151,6 +152,12 @@ void SharedParameters::sendAICommand(std::string str)
     ai_field.command = str;
 }
 
+void SharedParameters::setForceStop(bool stop)
+{
+    QMutexLocker m(&lock);
+    force_stop = stop;
+}
+
 AIField SharedParameters::getAIField(void)
 {
     QMutexLocker m(&lock);
@@ -167,5 +174,9 @@ Movement SharedParameters::getRobotMovement(int index)
 {
     QMutexLocker m(&lock);
     if(index >= 0 && index < N_ROBOTS)
-        return robot_movement[index];
+    {
+        Movement mov = robot_movement[index];
+        mov.stay_still = force_stop;
+        return mov;
+    }
 }

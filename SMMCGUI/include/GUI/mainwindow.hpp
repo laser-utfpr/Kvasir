@@ -13,6 +13,7 @@
 #include <iostream>
 
 #include "guiconstants.h"
+#include "smmcconstants.h"
 
 #include "sharedparameters.hpp"
 #include "smmcthread.hpp"
@@ -38,7 +39,13 @@ private:
 
     QMenu command_menu;
     QAction **command_menu_action;
-    int n_actions;
+    int n_command_actions;
+
+    bool force_stop;
+
+    QMenu ally_center_menu;
+    QMenu enemy_center_menu;
+    QAction *color_action[N_COLORS];
 
     //for testing - to be deleted
     cv::VideoCapture cam;
@@ -84,7 +91,11 @@ private slots:
 
     void makeCommandMenu(void);
     void changeCommand(QAction *action);
-    void on_send_command_cliked(void);
+    void on_send_command_clicked(void);
+
+    void on_stop_resume_clicked(void);
+
+    void changeAllyCenter(QAction *action);
 
     void processImages(void);
     void handleVisionUpdate(void);
