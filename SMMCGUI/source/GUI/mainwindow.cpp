@@ -21,11 +21,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     for(int i=0; i<N_COLORS; i++)
     {
         qstr = color_name[i];
-        color_action[i] = new QAction(qstr,this);
-        ally_center_menu.addAction(color_action[i]);
-        enemy_center_menu.addAction(color_action[i]);
+        ally_color_action[i] = new QAction(qstr,this);
+        enemy_color_action[i] = new QAction(qstr,this);
+        ally_center_menu.addAction(ally_color_action[i]);
+        enemy_center_menu.addAction(enemy_color_action[i]);
     }
     connect(&ally_center_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeAllyCenter(QAction*)));
+    connect(&enemy_center_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeEnemyCenter(QAction*)));
 
     shared_parameters.loadSettingsFromFile();
 
@@ -77,6 +79,11 @@ MainWindow::~MainWindow()
         }
         delete command_menu_action;
         command_menu_action = nullptr;
+    }
+    for(int i=0; i<N_COLORS; i++)
+    {
+        delete ally_color_action[i];
+        delete enemy_color_action[i];
     }
 
     delete ui;
@@ -247,7 +254,7 @@ void MainWindow::on_stop_resume_clicked(void)
     {
         shared_parameters.setForceStop(true);
         ui->stop_resume->setText("Force Stop");
-        force_stop = true;
+        force_stop = false;
     }
 }
 
@@ -255,6 +262,14 @@ void MainWindow::changeAllyCenter(QAction* action)
 {
     QString qstr = action->text();
     ui->ally_center_menu->setText(qstr);
+    //FIGURE THIS OUT
+    //emit signal
+}
+
+void MainWindow::changeEnemyCenter(QAction* action)
+{
+    QString qstr = action->text();
+    ui->enemy_center_menu->setText(qstr);
     //FIGURE THIS OUT
     //emit signal
 }

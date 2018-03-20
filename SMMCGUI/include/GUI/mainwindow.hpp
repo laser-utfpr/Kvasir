@@ -45,7 +45,8 @@ private:
 
     QMenu ally_center_menu;
     QMenu enemy_center_menu;
-    QAction *color_action[N_COLORS];
+    QAction *ally_color_action[N_COLORS];
+    QAction *enemy_color_action[N_COLORS];
 
     //for testing - to be deleted
     cv::VideoCapture cam;
@@ -96,6 +97,7 @@ private slots:
     void on_stop_resume_clicked(void);
 
     void changeAllyCenter(QAction *action);
+    void changeEnemyCenter(QAction *action);
 
     void processImages(void);
     void handleVisionUpdate(void);
