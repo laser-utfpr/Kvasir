@@ -29,6 +29,7 @@ private:
 public:
     double image_width;
     double image_height;
+    useconds_t time_us;
 
     Entity ball;
     Player robot[N_ROBOTS];
@@ -52,6 +53,7 @@ public:
     {
         image_width = vision.image_width;
         image_height = vision.image_height;
+        time_us = vision.time_us;
 
         ball = vision.ball;
         for(int i=0; i<N_ROBOTS; i++)

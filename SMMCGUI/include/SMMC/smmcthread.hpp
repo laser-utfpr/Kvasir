@@ -79,6 +79,9 @@ signals:
     void aiInputUpdate(void);
     void commInputUpdate(void);
 
+    void sendVisionChangesToAI(void);
+    void sendAIChangeToComm(void);
+
 public slots:
     void stopThread(void);
 
@@ -93,6 +96,10 @@ public slots:
     void updateVisionOutputSettings(void);
     void updateAIOutputSettings(void);
     void updateCommOutputSettings(void);
+
+    void updateAIFromVision(void);
+    void updateCommFromAI(void);
+
 };
 
 #endif // SMMCTHREAD_HPP

@@ -27,6 +27,8 @@ SharedParameters::SharedParameters()
     ai_field.command_list.push_back("thing");
     ai_field.command_list.push_back("goes");
     ai_field.command_list.push_back("skraa");
+    ai_field.command_list.push_back("papakakaka");
+    ai_field.command_list.push_back("anatoomtoomtooroomtoom");
 }
 
 SharedParameters::~SharedParameters()
@@ -104,6 +106,8 @@ void SharedParameters::readAIParameters(AIField a_field)
 
     for(int i=0; i<N_ROBOTS; i++)
         ai_field.robot[i].movement = a_field.robot[i].movement;
+
+    ai_field.command_list = a_field.command_list;
 
     //applying changes to comm movements
     for(int i=0; i<N_ROBOTS; i++)

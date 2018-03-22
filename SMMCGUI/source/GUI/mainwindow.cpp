@@ -262,7 +262,17 @@ void MainWindow::changeAllyCenter(QAction* action)
 {
     QString qstr = action->text();
     ui->ally_center_menu->setText(qstr);
-    //FIGURE THIS OUT
+
+    std::string new_center_color = qstr.toStdString();
+    const char *color_name[] = COLOR_MEMBER_NAMES;
+    Color new_color;
+    for(int i=0; i<N_COLORS; i++)
+    {
+        std::string tested_color = color_name[i];
+        if(new_center_color == tested_color)
+            new_color = static_cast<Color>(i);
+    }
+    //shared_parameters.setAllyCenter(new_color);
     //emit signal
 }
 

@@ -6,6 +6,9 @@ SMMCThread::SMMCThread(SharedParameters &sp) : shared_parameters(sp)
 {
     run_thread = true;
 
+    connect(this, SIGNAL(sendVisionChangesToAI()), this, SLOT(updateAIFromVision()));
+    connect(this, SIGNAL(sendAIChangeToComm()), this, SLOT(updateCommFromAI()));
+
     generateKeys();
 
     shared_memory_object::remove(SHARED_MEMORY_BLOCK_NAME);
@@ -204,21 +207,44 @@ void SMMCThread::shutdownComm(void)
 
 void SMMCThread::updateVisionOutputSettings(void)
 {
-    *sm_vision_read_key = vision_read_key;
     //output settings to shared memory
+    *sm_vision_read_key = vision_read_key;
 }
 
 void SMMCThread::updateAIOutputSettings(void)
 {
-    *sm_ai_read_key = ai_read_key;
     //output settings to shared memory
+    *sm_ai_read_key = ai_read_key;
 }
 
 void SMMCThread::updateCommOutputSettings(void)
 {
-    *sm_comm_read_key = comm_read_key;
     //no comm settings to be output for now
+    //*sm_comm_read_key = comm_read_key;
 }
+
+void SMMCThread::updateAIFromVision(void)
+{
+    //sending variables from Vision to AI
+    AIField sp_ai_field = shared_parameters.getAIField();
+    sm_ai_field->image_width = sp_ai_field.image_width;
+    sm_ai_field->image_height = sp_ai_field.image_height;
+    sm_ai_field->ball = sp_ai_field.ball;
+    for(int i=0; i<N_ROBOTS; i++)
+        sm_ai_field->robot[i] = *(static_cast<Entity*>(&(sp_ai_field.robot[i])));
+    for(int i=0; i<N_ROBOTS; i++)
+        sm_ai_field->enemy_robot[i] = sp_ai_field.enemy_robot[i];
+    *sm_ai_read_key = ai_read_key;
+}
+
+void SMMCThread::updateCommFromAI(void)
+{
+    //sending variables from AI to Communication
+    for(int i=0; i<N_ROBOTS; i++)
+        sm_robot_movement[i] = shared_parameters.getRobotMovement(i);
+    *sm_comm_read_key = comm_read_key;
+}
+
 
 void SMMCThread::run()
 {
@@ -229,12 +255,14 @@ void SMMCThread::run()
         {
             shared_parameters.readVisionParameters(*sm_vision_field);
             emit visionInputUpdate();
+            emit sendVisionChangesToAI();
             *sm_vision_write_key = EMPTY_KEY;
         }
         if(*sm_ai_write_key == ai_write_key)
         {
             shared_parameters.readAIParameters(*sm_ai_field);
             emit aiInputUpdate();
+            emit sendAIChangeToComm();
             *sm_ai_write_key = EMPTY_KEY;
         }
         if(*sm_comm_write_key == comm_write_key)
@@ -243,23 +271,6 @@ void SMMCThread::run()
             emit commInputUpdate();
             *sm_comm_write_key = EMPTY_KEY;
         }
-
-        //auto sending variables from Vision to AI
-        AIField sp_ai_field = shared_parameters.getAIField();
-        sm_ai_field->image_width = sp_ai_field.image_width;
-        sm_ai_field->image_height = sp_ai_field.image_height;
-        sm_ai_field->ball = sp_ai_field.ball;
-        for(int i=0; i<N_ROBOTS; i++)
-            sm_ai_field->robot[i] = *(static_cast<Entity*>(&(sp_ai_field.robot[i])));
-        for(int i=0; i<N_ROBOTS; i++)
-            sm_ai_field->enemy_robot[i] = sp_ai_field.enemy_robot[i];
-        *sm_ai_read_key = ai_read_key;
-
-        //auto sending variables from AI to Communication
-        for(int i=0; i<N_ROBOTS; i++)
-            sm_robot_movement[i] = shared_parameters.getRobotMovement(i);
-        *sm_comm_read_key = comm_read_key;
-
     }
 }
 
