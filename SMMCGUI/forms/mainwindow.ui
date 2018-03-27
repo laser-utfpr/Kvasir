@@ -398,7 +398,7 @@
       <property name="geometry">
        <rect>
         <x>1190</x>
-        <y>200</y>
+        <y>190</y>
         <width>140</width>
         <height>30</height>
        </rect>
@@ -414,13 +414,239 @@
       <property name="geometry">
        <rect>
         <x>1210</x>
-        <y>260</y>
+        <y>250</y>
         <width>100</width>
         <height>30</height>
        </rect>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="available_iden_label">
+      <property name="geometry">
+       <rect>
+        <x>1120</x>
+        <y>360</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Available Colors</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="current_iden_label">
+      <property name="geometry">
+       <rect>
+        <x>1260</x>
+        <y>360</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Current Colors</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="iden_label">
+      <property name="geometry">
+       <rect>
+        <x>1190</x>
+        <y>320</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Identifiers</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="available_iden_menu">
+      <property name="geometry">
+       <rect>
+        <x>1140</x>
+        <y>410</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="current_iden_menu">
+      <property name="geometry">
+       <rect>
+        <x>1280</x>
+        <y>410</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="searched_region_label">
+      <property name="geometry">
+       <rect>
+        <x>1190</x>
+        <y>480</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Searched Region</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ulc_label">
+      <property name="geometry">
+       <rect>
+        <x>1190</x>
+        <y>520</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Upper Left Corner</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ulc_x">
+      <property name="geometry">
+       <rect>
+        <x>1140</x>
+        <y>620</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ulc_y">
+      <property name="geometry">
+       <rect>
+        <x>1280</x>
+        <y>620</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ulc_x_label">
+      <property name="geometry">
+       <rect>
+        <x>1120</x>
+        <y>570</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>x</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ulc_y_label">
+      <property name="geometry">
+       <rect>
+        <x>1260</x>
+        <y>570</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>y</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lrc_label">
+      <property name="geometry">
+       <rect>
+        <x>1190</x>
+        <y>670</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lower Right Corner</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lrc_x">
+      <property name="geometry">
+       <rect>
+        <x>1140</x>
+        <y>770</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lrc_x_label">
+      <property name="geometry">
+       <rect>
+        <x>1120</x>
+        <y>720</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>x</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lrc_y">
+      <property name="geometry">
+       <rect>
+        <x>1280</x>
+        <y>770</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lrc_y_label">
+      <property name="geometry">
+       <rect>
+        <x>1260</x>
+        <y>720</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>y</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
