@@ -4,6 +4,8 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    shared_parameters.loadSettingsFromFile();
+
     ui->setupUi(this);
 
     ui->command_menu->setMenu(&command_menu);
@@ -16,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->ally_center_menu->setMenu(&ally_center_menu);
     ui->enemy_center_menu->setMenu(&enemy_center_menu);
+    ui->available_iden_menu->setMenu(&available_identifier_menu);
+    ui->current_iden_menu->setMenu(&current_identifier_menu);
     const char *color_name[] = COLOR_MEMBER_NAMES;
     QString qstr;
     for(int i=0; i<N_COLORS; i++)
@@ -23,13 +27,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
         qstr = color_name[i];
         ally_color_action[i] = new QAction(qstr,this);
         enemy_color_action[i] = new QAction(qstr,this);
+        identifier_color_action[i] = new QAction(qstr,this);
         ally_center_menu.addAction(ally_color_action[i]);
         enemy_center_menu.addAction(enemy_color_action[i]);
+        available_identifier_menu.addAction(ally_color_action[i]);//to be changed to initialize with the configuration file
     }
     connect(&ally_center_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeAllyCenter(QAction*)));
     connect(&enemy_center_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeEnemyCenter(QAction*)));
-
-    shared_parameters.loadSettingsFromFile();
+    connect(&available_identifier_menu, SIGNAL(triggered(QAction*)), this, SLOT(addIdentifierColor(QAction*)));
+    connect(&current_identifier_menu, SIGNAL(triggered(QAction*)), this, SLOT(removeIdentifierColor(QAction*)));
 
     smmc = new SMMCThread(shared_parameters);
 
@@ -63,6 +69,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 MainWindow::~MainWindow()
 {
+    emit shutdownVision();
+    emit shutdownAI();
+    emit shutdownComm();
+    usleep(MODULES_SHUTDOWN_WAIT_TIME_US);
+
     emit stopSMMC();
     usleep(THREAD_STOP_WAIT_TIME_US);
     delete smmc;
@@ -84,6 +95,7 @@ MainWindow::~MainWindow()
     {
         delete ally_color_action[i];
         delete enemy_color_action[i];
+        delete identifier_color_action[i];
     }
 
     delete ui;
@@ -188,16 +200,19 @@ void MainWindow::on_run_comm_clicked(void)
 void MainWindow::on_shutdown_vision_clicked(void)
 {
     emit shutdownVision();
+    usleep(MODULES_SHUTDOWN_WAIT_TIME_US);
 }
 
 void MainWindow::on_shutdown_ai_clicked(void)
 {
     emit shutdownAI();
+    usleep(MODULES_SHUTDOWN_WAIT_TIME_US);
 }
 
 void MainWindow::on_shutdown_comm_clicked(void)
 {
     emit shutdownComm();
+    usleep(MODULES_SHUTDOWN_WAIT_TIME_US);
 }
 
 void MainWindow::makeCommandMenu(void)
@@ -280,8 +295,28 @@ void MainWindow::changeEnemyCenter(QAction* action)
 {
     QString qstr = action->text();
     ui->enemy_center_menu->setText(qstr);
-    //FIGURE THIS OUT
+
+    std::string new_center_color = qstr.toStdString();
+    const char *color_name[] = COLOR_MEMBER_NAMES;
+    Color new_color;
+    for(int i=0; i<N_COLORS; i++)
+    {
+        std::string tested_color = color_name[i];
+        if(new_center_color == tested_color)
+            new_color = static_cast<Color>(i);
+    }
+    //shared_parameters.setEnemyCenter(new_color);
     //emit signal
+}
+
+void MainWindow::addIdentifierColor(QAction *action)
+{
+
+}
+
+void MainWindow::removeIdentifierColor(QAction *action)
+{
+
 }
 
 void MainWindow::handleVisionUpdate(void)
