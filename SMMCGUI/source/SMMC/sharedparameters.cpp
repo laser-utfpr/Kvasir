@@ -29,6 +29,7 @@ SharedParameters::SharedParameters()
     ai_field.command_list.push_back("skraa");
     ai_field.command_list.push_back("papakakaka");
     ai_field.command_list.push_back("anatoomtoomtooroomtoom");
+    vision_field.ally_tag.push_back(VIOLET);
 }
 
 SharedParameters::~SharedParameters()
@@ -148,6 +149,62 @@ void SharedParameters::setCommPath(std::string str)
 {
     QMutexLocker m(&lock);
     comm_path = str;
+}
+
+void SharedParameters::setAllyCenter(Color color)
+{
+    QMutexLocker m(&lock);
+    vision_field.ally_center = color;
+}
+
+void SharedParameters::setEnemyCenter(Color color)
+{
+    QMutexLocker m(&lock);
+    vision_field.enemy_center = color;
+}
+
+Color SharedParameters::getAllyCenter(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field.ally_center;
+}
+
+Color SharedParameters::getEnemyCenter(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field.enemy_center;
+}
+
+bool SharedParameters::addTagColor(Color new_color)
+{
+    QMutexLocker m(&lock);
+    for(int i=0; i < vision_field.ally_tag.size(); i++)
+        if(vision_field.ally_tag[i] == new_color)
+            return false;
+    vision_field.ally_tag.push_back(new_color);
+    return true;
+}
+
+bool SharedParameters::removeTagColor(Color dead_color)
+{
+    QMutexLocker m(&lock);
+    int i = 0;
+    for(std::vector<Color>::iterator it = vision_field.ally_tag.begin();
+                                 it != vision_field.ally_tag.end(); it++, i++)
+        if(vision_field.ally_tag[i] == dead_color)
+        {
+            vision_field.ally_tag.erase(it);
+            return true;
+        }
+    return false;
+}
+
+bool SharedParameters::isTagColor(Color searched_color)
+{
+    for(int i=0; i < vision_field.ally_tag.size(); i++)
+        if(vision_field.ally_tag[i] == searched_color)
+            return true;
+    return false;
 }
 
 void SharedParameters::sendAICommand(std::string str)

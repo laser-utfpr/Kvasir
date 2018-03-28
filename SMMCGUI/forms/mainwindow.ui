@@ -423,7 +423,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="available_iden_label">
+     <widget class="QLabel" name="available_tag_label">
       <property name="geometry">
        <rect>
         <x>1120</x>
@@ -439,7 +439,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="current_iden_label">
+     <widget class="QLabel" name="current_tag_label">
       <property name="geometry">
        <rect>
         <x>1260</x>
@@ -455,7 +455,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="iden_label">
+     <widget class="QLabel" name="tag_label">
       <property name="geometry">
        <rect>
         <x>1190</x>
@@ -465,13 +465,13 @@
        </rect>
       </property>
       <property name="text">
-       <string>Identifiers</string>
+       <string>Tags</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QPushButton" name="available_iden_menu">
+     <widget class="QPushButton" name="available_tag_menu">
       <property name="geometry">
        <rect>
         <x>1140</x>
@@ -484,7 +484,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="current_iden_menu">
+     <widget class="QPushButton" name="current_tag_menu">
       <property name="geometry">
        <rect>
         <x>1280</x>

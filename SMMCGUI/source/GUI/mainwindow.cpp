@@ -4,7 +4,7 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    shared_parameters.loadSettingsFromFile();
+    //shared_parameters.loadSettingsFromFile();
 
     ui->setupUi(this);
 
@@ -18,24 +18,34 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->ally_center_menu->setMenu(&ally_center_menu);
     ui->enemy_center_menu->setMenu(&enemy_center_menu);
-    ui->available_iden_menu->setMenu(&available_identifier_menu);
-    ui->current_iden_menu->setMenu(&current_identifier_menu);
+    ui->available_tag_menu->setMenu(&available_tag_menu);
+    ui->current_tag_menu->setMenu(&current_tag_menu);
+
     const char *color_name[] = COLOR_MEMBER_NAMES;
+    Color init;
+    if((init = shared_parameters.getAllyCenter()) != UNCOLORED)
+        ui->ally_center_menu->setText(color_name[static_cast<int>(init)]);
+    if((init = shared_parameters.getEnemyCenter()) != UNCOLORED)
+        ui->enemy_center_menu->setText(color_name[static_cast<int>(init)]);
+
     QString qstr;
     for(int i=0; i<N_COLORS; i++)
     {
         qstr = color_name[i];
         ally_color_action[i] = new QAction(qstr,this);
         enemy_color_action[i] = new QAction(qstr,this);
-        identifier_color_action[i] = new QAction(qstr,this);
+        tag_color_action[i] = new QAction(qstr,this);
         ally_center_menu.addAction(ally_color_action[i]);
         enemy_center_menu.addAction(enemy_color_action[i]);
-        available_identifier_menu.addAction(ally_color_action[i]);//to be changed to initialize with the configuration file
+        if(shared_parameters.isTagColor(static_cast<Color>(i)))
+            current_tag_menu.addAction(tag_color_action[i]);
+        else
+            available_tag_menu.addAction(tag_color_action[i]);
     }
     connect(&ally_center_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeAllyCenter(QAction*)));
     connect(&enemy_center_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeEnemyCenter(QAction*)));
-    connect(&available_identifier_menu, SIGNAL(triggered(QAction*)), this, SLOT(addIdentifierColor(QAction*)));
-    connect(&current_identifier_menu, SIGNAL(triggered(QAction*)), this, SLOT(removeIdentifierColor(QAction*)));
+    connect(&available_tag_menu, SIGNAL(triggered(QAction*)), this, SLOT(addTagColor(QAction*)));
+    connect(&current_tag_menu, SIGNAL(triggered(QAction*)), this, SLOT(removeTagColor(QAction*)));
 
     smmc = new SMMCThread(shared_parameters);
 
@@ -95,7 +105,7 @@ MainWindow::~MainWindow()
     {
         delete ally_color_action[i];
         delete enemy_color_action[i];
-        delete identifier_color_action[i];
+        delete tag_color_action[i];
     }
 
     delete ui;
@@ -287,7 +297,7 @@ void MainWindow::changeAllyCenter(QAction* action)
         if(new_center_color == tested_color)
             new_color = static_cast<Color>(i);
     }
-    //shared_parameters.setAllyCenter(new_color);
+    shared_parameters.setAllyCenter(new_color);
     //emit signal
 }
 
@@ -305,16 +315,16 @@ void MainWindow::changeEnemyCenter(QAction* action)
         if(new_center_color == tested_color)
             new_color = static_cast<Color>(i);
     }
-    //shared_parameters.setEnemyCenter(new_color);
+    shared_parameters.setEnemyCenter(new_color);
     //emit signal
 }
 
-void MainWindow::addIdentifierColor(QAction *action)
+void MainWindow::addTagColor(QAction *action)
 {
 
 }
 
-void MainWindow::removeIdentifierColor(QAction *action)
+void MainWindow::removeTagColor(QAction *action)
 {
 
 }

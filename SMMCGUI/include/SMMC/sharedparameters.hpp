@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 #include "smmclib.hpp"
 
@@ -61,6 +62,15 @@ public:
     void sendAICommand(std::string str);
 
     void setForceStop(bool stop);
+
+    void setAllyCenter(Color color);
+    void setEnemyCenter(Color color);
+    Color getAllyCenter(void);
+    Color getEnemyCenter(void);
+
+    bool addTagColor(Color new_color);
+    bool removeTagColor(Color dead_color);
+    bool isTagColor(Color searched_color);
 
     AIField getAIField(void);
     std::vector<std::string> getCommandList(void);

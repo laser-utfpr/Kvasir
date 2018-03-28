@@ -48,9 +48,9 @@ private:
     QAction *ally_color_action[N_COLORS];
     QAction *enemy_color_action[N_COLORS];
 
-    QMenu available_identifier_menu;
-    QMenu current_identifier_menu;
-    QAction *identifier_color_action[N_COLORS];
+    QMenu available_tag_menu;
+    QMenu current_tag_menu;
+    QAction *tag_color_action[N_COLORS];
 
     //for testing - to be deleted
     cv::VideoCapture cam;
@@ -103,8 +103,8 @@ private slots:
     void changeAllyCenter(QAction *action);
     void changeEnemyCenter(QAction *action);
 
-    void addIdentifierColor(QAction *action);
-    void removeIdentifierColor(QAction *action);
+    void addTagColor(QAction *action);
+    void removeTagColor(QAction *action);
 
     void processImages(void);
     void handleVisionUpdate(void);
