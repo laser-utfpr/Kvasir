@@ -175,6 +175,38 @@ Color SharedParameters::getEnemyCenter(void)
     return vision_field.enemy_center;
 }
 
+Coord SharedParameters::getSearchedRegionULC(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field.searched_region_ulc;
+}
+
+Coord SharedParameters::getSearchedRegionLRC(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field.searched_region_lrc;
+}
+
+void SharedParameters::setSearchedRegionULCx(double ulc_x)
+{
+    vision_field.searched_region_ulc.x = ulc_x;
+}
+
+void SharedParameters::setSearchedRegionULCy(double ulc_y)
+{
+    vision_field.searched_region_ulc.y = ulc_y;
+}
+
+void SharedParameters::setSearchedRegionLRCx(double lrc_x)
+{
+    vision_field.searched_region_lrc.x = lrc_x;
+}
+
+void SharedParameters::setSearchedRegionLRCy(double lrc_y)
+{
+    vision_field.searched_region_lrc.y = lrc_y;
+}
+
 bool SharedParameters::addTagColor(Color new_color)
 {
     QMutexLocker m(&lock);

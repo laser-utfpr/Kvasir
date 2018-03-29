@@ -52,6 +52,9 @@ private:
     QMenu current_tag_menu;
     QAction *tag_color_action[N_COLORS];
 
+    QPalette black_text;
+    QPalette red_text;
+
     //for testing - to be deleted
     cv::VideoCapture cam;
     cv::Mat cam_image;
@@ -99,6 +102,11 @@ private slots:
     void on_send_command_clicked(void);
 
     void on_stop_resume_clicked(void);
+
+    void on_ulc_x_textChanged(const QString &new_text);
+    void on_ulc_y_textChanged(const QString &new_text);
+    void on_lrc_x_textChanged(const QString &new_text);
+    void on_lrc_y_textChanged(const QString &new_text);
 
     void changeAllyCenter(QAction *action);
     void changeEnemyCenter(QAction *action);

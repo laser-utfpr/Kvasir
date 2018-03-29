@@ -47,6 +47,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect(&available_tag_menu, SIGNAL(triggered(QAction*)), this, SLOT(addTagColor(QAction*)));
     connect(&current_tag_menu, SIGNAL(triggered(QAction*)), this, SLOT(removeTagColor(QAction*)));
 
+    Coord sr_ulc = shared_parameters.getSearchedRegionULC();
+    Coord sr_lrc = shared_parameters.getSearchedRegionLRC();
+    ui->ulc_x->setText(QString::number(sr_ulc.x));
+    ui->ulc_y->setText(QString::number(sr_ulc.y));
+    ui->lrc_x->setText(QString::number(sr_lrc.x));
+    ui->lrc_y->setText(QString::number(sr_lrc.y));
+
     smmc = new SMMCThread(shared_parameters);
 
     connect(this, SIGNAL(stopSMMC()), smmc, SLOT(stopThread()));
@@ -283,6 +290,74 @@ void MainWindow::on_stop_resume_clicked(void)
     }
 }
 
+void MainWindow::on_ulc_x_textChanged(const QString &new_text)
+{
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->ulc_x->foregroundRole(), Qt::black);
+        ui->ulc_x->setPalette(black_text);
+        shared_parameters.setSearchedRegionULCx(value);
+    }
+    else
+    {
+        red_text.setColor(ui->ulc_x->foregroundRole(), Qt::red);
+        ui->ulc_x->setPalette(red_text);
+    }
+}
+
+void MainWindow::on_ulc_y_textChanged(const QString &new_text)
+{
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->ulc_y->foregroundRole(), Qt::black);
+        ui->ulc_y->setPalette(black_text);
+        shared_parameters.setSearchedRegionULCy(value);
+    }
+    else
+    {
+        red_text.setColor(ui->ulc_y->foregroundRole(), Qt::red);
+        ui->ulc_y->setPalette(red_text);
+    }
+}
+
+void MainWindow::on_lrc_x_textChanged(const QString &new_text)
+{
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->lrc_x->foregroundRole(), Qt::black);
+        ui->lrc_x->setPalette(black_text);
+        shared_parameters.setSearchedRegionLRCx(value);
+    }
+    else
+    {
+        red_text.setColor(ui->lrc_x->foregroundRole(), Qt::red);
+        ui->lrc_x->setPalette(red_text);
+    }
+}
+
+void MainWindow::on_lrc_y_textChanged(const QString &new_text)
+{
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->lrc_y->foregroundRole(), Qt::black);
+        ui->lrc_y->setPalette(black_text);
+        shared_parameters.setSearchedRegionLRCy(value);
+    }
+    else
+    {
+        red_text.setColor(ui->lrc_y->foregroundRole(), Qt::red);
+        ui->lrc_y->setPalette(red_text);
+    }
+}
+
 void MainWindow::changeAllyCenter(QAction* action)
 {
     QString qstr = action->text();
@@ -321,12 +396,42 @@ void MainWindow::changeEnemyCenter(QAction* action)
 
 void MainWindow::addTagColor(QAction *action)
 {
+    QString qstr = action->text();
+    std::string new_tag_color = qstr.toStdString();
+    const char *color_name[] = COLOR_MEMBER_NAMES;
+    Color new_color;
+    for(int i=0; i<N_COLORS; i++)
+    {
+        std::string tested_color = color_name[i];
+        if(new_tag_color == tested_color)
+            new_color = static_cast<Color>(i);
+    }
+    shared_parameters.addTagColor(new_color);
 
+    available_tag_menu.removeAction(action);
+    current_tag_menu.addAction(action);
+
+    //emit signal
 }
 
 void MainWindow::removeTagColor(QAction *action)
 {
+    QString qstr = action->text();
+    std::string dead_tag_color = qstr.toStdString();
+    const char *color_name[] = COLOR_MEMBER_NAMES;
+    Color dead_color;
+    for(int i=0; i<N_COLORS; i++)
+    {
+        std::string tested_color = color_name[i];
+        if(dead_tag_color == tested_color)
+            dead_color = static_cast<Color>(i);
+    }
+    shared_parameters.addTagColor(dead_color);
 
+    current_tag_menu.removeAction(action);
+    available_tag_menu.addAction(action);
+
+    //emit signal
 }
 
 void MainWindow::handleVisionUpdate(void)

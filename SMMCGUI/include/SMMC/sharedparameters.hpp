@@ -60,6 +60,7 @@ public:
     void setCommPath(std::string str);
 
     void sendAICommand(std::string str);
+    std::vector<std::string> getCommandList(void);
 
     void setForceStop(bool stop);
 
@@ -68,12 +69,18 @@ public:
     Color getAllyCenter(void);
     Color getEnemyCenter(void);
 
+    Coord getSearchedRegionULC(void);
+    Coord getSearchedRegionLRC(void);
+    void setSearchedRegionULCx(double ulc_x);
+    void setSearchedRegionULCy(double ulc_y);
+    void setSearchedRegionLRCx(double lrc_x);
+    void setSearchedRegionLRCy(double lrc_y);
+
     bool addTagColor(Color new_color);
     bool removeTagColor(Color dead_color);
     bool isTagColor(Color searched_color);
 
     AIField getAIField(void);
-    std::vector<std::string> getCommandList(void);
     Movement getRobotMovement(int index);
 };
 
