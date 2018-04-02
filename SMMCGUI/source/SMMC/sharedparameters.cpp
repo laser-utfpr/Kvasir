@@ -163,6 +163,12 @@ void SharedParameters::setEnemyCenter(Color color)
     vision_field.enemy_center = color;
 }
 
+std::vector<Color> SharedParameters::getTags(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field.ally_tag;
+}
+
 Color SharedParameters::getAllyCenter(void)
 {
     QMutexLocker m(&lock);

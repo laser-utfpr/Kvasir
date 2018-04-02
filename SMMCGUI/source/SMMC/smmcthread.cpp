@@ -208,6 +208,12 @@ void SMMCThread::shutdownComm(void)
 void SMMCThread::updateVisionOutputSettings(void)
 {
     //output settings to shared memory
+    *sm_vision_field.ally_center = shared_parameters.getAllyCenter();
+    *sm_vision_field.enemy_center = shared_parameters.getEnemyCenter();
+    *sm_vision_field.ally_tag = shared_parameters.getTags();
+    //FORGOT BALL COLOR
+    
+
     *sm_vision_read_key = vision_read_key;
 }
 

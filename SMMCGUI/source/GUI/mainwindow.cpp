@@ -330,6 +330,7 @@ void MainWindow::on_sr_ulc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->sr_ulc_x->foregroundRole(), Qt::black);
         ui->sr_ulc_x->setPalette(black_text);
         shared_parameters.setSearchedRegionULCx(value);
+        //emit signal
     }
     else
     {
@@ -347,6 +348,7 @@ void MainWindow::on_sr_ulc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->sr_ulc_y->foregroundRole(), Qt::black);
         ui->sr_ulc_y->setPalette(black_text);
         shared_parameters.setSearchedRegionULCy(value);
+        //emit signal
     }
     else
     {
@@ -364,6 +366,7 @@ void MainWindow::on_sr_lrc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->sr_lrc_x->foregroundRole(), Qt::black);
         ui->sr_lrc_x->setPalette(black_text);
         shared_parameters.setSearchedRegionLRCx(value);
+        //emit signal
     }
     else
     {
@@ -381,6 +384,7 @@ void MainWindow::on_sr_lrc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->sr_lrc_y->foregroundRole(), Qt::black);
         ui->sr_lrc_y->setPalette(black_text);
         shared_parameters.setSearchedRegionLRCy(value);
+        //emit signal
     }
     else
     {
@@ -391,102 +395,362 @@ void MainWindow::on_sr_lrc_y_textChanged(const QString &new_text)
 
 void MainWindow::on_pf_ulc_x_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->pf_ulc_x->foregroundRole(), Qt::black);
+        ui->pf_ulc_x->setPalette(black_text);
+        shared_parameters.setPlayableFieldULCx(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->pf_ulc_x->foregroundRole(), Qt::red);
+        ui->pf_ulc_x->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_pf_ulc_y_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->pf_ulc_y->foregroundRole(), Qt::black);
+        ui->pf_ulc_y->setPalette(black_text);
+        shared_parameters.setPlayableFieldULCy(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->pf_ulc_y->foregroundRole(), Qt::red);
+        ui->pf_ulc_y->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_pf_lrc_x_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->pf_lrc_x->foregroundRole(), Qt::black);
+        ui->pf_lrc_x->setPalette(black_text);
+        shared_parameters.setPlayableFieldLRCx(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->pf_lrc_x->foregroundRole(), Qt::red);
+        ui->pf_lrc_x->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_pf_lrc_y_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->pf_lrc_y->foregroundRole(), Qt::black);
+        ui->pf_lrc_y->setPalette(black_text);
+        shared_parameters.setPlayableFieldLRCy(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->pf_lrc_y->foregroundRole(), Qt::red);
+        ui->pf_lrc_y->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_left_goal_ulc_x_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->left_goal_ulc_x->foregroundRole(), Qt::black);
+        ui->left_goal_ulc_x->setPalette(black_text);
+        shared_parameters.setLeftGoalULCx(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->left_goal_ulc_x->foregroundRole(), Qt::red);
+        ui->left_goal_ulc_x->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_left_goal_ulc_y_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->left_goal_ulc_y->foregroundRole(), Qt::black);
+        ui->left_goal_ulc_y->setPalette(black_text);
+        shared_parameters.setLeftGoalULCy(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->left_goal_ulc_y->foregroundRole(), Qt::red);
+        ui->left_goal_ulc_y->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_left_goal_lrc_x_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->left_goal_lrc_x->foregroundRole(), Qt::black);
+        ui->left_goal_lrc_x->setPalette(black_text);
+        shared_parameters.setLeftGoalLRCx(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->left_goal_lrc_x->foregroundRole(), Qt::red);
+        ui->left_goal_lrc_x->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_left_goal_lrc_y_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->left_goal_lrc_y->foregroundRole(), Qt::black);
+        ui->left_goal_lrc_y->setPalette(black_text);
+        shared_parameters.setLeftGoalLRCy(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->left_goal_lrc_y->foregroundRole(), Qt::red);
+        ui->left_goal_lrc_y->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_right_goal_ulc_x_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->right_goal_ulc_x->foregroundRole(), Qt::black);
+        ui->right_goal_ulc_x->setPalette(black_text);
+        shared_parameters.setRightGoalULCx(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->right_goal_ulc_x->foregroundRole(), Qt::red);
+        ui->right_goal_ulc_x->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_right_goal_ulc_y_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->right_goal_ulc_y->foregroundRole(), Qt::black);
+        ui->right_goal_ulc_y->setPalette(black_text);
+        shared_parameters.setRightGoalULCy(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->right_goal_ulc_y->foregroundRole(), Qt::red);
+        ui->right_goal_ulc_y->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_right_goal_lrc_x_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->right_goal_lrc_x->foregroundRole(), Qt::black);
+        ui->right_goal_lrc_x->setPalette(black_text);
+        shared_parameters.setRightGoalLRCx(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->right_goal_lrc_x->foregroundRole(), Qt::red);
+        ui->right_goal_lrc_x->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_right_goal_lrc_y_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->right_goal_lrc_y->foregroundRole(), Qt::black);
+        ui->right_goal_lrc_y->setPalette(black_text);
+        shared_parameters.setRightGoalLRCy(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->right_goal_lrc_y->foregroundRole(), Qt::red);
+        ui->right_goal_lrc_y->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_left_gka_ulc_x_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->left_gka_ulc_x->foregroundRole(), Qt::black);
+        ui->left_gka_ulc_x->setPalette(black_text);
+        shared_parameters.setLeftGKAreaULCx(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->left_gka_ulc_x->foregroundRole(), Qt::red);
+        ui->left_gka_ulc_x->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_left_gka_ulc_y_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->left_gka_ulc_y->foregroundRole(), Qt::black);
+        ui->left_gka_ulc_y->setPalette(black_text);
+        shared_parameters.setLeftGKAreaULCy(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->left_gka_ulc_y->foregroundRole(), Qt::red);
+        ui->left_gka_ulc_y->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_left_gka_lrc_x_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->left_gka_lrc_x->foregroundRole(), Qt::black);
+        ui->left_gka_lrc_x->setPalette(black_text);
+        shared_parameters.setLeftGKAreaLRCx(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->left_gka_lrc_x->foregroundRole(), Qt::red);
+        ui->left_gka_lrc_x->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_left_gka_lrc_y_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->left_gka_lrc_y->foregroundRole(), Qt::black);
+        ui->left_gka_lrc_y->setPalette(black_text);
+        shared_parameters.setLeftGKAreaLRCy(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->left_gka_lrc_y->foregroundRole(), Qt::red);
+        ui->left_gka_lrc_y->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_right_gka_ulc_x_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->right_gka_ulc_x->foregroundRole(), Qt::black);
+        ui->right_gka_ulc_x->setPalette(black_text);
+        shared_parameters.setRightGKAreaULCx(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->right_gka_ulc_x->foregroundRole(), Qt::red);
+        ui->right_gka_ulc_x->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_right_gka_ulc_y_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->right_gka_ulc_y->foregroundRole(), Qt::black);
+        ui->right_gka_ulc_y->setPalette(black_text);
+        shared_parameters.setRightGKAreaULCy(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->right_gka_ulc_y->foregroundRole(), Qt::red);
+        ui->right_gka_ulc_y->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_right_gka_lrc_x_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->right_gka_lrc_x->foregroundRole(), Qt::black);
+        ui->right_gka_lrc_x->setPalette(black_text);
+        shared_parameters.setRightGKAreaLRCx(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->right_gka_lrc_x->foregroundRole(), Qt::red);
+        ui->right_gka_lrc_x->setPalette(red_text);
+    }
 }
 
 void MainWindow::on_right_gka_lrc_y_textChanged(const QString &new_text)
 {
-
+    bool ok = false;
+    double value = new_text.toDouble(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->right_gka_lrc_y->foregroundRole(), Qt::black);
+        ui->right_gka_lrc_y->setPalette(black_text);
+        shared_parameters.setRightGKAreaLRCy(value);
+        //emit signal
+    }
+    else
+    {
+        red_text.setColor(ui->right_gka_lrc_y->foregroundRole(), Qt::red);
+        ui->right_gka_lrc_y->setPalette(red_text);
+    }
 }
 
 void MainWindow::changeAllyCenter(QAction* action)

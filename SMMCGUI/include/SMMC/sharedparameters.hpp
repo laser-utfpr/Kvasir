@@ -68,6 +68,7 @@ public:
     void setEnemyCenter(Color color);
     Color getAllyCenter(void);
     Color getEnemyCenter(void);
+    std::vector<Color> getTags(void);
 
     Coord getSearchedRegionULC(void);
     Coord getSearchedRegionLRC(void);
