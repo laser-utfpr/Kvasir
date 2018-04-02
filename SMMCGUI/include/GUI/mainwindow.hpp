@@ -103,10 +103,31 @@ private slots:
 
     void on_stop_resume_clicked(void);
 
-    void on_ulc_x_textChanged(const QString &new_text);
-    void on_ulc_y_textChanged(const QString &new_text);
-    void on_lrc_x_textChanged(const QString &new_text);
-    void on_lrc_y_textChanged(const QString &new_text);
+    void on_sr_ulc_x_textChanged(const QString &new_text);
+    void on_sr_ulc_y_textChanged(const QString &new_text);
+    void on_sr_lrc_x_textChanged(const QString &new_text);
+    void on_sr_lrc_y_textChanged(const QString &new_text);
+
+    void on_pf_ulc_x_textChanged(const QString &new_text);
+    void on_pf_ulc_y_textChanged(const QString &new_text);
+    void on_pf_lrc_x_textChanged(const QString &new_text);
+    void on_pf_lrc_y_textChanged(const QString &new_text);
+    void on_left_goal_ulc_x_textChanged(const QString &new_text);
+    void on_left_goal_ulc_y_textChanged(const QString &new_text);
+    void on_left_goal_lrc_x_textChanged(const QString &new_text);
+    void on_left_goal_lrc_y_textChanged(const QString &new_text);
+    void on_right_goal_ulc_x_textChanged(const QString &new_text);
+    void on_right_goal_ulc_y_textChanged(const QString &new_text);
+    void on_right_goal_lrc_x_textChanged(const QString &new_text);
+    void on_right_goal_lrc_y_textChanged(const QString &new_text);
+    void on_left_gka_ulc_x_textChanged(const QString &new_text);
+    void on_left_gka_ulc_y_textChanged(const QString &new_text);
+    void on_left_gka_lrc_x_textChanged(const QString &new_text);
+    void on_left_gka_lrc_y_textChanged(const QString &new_text);
+    void on_right_gka_ulc_x_textChanged(const QString &new_text);
+    void on_right_gka_ulc_y_textChanged(const QString &new_text);
+    void on_right_gka_lrc_x_textChanged(const QString &new_text);
+    void on_right_gka_lrc_y_textChanged(const QString &new_text);
 
     void changeAllyCenter(QAction *action);
     void changeEnemyCenter(QAction *action);

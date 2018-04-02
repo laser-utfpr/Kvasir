@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="run_modules">
      <attribute name="title">
@@ -455,7 +455,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="tag_label">
+     <widget class="QLabel" name="tags_label">
       <property name="geometry">
        <rect>
         <x>1190</x>
@@ -513,7 +513,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="ulc_label">
+     <widget class="QLabel" name="sr_ulc_label">
       <property name="geometry">
        <rect>
         <x>1190</x>
@@ -529,7 +529,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="ulc_x">
+     <widget class="QLineEdit" name="sr_ulc_x">
       <property name="geometry">
        <rect>
         <x>1140</x>
@@ -545,7 +545,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="ulc_y">
+     <widget class="QLineEdit" name="sr_ulc_y">
       <property name="geometry">
        <rect>
         <x>1280</x>
@@ -561,7 +561,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="ulc_x_label">
+     <widget class="QLabel" name="sr_ulc_x_label">
       <property name="geometry">
        <rect>
         <x>1120</x>
@@ -577,7 +577,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="ulc_y_label">
+     <widget class="QLabel" name="sr_ulc_y_label">
       <property name="geometry">
        <rect>
         <x>1260</x>
@@ -593,7 +593,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="lrc_label">
+     <widget class="QLabel" name="sr_lrc_label">
       <property name="geometry">
        <rect>
         <x>1190</x>
@@ -609,7 +609,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lrc_x">
+     <widget class="QLineEdit" name="sr_lrc_x">
       <property name="geometry">
        <rect>
         <x>1140</x>
@@ -625,7 +625,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="lrc_x_label">
+     <widget class="QLabel" name="sr_lrc_x_label">
       <property name="geometry">
        <rect>
         <x>1120</x>
@@ -641,7 +641,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lrc_y">
+     <widget class="QLineEdit" name="sr_lrc_y">
       <property name="geometry">
        <rect>
         <x>1280</x>
@@ -657,7 +657,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="lrc_y_label">
+     <widget class="QLabel" name="sr_lrc_y_label">
       <property name="geometry">
        <rect>
         <x>1260</x>
@@ -689,6 +689,518 @@
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="pf_ulc_x">
+      <property name="geometry">
+       <rect>
+        <x>1150</x>
+        <y>100</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="x_column_label">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>20</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>x column</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="y_column_label">
+      <property name="geometry">
+       <rect>
+        <x>1270</x>
+        <y>20</y>
+        <width>140</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>y column</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="pf_ulc_y">
+      <property name="geometry">
+       <rect>
+        <x>1290</x>
+        <y>100</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="playable_field_ulc">
+      <property name="geometry">
+       <rect>
+        <x>1170</x>
+        <y>60</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Playable Field ULC</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="pf_lrc_x">
+      <property name="geometry">
+       <rect>
+        <x>1150</x>
+        <y>180</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="playable_field_lrc">
+      <property name="geometry">
+       <rect>
+        <x>1170</x>
+        <y>140</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Playable Field LRC</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="pf_lrc_y">
+      <property name="geometry">
+       <rect>
+        <x>1290</x>
+        <y>180</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="left_goal_ulc_x">
+      <property name="geometry">
+       <rect>
+        <x>1150</x>
+        <y>260</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="left_goal_ulc">
+      <property name="geometry">
+       <rect>
+        <x>1170</x>
+        <y>220</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Left Goal ULC</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="left_goal_ulc_y">
+      <property name="geometry">
+       <rect>
+        <x>1290</x>
+        <y>260</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="left_goal_lrc_x">
+      <property name="geometry">
+       <rect>
+        <x>1150</x>
+        <y>340</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="left_goal_lrc">
+      <property name="geometry">
+       <rect>
+        <x>1170</x>
+        <y>300</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Left Goal LRC</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="left_goal_lrc_y">
+      <property name="geometry">
+       <rect>
+        <x>1290</x>
+        <y>340</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="right_goal_ulc_x">
+      <property name="geometry">
+       <rect>
+        <x>1150</x>
+        <y>420</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="right_goal_ulc">
+      <property name="geometry">
+       <rect>
+        <x>1170</x>
+        <y>380</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Right Goal ULC</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="right_goal_ulc_y">
+      <property name="geometry">
+       <rect>
+        <x>1290</x>
+        <y>420</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="right_goal_lrc_x">
+      <property name="geometry">
+       <rect>
+        <x>1150</x>
+        <y>500</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="right_goal_lrc">
+      <property name="geometry">
+       <rect>
+        <x>1170</x>
+        <y>460</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Right Goal LRC</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="right_goal_lrc_y">
+      <property name="geometry">
+       <rect>
+        <x>1290</x>
+        <y>500</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="left_gka_ulc_x">
+      <property name="geometry">
+       <rect>
+        <x>1150</x>
+        <y>580</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="left_gk_area_ulc">
+      <property name="geometry">
+       <rect>
+        <x>1170</x>
+        <y>540</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Left Goalkeeper Area ULC</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="left_gka_ulc_y">
+      <property name="geometry">
+       <rect>
+        <x>1290</x>
+        <y>580</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="left_gka_lrc_x">
+      <property name="geometry">
+       <rect>
+        <x>1150</x>
+        <y>660</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="left_gk_area_lrc">
+      <property name="geometry">
+       <rect>
+        <x>1170</x>
+        <y>620</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Left Goalkeeper Area LRC</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="left_gka_lrc_y">
+      <property name="geometry">
+       <rect>
+        <x>1290</x>
+        <y>660</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="right_gka_ulc_x">
+      <property name="geometry">
+       <rect>
+        <x>1150</x>
+        <y>740</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="right_gk_area_ulc">
+      <property name="geometry">
+       <rect>
+        <x>1170</x>
+        <y>700</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Right Goalkeeper Area ULC</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="right_gka_ulc_y">
+      <property name="geometry">
+       <rect>
+        <x>1290</x>
+        <y>740</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="right_gka_lrc_x">
+      <property name="geometry">
+       <rect>
+        <x>1150</x>
+        <y>820</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="right_gk_area_lrc">
+      <property name="geometry">
+       <rect>
+        <x>1170</x>
+        <y>780</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Right Goalkeeper Area LRC</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="right_gka_lrc_y">
+      <property name="geometry">
+       <rect>
+        <x>1290</x>
+        <y>820</y>
+        <width>100</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>

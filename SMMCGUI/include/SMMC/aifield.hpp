@@ -21,6 +21,7 @@ private:
     template<class Archive>
     inline void serialize(Archive &ar, const unsigned int /* file_version */)
     {
+        ar & playable_field_ulc & playable_field_lrc;
         ar & left_goal_ulc & left_goal_lrc & right_goal_ulc & right_goal_lrc;
         ar & left_goalkeeper_area_ulc & left_goalkeeper_area_lrc;
         ar & right_goalkeeper_area_ulc & right_goalkeeper_area_lrc;
@@ -34,6 +35,9 @@ public:
     Entity ball;
     Player robot[N_ROBOTS];
     Entity enemy_robot[N_ROBOTS];
+
+    Coord playable_field_ulc;
+    Coord playable_field_lrc;
 
     Coord left_goal_ulc; //upper left corner
     Coord left_goal_lrc; //lower right corner

@@ -189,22 +189,206 @@ Coord SharedParameters::getSearchedRegionLRC(void)
 
 void SharedParameters::setSearchedRegionULCx(double ulc_x)
 {
+    QMutexLocker m(&lock);
     vision_field.searched_region_ulc.x = ulc_x;
 }
 
 void SharedParameters::setSearchedRegionULCy(double ulc_y)
 {
+    QMutexLocker m(&lock);
     vision_field.searched_region_ulc.y = ulc_y;
 }
 
 void SharedParameters::setSearchedRegionLRCx(double lrc_x)
 {
+    QMutexLocker m(&lock);
     vision_field.searched_region_lrc.x = lrc_x;
 }
 
 void SharedParameters::setSearchedRegionLRCy(double lrc_y)
 {
+    QMutexLocker m(&lock);
     vision_field.searched_region_lrc.y = lrc_y;
+}
+
+Coord SharedParameters::getPlayableFieldULC(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.playable_field_ulc;
+}
+
+Coord SharedParameters::getPlayableFieldLRC(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.playable_field_lrc;
+}
+
+void SharedParameters::setPlayableFieldULCx(double ulc_x)
+{
+    QMutexLocker m(&lock);
+    ai_field.playable_field_ulc.x = ulc_x;
+}
+
+void SharedParameters::setPlayableFieldULCy(double ulc_y)
+{
+    QMutexLocker m(&lock);
+    ai_field.playable_field_ulc.y = ulc_y;
+}
+
+void SharedParameters::setPlayableFieldLRCx(double lrc_x)
+{
+    QMutexLocker m(&lock);
+    ai_field.playable_field_lrc.x = lrc_x;
+}
+
+void SharedParameters::setPlayableFieldLRCy(double lrc_y)
+{
+    QMutexLocker m(&lock);
+    ai_field.playable_field_lrc.y = lrc_y;
+}
+
+Coord SharedParameters::getLeftGoalULC(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.left_goal_ulc;
+}
+
+Coord SharedParameters::getLeftGoalLRC(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.left_goal_lrc;
+}
+
+void SharedParameters::setLeftGoalULCx(double ulc_x)
+{
+    QMutexLocker m(&lock);
+    ai_field.left_goal_ulc.x = ulc_x;
+}
+
+void SharedParameters::setLeftGoalULCy(double ulc_y)
+{
+    QMutexLocker m(&lock);
+    ai_field.left_goal_ulc.y = ulc_y;
+}
+
+void SharedParameters::setLeftGoalLRCx(double lrc_x)
+{
+    QMutexLocker m(&lock);
+    ai_field.left_goal_lrc.x = lrc_x;
+}
+
+void SharedParameters::setLeftGoalLRCy(double lrc_y)
+{
+    QMutexLocker m(&lock);
+    ai_field.left_goal_lrc.y = lrc_y;
+}
+
+Coord SharedParameters::getRightGoalULC(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.right_goal_ulc;
+}
+
+Coord SharedParameters::getRightGoalLRC(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.right_goal_lrc;
+}
+
+void SharedParameters::setRightGoalULCx(double ulc_x)
+{
+    QMutexLocker m(&lock);
+    ai_field.right_goal_ulc.x = ulc_x;
+}
+
+void SharedParameters::setRightGoalULCy(double ulc_y)
+{
+    QMutexLocker m(&lock);
+    ai_field.right_goal_ulc.y = ulc_y;
+}
+
+void SharedParameters::setRightGoalLRCx(double lrc_x)
+{
+    QMutexLocker m(&lock);
+    ai_field.right_goal_lrc.x = lrc_x;
+}
+
+void SharedParameters::setRightGoalLRCy(double lrc_y)
+{
+    QMutexLocker m(&lock);
+    ai_field.right_goal_lrc.y = lrc_y;
+}
+
+Coord SharedParameters::getLeftGKAreaULC(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.left_goalkeeper_area_ulc;
+}
+
+Coord SharedParameters::getLeftGKAreaLRC(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.left_goalkeeper_area_lrc;
+}
+
+void SharedParameters::setLeftGKAreaULCx(double ulc_x)
+{
+    QMutexLocker m(&lock);
+    ai_field.left_goalkeeper_area_ulc.x = ulc_x;
+}
+
+void SharedParameters::setLeftGKAreaULCy(double ulc_y)
+{
+    QMutexLocker m(&lock);
+    ai_field.left_goalkeeper_area_ulc.y = ulc_y;
+}
+
+void SharedParameters::setLeftGKAreaLRCx(double lrc_x)
+{
+    QMutexLocker m(&lock);
+    ai_field.left_goalkeeper_area_lrc.x = lrc_x;
+}
+
+void SharedParameters::setLeftGKAreaLRCy(double lrc_y)
+{
+    QMutexLocker m(&lock);
+    ai_field.left_goalkeeper_area_lrc.y = lrc_y;
+}
+
+Coord SharedParameters::getRightGKAreaULC(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.right_goalkeeper_area_ulc;
+}
+
+Coord SharedParameters::getRightGKAreaLRC(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.left_goalkeeper_area_lrc;
+}
+
+void SharedParameters::setRightGKAreaULCx(double ulc_x)
+{
+    QMutexLocker m(&lock);
+    ai_field.right_goalkeeper_area_ulc.x = ulc_x;
+}
+
+void SharedParameters::setRightGKAreaULCy(double ulc_y)
+{
+    QMutexLocker m(&lock);
+    ai_field.right_goalkeeper_area_ulc.y = ulc_y;
+}
+
+void SharedParameters::setRightGKAreaLRCx(double lrc_x)
+{
+    QMutexLocker m(&lock);
+    ai_field.right_goalkeeper_area_lrc.x = lrc_x;
+}
+
+void SharedParameters::setRightGKAreaLRCy(double lrc_y)
+{
+    QMutexLocker m(&lock);
+    ai_field.right_goalkeeper_area_lrc.y = lrc_y;
 }
 
 bool SharedParameters::addTagColor(Color new_color)

@@ -76,6 +76,37 @@ public:
     void setSearchedRegionLRCx(double lrc_x);
     void setSearchedRegionLRCy(double lrc_y);
 
+    Coord getPlayableFieldULC(void);
+    Coord getPlayableFieldLRC(void);
+    void setPlayableFieldULCx(double ulc_x);
+    void setPlayableFieldULCy(double ulc_y);
+    void setPlayableFieldLRCx(double lrc_x);
+    void setPlayableFieldLRCy(double lrc_y);
+    Coord getLeftGoalULC(void);
+    Coord getLeftGoalLRC(void);
+    void setLeftGoalULCx(double ulc_x);
+    void setLeftGoalULCy(double ulc_y);
+    void setLeftGoalLRCx(double lrc_x);
+    void setLeftGoalLRCy(double lrc_y);
+    Coord getRightGoalULC(void);
+    Coord getRightGoalLRC(void);
+    void setRightGoalULCx(double ulc_x);
+    void setRightGoalULCy(double ulc_y);
+    void setRightGoalLRCx(double lrc_x);
+    void setRightGoalLRCy(double lrc_y);
+    Coord getLeftGKAreaULC(void);
+    Coord getLeftGKAreaLRC(void);
+    void setLeftGKAreaULCx(double ulc_x);
+    void setLeftGKAreaULCy(double ulc_y);
+    void setLeftGKAreaLRCx(double lrc_x);
+    void setLeftGKAreaLRCy(double lrc_y);
+    Coord getRightGKAreaULC(void);
+    Coord getRightGKAreaLRC(void);
+    void setRightGKAreaULCx(double ulc_x);
+    void setRightGKAreaULCy(double ulc_y);
+    void setRightGKAreaLRCx(double lrc_x);
+    void setRightGKAreaLRCy(double lrc_y);
+
     bool addTagColor(Color new_color);
     bool removeTagColor(Color dead_color);
     bool isTagColor(Color searched_color);

@@ -49,10 +49,41 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     Coord sr_ulc = shared_parameters.getSearchedRegionULC();
     Coord sr_lrc = shared_parameters.getSearchedRegionLRC();
-    ui->ulc_x->setText(QString::number(sr_ulc.x));
-    ui->ulc_y->setText(QString::number(sr_ulc.y));
-    ui->lrc_x->setText(QString::number(sr_lrc.x));
-    ui->lrc_y->setText(QString::number(sr_lrc.y));
+    ui->sr_ulc_x->setText(QString::number(sr_ulc.x));
+    ui->sr_ulc_y->setText(QString::number(sr_ulc.y));
+    ui->sr_lrc_x->setText(QString::number(sr_lrc.x));
+    ui->sr_lrc_y->setText(QString::number(sr_lrc.y));
+
+    Coord pf_ulc = shared_parameters.getPlayableFieldULC();
+    Coord pf_lrc = shared_parameters.getPlayableFieldLRC();
+    ui->pf_ulc_x->setText(QString::number(pf_ulc.x));
+    ui->pf_ulc_y->setText(QString::number(pf_ulc.y));
+    ui->pf_lrc_x->setText(QString::number(pf_lrc.x));
+    ui->pf_lrc_y->setText(QString::number(pf_lrc.y));
+    Coord left_goal_ulc = shared_parameters.getLeftGoalULC();
+    Coord left_goal_lrc = shared_parameters.getLeftGoalLRC();
+    ui->left_goal_ulc_x->setText(QString::number(left_goal_ulc.x));
+    ui->left_goal_ulc_y->setText(QString::number(left_goal_ulc.y));
+    ui->left_goal_lrc_x->setText(QString::number(left_goal_lrc.x));
+    ui->left_goal_lrc_y->setText(QString::number(left_goal_lrc.y));
+    Coord right_goal_ulc = shared_parameters.getRightGoalULC();
+    Coord right_goal_lrc = shared_parameters.getRightGoalLRC();
+    ui->right_goal_ulc_x->setText(QString::number(right_goal_ulc.x));
+    ui->right_goal_ulc_y->setText(QString::number(right_goal_ulc.y));
+    ui->right_goal_lrc_x->setText(QString::number(right_goal_lrc.x));
+    ui->right_goal_lrc_y->setText(QString::number(right_goal_lrc.y));
+    Coord left_gka_ulc = shared_parameters.getLeftGKAreaULC();
+    Coord left_gka_lrc = shared_parameters.getLeftGKAreaLRC();
+    ui->left_gka_ulc_x->setText(QString::number(left_gka_ulc.x));
+    ui->left_gka_ulc_y->setText(QString::number(left_gka_ulc.y));
+    ui->left_gka_lrc_x->setText(QString::number(left_gka_lrc.x));
+    ui->left_gka_lrc_y->setText(QString::number(left_gka_lrc.y));
+    Coord right_gka_ulc = shared_parameters.getRightGKAreaULC();
+    Coord right_gka_lrc = shared_parameters.getRightGKAreaLRC();
+    ui->right_gka_ulc_x->setText(QString::number(right_gka_ulc.x));
+    ui->right_gka_ulc_y->setText(QString::number(right_gka_ulc.y));
+    ui->right_gka_lrc_x->setText(QString::number(right_gka_lrc.x));
+    ui->right_gka_lrc_y->setText(QString::number(right_gka_lrc.y));
 
     smmc = new SMMCThread(shared_parameters);
 
@@ -290,72 +321,172 @@ void MainWindow::on_stop_resume_clicked(void)
     }
 }
 
-void MainWindow::on_ulc_x_textChanged(const QString &new_text)
+void MainWindow::on_sr_ulc_x_textChanged(const QString &new_text)
 {
     bool ok = false;
     double value = new_text.toDouble(&ok);
     if(ok)
     {
-        black_text.setColor(ui->ulc_x->foregroundRole(), Qt::black);
-        ui->ulc_x->setPalette(black_text);
+        black_text.setColor(ui->sr_ulc_x->foregroundRole(), Qt::black);
+        ui->sr_ulc_x->setPalette(black_text);
         shared_parameters.setSearchedRegionULCx(value);
     }
     else
     {
-        red_text.setColor(ui->ulc_x->foregroundRole(), Qt::red);
-        ui->ulc_x->setPalette(red_text);
+        red_text.setColor(ui->sr_ulc_x->foregroundRole(), Qt::red);
+        ui->sr_ulc_x->setPalette(red_text);
     }
 }
 
-void MainWindow::on_ulc_y_textChanged(const QString &new_text)
+void MainWindow::on_sr_ulc_y_textChanged(const QString &new_text)
 {
     bool ok = false;
     double value = new_text.toDouble(&ok);
     if(ok)
     {
-        black_text.setColor(ui->ulc_y->foregroundRole(), Qt::black);
-        ui->ulc_y->setPalette(black_text);
+        black_text.setColor(ui->sr_ulc_y->foregroundRole(), Qt::black);
+        ui->sr_ulc_y->setPalette(black_text);
         shared_parameters.setSearchedRegionULCy(value);
     }
     else
     {
-        red_text.setColor(ui->ulc_y->foregroundRole(), Qt::red);
-        ui->ulc_y->setPalette(red_text);
+        red_text.setColor(ui->sr_ulc_y->foregroundRole(), Qt::red);
+        ui->sr_ulc_y->setPalette(red_text);
     }
 }
 
-void MainWindow::on_lrc_x_textChanged(const QString &new_text)
+void MainWindow::on_sr_lrc_x_textChanged(const QString &new_text)
 {
     bool ok = false;
     double value = new_text.toDouble(&ok);
     if(ok)
     {
-        black_text.setColor(ui->lrc_x->foregroundRole(), Qt::black);
-        ui->lrc_x->setPalette(black_text);
+        black_text.setColor(ui->sr_lrc_x->foregroundRole(), Qt::black);
+        ui->sr_lrc_x->setPalette(black_text);
         shared_parameters.setSearchedRegionLRCx(value);
     }
     else
     {
-        red_text.setColor(ui->lrc_x->foregroundRole(), Qt::red);
-        ui->lrc_x->setPalette(red_text);
+        red_text.setColor(ui->sr_lrc_x->foregroundRole(), Qt::red);
+        ui->sr_lrc_x->setPalette(red_text);
     }
 }
 
-void MainWindow::on_lrc_y_textChanged(const QString &new_text)
+void MainWindow::on_sr_lrc_y_textChanged(const QString &new_text)
 {
     bool ok = false;
     double value = new_text.toDouble(&ok);
     if(ok)
     {
-        black_text.setColor(ui->lrc_y->foregroundRole(), Qt::black);
-        ui->lrc_y->setPalette(black_text);
+        black_text.setColor(ui->sr_lrc_y->foregroundRole(), Qt::black);
+        ui->sr_lrc_y->setPalette(black_text);
         shared_parameters.setSearchedRegionLRCy(value);
     }
     else
     {
-        red_text.setColor(ui->lrc_y->foregroundRole(), Qt::red);
-        ui->lrc_y->setPalette(red_text);
+        red_text.setColor(ui->sr_lrc_y->foregroundRole(), Qt::red);
+        ui->sr_lrc_y->setPalette(red_text);
     }
+}
+
+void MainWindow::on_pf_ulc_x_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_pf_ulc_y_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_pf_lrc_x_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_pf_lrc_y_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_left_goal_ulc_x_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_left_goal_ulc_y_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_left_goal_lrc_x_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_left_goal_lrc_y_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_right_goal_ulc_x_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_right_goal_ulc_y_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_right_goal_lrc_x_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_right_goal_lrc_y_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_left_gka_ulc_x_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_left_gka_ulc_y_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_left_gka_lrc_x_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_left_gka_lrc_y_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_right_gka_ulc_x_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_right_gka_ulc_y_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_right_gka_lrc_x_textChanged(const QString &new_text)
+{
+
+}
+
+void MainWindow::on_right_gka_lrc_y_textChanged(const QString &new_text)
+{
+
 }
 
 void MainWindow::changeAllyCenter(QAction* action)
