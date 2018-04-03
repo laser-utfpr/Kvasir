@@ -122,6 +122,10 @@ public:
 
     AIField getAIField(void);
     Movement getRobotMovement(int index);
+
+    Entity getBall(void);
+    Player getAllyRobot(int index);
+    Entity getEnemyRobot(int index);
 };
 
 #endif // SHAREDPARAMETERS_HPP

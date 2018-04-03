@@ -30,6 +30,12 @@ SharedParameters::SharedParameters()
     ai_field.command_list.push_back("papakakaka");
     ai_field.command_list.push_back("anatoomtoomtooroomtoom");
     vision_field.ally_tag.push_back(VIOLET);
+
+    ColoredObject obj;
+    obj.coord.x = 100.0;
+    obj.coord.y = 100.0;
+    obj.color = BLUE;
+    vision_field.found_object.push_back(obj);
 }
 
 SharedParameters::~SharedParameters()
@@ -493,4 +499,22 @@ Movement SharedParameters::getRobotMovement(int index)
         mov.stay_still = force_stop;
         return mov;
     }
+}
+
+Entity SharedParameters::getBall(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field.ball;
+}
+
+Player SharedParameters::getAllyRobot(int index)
+{
+    if(index >= 0 && index < N_ROBOTS)
+        return ai_field.robot[index];
+}
+
+Entity SharedParameters::getEnemyRobot(int index)
+{
+    if(index >= 0 && index < N_ROBOTS)
+        return vision_field.enemy_robot[index];
 }
