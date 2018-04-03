@@ -75,6 +75,7 @@ public:
     ~SMMCThread();
 
 signals:
+    //is this useful?
     void visionInputUpdate(void);
     void aiInputUpdate(void);
     void commInputUpdate(void);

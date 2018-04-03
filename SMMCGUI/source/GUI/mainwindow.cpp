@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     force_stop = false;
 
+    ui->ball_menu->setMenu(&ball_menu);
     ui->ally_center_menu->setMenu(&ally_center_menu);
     ui->enemy_center_menu->setMenu(&enemy_center_menu);
     ui->available_tag_menu->setMenu(&available_tag_menu);
@@ -23,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     const char *color_name[] = COLOR_MEMBER_NAMES;
     Color init;
+    if((init = shared_parameters.getBallColor()) != UNCOLORED)
+        ui->ball_menu->setText(color_name[static_cast<int>(init)]);
     if((init = shared_parameters.getAllyCenter()) != UNCOLORED)
         ui->ally_center_menu->setText(color_name[static_cast<int>(init)]);
     if((init = shared_parameters.getEnemyCenter()) != UNCOLORED)
@@ -31,10 +34,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     QString qstr;
     for(int i=0; i<N_COLORS; i++)
     {
+        //creates the color action with the color name
         qstr = color_name[i];
+        ball_color_action[i] = new QAction(qstr,this);
         ally_color_action[i] = new QAction(qstr,this);
         enemy_color_action[i] = new QAction(qstr,this);
         tag_color_action[i] = new QAction(qstr,this);
+
+        //adds the actions to the menus
+        ball_menu.addAction(ball_color_action[i]);
         ally_center_menu.addAction(ally_color_action[i]);
         enemy_center_menu.addAction(enemy_color_action[i]);
         if(shared_parameters.isTagColor(static_cast<Color>(i)))
@@ -42,6 +50,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
         else
             available_tag_menu.addAction(tag_color_action[i]);
     }
+    connect(&ball_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeBallColor(QAction*)));
     connect(&ally_center_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeAllyCenter(QAction*)));
     connect(&enemy_center_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeEnemyCenter(QAction*)));
     connect(&available_tag_menu, SIGNAL(triggered(QAction*)), this, SLOT(addTagColor(QAction*)));
@@ -139,8 +148,10 @@ MainWindow::~MainWindow()
         delete command_menu_action;
         command_menu_action = nullptr;
     }
+
     for(int i=0; i<N_COLORS; i++)
     {
+        delete ball_color_action[i];
         delete ally_color_action[i];
         delete enemy_color_action[i];
         delete tag_color_action[i];
@@ -156,13 +167,26 @@ void MainWindow::processGameControlImage(void)
     if(cam_image.empty())
         return;
 
-    cv::Mat resized_image;
-    cv::Size new_size(ui->game_control_image->width(),ui->game_control_image->height());
-    cv::resize(cam_image, resized_image, new_size, INTERPOLATION_METHOD);
+    //USE THIS AFTER TESTS, change cam_image -> image
+    //cv::Mat image = shared_parameters.getVisionImage();
 
     if(ui->color_objects_cb->isChecked())
     {
-        //draw color objects
+        std::vector<ColoredObject> object = shared_parameters.getColorObjects();
+        const char *color_name[] = COLOR_MEMBER_NAMES;
+        for(int i=0; i<object.size(); i++)
+        {
+            cv::circle(cam_image, cv::Point(object[i].coord.x, object[i].coord.y),
+                                         DOT_RADIUS, SCALAR_GREEN, DOT_THICKNESS);
+            if(object[i].coord.y >= 0)
+                cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
+                    cv::Point(object[i].coord.x, object[i].coord.y - TEXT_OFFSET),
+                    DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+            else
+                cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
+                    cv::Point(object[i].coord.x, object[i].coord.y + TEXT_OFFSET),
+                    DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+        }
     }
     if(ui->robot_positions_cb->isChecked())
     {
@@ -177,6 +201,10 @@ void MainWindow::processGameControlImage(void)
         //draw player movements
     }
 
+    cv::Mat resized_image;
+    cv::Size new_size(ui->game_control_image->width(),ui->game_control_image->height());
+    cv::resize(cam_image, resized_image, new_size, INTERPOLATION_METHOD);
+
     cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
     QImage qimage((uchar*)resized_image.data, resized_image.cols, resized_image.rows,
                   resized_image.step, QImage::Format_RGB888);
@@ -186,12 +214,38 @@ void MainWindow::processGameControlImage(void)
 
 void MainWindow::processVisionSettingsImage(void)
 {
+    //for testing - to be deleted
+    cam.read(cam_image);
+    if(cam_image.empty())
+        return;
 
+    cv::Mat resized_image;
+    cv::Size new_size(ui->vision_settings_image->width(),ui->vision_settings_image->height());
+    cv::resize(cam_image, resized_image, new_size, INTERPOLATION_METHOD);
+
+    cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
+    QImage qimage((uchar*)resized_image.data, resized_image.cols, resized_image.rows,
+                  resized_image.step, QImage::Format_RGB888);
+
+    ui->vision_settings_image->setPixmap(QPixmap::fromImage(qimage));
 }
 
 void MainWindow::processAISettingsImage(void)
 {
+    //for testing - to be deleted
+    cam.read(cam_image);
+    if(cam_image.empty())
+        return;
 
+    cv::Mat resized_image;
+    cv::Size new_size(ui->ai_settings_image->width(),ui->ai_settings_image->height());
+    cv::resize(cam_image, resized_image, new_size, INTERPOLATION_METHOD);
+
+    cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
+    QImage qimage((uchar*)resized_image.data, resized_image.cols, resized_image.rows,
+                  resized_image.step, QImage::Format_RGB888);
+
+    ui->ai_settings_image->setPixmap(QPixmap::fromImage(qimage));
 }
 
 void MainWindow::processImages(void)
@@ -301,8 +355,8 @@ void MainWindow::changeCommand(QAction *action)
 void MainWindow::on_send_command_clicked(void)
 {
     QString qstr = ui->command_menu->text();
-    shared_parameters.sendAICommand(qstr.toStdString());
-    //emit signal
+    shared_parameters.setAICommand(qstr.toStdString());
+    emit aiSettingsChanged();
 }
 
 void MainWindow::on_stop_resume_clicked(void)
@@ -330,7 +384,7 @@ void MainWindow::on_sr_ulc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->sr_ulc_x->foregroundRole(), Qt::black);
         ui->sr_ulc_x->setPalette(black_text);
         shared_parameters.setSearchedRegionULCx(value);
-        //emit signal
+        emit visionSettingsChanged();
     }
     else
     {
@@ -348,7 +402,7 @@ void MainWindow::on_sr_ulc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->sr_ulc_y->foregroundRole(), Qt::black);
         ui->sr_ulc_y->setPalette(black_text);
         shared_parameters.setSearchedRegionULCy(value);
-        //emit signal
+        emit visionSettingsChanged();
     }
     else
     {
@@ -366,7 +420,7 @@ void MainWindow::on_sr_lrc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->sr_lrc_x->foregroundRole(), Qt::black);
         ui->sr_lrc_x->setPalette(black_text);
         shared_parameters.setSearchedRegionLRCx(value);
-        //emit signal
+        emit visionSettingsChanged();
     }
     else
     {
@@ -384,7 +438,7 @@ void MainWindow::on_sr_lrc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->sr_lrc_y->foregroundRole(), Qt::black);
         ui->sr_lrc_y->setPalette(black_text);
         shared_parameters.setSearchedRegionLRCy(value);
-        //emit signal
+        emit visionSettingsChanged();
     }
     else
     {
@@ -402,7 +456,7 @@ void MainWindow::on_pf_ulc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->pf_ulc_x->foregroundRole(), Qt::black);
         ui->pf_ulc_x->setPalette(black_text);
         shared_parameters.setPlayableFieldULCx(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -420,7 +474,7 @@ void MainWindow::on_pf_ulc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->pf_ulc_y->foregroundRole(), Qt::black);
         ui->pf_ulc_y->setPalette(black_text);
         shared_parameters.setPlayableFieldULCy(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -438,7 +492,7 @@ void MainWindow::on_pf_lrc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->pf_lrc_x->foregroundRole(), Qt::black);
         ui->pf_lrc_x->setPalette(black_text);
         shared_parameters.setPlayableFieldLRCx(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -456,7 +510,7 @@ void MainWindow::on_pf_lrc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->pf_lrc_y->foregroundRole(), Qt::black);
         ui->pf_lrc_y->setPalette(black_text);
         shared_parameters.setPlayableFieldLRCy(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -474,7 +528,7 @@ void MainWindow::on_left_goal_ulc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->left_goal_ulc_x->foregroundRole(), Qt::black);
         ui->left_goal_ulc_x->setPalette(black_text);
         shared_parameters.setLeftGoalULCx(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -492,7 +546,7 @@ void MainWindow::on_left_goal_ulc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->left_goal_ulc_y->foregroundRole(), Qt::black);
         ui->left_goal_ulc_y->setPalette(black_text);
         shared_parameters.setLeftGoalULCy(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -510,7 +564,7 @@ void MainWindow::on_left_goal_lrc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->left_goal_lrc_x->foregroundRole(), Qt::black);
         ui->left_goal_lrc_x->setPalette(black_text);
         shared_parameters.setLeftGoalLRCx(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -528,7 +582,7 @@ void MainWindow::on_left_goal_lrc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->left_goal_lrc_y->foregroundRole(), Qt::black);
         ui->left_goal_lrc_y->setPalette(black_text);
         shared_parameters.setLeftGoalLRCy(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -546,7 +600,7 @@ void MainWindow::on_right_goal_ulc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->right_goal_ulc_x->foregroundRole(), Qt::black);
         ui->right_goal_ulc_x->setPalette(black_text);
         shared_parameters.setRightGoalULCx(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -564,7 +618,7 @@ void MainWindow::on_right_goal_ulc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->right_goal_ulc_y->foregroundRole(), Qt::black);
         ui->right_goal_ulc_y->setPalette(black_text);
         shared_parameters.setRightGoalULCy(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -582,7 +636,7 @@ void MainWindow::on_right_goal_lrc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->right_goal_lrc_x->foregroundRole(), Qt::black);
         ui->right_goal_lrc_x->setPalette(black_text);
         shared_parameters.setRightGoalLRCx(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -600,7 +654,7 @@ void MainWindow::on_right_goal_lrc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->right_goal_lrc_y->foregroundRole(), Qt::black);
         ui->right_goal_lrc_y->setPalette(black_text);
         shared_parameters.setRightGoalLRCy(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -618,7 +672,7 @@ void MainWindow::on_left_gka_ulc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->left_gka_ulc_x->foregroundRole(), Qt::black);
         ui->left_gka_ulc_x->setPalette(black_text);
         shared_parameters.setLeftGKAreaULCx(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -636,7 +690,7 @@ void MainWindow::on_left_gka_ulc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->left_gka_ulc_y->foregroundRole(), Qt::black);
         ui->left_gka_ulc_y->setPalette(black_text);
         shared_parameters.setLeftGKAreaULCy(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -654,7 +708,7 @@ void MainWindow::on_left_gka_lrc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->left_gka_lrc_x->foregroundRole(), Qt::black);
         ui->left_gka_lrc_x->setPalette(black_text);
         shared_parameters.setLeftGKAreaLRCx(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -672,7 +726,7 @@ void MainWindow::on_left_gka_lrc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->left_gka_lrc_y->foregroundRole(), Qt::black);
         ui->left_gka_lrc_y->setPalette(black_text);
         shared_parameters.setLeftGKAreaLRCy(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -690,7 +744,7 @@ void MainWindow::on_right_gka_ulc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->right_gka_ulc_x->foregroundRole(), Qt::black);
         ui->right_gka_ulc_x->setPalette(black_text);
         shared_parameters.setRightGKAreaULCx(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -708,7 +762,7 @@ void MainWindow::on_right_gka_ulc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->right_gka_ulc_y->foregroundRole(), Qt::black);
         ui->right_gka_ulc_y->setPalette(black_text);
         shared_parameters.setRightGKAreaULCy(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -726,7 +780,7 @@ void MainWindow::on_right_gka_lrc_x_textChanged(const QString &new_text)
         black_text.setColor(ui->right_gka_lrc_x->foregroundRole(), Qt::black);
         ui->right_gka_lrc_x->setPalette(black_text);
         shared_parameters.setRightGKAreaLRCx(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
@@ -744,13 +798,31 @@ void MainWindow::on_right_gka_lrc_y_textChanged(const QString &new_text)
         black_text.setColor(ui->right_gka_lrc_y->foregroundRole(), Qt::black);
         ui->right_gka_lrc_y->setPalette(black_text);
         shared_parameters.setRightGKAreaLRCy(value);
-        //emit signal
+        emit aiSettingsChanged();
     }
     else
     {
         red_text.setColor(ui->right_gka_lrc_y->foregroundRole(), Qt::red);
         ui->right_gka_lrc_y->setPalette(red_text);
     }
+}
+
+void MainWindow::changeBallColor(QAction* action)
+{
+    QString qstr = action->text();
+    ui->ball_menu->setText(qstr);
+
+    std::string new_ball_color = qstr.toStdString();
+    const char *color_name[] = COLOR_MEMBER_NAMES;
+    Color new_color;
+    for(int i=0; i<N_COLORS; i++)
+    {
+        std::string tested_color = color_name[i];
+        if(new_ball_color == tested_color)
+            new_color = static_cast<Color>(i);
+    }
+    shared_parameters.setBallColor(new_color);
+    emit visionSettingsChanged();
 }
 
 void MainWindow::changeAllyCenter(QAction* action)
@@ -768,7 +840,7 @@ void MainWindow::changeAllyCenter(QAction* action)
             new_color = static_cast<Color>(i);
     }
     shared_parameters.setAllyCenter(new_color);
-    //emit signal
+    emit visionSettingsChanged();
 }
 
 void MainWindow::changeEnemyCenter(QAction* action)
@@ -786,7 +858,7 @@ void MainWindow::changeEnemyCenter(QAction* action)
             new_color = static_cast<Color>(i);
     }
     shared_parameters.setEnemyCenter(new_color);
-    //emit signal
+    emit visionSettingsChanged();
 }
 
 void MainWindow::addTagColor(QAction *action)
@@ -806,7 +878,7 @@ void MainWindow::addTagColor(QAction *action)
     available_tag_menu.removeAction(action);
     current_tag_menu.addAction(action);
 
-    //emit signal
+    emit visionSettingsChanged();
 }
 
 void MainWindow::removeTagColor(QAction *action)
@@ -826,7 +898,7 @@ void MainWindow::removeTagColor(QAction *action)
     current_tag_menu.removeAction(action);
     available_tag_menu.addAction(action);
 
-    //emit signal
+    emit visionSettingsChanged();
 }
 
 void MainWindow::handleVisionUpdate(void)
@@ -841,7 +913,7 @@ void MainWindow::handleAIUpdate(void)
 
 void MainWindow::handleCommUpdate(void)
 {
-    //no comm parameters to be handled for now
+
 }
 
 #include "moc_mainwindow.cpp"

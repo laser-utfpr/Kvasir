@@ -18,7 +18,7 @@ public:
 
     std::string status;
 
-    inline Player():Entity() {};
+    inline Player() : Entity() {};
     inline Player& operator=(const Entity &copied)
     {
         if(static_cast<Entity*>(this) != &copied)

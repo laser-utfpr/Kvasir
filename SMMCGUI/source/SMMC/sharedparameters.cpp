@@ -151,6 +151,24 @@ void SharedParameters::setCommPath(std::string str)
     comm_path = str;
 }
 
+cv::Mat SharedParameters::getVisionImage(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field.image;
+}
+
+std::vector<ColoredObject> SharedParameters::getColorObjects(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field.found_object;
+}
+
+Color SharedParameters::setBallColor(Color color)
+{
+    QMutexLocker m(&lock);
+    vision_field.ball_color = color;
+}
+
 void SharedParameters::setAllyCenter(Color color)
 {
     QMutexLocker m(&lock);
@@ -167,6 +185,12 @@ std::vector<Color> SharedParameters::getTags(void)
 {
     QMutexLocker m(&lock);
     return vision_field.ally_tag;
+}
+
+Color SharedParameters::getBallColor(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field.ball_color;
 }
 
 Color SharedParameters::getAllyCenter(void)
@@ -423,13 +447,20 @@ bool SharedParameters::removeTagColor(Color dead_color)
 
 bool SharedParameters::isTagColor(Color searched_color)
 {
+    QMutexLocker m(&lock);
     for(int i=0; i < vision_field.ally_tag.size(); i++)
         if(vision_field.ally_tag[i] == searched_color)
             return true;
     return false;
 }
 
-void SharedParameters::sendAICommand(std::string str)
+std::string SharedParameters::getAICommand(void)
+{
+    QMutexLocker m(&lock);
+    return ai_field.command;
+}
+
+void SharedParameters::setAICommand(std::string str)
 {
     QMutexLocker m(&lock);
     ai_field.command = str;

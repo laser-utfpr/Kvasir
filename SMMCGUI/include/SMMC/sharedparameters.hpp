@@ -7,6 +7,8 @@
 #include <boost/serialization/string.hpp>
 #include <boost/serialization/serialization.hpp>
 
+#include <opencv2/core/core.hpp>
+
 #include <QCoreApplication>
 
 #include <QMutex>
@@ -59,13 +61,19 @@ public:
     void setAIPath(std::string str);
     void setCommPath(std::string str);
 
-    void sendAICommand(std::string str);
+    std::string getAICommand(void);
+    void setAICommand(std::string str);
     std::vector<std::string> getCommandList(void);
 
     void setForceStop(bool stop);
 
+    cv::Mat getVisionImage(void);
+    std::vector<ColoredObject> getColorObjects(void);
+
+    Color setBallColor(Color color);
     void setAllyCenter(Color color);
     void setEnemyCenter(Color color);
+    Color getBallColor(void);
     Color getAllyCenter(void);
     Color getEnemyCenter(void);
     std::vector<Color> getTags(void);

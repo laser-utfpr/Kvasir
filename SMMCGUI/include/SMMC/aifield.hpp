@@ -52,7 +52,7 @@ public:
     std::string command;
     std::vector<std::string> command_list;
 
-    inline AIField(){};
+    inline AIField() : image_width(NAN), image_height(NAN), time_us(0) {};
     inline AIField& operator<<(const VisionField& vision)
     {
         image_width = vision.image_width;

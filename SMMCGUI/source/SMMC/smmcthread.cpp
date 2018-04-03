@@ -207,19 +207,35 @@ void SMMCThread::shutdownComm(void)
 
 void SMMCThread::updateVisionOutputSettings(void)
 {
-    //output settings to shared memory
-    *sm_vision_field.ally_center = shared_parameters.getAllyCenter();
-    *sm_vision_field.enemy_center = shared_parameters.getEnemyCenter();
-    *sm_vision_field.ally_tag = shared_parameters.getTags();
-    //FORGOT BALL COLOR
-    
+    //outputing settings to shared memory
+    sm_vision_field->ball_color = shared_parameters.getBallColor();
+    sm_vision_field->ally_center = shared_parameters.getAllyCenter();
+    sm_vision_field->enemy_center = shared_parameters.getEnemyCenter();
+    sm_vision_field->ally_tag = shared_parameters.getTags();
+    sm_vision_field->searched_region_ulc = shared_parameters.getSearchedRegionULC();
+    sm_vision_field->searched_region_lrc = shared_parameters.getSearchedRegionLRC();
 
+    //writing key
     *sm_vision_read_key = vision_read_key;
 }
 
 void SMMCThread::updateAIOutputSettings(void)
 {
-    //output settings to shared memory
+    //outputing settings to shared memory
+    sm_ai_field->playable_field_ulc = shared_parameters.getPlayableFieldULC();
+    sm_ai_field->playable_field_lrc = shared_parameters.getPlayableFieldLRC();
+    sm_ai_field->left_goal_ulc = shared_parameters.getLeftGoalULC();
+    sm_ai_field->left_goal_lrc = shared_parameters.getLeftGoalLRC();
+    sm_ai_field->right_goal_ulc = shared_parameters.getRightGoalULC();
+    sm_ai_field->right_goal_lrc = shared_parameters.getRightGoalLRC();
+    sm_ai_field->left_goalkeeper_area_ulc = shared_parameters.getLeftGKAreaULC();
+    sm_ai_field->left_goalkeeper_area_lrc = shared_parameters.getLeftGKAreaLRC();
+    sm_ai_field->right_goalkeeper_area_ulc = shared_parameters.getRightGKAreaULC();
+    sm_ai_field->right_goalkeeper_area_lrc = shared_parameters.getRightGKAreaLRC();
+
+    sm_ai_field->command = shared_parameters.getAICommand();
+
+    //writing key
     *sm_ai_read_key = ai_read_key;
 }
 

@@ -43,8 +43,10 @@ private:
 
     bool force_stop;
 
+    QMenu ball_menu;
     QMenu ally_center_menu;
     QMenu enemy_center_menu;
+    QAction *ball_color_action[N_COLORS];
     QAction *ally_color_action[N_COLORS];
     QAction *enemy_color_action[N_COLORS];
 
@@ -129,6 +131,7 @@ private slots:
     void on_right_gka_lrc_x_textChanged(const QString &new_text);
     void on_right_gka_lrc_y_textChanged(const QString &new_text);
 
+    void changeBallColor(QAction* action);
     void changeAllyCenter(QAction *action);
     void changeEnemyCenter(QAction *action);
 
@@ -136,6 +139,8 @@ private slots:
     void removeTagColor(QAction *action);
 
     void processImages(void);
+
+    //is this useful?
     void handleVisionUpdate(void);
     void handleAIUpdate(void);
     void handleCommUpdate(void);

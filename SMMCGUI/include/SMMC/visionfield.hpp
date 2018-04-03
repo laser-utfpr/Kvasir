@@ -49,8 +49,8 @@ public:
 
     //use filters?
 
-    inline VisionField() : ball_color(UNCOLORED), ally_center(UNCOLORED),
-    enemy_center(UNCOLORED) {};
+    inline VisionField() : image_width(NAN), image_height(NAN), time_us(0),
+    ball_color(UNCOLORED), ally_center(UNCOLORED), enemy_center(UNCOLORED) {};
 };
 
 #endif // VISIONFIELD_HPP
