@@ -5,9 +5,9 @@
 
 #define INTERPOLATION_METHOD CV_INTER_CUBIC //CV_INTER_LANCZOS4
 
-#define SCALAR_RED cv::Scalar(255,0,0)
+#define SCALAR_RED cv::Scalar(0,0,255)
 #define SCALAR_GREEN cv::Scalar(0,255,0)
-#define SCALAR_BLUE cv::Scalar(0,0,255)
+#define SCALAR_BLUE cv::Scalar(255,0,0)
 
 #define DOT_RADIUS 1
 #define DOT_THICKNESS 2

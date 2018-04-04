@@ -36,6 +36,11 @@ SharedParameters::SharedParameters()
     obj.coord.y = 100.0;
     obj.color = BLUE;
     vision_field.found_object.push_back(obj);
+
+    ai_field.robot[0].already_found = true;
+    ai_field.robot[0].status = "wololo";
+    ai_field.robot[0].coord.x = 120;
+    ai_field.robot[0].coord.y = 120;
 }
 
 SharedParameters::~SharedParameters()

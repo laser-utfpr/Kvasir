@@ -178,28 +178,30 @@ void MainWindow::processGameControlImage(void)
         {
             cv::circle(cam_image, cv::Point(object[i].coord.x, object[i].coord.y),
                                          DOT_RADIUS, SCALAR_GREEN, DOT_THICKNESS);
-
-            if(object[i].coord.y - TEXT_Y_OFFSET >= 0)
+            if(object[i].color != UNCOLORED)
             {
-                if(object[i].coord.y - TEXT_X_OFFSET >= 0)
-                    cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
-                                cv::Point(object[i].coord.x - TEXT_X_OFFSET, object[i].coord.y - TEXT_Y_OFFSET),
-                                DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                if(object[i].coord.y - TEXT_Y_OFFSET >= 0)
+                {
+                    if(object[i].coord.y - TEXT_X_OFFSET >= 0)
+                        cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
+                                    cv::Point(object[i].coord.x - TEXT_X_OFFSET, object[i].coord.y - TEXT_Y_OFFSET),
+                                    DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                    else
+                        cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
+                                    cv::Point(object[i].coord.x, object[i].coord.y - TEXT_Y_OFFSET),
+                                    DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                }
                 else
-                    cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
-                                cv::Point(object[i].coord.x, object[i].coord.y - TEXT_Y_OFFSET),
-                                DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
-            }
-            else
-            {
-                if(object[i].coord.y - TEXT_X_OFFSET >= 0)
-                    cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
-                                cv::Point(object[i].coord.x - TEXT_X_OFFSET, object[i].coord.y + TEXT_Y_OFFSET),
-                                DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
-                else
-                    cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
-                                cv::Point(object[i].coord.x, object[i].coord.y + TEXT_Y_OFFSET),
-                                DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                {
+                    if(object[i].coord.y - TEXT_X_OFFSET >= 0)
+                        cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
+                                    cv::Point(object[i].coord.x - TEXT_X_OFFSET, object[i].coord.y + TEXT_Y_OFFSET),
+                                    DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                    else
+                        cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
+                                    cv::Point(object[i].coord.x, object[i].coord.y + TEXT_Y_OFFSET),
+                                    DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                }
             }
         }
     }
@@ -208,54 +210,90 @@ void MainWindow::processGameControlImage(void)
         Entity ball = shared_parameters.getBall();
         Player ally[N_ROBOTS];
         for(int i=0; i<N_ROBOTS; i++)
-            shared_parameters.getAllyRobot(i);
+            ally[i] = shared_parameters.getAllyRobot(i);
         Entity enemy[N_ROBOTS];
         for(int i=0; i<N_ROBOTS; i++)
-            shared_parameters.getEnemyRobot(i);
+            enemy[i] = shared_parameters.getEnemyRobot(i);
 
-        if(ball.coord.x != NAN && ball.coord.y != NAN)
+        if(ball.already_found)
         {
+            cv::Scalar *scalar_color;
+            if(ball.found_last_frame)
+                scalar_color = new SCALAR_GREEN;
+            else
+                scalar_color = new SCALAR_RED;
             cv::circle(cam_image, cv::Point(ball.coord.x, ball.coord.y),
-                       DOT_RADIUS, SCALAR_GREEN, DOT_THICKNESS);
+                       DOT_RADIUS, *scalar_color, DOT_THICKNESS);
 
             std::string ball_name("BALL");
             cv::putText(cam_image, ball_name, cv::Point(ball.coord.x - TEXT_X_OFFSET,
                         ball.coord.y + TEXT_Y_OFFSET), DEFAULT_IMAGE_TEXT_FONT,
-                    IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                    IMAGE_TEXT_SCALING, *scalar_color);
+            delete scalar_color;
         }
 
         for(int i=0; i<N_ROBOTS; i++)
         {
-            if(ally[i].coord.x != NAN && ally[i].coord.y != NAN)
+            if(ally[i].already_found)
             {
+                cv::Scalar *scalar_color;
+                if(ally[i].found_last_frame)
+                    scalar_color = new SCALAR_GREEN;
+                else
+                    scalar_color = new SCALAR_RED;
                 cv::circle(cam_image, cv::Point(ally[i].coord.x, ally[i].coord.y),
-                           DOT_RADIUS, SCALAR_GREEN, DOT_THICKNESS);
+                           DOT_RADIUS, *scalar_color, DOT_THICKNESS);
 
                 std::string ally_name("ROBOT_");
                 ally_name += std::to_string(i);
                 cv::putText(cam_image, ally_name, cv::Point(ally[i].coord.x - TEXT_X_OFFSET,
                             ally[i].coord.y + TEXT_Y_OFFSET), DEFAULT_IMAGE_TEXT_FONT,
-                            IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                            IMAGE_TEXT_SCALING, *scalar_color);
+                delete scalar_color;
             }
         }
 
         for(int i=0; i<N_ROBOTS; i++)
         {
-            if(enemy[i].coord.x != NAN && enemy[i].coord.y != NAN)
+            if(enemy[i].already_found)
             {
+                cv::Scalar *scalar_color;
+                if(enemy[i].found_last_frame)
+                    scalar_color = new SCALAR_GREEN;
+                else
+                    scalar_color = new SCALAR_RED;
                 cv::circle(cam_image, cv::Point(enemy[i].coord.x, enemy[i].coord.y),
-                           DOT_RADIUS, SCALAR_GREEN, DOT_THICKNESS);
+                           DOT_RADIUS, *scalar_color, DOT_THICKNESS);
 
                 std::string enemy_name("ENEMY");
                 cv::putText(cam_image, enemy_name, cv::Point(enemy[i].coord.x - TEXT_X_OFFSET,
                             enemy[i].coord.y + TEXT_Y_OFFSET), DEFAULT_IMAGE_TEXT_FONT,
-                            IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                            IMAGE_TEXT_SCALING, *scalar_color);
+                delete scalar_color;
             }
         }
     }
     if(ui->player_status_cb->isChecked())
     {
-        //draw player status
+        Player ally[N_ROBOTS];
+        for(int i=0; i<N_ROBOTS; i++)
+            ally[i] = shared_parameters.getAllyRobot(i);
+
+        for(int i=0; i<N_ROBOTS; i++)
+        {
+            if(ally[i].already_found)
+            {
+                cv::Scalar *scalar_color;
+                if(ally[i].found_last_frame)
+                    scalar_color = new SCALAR_GREEN;
+                else
+                    scalar_color = new SCALAR_RED;
+                cv::putText(cam_image, ally[i].status, cv::Point(ally[i].coord.x - TEXT_X_OFFSET,
+                            ally[i].coord.y - TEXT_Y_OFFSET), DEFAULT_IMAGE_TEXT_FONT,
+                            IMAGE_TEXT_SCALING, *scalar_color);
+                delete scalar_color;
+            }
+        }
     }
     if(ui->player_movements_cb->isChecked())
     {
