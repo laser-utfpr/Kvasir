@@ -117,7 +117,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     smmc->start();
     usleep(THREAD_START_WAIT_TIME_US);
 
+    //for testing
     cam.open(0);
+    cam.set(CV_CAP_PROP_FRAME_WIDTH, 1920);
+    cam.set(CV_CAP_PROP_FRAME_HEIGHT, 1080);
 
     frame_update_timer = new QTimer(this);
     connect(frame_update_timer, SIGNAL(timeout()), this, SLOT(processImages()));
@@ -178,7 +181,7 @@ void MainWindow::processGameControlImage(void)
         {
             cv::circle(cam_image, cv::Point(object[i].coord.x, object[i].coord.y),
                                          DOT_RADIUS, SCALAR_GREEN, DOT_THICKNESS);
-            if(object[i].color != UNCOLORED)
+            if(object[i].color != UNCOLORED && object[i].coord.x != NAN && object[i].coord.y != NAN)
             {
                 if(object[i].coord.y - TEXT_Y_OFFSET >= 0)
                 {
@@ -215,7 +218,7 @@ void MainWindow::processGameControlImage(void)
         for(int i=0; i<N_ROBOTS; i++)
             enemy[i] = shared_parameters.getEnemyRobot(i);
 
-        if(ball.already_found)
+        if(ball.already_found && ball.coord.x != NAN && ball.coord.y != NAN)
         {
             cv::Scalar *scalar_color;
             if(ball.found_last_frame)
@@ -234,7 +237,7 @@ void MainWindow::processGameControlImage(void)
 
         for(int i=0; i<N_ROBOTS; i++)
         {
-            if(ally[i].already_found)
+            if(ally[i].already_found && ally[i].coord.x != NAN && ally[i].coord.y != NAN)
             {
                 cv::Scalar *scalar_color;
                 if(ally[i].found_last_frame)
@@ -255,7 +258,7 @@ void MainWindow::processGameControlImage(void)
 
         for(int i=0; i<N_ROBOTS; i++)
         {
-            if(enemy[i].already_found)
+            if(enemy[i].already_found && enemy[i].coord.x != NAN && enemy[i].coord.y != NAN)
             {
                 cv::Scalar *scalar_color;
                 if(enemy[i].found_last_frame)
@@ -281,7 +284,7 @@ void MainWindow::processGameControlImage(void)
 
         for(int i=0; i<N_ROBOTS; i++)
         {
-            if(ally[i].already_found)
+            if(ally[i].already_found && ally[i].coord.x != NAN && ally[i].coord.y != NAN)
             {
                 cv::Scalar *scalar_color;
                 if(ally[i].found_last_frame)
@@ -297,7 +300,29 @@ void MainWindow::processGameControlImage(void)
     }
     if(ui->player_movements_cb->isChecked())
     {
-        //draw player movements
+        Player ally[N_ROBOTS];
+        for(int i=0; i<N_ROBOTS; i++)
+            ally[i] = shared_parameters.getAllyRobot(i);
+
+        for(int i=0; i<N_ROBOTS; i++)
+        {
+            if(ally[i].already_found && ally[i].coord.x != NAN && ally[i].coord.y != NAN
+               && ally[i].movement.linear_vel_angle != NAN && ally[i].movement.linear_vel_scaling != NAN)
+            {
+                cv::Scalar *scalar_color;
+                if(ally[i].movement.stay_still)
+                    scalar_color = new SCALAR_RED;
+                else
+                    scalar_color = new SCALAR_BLUE;
+
+                cv::line(cam_image, cv::Point(ally[i].coord.x, ally[i].coord.y),
+                cv::Point(ally[i].coord.x + MOVEMENT_ARROW_LENGTH*cos(ally[i].movement.linear_vel_angle)*ally[i].movement.linear_vel_scaling,
+                      ally[i].coord.y + MOVEMENT_ARROW_LENGTH*sin(ally[i].movement.linear_vel_angle)*ally[i].movement.linear_vel_scaling),
+                *scalar_color);
+
+                delete scalar_color;
+            }
+        }
     }
 
     cv::Mat resized_image;

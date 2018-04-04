@@ -39,8 +39,12 @@ SharedParameters::SharedParameters()
 
     ai_field.robot[0].already_found = true;
     ai_field.robot[0].status = "wololo";
-    ai_field.robot[0].coord.x = 120;
-    ai_field.robot[0].coord.y = 120;
+    ai_field.robot[0].coord.x = 120.0;
+    ai_field.robot[0].coord.y = 120.0;
+
+    ai_field.robot[0].movement.stay_still = false;
+    ai_field.robot[0].movement.linear_vel_angle = M_PI_4;
+    ai_field.robot[0].movement.linear_vel_scaling = 1.0;
 }
 
 SharedParameters::~SharedParameters()
