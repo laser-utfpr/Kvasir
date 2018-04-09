@@ -343,6 +343,48 @@ void MainWindow::processVisionSettingsImage(void)
     if(cam_image.empty())
         return;
 
+    {
+        std::vector<ColoredObject> object = shared_parameters.getColorObjects();
+        const char *color_name[] = COLOR_MEMBER_NAMES;
+        for(int i=0; i<object.size(); i++)
+        {
+            cv::circle(cam_image, cv::Point(object[i].coord.x, object[i].coord.y),
+                                         DOT_RADIUS, SCALAR_GREEN, DOT_THICKNESS);
+            if(object[i].color != UNCOLORED && object[i].coord.x != NAN && object[i].coord.y != NAN)
+            {
+                if(object[i].coord.y - TEXT_Y_OFFSET >= 0)
+                {
+                    if(object[i].coord.y - TEXT_X_OFFSET >= 0)
+                        cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
+                                    cv::Point(object[i].coord.x - TEXT_X_OFFSET, object[i].coord.y - TEXT_Y_OFFSET),
+                                    DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                    else
+                        cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
+                                    cv::Point(object[i].coord.x, object[i].coord.y - TEXT_Y_OFFSET),
+                                    DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                }
+                else
+                {
+                    if(object[i].coord.y - TEXT_X_OFFSET >= 0)
+                        cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
+                                    cv::Point(object[i].coord.x - TEXT_X_OFFSET, object[i].coord.y + TEXT_Y_OFFSET),
+                                    DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                    else
+                        cv::putText(cam_image, color_name[static_cast<int>(object[i].color)],
+                                    cv::Point(object[i].coord.x, object[i].coord.y + TEXT_Y_OFFSET),
+                                    DEFAULT_IMAGE_TEXT_FONT, IMAGE_TEXT_SCALING, SCALAR_GREEN);
+                }
+            }
+        }
+    }
+
+    {
+        Coord ulc = shared_parameters.getSearchedRegionULC();
+        Coord lrc = shared_parameters.getSearchedRegionLRC();
+        if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            cv::rectangle(cam_image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_RED, REC_THICKNESS);
+    }
+
     cv::Mat resized_image;
     cv::Size new_size(ui->vision_settings_image->width(),ui->vision_settings_image->height());
     cv::resize(cam_image, resized_image, new_size, INTERPOLATION_METHOD);
@@ -360,6 +402,33 @@ void MainWindow::processAISettingsImage(void)
     cam.read(cam_image);
     if(cam_image.empty())
         return;
+
+    {
+        Coord ulc = shared_parameters.getPlayableFieldULC();
+        Coord lrc = shared_parameters.getPlayableFieldLRC();
+        if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            cv::rectangle(cam_image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_GREEN, REC_THICKNESS);
+
+        ulc = shared_parameters.getLeftGoalULC();
+        lrc = shared_parameters.getLeftGoalLRC();
+        if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            cv::rectangle(cam_image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_RED, REC_THICKNESS);
+
+        ulc = shared_parameters.getRightGoalULC();
+        lrc = shared_parameters.getRightGoalLRC();
+        if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            cv::rectangle(cam_image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_RED, REC_THICKNESS);
+
+        ulc = shared_parameters.getLeftGKAreaULC();
+        lrc = shared_parameters.getLeftGKAreaLRC();
+        if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            cv::rectangle(cam_image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_BLUE, REC_THICKNESS);
+
+        ulc = shared_parameters.getRightGKAreaULC();
+        lrc = shared_parameters.getRightGKAreaLRC();
+        if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            cv::rectangle(cam_image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_BLUE, REC_THICKNESS);
+    }
 
     cv::Mat resized_image;
     cv::Size new_size(ui->ai_settings_image->width(),ui->ai_settings_image->height());
