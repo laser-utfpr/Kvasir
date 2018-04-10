@@ -22,6 +22,7 @@ SMMCThread::SMMCThread(SharedParameters &sp) : shared_parameters(sp)
 
 void SMMCThread::generateKeys(void)
 {
+    //creates a new key for each one, if it unluckily is the EMPTY_KEY tries again
     do{ vision_write_key = randomAlphaNumericString(KEY_SIZE); }
         while(vision_write_key == EMPTY_KEY);
     do{ ai_write_key = randomAlphaNumericString(KEY_SIZE); }
@@ -44,6 +45,7 @@ void SMMCThread::generateKeys(void)
 
 void SMMCThread::constructVisionSMVariables(void)
 {
+    //creates the variables' space on the shared memory
     sm_vision_write_key = shared_memory->construct<std::string>
                               (VISION_WRITE_KEY_MEMORY_NAME)();
     *sm_vision_write_key = EMPTY_KEY;
@@ -62,6 +64,7 @@ void SMMCThread::constructVisionSMVariables(void)
 
 void SMMCThread::constructAISMVariables(void)
 {
+    //creates the variables' space on the shared memory
     sm_ai_write_key = shared_memory->construct<std::string>
                               (AI_WRITE_KEY_MEMORY_NAME)();
     *sm_ai_write_key = EMPTY_KEY;
@@ -80,6 +83,7 @@ void SMMCThread::constructAISMVariables(void)
 
 void SMMCThread::constructCommSMVariables(void)
 {
+    //creates the variables' space on the shared memory
     sm_comm_write_key = shared_memory->construct<std::string>
                               (COMM_WRITE_KEY_MEMORY_NAME)();
     *sm_comm_write_key = EMPTY_KEY;
@@ -122,6 +126,7 @@ std::vector<char> SMMCThread::alphaNumericArray(void)
 
 std::string SMMCThread::randomAlphaNumericString(int size)
 {
+    //returns a (high quality!)random aplha numeric string
     std::string str;
     str.resize(size);
 
@@ -144,6 +149,7 @@ void SMMCThread::stopThread(void)
 
 void SMMCThread::startVision(void)
 {
+    //starts Vision passing it's keys
     *sm_vision_shutdown_key = EMPTY_KEY;
     std::string path = shared_parameters.getVisionPath();
     std::string command;
@@ -160,6 +166,7 @@ void SMMCThread::startVision(void)
 
 void SMMCThread::startAI(void)
 {
+    //starts AI passing it's keys
     *sm_ai_shutdown_key = EMPTY_KEY;
     std::string path = shared_parameters.getAIPath();
     std::string command;
@@ -176,6 +183,7 @@ void SMMCThread::startAI(void)
 
 void SMMCThread::startComm(void)
 {
+    //starts Communication passing it's keys
     *sm_comm_shutdown_key = EMPTY_KEY;
     std::string path = shared_parameters.getCommPath();
     std::string command;

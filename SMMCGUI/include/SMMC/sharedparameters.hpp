@@ -28,8 +28,6 @@ private:
 
     QMutex lock;
 
-    void loadDefaults(void);
-
     bool force_stop;
 
     //paths
@@ -50,6 +48,7 @@ public:
     SharedParameters();
     ~SharedParameters();
     void loadSettingsFromFile(void);
+    void loadDefaults(void);
 
     void readVisionParameters(VisionField v_field);
     void readAIParameters(AIField a_field);

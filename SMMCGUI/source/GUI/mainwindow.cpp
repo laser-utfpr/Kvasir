@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->setupUi(this);
 
+    //creating the AI command menu and connecting it's signals
     ui->command_menu->setMenu(&command_menu);
     command_menu_action = nullptr;
     n_command_actions = 0;
@@ -16,12 +17,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     force_stop = false;
 
+    //setting the menus' variables to it's buttons
     ui->ball_menu->setMenu(&ball_menu);
     ui->ally_center_menu->setMenu(&ally_center_menu);
     ui->enemy_center_menu->setMenu(&enemy_center_menu);
     ui->available_tag_menu->setMenu(&available_tag_menu);
     ui->current_tag_menu->setMenu(&current_tag_menu);
 
+    //initializing the menus' chosen option
     const char *color_name[] = COLOR_MEMBER_NAMES;
     Color init;
     if((init = shared_parameters.getBallColor()) != UNCOLORED)
@@ -31,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     if((init = shared_parameters.getEnemyCenter()) != UNCOLORED)
         ui->enemy_center_menu->setText(color_name[static_cast<int>(init)]);
 
+    //for each color add it's action to the menus that should have it
     QString qstr;
     for(int i=0; i<N_COLORS; i++)
     {
@@ -56,6 +60,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect(&available_tag_menu, SIGNAL(triggered(QAction*)), this, SLOT(addTagColor(QAction*)));
     connect(&current_tag_menu, SIGNAL(triggered(QAction*)), this, SLOT(removeTagColor(QAction*)));
 
+    //itializing the text boxes of the coordinates
     Coord sr_ulc = shared_parameters.getSearchedRegionULC();
     Coord sr_lrc = shared_parameters.getSearchedRegionLRC();
     ui->sr_ulc_x->setText(QString::number(sr_ulc.x));
@@ -96,6 +101,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     smmc = new SMMCThread(shared_parameters);
 
+    //conecting signals and slots of the smmc thread
     connect(this, SIGNAL(stopSMMC()), smmc, SLOT(stopThread()));
 
     connect(this, SIGNAL(visionSettingsChanged()), smmc, SLOT(updateVisionOutputSettings()));
@@ -129,15 +135,18 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 MainWindow::~MainWindow()
 {
+    //emiting signals to shutdown modules
     emit shutdownVision();
     emit shutdownAI();
     emit shutdownComm();
     usleep(MODULES_SHUTDOWN_WAIT_TIME_US);
 
+    //emiting signals to shutdown smmc thread
     emit stopSMMC();
     usleep(THREAD_STOP_WAIT_TIME_US);
     delete smmc;
 
+    //deleting the AI commands' actions
     if(command_menu_action != nullptr)
     {
         for(int i=0; i<n_command_actions; i++)
@@ -152,6 +161,7 @@ MainWindow::~MainWindow()
         command_menu_action = nullptr;
     }
 
+    //deleting color actions
     for(int i=0; i<N_COLORS; i++)
     {
         delete ball_color_action[i];
@@ -175,6 +185,7 @@ void MainWindow::processGameControlImage(void)
 
     if(ui->color_objects_cb->isChecked())
     {
+        //draws colors objects
         std::vector<ColoredObject> object = shared_parameters.getColorObjects();
         const char *color_name[] = COLOR_MEMBER_NAMES;
         for(int i=0; i<object.size(); i++)
@@ -210,6 +221,7 @@ void MainWindow::processGameControlImage(void)
     }
     if(ui->robot_positions_cb->isChecked())
     {
+        //draws robots
         Entity ball = shared_parameters.getBall();
         Player ally[N_ROBOTS];
         for(int i=0; i<N_ROBOTS; i++)
@@ -278,6 +290,7 @@ void MainWindow::processGameControlImage(void)
     }
     if(ui->player_status_cb->isChecked())
     {
+        //draws robot statuses
         Player ally[N_ROBOTS];
         for(int i=0; i<N_ROBOTS; i++)
             ally[i] = shared_parameters.getAllyRobot(i);
@@ -300,6 +313,7 @@ void MainWindow::processGameControlImage(void)
     }
     if(ui->player_movements_cb->isChecked())
     {
+        //draws movement arrows
         Player ally[N_ROBOTS];
         for(int i=0; i<N_ROBOTS; i++)
             ally[i] = shared_parameters.getAllyRobot(i);
@@ -343,7 +357,11 @@ void MainWindow::processVisionSettingsImage(void)
     if(cam_image.empty())
         return;
 
+    //USE THIS AFTER TESTS, change cam_image -> image
+    //cv::Mat image = shared_parameters.getVisionImage();
+
     {
+        //draws colors objects
         std::vector<ColoredObject> object = shared_parameters.getColorObjects();
         const char *color_name[] = COLOR_MEMBER_NAMES;
         for(int i=0; i<object.size(); i++)
@@ -379,6 +397,7 @@ void MainWindow::processVisionSettingsImage(void)
     }
 
     {
+        //draws searched region rectangle
         Coord ulc = shared_parameters.getSearchedRegionULC();
         Coord lrc = shared_parameters.getSearchedRegionLRC();
         if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
@@ -403,7 +422,12 @@ void MainWindow::processAISettingsImage(void)
     if(cam_image.empty())
         return;
 
+    //USE THIS AFTER TESTS, change cam_image -> image
+    //cv::Mat image = shared_parameters.getVisionImage();
+
     {
+        //draws rectangles
+
         Coord ulc = shared_parameters.getPlayableFieldULC();
         Coord lrc = shared_parameters.getPlayableFieldLRC();
         if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)

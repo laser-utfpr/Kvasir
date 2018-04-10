@@ -2,7 +2,7 @@ DONE-different write keys and read keys
 
 -vision threads with qthreads calibrate with qwidget and store calibration with boost serialization
 
--find a way to finalize the program correctly
+DONE-find a way to finalize the program correctly
 
 DONE-vision/ai/etc shutdown key
 
@@ -13,10 +13,14 @@ https://forum.qt.io/topic/20539/what-is-the-correct-way-to-stop-qthread/4
 
 TREATED-maybe change smmc constants filename such as "visionconstants.h"
 
--think about initializations
+DONE-think about initializations
 
 -meme sounds with QSound
 
 DONE-modify commands
 
 DONE-make menus load from configuration file
+
+-change image cam_image to the image from vision
+
+-make boost serialization work or make some XML thingy

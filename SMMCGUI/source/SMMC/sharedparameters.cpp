@@ -20,9 +20,8 @@ SharedParameters::SharedParameters()
     ai_path.clear();
     comm_path.clear();
     force_stop = false;
-    loadDefaults();
 
-    //test - to be deleted
+    //tests - to be deleted
     ai_field.command_list.push_back("the");
     ai_field.command_list.push_back("thing");
     ai_field.command_list.push_back("goes");
@@ -63,6 +62,7 @@ SharedParameters::~SharedParameters()
         {
             boost::archive::text_oarchive archive_saver(new_file);
             archive_saver << *this;
+            std::cout << "Settings file loaded successfully" << std::endl;
         }
         catch(...)
         {
@@ -75,6 +75,7 @@ void SharedParameters::loadSettingsFromFile(void)
 {
     QMutexLocker m(&lock);
 
+    //making the settings file in the same directory of the application
     QString app_dir_path = QCoreApplication::applicationDirPath();
     std::string settings_path = app_dir_path.toStdString();
     settings_path += '/';
@@ -87,18 +88,23 @@ void SharedParameters::loadSettingsFromFile(void)
         {
             boost::archive::text_iarchive archive_loader(opened_file);
             archive_loader >> *this;
+            std::cout << "Settings file saved successfully" << std::endl;
         }
         catch(...)
         {
             std::cout << "Exception called while trying to read settings file with boost serialization!" << std::endl;
+            loadDefaults();
         }
     }
+    else
+        loadDefaults();
 }
 
 void SharedParameters::readVisionParameters(VisionField v_field)
 {
     QMutexLocker m(&lock);
 
+    //assigning variables that should be updated from vision
     vision_field.image = v_field.image;
     vision_field.image_width = v_field.image_width;
     vision_field.image_height = v_field.image_height;
@@ -120,6 +126,7 @@ void SharedParameters::readAIParameters(AIField a_field)
 {
     QMutexLocker m(&lock);
 
+    //assigning variables that should be updated from AI
     for(int i=0; i<N_ROBOTS; i++)
         ai_field.robot[i].movement = a_field.robot[i].movement;
 
@@ -409,7 +416,7 @@ Coord SharedParameters::getRightGKAreaULC(void)
 Coord SharedParameters::getRightGKAreaLRC(void)
 {
     QMutexLocker m(&lock);
-    return ai_field.left_goalkeeper_area_lrc;
+    return ai_field.right_goalkeeper_area_lrc;
 }
 
 void SharedParameters::setRightGKAreaULCx(double ulc_x)
@@ -438,6 +445,8 @@ void SharedParameters::setRightGKAreaLRCy(double lrc_y)
 
 bool SharedParameters::addTagColor(Color new_color)
 {
+    //if the tested color isn't currently a tag adds it and returns true
+    //if it is returns false
     QMutexLocker m(&lock);
     for(int i=0; i < vision_field.ally_tag.size(); i++)
         if(vision_field.ally_tag[i] == new_color)
@@ -448,6 +457,8 @@ bool SharedParameters::addTagColor(Color new_color)
 
 bool SharedParameters::removeTagColor(Color dead_color)
 {
+    //if the tested color is currently a tag removes it and returns true
+    //or else if it isn't returns false
     QMutexLocker m(&lock);
     int i = 0;
     for(std::vector<Color>::iterator it = vision_field.ally_tag.begin();
