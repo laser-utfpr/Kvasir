@@ -4,7 +4,8 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    //shared_parameters.loadSettingsFromFile();
+    shared_parameters.loadSettingsFromFile();
+    usleep(THREAD_START_WAIT_TIME_US);
 
     ui->setupUi(this);
 

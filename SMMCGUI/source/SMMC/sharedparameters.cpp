@@ -9,8 +9,6 @@ void SharedParameters::serialize(Archive &ar, const unsigned int version)
 
 void SharedParameters::loadDefaults(void)
 {
-    QMutexLocker m(&lock);
-
     //find good defaults;
 }
 
