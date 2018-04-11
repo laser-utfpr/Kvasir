@@ -24,7 +24,12 @@ class SharedParameters
 private:
     friend class boost::serialization::access;
     template<class Archive>
-    void serialize(Archive &ar, const unsigned int version);
+    inline void serialize(Archive &ar, const unsigned int /* file_version */)
+    {
+        ar & vision_path & ai_path & comm_path;
+        ar & vision_field;
+        ar & ai_field; // & other stuff to be saved
+    };
 
     QMutex lock;
 

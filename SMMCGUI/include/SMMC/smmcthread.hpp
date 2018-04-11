@@ -104,14 +104,3 @@ public slots:
 };
 
 #endif // SMMCTHREAD_HPP
-
-/*smmcthread should
--initialize shared memory block
--initialize keys
--start loop
---read changes with the right key
-
--slots for
---write changes from GUI
---start program sending the keys
---destroy shared memory and stop doing stuff on program finalization?*/

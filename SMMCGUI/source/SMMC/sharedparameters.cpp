@@ -1,12 +1,5 @@
 #include "sharedparameters.hpp"
 
-template<class Archive>
-void SharedParameters::serialize(Archive &ar, const unsigned int version)
-{
-    ar & vision_path & ai_path & comm_path;
-    ar & vision_field & ai_field; // & other stuff to be saved
-}
-
 void SharedParameters::loadDefaults(void)
 {
     //find good defaults;
@@ -60,12 +53,16 @@ SharedParameters::~SharedParameters()
         {
             boost::archive::text_oarchive archive_saver(new_file);
             archive_saver << *this;
-            std::cout << "Settings file loaded successfully" << std::endl;
+            std::cout << "Settings file saved successfully" << std::endl;
         }
         catch(...)
         {
             std::cout << "Exception called while trying to save settings file with boost serialization!" << std::endl;
         }
+    }
+    else
+    {
+        std::cout << "Unable to create settings file!" << std::endl;
     }
 }
 
@@ -86,7 +83,7 @@ void SharedParameters::loadSettingsFromFile(void)
         {
             boost::archive::text_iarchive archive_loader(opened_file);
             archive_loader >> *this;
-            std::cout << "Settings file saved successfully" << std::endl;
+            std::cout << "Settings file loaded successfully" << std::endl;
         }
         catch(...)
         {
@@ -95,7 +92,10 @@ void SharedParameters::loadSettingsFromFile(void)
         }
     }
     else
+    {
+        std::cout << "No settings file found, loading defaults" << std::endl;
         loadDefaults();
+    }
 }
 
 void SharedParameters::readVisionParameters(VisionField v_field)

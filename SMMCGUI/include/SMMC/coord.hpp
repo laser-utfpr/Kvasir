@@ -22,7 +22,7 @@ public:
     double x;
     double y;
 
-    inline Coord() : x(NAN), y(NAN) {};
+    inline Coord() : x(0), y(0) {};
     inline Coord& operator=(const Coord &copied)
     {
         if(this != &copied)

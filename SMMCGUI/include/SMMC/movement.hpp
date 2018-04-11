@@ -11,8 +11,8 @@ public:
     double linear_vel_scaling;
     double angular_vel_scaling; //positive for one direction, negative for the other
 
-    inline Movement() : stay_still(true), linear_vel_angle(NAN),
-    linear_vel_scaling(NAN), angular_vel_scaling(NAN) {};
+    inline Movement() : stay_still(true), linear_vel_angle(0),
+    linear_vel_scaling(0), angular_vel_scaling(0) {};
 
     inline Movement& operator=(const Movement &copied)
     {
