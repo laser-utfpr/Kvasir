@@ -4,6 +4,10 @@
 #include <boost/serialization/utility.hpp>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
+
+#include <boost/filesystem.hpp>
+#include <boost/range/iterator_range.hpp>
+
 #include <boost/serialization/string.hpp>
 #include <boost/serialization/serialization.hpp>
 
@@ -15,6 +19,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <algorithm>
 
 #include "smmclib.hpp"

@@ -73,9 +73,12 @@ void SharedParameters::loadSettingsFromFile(void)
     //making the settings file in the same directory of the application
     QString app_dir_path = QCoreApplication::applicationDirPath();
     std::string settings_path = app_dir_path.toStdString();
-    settings_path += '/';
-    settings_path += SAVED_SETTINGS_FILENAME;
-    std::ifstream opened_file(settings_path);
+
+    std::string default_file(settings_path);
+    default_file += '/';
+    default_file += SAVED_SETTINGS_FILENAME;
+
+    std::ifstream opened_file(default_file);
 
     if(!opened_file.fail())
     {
@@ -83,18 +86,58 @@ void SharedParameters::loadSettingsFromFile(void)
         {
             boost::archive::text_iarchive archive_loader(opened_file);
             archive_loader >> *this;
-            std::cout << "Settings file loaded successfully" << std::endl;
+            std::cout << SAVED_SETTINGS_FILENAME << " loaded successfully" << std::endl;
         }
         catch(...)
         {
-            std::cout << "Exception called while trying to read settings file with boost serialization!" << std::endl;
+            std::cout << "Exception called while trying to read " << SAVED_SETTINGS_FILENAME
+            << " with boost serialization!" << std::endl;
             loadDefaults();
         }
     }
     else
     {
-        std::cout << "No settings file found, loading defaults" << std::endl;
-        loadDefaults();
+        std::string s;
+        boost::filesystem::path path(settings_path);
+        for(auto & entry : boost::make_iterator_range(boost::filesystem::directory_iterator(path), {}))
+        {
+            std::stringstream ss;
+            ss << entry;
+            s = ss.str();
+            s.erase(remove( s.begin(), s.end(), '\"' ),s.end());
+            std::cout << s << std::endl;
+            if(s[s.size()-3] == '.' && s[s.size()-2] == 's' && s[s.size()-1] == 'p')
+            {
+                std::cout << "wololo" << std::endl;
+                opened_file.open(s);
+                break;
+            }
+        }
+
+        /*settings_path += '/';
+        settings_path += SAVED_SETTINGS_FILENAME;
+        std::ifstream opened_file(settings_path);*/
+
+        if(!opened_file.fail())
+        {
+            try
+            {
+                boost::archive::text_iarchive archive_loader(opened_file);
+                archive_loader >> *this;
+                std::cout << s << " loaded successfully" << std::endl;
+            }
+            catch(...)
+            {
+                std::cout << "Exception called while trying to read " << s
+                << " with boost serialization!" << std::endl;
+                loadDefaults();
+            }
+        }
+        else
+        {
+            std::cout << "No .sp file found, loading defaults" << std::endl;
+            loadDefaults();
+        }
     }
 }
 
