@@ -10,7 +10,10 @@ SharedParameters::SharedParameters()
     vision_path.clear();
     ai_path.clear();
     comm_path.clear();
+
     force_stop = false;
+
+    settings_file.clear();
 
     //tests - to be deleted
     ai_field.command_list.push_back("the");
@@ -41,11 +44,7 @@ SharedParameters::~SharedParameters()
 {
     QMutexLocker m(&lock);
 
-    QString app_dir_path = QCoreApplication::applicationDirPath();
-    std::string settings_path = app_dir_path.toStdString();
-    settings_path += '/';
-    settings_path += SAVED_SETTINGS_FILENAME;
-    std::ofstream new_file(settings_path);
+    std::ofstream new_file(settings_file);
 
     if(!new_file.fail())
     {
@@ -53,7 +52,7 @@ SharedParameters::~SharedParameters()
         {
             boost::archive::text_oarchive archive_saver(new_file);
             archive_saver << *this;
-            std::cout << "Settings file saved successfully" << std::endl;
+            std::cout << settings_file << " saved successfully" << std::endl;
         }
         catch(...)
         {
@@ -71,12 +70,14 @@ void SharedParameters::loadSettingsFromFile(void)
     QMutexLocker m(&lock);
 
     //making the settings file in the same directory of the application
-    QString app_dir_path = QCoreApplication::applicationDirPath();
-    std::string settings_path = app_dir_path.toStdString();
+    QString q_app_path = QCoreApplication::applicationDirPath();
+    std::string app_path = q_app_path.toStdString();
 
-    std::string default_file(settings_path);
+    std::string default_file(app_path);
     default_file += '/';
     default_file += SAVED_SETTINGS_FILENAME;
+
+    settings_file = default_file;
 
     std::ifstream opened_file(default_file);
 
@@ -98,17 +99,16 @@ void SharedParameters::loadSettingsFromFile(void)
     else
     {
         std::string s;
-        boost::filesystem::path path(settings_path);
+        boost::filesystem::path path(app_path);
         for(auto & entry : boost::make_iterator_range(boost::filesystem::directory_iterator(path), {}))
         {
             std::stringstream ss;
             ss << entry;
             s = ss.str();
             s.erase(remove( s.begin(), s.end(), '\"' ),s.end());
-            std::cout << s << std::endl;
             if(s[s.size()-3] == '.' && s[s.size()-2] == 's' && s[s.size()-1] == 'p')
             {
-                std::cout << "wololo" << std::endl;
+                settings_file = s;
                 opened_file.open(s);
                 break;
             }

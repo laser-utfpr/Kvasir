@@ -100,6 +100,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->right_gka_lrc_x->setText(QString::number(right_gka_lrc.x));
     ui->right_gka_lrc_y->setText(QString::number(right_gka_lrc.y));
 
+    std::cout << std::endl << "Creating SMMC thread" << std::endl;
     smmc = new SMMCThread(shared_parameters);
 
     //conecting signals and slots of the smmc thread
@@ -121,6 +122,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect(this, SIGNAL(shutdownAI()), smmc, SLOT(shutdownAI()));
     connect(this, SIGNAL(shutdownComm()), smmc, SLOT(shutdownComm()));
 
+    std::cout << std::endl << "Starting SMMC thread" << std::endl;
     smmc->start();
     usleep(THREAD_START_WAIT_TIME_US);
 
@@ -143,6 +145,7 @@ MainWindow::~MainWindow()
     usleep(MODULES_SHUTDOWN_WAIT_TIME_US);
 
     //emiting signals to shutdown smmc thread
+    std::cout << std::endl << "Ending SMMC thread" << std::endl;
     emit stopSMMC();
     usleep(THREAD_STOP_WAIT_TIME_US);
     delete smmc;

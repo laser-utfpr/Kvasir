@@ -1,0 +1,36 @@
+
+To use smmclib link it on your CMakeLists.txt with:
+target_link_library(your_module smmc-lib)
+Then include it with:
+#include <smmclib.hpp>
+
+When your module is executed by SMMC it is gonna be run with the following arguments:
+/path/to/module module_write_key module_read_key module_shutdown_key
+
+These arguments must be saved, preferably as std::string(s),
+they will function as flags for the communication
+
+The boost::interprocess memory block will be named SHARED_MEMORY_BLOCK_NAME, open it
+
+Somewhere you will be starting the program's main loop,
+there you will be checking or setting the following variables in the shared memory:
+(YOURMODULETYPE)_(KEYTYPE)_KEY_MEMORY_NAME
+where (YOURMODULETYPE) = VISION/AI/COMM and (KEYTYPE) = WRITE/READ/SHUTDOWN
+
+The data will be communicated through classes declared in smmclib,
+such as VisionField, AIField and Movement, named in the shared memory as:
+VISION_FIELD_MEMORY_NAME, AI_FIELD_MEMORY_NAME, ROBOT_MOVEMENT_MEMORY_NAME
+
+The correspondent write key for your module is gonna be constantly read by SMMCGUI,
+expecting it to change to the key passed as an argument to your module
+To output data to SMMCGUI,
+set the write key in the shared memory to the one passed to your module,
+that will make it read your update (it will also change it back to EMPTY_KEY)
+
+You should also be checking if the read key changes to the one passed to your module,
+if it does you can read whatever input data changed
+and then (or even before) change the read key back to the EMPTY_KEY macro, so that you
+can expect other changes
+
+The shutdown as the name suggests should be constantly checked, if it changes to the
+one received as an argument you should change it back to EMPTY_KEY finalize your module

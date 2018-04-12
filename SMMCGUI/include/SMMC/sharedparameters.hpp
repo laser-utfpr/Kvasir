@@ -45,6 +45,8 @@ private:
     std::string ai_path;
     std::string comm_path;
 
+    std::string settings_file;
+
     //Vision variables
     VisionField vision_field;
 

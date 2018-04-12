@@ -4,12 +4,23 @@ using namespace boost::interprocess;
 
 SMMCThread::SMMCThread(SharedParameters &sp) : shared_parameters(sp)
 {
+    std::cout << "SMMC thread created" << std::endl << std::endl;
     run_thread = true;
 
     connect(this, SIGNAL(sendVisionChangesToAI()), this, SLOT(updateAIFromVision()));
     connect(this, SIGNAL(sendAIChangeToComm()), this, SLOT(updateCommFromAI()));
 
     generateKeys();
+    std::cout << std::endl <<"Modules keys generated:" << std::endl;
+    std::cout << "Vision write key: " << vision_write_key << std::endl;
+    std::cout << "Vision read key: " << vision_read_key << std::endl;
+    std::cout << "Vision shutdown key: " << vision_shutdown_key << std::endl;
+    std::cout << "AI write key: " << ai_write_key << std::endl;
+    std::cout << "AI read key: " << ai_read_key << std::endl;
+    std::cout << "AI shutdown key: " << ai_shutdown_key << std::endl;
+    std::cout << "Comm write key: " << comm_write_key << std::endl;
+    std::cout << "Comm read key: " << comm_read_key << std::endl;
+    std::cout << "Comm shutdown key: " << comm_shutdown_key << std::endl << std::endl;
 
     shared_memory_object::remove(SHARED_MEMORY_BLOCK_NAME);
     shared_memory = new managed_shared_memory(create_only,
@@ -215,7 +226,8 @@ void SMMCThread::shutdownComm(void)
 
 void SMMCThread::updateVisionOutputSettings(void)
 {
-    //outputing settings to shared memory
+    std::cout << std::endl << "Outputting Vision settings" << std::endl << std::endl;
+    //outputting settings to shared memory
     sm_vision_field->ball_color = shared_parameters.getBallColor();
     sm_vision_field->ally_center = shared_parameters.getAllyCenter();
     sm_vision_field->enemy_center = shared_parameters.getEnemyCenter();
@@ -229,7 +241,8 @@ void SMMCThread::updateVisionOutputSettings(void)
 
 void SMMCThread::updateAIOutputSettings(void)
 {
-    //outputing settings to shared memory
+    std::cout << std::endl << "Outputting AI settings" << std::endl << std::endl;
+    //outputting settings to shared memory
     sm_ai_field->playable_field_ulc = shared_parameters.getPlayableFieldULC();
     sm_ai_field->playable_field_lrc = shared_parameters.getPlayableFieldLRC();
     sm_ai_field->left_goal_ulc = shared_parameters.getLeftGoalULC();
@@ -249,8 +262,9 @@ void SMMCThread::updateAIOutputSettings(void)
 
 void SMMCThread::updateCommOutputSettings(void)
 {
+    std::cout << std::endl << "Outputting Comm settings" << std::endl << std::endl;
     //no comm settings to be output for now
-    //*sm_comm_read_key = comm_read_key;
+    *sm_comm_read_key = comm_read_key;
 }
 
 void SMMCThread::updateAIFromVision(void)
@@ -278,11 +292,13 @@ void SMMCThread::updateCommFromAI(void)
 
 void SMMCThread::run()
 {
+    std::cout << "SMMC thread started" << std::endl << std::endl;
     while(run_thread)
     {
         //receiving variables
         if(*sm_vision_write_key == vision_write_key)
         {
+            std::cout << std::endl << "Vision input update detected" << std::endl << std::endl;
             shared_parameters.readVisionParameters(*sm_vision_field);
             emit visionInputUpdate();
             emit sendVisionChangesToAI();
@@ -290,6 +306,7 @@ void SMMCThread::run()
         }
         if(*sm_ai_write_key == ai_write_key)
         {
+            std::cout << std::endl << "AI input update detected" << std::endl << std::endl;
             shared_parameters.readAIParameters(*sm_ai_field);
             emit aiInputUpdate();
             emit sendAIChangeToComm();
@@ -298,10 +315,12 @@ void SMMCThread::run()
         if(*sm_comm_write_key == comm_write_key)
         {
             //no comm parameters to be recieved for now
+            std::cout << std::endl << "Comm input update detected" << std::endl << std::endl;
             emit commInputUpdate();
             *sm_comm_write_key = EMPTY_KEY;
         }
     }
+    std::cout << "SMMC thread ended" << std::endl << std::endl;
 }
 
 #include "moc_smmcthread.cpp"
