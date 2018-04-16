@@ -1,7 +1,4 @@
-#include "mainwindow.hpp"
-#include "imageprocessingthread.hpp"
-#include "robotrecognizerthread.hpp"
-#include "visionfieldhandler.hpp"
+#include "habrok.hpp"
 
 #include "smmclib.hpp"
 
@@ -15,6 +12,7 @@ int main(int argc, char *argv[])
     {
         if(argv[1] == "-c" || argv[1] == "-C")
         {
+            Habrok
             /*QApplication a(argc, argv);
             MainWindow w;
             w.setWindowTitle(MAINWINDOW_TITLE);

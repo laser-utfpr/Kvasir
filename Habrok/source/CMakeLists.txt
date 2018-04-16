@@ -1,6 +1,7 @@
 #Defining the executable's sources
 set(APP_SOURCES
   ${SOURCE_DIR}/main.cpp
+  ${SOURCE_DIR}/habrok.cpp
   ${SOURCE_DIR}/mainwindow.cpp
   ${SOURCE_DIR}/imageprocessingthread.cpp
   ${SOURCE_DIR}/robotrecognizerthread.cpp
