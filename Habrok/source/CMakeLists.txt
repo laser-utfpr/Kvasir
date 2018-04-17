@@ -6,6 +6,7 @@ set(APP_SOURCES
   ${SOURCE_DIR}/imageprocessingthread.cpp
   ${SOURCE_DIR}/robotrecognizerthread.cpp
   ${SOURCE_DIR}/visionfieldhandler.cpp
+  ${SOURCE_DIR}/imageprocessingsettings.cpp
 )
 
 #Creating the executable
@@ -18,3 +19,4 @@ target_link_libraries(${APPLICATION_NAME} ${OpenCV_LIBS})
 target_link_libraries(${APPLICATION_NAME} Boost::serialization)
 target_link_libraries(${APPLICATION_NAME} Threads::Threads)
 target_link_libraries(${APPLICATION_NAME} rt)
+target_link_libraries(${APPLICATION_NAME} smmc-lib)

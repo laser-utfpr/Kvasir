@@ -12,12 +12,8 @@ int main(int argc, char *argv[])
     {
         if(argv[1] == "-c" || argv[1] == "-C")
         {
-            Habrok
-            /*QApplication a(argc, argv);
-            MainWindow w;
-            w.setWindowTitle(MAINWINDOW_TITLE);
-            w.show();
-            return a.exec()*/
+            Habrok habrok();
+            return habrok.calibrate();
         }
         else if(argc == 4)
         {
@@ -30,7 +26,9 @@ int main(int argc, char *argv[])
             }
             if(right_key_sizes)
             {
-                //run
+                Habrok habrok(argv[1], argv[2], argv[3]);
+                habrok.runHabrok();
+                return 0;
             }
         }
     }

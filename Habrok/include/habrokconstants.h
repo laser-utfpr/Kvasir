@@ -1,0 +1,6 @@
+#ifndef HABROKCONSTANTS_H
+#define HABROKCONSTANTS_H
+
+#define CALIBRATION_WINDOW_TITLE "Habrok Calibration"
+
+#endif //HABROKCONSTANTS_H

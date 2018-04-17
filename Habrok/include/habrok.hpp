@@ -6,23 +6,39 @@
 #include <QMainWindow>
 #include <QMenu>
 
-#include <opencv2/opencv.hpp>
-
+#include <string>
 #include <iostream>
 #include <cmath>
 
 #include "mainwindow.hpp"
+#include "imageprocessingsettings.hpp"
 #include "imageprocessingthread.hpp"
 #include "robotrecognizerthread.hpp"
 #include "visionfieldhandler.hpp"
 
-class Habrok
+class Habrok : public QObject
 {
     Q_OBJECT
 
 private:
+    std::string write_key;
+    std::string read_key;
+    std::string shutdown_key;
+
+    VisionFieldHandler vision_field;
+
+    ImageProcessingSettings image_processing_settings;
+
+    ImageProcessingThread *image_processing_thread;
+    RobotRecognizerThread *robot_recognizer_thread;
 
 public:
+    Habrok(std::string wk, std::string rk, std::string sk);
+    Habrok();
+
+    void runHabrok(void);
+
+    int calibrate(void);
 
 signals:
 

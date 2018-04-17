@@ -8,6 +8,7 @@
 
 #include <opencv2/opencv.hpp>
 
+#include <string>
 #include <iostream>
 #include <cmath>
 
@@ -56,9 +57,9 @@ private:
     QPalette black_text;
     QPalette red_text;
 
-    //for testing - to be deleted
-    cv::VideoCapture cam;
-    cv::Mat cam_image;
+    //for testing
+    //cv::VideoCapture cam;
+    //cv::Mat cam_image;
 
     QTimer* frame_update_timer;
 

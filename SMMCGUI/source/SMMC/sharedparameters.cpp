@@ -15,8 +15,8 @@ SharedParameters::SharedParameters()
 
     settings_file.clear();
 
-    //tests - to be deleted
-    ai_field.command_list.push_back("the");
+    //tests
+    /*ai_field.command_list.push_back("the");
     ai_field.command_list.push_back("thing");
     ai_field.command_list.push_back("goes");
     ai_field.command_list.push_back("skraa");
@@ -37,7 +37,7 @@ SharedParameters::SharedParameters()
 
     ai_field.robot[0].movement.stay_still = false;
     ai_field.robot[0].movement.linear_vel_angle = M_PI_4;
-    ai_field.robot[0].movement.linear_vel_scaling = 1.0;
+    ai_field.robot[0].movement.linear_vel_scaling = 1.0;*/
 }
 
 SharedParameters::~SharedParameters()

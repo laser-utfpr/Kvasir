@@ -1,7 +1,7 @@
 #ifndef VISIONFIELDHANDLER_HPP
 #define VISIONFIELDHANDLER_HPP
 
-#include "smmclib.hpp"
+#include <smmclib.hpp>
 
 class VisionFieldHandler : private VisionField
 {
