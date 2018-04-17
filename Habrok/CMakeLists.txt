@@ -24,6 +24,10 @@ include_directories(
     ${PROJECT_BINARY_DIR}/include
 )
 
+#Including smmc-lib
+find_package(PkgConfig)
+pkg_check_modules(smmclib REQUIRED smmclib)
+
 #Including Qt5
 find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
 include_directories(${Qt5Widgets_INCLUDE_DIRS})

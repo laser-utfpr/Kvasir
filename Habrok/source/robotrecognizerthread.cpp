@@ -1,6 +1,6 @@
 #include "robotrecognizerthread.hpp"
 
-RobotRecognizerThread(VisionFieldHandler &vfh) : vision_field_handler(vfh)
+RobotRecognizerThread::RobotRecognizerThread(VisionFieldHandler &vfh) : vision_field_handler(vfh)
 {
 
 }

@@ -1,6 +1,7 @@
 #ifndef HABROK_HPP
 #define HABROK_HPP
 
+#include <QApplication>
 #include <QtCore>
 #include <QWidget>
 #include <QMainWindow>
@@ -10,6 +11,9 @@
 #include <iostream>
 #include <cmath>
 
+#include <smmclib.hpp>
+
+#include "habrokconstants.h"
 #include "mainwindow.hpp"
 #include "imageprocessingsettings.hpp"
 #include "imageprocessingthread.hpp"
@@ -25,7 +29,7 @@ private:
     std::string read_key;
     std::string shutdown_key;
 
-    VisionFieldHandler vision_field;
+    VisionFieldHandler vision_field_handler;
 
     ImageProcessingSettings image_processing_settings;
 

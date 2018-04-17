@@ -1,8 +1,9 @@
 #include "habrok.hpp"
 
-#include "smmclib.hpp"
+#include <smmclib.hpp>
 
 #include <iostream>
+#include <string>
 
 #include <QApplication>
 
@@ -12,15 +13,15 @@ int main(int argc, char *argv[])
     {
         if(argv[1] == "-c" || argv[1] == "-C")
         {
-            Habrok habrok();
+            Habrok habrok;
             return habrok.calibrate();
         }
         else if(argc == 4)
         {
             bool right_key_sizes = true;
-            for(i=1; i<4; i++)
+            for(int i=1; i<4; i++)
             {
-                string str(argv[i]);
+                std::string str(argv[i]);
                 if(str.size() != KEY_SIZE)
                     right_key_sizes = false;
             }
@@ -33,8 +34,8 @@ int main(int argc, char *argv[])
         }
     }
 
-    std::cout << "This application is expected to run from SMMCGUI receiveing
-                  it's keys or with -c for calibration" << std::endl;
+    std::cout << "This application is expected to run from SMMCGUI receiveing"
+              << "it's keys or with -c for calibration" << std::endl;
 
     return 0;
 }
