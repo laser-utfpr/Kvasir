@@ -15,6 +15,13 @@ private:
 public:
     RobotRecognizerThread(VisionFieldHandler &vfh);
     ~RobotRecognizerThread();
+
+    void run() override;
+
+signals:
+
+public slots:
+
 };
 
 #endif //ROBOTRECOGNIZERTHREAD_HPP

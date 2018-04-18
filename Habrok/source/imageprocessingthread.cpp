@@ -12,4 +12,9 @@ ImageProcessingThread::~ImageProcessingThread()
 
 }
 
+void ImageProcessingThread::run()
+{
+
+}
+
 #include "moc_imageprocessingthread.cpp"

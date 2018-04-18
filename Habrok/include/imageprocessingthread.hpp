@@ -17,6 +17,13 @@ private:
 public:
     ImageProcessingThread(ImageProcessingSettings &ips, VisionFieldHandler &vfh);
     ~ImageProcessingThread();
+
+    void run() override;
+
+signals:
+
+public slots:
+
 };
 
 #endif //IMAGEPROCESSINGTHREAD_HPP

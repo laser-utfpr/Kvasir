@@ -528,19 +528,16 @@ void MainWindow::on_run_comm_clicked(void)
 void MainWindow::on_shutdown_vision_clicked(void)
 {
     emit shutdownVision();
-    usleep(MODULES_SHUTDOWN_WAIT_TIME_US);
 }
 
 void MainWindow::on_shutdown_ai_clicked(void)
 {
     emit shutdownAI();
-    usleep(MODULES_SHUTDOWN_WAIT_TIME_US);
 }
 
 void MainWindow::on_shutdown_comm_clicked(void)
 {
     emit shutdownComm();
-    usleep(MODULES_SHUTDOWN_WAIT_TIME_US);
 }
 
 void MainWindow::makeCommandMenu(void)

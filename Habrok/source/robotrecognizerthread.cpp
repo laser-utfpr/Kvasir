@@ -10,4 +10,9 @@ RobotRecognizerThread::~RobotRecognizerThread()
 
 }
 
+void RobotRecognizerThread::run()
+{
+
+}
+
 #include "moc_robotrecognizerthread.cpp"

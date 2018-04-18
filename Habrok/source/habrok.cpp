@@ -7,6 +7,7 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
     image_processing_thread = new ImageProcessingThread(image_processing_settings,
                                                         vision_field_handler);
     robot_recognizer_thread = new RobotRecognizerThread(vision_field_handler);
+    write_changes = false;
 }
 
 Habrok::Habrok()
@@ -20,6 +21,7 @@ Habrok::~Habrok()
 
 }
 
+//these functions are to be used if it is needed to use find each time you use the variables
 std::string Habrok::getSharedMemoryWriteKey(void)
 {
     std::string *key = shared_memory.find<std::string>(VISION_WRITE_KEY_MEMORY_NAME).first;
@@ -38,11 +40,33 @@ std::string Habrok::getSharedMemoryShutdownKey(void)
     return *(key);
 }
 
+void Habrok::writeChanges(void)
+{
+    write_changes = true;
+}
+
 int Habrok::runHabrok(void)
 {
-    while(getSharedMemoryShutdownKey() != shutdown_key)
+    image_processing_thread.run();
+    robot_recognizer_thread.run();
+
+    std::string *sm_write_key = shared_memory.find<std::string>(VISION_WRITE_KEY_MEMORY_NAME).first;
+    std::string *sm_read_key = shared_memory.find<std::string>(VISION_READ_KEY_MEMORY_NAME).first;
+    std::string *sm_shutdown_key = shared_memory.find<std::string>(VISION_SHUTDOWN_KEY_MEMORY_NAME).first;
+
+    while(*sm_shutdown_key != shutdown_key)
     {
-        
+        if(*sm_read_key == read_key)
+        {
+            *sm_read_key = EMPTY_KEY;
+            vision_field_handler.readChanges(shared_memory);
+        }
+        if(write_changes)
+        {
+            vision_field_handler.writeChanges(shared_memory);
+            *sm_write_key = write_key;
+            write_changes = false;
+        }
     }
 }
 

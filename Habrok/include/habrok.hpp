@@ -40,6 +40,8 @@ private:
     ImageProcessingThread *image_processing_thread;
     RobotRecognizerThread *robot_recognizer_thread;
 
+    bool write_changes;
+
     std::string getSharedMemoryWriteKey(void);
 
     std::string getSharedMemoryReadKey(void);
@@ -58,6 +60,7 @@ public:
 signals:
 
 private slots:
+    void writeChanges(void);
 
 };
 

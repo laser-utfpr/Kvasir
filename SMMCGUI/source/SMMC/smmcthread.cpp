@@ -212,16 +212,22 @@ void SMMCThread::startComm(void)
 void SMMCThread::shutdownVision(void)
 {
     *sm_vision_shutdown_key = vision_shutdown_key;
+    usleep(MODULE_SHUTDOWN_WAIT_TIME_US);
+    *sm_vision_shutdown_key = EMPTY_KEY;
 }
 
 void SMMCThread::shutdownAI(void)
 {
     *sm_ai_shutdown_key = ai_shutdown_key;
+    usleep(MODULE_SHUTDOWN_WAIT_TIME_US);
+    *sm_vision_shutdown_key = EMPTY_KEY;
 }
 
 void SMMCThread::shutdownComm(void)
 {
     *sm_comm_shutdown_key = comm_shutdown_key;
+    usleep(MODULE_SHUTDOWN_WAIT_TIME_US);
+    *sm_vision_shutdown_key = EMPTY_KEY;
 }
 
 void SMMCThread::updateVisionOutputSettings(void)

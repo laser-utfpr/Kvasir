@@ -33,4 +33,6 @@ typedef enum {UNCOLORED = -1, RED = 0, ORANGE, YELLOW, GREEN, BLUE, VIOLET} Colo
 
 #define ROBOT_MOVEMENT_MEMORY_NAME "robot_movement"
 
+#define MODULE_SHUTDOWN_WAIT_TIME_US 300000
+
 #endif // SMMCCONSTANTS_H
