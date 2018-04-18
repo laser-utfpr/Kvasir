@@ -7,4 +7,9 @@ ImageProcessingThread::ImageProcessingThread(ImageProcessingSettings &ips,
 
 }
 
+ImageProcessingThread::~ImageProcessingThread()
+{
+
+}
+
 #include "moc_imageprocessingthread.cpp"

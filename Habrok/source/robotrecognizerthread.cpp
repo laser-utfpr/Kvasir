@@ -5,4 +5,9 @@ RobotRecognizerThread::RobotRecognizerThread(VisionFieldHandler &vfh) : vision_f
 
 }
 
+RobotRecognizerThread::~RobotRecognizerThread()
+{
+
+}
+
 #include "moc_robotrecognizerthread.cpp"

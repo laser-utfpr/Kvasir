@@ -14,7 +14,7 @@ private:
 
 public:
     RobotRecognizerThread(VisionFieldHandler &vfh);
-
+    ~RobotRecognizerThread();
 };
 
 #endif //ROBOTRECOGNIZERTHREAD_HPP

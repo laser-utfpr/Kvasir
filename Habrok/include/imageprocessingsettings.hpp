@@ -15,7 +15,8 @@ private:
     };
 
 public:
-
+    ImageProcessingSettings();
+    ~ImageProcessingSettings();
 };
 
 #endif //IMAGEPROCESSINGSETTINGS_HPP

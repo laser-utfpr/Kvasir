@@ -5,7 +5,11 @@
 
 class VisionFieldHandler : private VisionField
 {
+private:
 
+public:
+    VisionFieldHandler();
+    ~VisionFieldHandler();
 };
 
 #endif //VISIONFIELDHANDLER_HPP

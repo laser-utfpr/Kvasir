@@ -16,6 +16,7 @@ private:
 
 public:
     ImageProcessingThread(ImageProcessingSettings &ips, VisionFieldHandler &vfh);
+    ~ImageProcessingThread();
 };
 
 #endif //IMAGEPROCESSINGTHREAD_HPP
