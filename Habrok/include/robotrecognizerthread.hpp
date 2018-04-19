@@ -12,6 +12,9 @@ class RobotRecognizerThread : public QThread
 private:
     VisionFieldHandler &vision_field_handler;
 
+    bool stop_thread;
+    bool recognize_robots;
+
 public:
     RobotRecognizerThread(VisionFieldHandler &vfh);
     ~RobotRecognizerThread();
@@ -19,8 +22,11 @@ public:
     void run() override;
 
 signals:
+    void robotsRecognized(void);
 
 public slots:
+    void stopThread(void);
+    void recognizeRobots(void);
 
 };
 

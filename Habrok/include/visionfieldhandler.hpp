@@ -1,7 +1,7 @@
 #ifndef VISIONFIELDHANDLER_HPP
 #define VISIONFIELDHANDLER_HPP
 
-#include <QCore>
+#include <QMutex>
 
 #include <boost/interprocess/managed_shared_memory.hpp>
 

@@ -14,6 +14,8 @@ private:
     ImageProcessingSettings &image_processing_settings;
     VisionFieldHandler &vision_field_handler;
 
+    bool stop_thread;
+
 public:
     ImageProcessingThread(ImageProcessingSettings &ips, VisionFieldHandler &vfh);
     ~ImageProcessingThread();
@@ -21,8 +23,10 @@ public:
     void run() override;
 
 signals:
+    void frameProcessed(void);
 
 public slots:
+    void stopThread(void);
 
 };
 

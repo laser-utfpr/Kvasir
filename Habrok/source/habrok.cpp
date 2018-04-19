@@ -8,6 +8,12 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
                                                         vision_field_handler);
     robot_recognizer_thread = new RobotRecognizerThread(vision_field_handler);
     write_changes = false;
+
+    connect(this, SIGNAL(stopImageProcessingThread(void)), image_processing_thread, SLOT(stopThread()));
+    connect(this, SIGNAL(stopRobotRecognizerThread(void)), robot_recognizer_thread, SLOT(stopThread()));
+
+    connect(image_processing_thread, SIGNAL(frameProcessed(void)), robot_recognizer_thread, SLOT(recognizeRobots(void)));
+    connect(robot_recognizer_thread, SIGNAL(robotsRecognized(void)), this, SLOT(writeChanges(void)));
 }
 
 Habrok::Habrok()
@@ -47,8 +53,8 @@ void Habrok::writeChanges(void)
 
 int Habrok::runHabrok(void)
 {
-    image_processing_thread.run();
-    robot_recognizer_thread.run();
+    image_processing_thread->run();
+    robot_recognizer_thread->run();
 
     std::string *sm_write_key = shared_memory.find<std::string>(VISION_WRITE_KEY_MEMORY_NAME).first;
     std::string *sm_read_key = shared_memory.find<std::string>(VISION_READ_KEY_MEMORY_NAME).first;
