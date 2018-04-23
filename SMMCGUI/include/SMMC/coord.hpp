@@ -32,6 +32,18 @@ public:
         }
         return *this;
     }
+    inline double distance(Coord c)
+    {
+        double dx = c.x - x;
+        double dy = c.y - y;
+        return sqrt(dx*dx + dy*dy);
+    }
+    inline double angle(Coord c)
+    {
+        double dx = c.x - x;
+        double dy = c.y - y;
+        return atan2(dy,dx);
+    }
 };
 
 #endif // COORD_HPP

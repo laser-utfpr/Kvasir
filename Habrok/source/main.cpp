@@ -33,8 +33,8 @@ int main(int argc, char *argv[])
         }
     }
 
-    std::cout << "This application is expected to run from SMMCGUI receiveing"
-              << "it's keys or with -c for calibration" << std::endl;
+    std::cout << "ERROR: This application is expected to run from SMMCGUI receiveing "
+              << "it's shared memory keys or with -c for calibration" << std::endl;
 
     return 0;
 }

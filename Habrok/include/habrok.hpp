@@ -27,7 +27,7 @@ class Habrok : public QObject
     Q_OBJECT
 
 private:
-    boost::interprocess::managed_shared_memory shared_memory;
+    boost::interprocess::managed_shared_memory *shared_memory;
 
     std::string write_key;
     std::string read_key;
@@ -58,6 +58,8 @@ public:
     int calibrate(void);
 
 signals:
+    void stopImageProcessingThread(void);
+    void stopRobotRecognizerThread(void);
 
 private slots:
     void writeChanges(void);

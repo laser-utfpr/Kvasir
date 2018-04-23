@@ -45,3 +45,28 @@ void VisionFieldHandler::writeChanges(boost::interprocess::managed_shared_memory
         sm_vf->enemy_robot[i] = this->enemy_robot[i];
     }
 }
+
+void VisionFieldHandler::updateTime(useconds_t time)
+{
+
+}
+
+void VisionFieldHandler::updateImage(cv::Mat image)
+{
+
+}
+
+void VisionFieldHandler::updateObjects(std::vector<ColoredObject> object)
+{
+
+}
+
+bool VisionFieldHandler::isColorUsed(Color color)
+{
+    if(color == ball_color || color == ally_center || color == enemy_center)
+        return true;
+    for(int i=0; i<ally_tag.size(); i++)
+        if(color == ally_tag[i])
+            return true;
+    return false;
+}

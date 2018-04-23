@@ -4,6 +4,10 @@
 #include <boost/serialization/string.hpp>
 #include <boost/serialization/serialization.hpp>
 
+#include <smmclib.hpp>
+
+#include "hsvmask.hpp"
+
 class ImageProcessingSettings
 {
 private:
@@ -15,6 +19,8 @@ private:
     };
 
 public:
+    HSVMask mask[N_COLORS];
+
     ImageProcessingSettings();
     ~ImageProcessingSettings();
 };

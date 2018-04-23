@@ -3,7 +3,12 @@
 
 #include <QMutex>
 
+#include <opencv2/opencv.hpp>
+
 #include <boost/interprocess/managed_shared_memory.hpp>
+
+#include <vector>
+#include <ctime>
 
 #include <smmclib.hpp>
 
@@ -18,6 +23,11 @@ public:
 
     void readChanges(boost::interprocess::managed_shared_memory &sm);
     void writeChanges(boost::interprocess::managed_shared_memory &sm);
+
+    void updateTime(useconds_t time);
+    void updateImage(cv::Mat image);
+    void updateObjects(std::vector<ColoredObject> object);
+    bool isColorUsed(Color color);
 
 };
 
