@@ -49,7 +49,7 @@ void ImageProcessingThread::findObjects(HSVMask mask)
                 object.push_back(new_object);
             }
         }
-}
+    }
 }
 
 void ImageProcessingThread::run()
@@ -70,6 +70,8 @@ void ImageProcessingThread::run()
                 findObjects(image_processing_settings.mask[i]);
         }
         vision_field_handler.updateObjects(object);
+
+        emit frameProcessed();
     }
 }
 

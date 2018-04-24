@@ -27,7 +27,8 @@ void RobotRecognizerThread::run()
     {
         if(recognize_robots)
         {
-
+            emit robotsRecognized();
+            recognize_robots = false;
         }
     }
 }

@@ -25,8 +25,8 @@ public:
     void writeChanges(boost::interprocess::managed_shared_memory &sm);
 
     void updateTime(useconds_t new_time);
-    void updateImage(cv::Mat new_image);
-    void updateObjects(std::vector<ColoredObject> new_objects);
+    void updateImage(cv::Mat &new_image);
+    void updateObjects(std::vector<ColoredObject> &new_objects);
     bool isColorUsed(Color color);
 
 };

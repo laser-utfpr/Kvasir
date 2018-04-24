@@ -35,8 +35,12 @@ Habrok::Habrok()
 
 Habrok::~Habrok()
 {
-    emit stopImageProcessingThread();
-    emit stopRobotRecognizerThread();
+    if(image_processing_thread != nullptr)
+        emit stopImageProcessingThread();
+    if(robot_recognizer_thread != nullptr)
+        emit stopRobotRecognizerThread();
+    if(shared_memory != nullptr)
+        delete shared_memory;
 }
 
 //these functions are to be used if it is needed to use find each time you use the variables
@@ -65,14 +69,16 @@ void Habrok::writeChanges(void)
 
 int Habrok::runHabrok(void)
 {
-    image_processing_thread->run();
-    robot_recognizer_thread->run();
+    image_processing_thread->start();
+    robot_recognizer_thread->start();
 
-    std::string *sm_write_key = shared_memory->find<std::string>(VISION_WRITE_KEY_MEMORY_NAME).first;
-    std::string *sm_read_key = shared_memory->find<std::string>(VISION_READ_KEY_MEMORY_NAME).first;
-    std::string *sm_shutdown_key = shared_memory->find<std::string>(VISION_SHUTDOWN_KEY_MEMORY_NAME).first;
+    std::string *sm_write_key = (shared_memory->find<std::string>(VISION_WRITE_KEY_MEMORY_NAME)).first;
+    std::string *sm_read_key = (shared_memory->find<std::string>(VISION_READ_KEY_MEMORY_NAME)).first;
+    std::string *sm_shutdown_key = (shared_memory->find<std::string>(VISION_SHUTDOWN_KEY_MEMORY_NAME)).first;
 
-    while(*sm_shutdown_key != shutdown_key)
+    std::cout << sm_shutdown_key << std::endl;
+
+    /*while(*sm_shutdown_key != shutdown_key)
     {
         if(*sm_read_key == read_key)
         {
@@ -85,7 +91,12 @@ int Habrok::runHabrok(void)
             *sm_write_key = write_key;
             write_changes = false;
         }
-    }
+    }*/
+
+    emit stopImageProcessingThread();
+    emit stopRobotRecognizerThread();
+
+    return 0;
 }
 
 int Habrok::calibrate(void)

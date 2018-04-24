@@ -52,7 +52,7 @@ void VisionFieldHandler::updateTime(useconds_t new_time)
     time_us = new_time;
 }
 
-void VisionFieldHandler::updateImage(cv::Mat new_image)
+void VisionFieldHandler::updateImage(cv::Mat &new_image)
 {
     QMutexLocker m(&lock);
     image = new_image;
@@ -60,7 +60,7 @@ void VisionFieldHandler::updateImage(cv::Mat new_image)
     image_width = static_cast<double>(image.rows);
 }
 
-void VisionFieldHandler::updateObjects(std::vector<ColoredObject> new_objects)
+void VisionFieldHandler::updateObjects(std::vector<ColoredObject> &new_objects)
 {
     QMutexLocker m(&lock);
     found_object = new_objects;
