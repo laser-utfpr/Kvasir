@@ -46,23 +46,30 @@ void VisionFieldHandler::writeChanges(boost::interprocess::managed_shared_memory
     }
 }
 
-void VisionFieldHandler::updateTime(useconds_t time)
+void VisionFieldHandler::updateTime(useconds_t new_time)
 {
-
+    QMutexLocker m(&lock);
+    time_us = new_time;
 }
 
-void VisionFieldHandler::updateImage(cv::Mat image)
+void VisionFieldHandler::updateImage(cv::Mat new_image)
 {
-
+    QMutexLocker m(&lock);
+    image = new_image;
+    image_width = static_cast<double>(image.cols);
+    image_width = static_cast<double>(image.rows);
 }
 
-void VisionFieldHandler::updateObjects(std::vector<ColoredObject> object)
+void VisionFieldHandler::updateObjects(std::vector<ColoredObject> new_objects)
 {
-
+    QMutexLocker m(&lock);
+    found_object = new_objects;
 }
 
 bool VisionFieldHandler::isColorUsed(Color color)
 {
+    QMutexLocker m(&lock);
+
     if(color == ball_color || color == ally_center || color == enemy_center)
         return true;
     for(int i=0; i<ally_tag.size(); i++)

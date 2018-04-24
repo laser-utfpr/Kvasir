@@ -23,7 +23,33 @@ void ImageProcessingThread::stopThread(void)
 
 void ImageProcessingThread::findObjects(HSVMask mask)
 {
+    inRange(hsv_image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
+            cv::Scalar(mask.h_max, mask.s_max, mask.v_max), thresholded_image);
+    thresholded_image = image_processing_settings.applyMorphingOperations(thresholded_image);
 
+    cv::vector<cv::vector<cv::Point>> contours;
+    cv::vector<cv::Vec4i> hierarchy;
+
+    findContours(thresholded_image, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+
+    if(hierarchy.size()>0)
+    {
+        for(int j=0; j>=0; j=hierarchy[j][0])
+        {
+            cv::Moments moment = cv::moments((cv::Mat)contours[j], true);
+            double area = moment.m00;
+            if(area > image_processing_settings.getMinimumObjectArea())
+            {
+                ColoredObject new_object;
+                new_object.color = mask.color;
+                new_object.area = area;
+                new_object.coord.x = moment.m10/area;
+                new_object.coord.y = moment.m01/area;
+                new_object.contour = contours[j];
+                object.push_back(new_object);
+            }
+        }
+}
 }
 
 void ImageProcessingThread::run()

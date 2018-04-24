@@ -15,6 +15,7 @@ private:
     template<class Archive>
     inline void serialize(Archive &ar, const unsigned int /* file_version */)
     {
+        ar & color;
         ar & h_min & h_max;
         ar & s_min & s_max;
         ar & v_min & v_max;

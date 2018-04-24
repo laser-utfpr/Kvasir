@@ -1,6 +1,8 @@
 #ifndef COLOREDOBJECT_HPP
 #define COLOREDOBJECT_HPP
 
+#include <opencv2/opencv.hpp>
+
 #include "coord.hpp"
 #include "smmcconstants.h"
 
@@ -12,6 +14,7 @@ public:
     Coord coord;
     double area;
     Color color;
+    cv::vector<cv::Point> contour;
     bool linked_to_entity;
 
     inline ColoredObject() : area(NAN),

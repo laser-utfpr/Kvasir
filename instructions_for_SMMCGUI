@@ -1,6 +1,9 @@
 
 To use smmclib link it on your CMakeLists.txt with:
-target_link_library(your_module smmc-lib)
+find_package(PkgConfig)
+pkg_check_modules(smmclib REQUIRED smmclib)
+target_link_libraries(${APPLICATION_NAME} smmclib)
+
 Then include it with:
 #include <smmclib.hpp>
 
