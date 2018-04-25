@@ -43,7 +43,7 @@ Habrok::~Habrok()
         delete shared_memory;
 }
 
-//these functions are to be used if it is needed to use find each time you use the variables
+//these functions may not be needed
 std::string Habrok::getSharedMemoryWriteKey(void)
 {
     std::string *key = shared_memory->find<std::string>(VISION_WRITE_KEY_MEMORY_NAME).first;
@@ -72,11 +72,25 @@ int Habrok::runHabrok(void)
     image_processing_thread->start();
     robot_recognizer_thread->start();
 
-    std::string *sm_write_key = (shared_memory->find<std::string>(VISION_WRITE_KEY_MEMORY_NAME)).first;
-    std::string *sm_read_key = (shared_memory->find<std::string>(VISION_READ_KEY_MEMORY_NAME)).first;
-    std::string *sm_shutdown_key = (shared_memory->find<std::string>(VISION_SHUTDOWN_KEY_MEMORY_NAME)).first;
+    std::string *sm_write_key;
+    std::string *sm_read_key;
+    std::string *sm_shutdown_key;
+    try
+    {
+        sm_write_key = (shared_memory->find<std::string>(VISION_WRITE_KEY_MEMORY_NAME)).first;
+        sm_read_key = (shared_memory->find<std::string>(VISION_READ_KEY_MEMORY_NAME)).first;
+        sm_shutdown_key = (shared_memory->find<std::string>(VISION_SHUTDOWN_KEY_MEMORY_NAME)).first;
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << std::endl << "Exception called while acessing shared memory keys:" << std::endl;
+        std::cout << e.what() << std::endl;
+        exit(1);
+    }
 
-    std::cout << sm_shutdown_key << std::endl;
+    //FUCKING STD STRING AND VECTOR
+
+    std::cout << *sm_shutdown_key << std::endl;
 
     /*while(*sm_shutdown_key != shutdown_key)
     {
