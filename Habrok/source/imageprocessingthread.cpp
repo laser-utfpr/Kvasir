@@ -25,7 +25,7 @@ void ImageProcessingThread::findObjects(HSVMask mask)
 {
     inRange(hsv_image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
             cv::Scalar(mask.h_max, mask.s_max, mask.v_max), thresholded_image);
-    thresholded_image = image_processing_settings.applyMorphingOperations(thresholded_image);
+    image_processing_settings.applyMorphingOperations(thresholded_image);
 
     cv::vector<cv::vector<cv::Point>> contours;
     cv::vector<cv::Vec4i> hierarchy;

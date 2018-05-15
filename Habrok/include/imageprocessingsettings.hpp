@@ -36,7 +36,7 @@ public:
     ImageProcessingSettings();
     ~ImageProcessingSettings();
 
-    cv::Mat applyMorphingOperations(cv::Mat);
+    void applyMorphingOperations(cv::Mat &thresholded_image);
 
     double getMinimumObjectArea(void);
 };

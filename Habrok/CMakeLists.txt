@@ -1,4 +1,4 @@
-project(SMMCGUI)
+project(Habrok)
 
 #CMake version should be > 3.9 for CMAKE_AUTOUIC_SEARCH_PATHS
 cmake_minimum_required(VERSION 3.9.0)

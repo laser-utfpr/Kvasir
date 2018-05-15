@@ -11,7 +11,7 @@ ImageProcessingSettings::~ImageProcessingSettings()
 
 }
 
-cv::Mat ImageProcessingSettings::applyMorphingOperations(cv::Mat thresholded_image)
+void ImageProcessingSettings::applyMorphingOperations(cv::Mat &thresholded_image)
 {
     if(use_morphing_operations)
     {
@@ -26,8 +26,6 @@ cv::Mat ImageProcessingSettings::applyMorphingOperations(cv::Mat thresholded_ima
         dilate(thresholded_image, thresholded_image, dilate_element);
         dilate(thresholded_image, thresholded_image, dilate_element);
     }
-
-    return thresholded_image;
 }
 
 double ImageProcessingSettings::getMinimumObjectArea(void)
