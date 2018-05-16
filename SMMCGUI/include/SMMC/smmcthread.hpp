@@ -4,6 +4,9 @@
 #include <QtCore>
 
 #include <boost/interprocess/managed_shared_memory.hpp>
+#include <boost/interprocess/containers/vector.hpp>
+#include <boost/interprocess/containers/string.hpp>
+#include <boost/interprocess/allocators/allocator.hpp>
 
 #include <iostream>
 #include <string>
@@ -37,15 +40,16 @@ private:
     std::string comm_shutdown_key;
 
     //shared memory key space
-    std::string* sm_vision_write_key;
-    std::string* sm_ai_write_key;
-    std::string* sm_comm_write_key;
-    std::string* sm_vision_read_key;
-    std::string* sm_ai_read_key;
-    std::string* sm_comm_read_key;
-    std::string* sm_vision_shutdown_key;
-    std::string* sm_ai_shutdown_key;
-    std::string* sm_comm_shutdown_key;
+    BoostInterprocessString* sm_vision_write_key;
+    BoostInterprocessString* sm_ai_write_key;
+    BoostInterprocessString* sm_comm_write_key;
+    BoostInterprocessString* sm_vision_read_key;
+    BoostInterprocessString* sm_ai_read_key;
+    BoostInterprocessString* sm_comm_read_key;
+    BoostInterprocessString* sm_vision_shutdown_key;
+    BoostInterprocessString* sm_ai_shutdown_key;
+    BoostInterprocessString* sm_comm_shutdown_key;
+    CharAllocator *char_allocator;
 
     //vision shared memory variables
     VisionField* sm_vision_field;
