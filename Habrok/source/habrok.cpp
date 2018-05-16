@@ -43,25 +43,6 @@ Habrok::~Habrok()
         delete shared_memory;
 }
 
-//these functions may not be needed
-std::string Habrok::getSharedMemoryWriteKey(void)
-{
-    std::string *key = shared_memory->find<std::string>(VISION_WRITE_KEY_MEMORY_NAME).first;
-    return *(key);
-}
-
-std::string Habrok::getSharedMemoryReadKey(void)
-{
-    std::string *key = shared_memory->find<std::string>(VISION_READ_KEY_MEMORY_NAME).first;
-    return *(key);
-}
-
-std::string Habrok::getSharedMemoryShutdownKey(void)
-{
-    std::string *key = shared_memory->find<std::string>(VISION_SHUTDOWN_KEY_MEMORY_NAME).first;
-    return *(key);
-}
-
 void Habrok::writeChanges(void)
 {
     write_changes = true;
@@ -72,14 +53,14 @@ int Habrok::runHabrok(void)
     image_processing_thread->start();
     robot_recognizer_thread->start();
 
-    std::string *sm_write_key;
-    std::string *sm_read_key;
-    std::string *sm_shutdown_key;
+    BoostInterprocessString *sm_write_key;
+    BoostInterprocessString *sm_read_key;
+    BoostInterprocessString *sm_shutdown_key;
     try
     {
-        sm_write_key = (shared_memory->find<std::string>(VISION_WRITE_KEY_MEMORY_NAME)).first;
-        sm_read_key = (shared_memory->find<std::string>(VISION_READ_KEY_MEMORY_NAME)).first;
-        sm_shutdown_key = (shared_memory->find<std::string>(VISION_SHUTDOWN_KEY_MEMORY_NAME)).first;
+        sm_write_key = (shared_memory->find<BoostInterprocessString>(VISION_WRITE_KEY_MEMORY_NAME)).first;
+        sm_read_key = (shared_memory->find<BoostInterprocessString>(VISION_READ_KEY_MEMORY_NAME)).first;
+        sm_shutdown_key = (shared_memory->find<BoostInterprocessString>(VISION_SHUTDOWN_KEY_MEMORY_NAME)).first;
     }
     catch(const std::exception& e)
     {
@@ -88,13 +69,9 @@ int Habrok::runHabrok(void)
         exit(1);
     }
 
-    //FUCKING STD STRING AND VECTOR
-
-    std::cout << *sm_shutdown_key << std::endl;
-
-    /*while(*sm_shutdown_key != shutdown_key)
+    while(*sm_shutdown_key != shutdown_key.c_str())
     {
-        if(*sm_read_key == read_key)
+        if(*sm_read_key == read_key.c_str())
         {
             *sm_read_key = EMPTY_KEY;
             vision_field_handler.readChanges(*shared_memory);
@@ -102,10 +79,10 @@ int Habrok::runHabrok(void)
         if(write_changes)
         {
             vision_field_handler.writeChanges(*shared_memory);
-            *sm_write_key = write_key;
+            *sm_write_key = write_key.c_str();
             write_changes = false;
         }
-    }*/
+    }
 
     emit stopImageProcessingThread();
     emit stopRobotRecognizerThread();

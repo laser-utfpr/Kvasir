@@ -8,6 +8,9 @@
 #include <QMenu>
 
 #include <boost/interprocess/managed_shared_memory.hpp>
+#include <boost/interprocess/containers/vector.hpp>
+#include <boost/interprocess/containers/string.hpp>
+#include <boost/interprocess/allocators/allocator.hpp>
 
 #include <string>
 #include <iostream>
@@ -41,12 +44,6 @@ private:
     RobotRecognizerThread *robot_recognizer_thread;
 
     bool write_changes;
-
-    std::string getSharedMemoryWriteKey(void);
-
-    std::string getSharedMemoryReadKey(void);
-
-    std::string getSharedMemoryShutdownKey(void);
 
 public:
     Habrok(std::string wk, std::string rk, std::string sk);
