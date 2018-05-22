@@ -49,7 +49,12 @@ private:
     BoostInterprocessString* sm_vision_shutdown_key;
     BoostInterprocessString* sm_ai_shutdown_key;
     BoostInterprocessString* sm_comm_shutdown_key;
+
+    //interprocess allocators
     CharAllocator *char_allocator;
+    StringAllocator *string_allocator;
+    ColorAllocator *color_allocator;
+    ColoredObjectAllocator *colored_object_allocator;
 
     //vision shared memory variables
     VisionField* sm_vision_field;

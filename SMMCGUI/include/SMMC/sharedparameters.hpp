@@ -32,8 +32,16 @@ private:
     inline void serialize(Archive &ar, const unsigned int /* file_version */)
     {
         ar & vision_path & ai_path & comm_path;
-        ar & vision_field;
-        ar & ai_field; // & other stuff to be saved
+
+        ar & vision_field->ball_color & vision_field->ally_center & vision_field->enemy_center;
+        ar & vision_field->searched_region_ulc & vision_field->searched_region_lrc;
+        //ar & vision_field;
+
+        ar & ai_field->playable_field_ulc & ai_field->playable_field_lrc;
+        ar & ai_field->left_goal_ulc & ai_field->left_goal_lrc & ai_field->right_goal_ulc & ai_field->right_goal_lrc;
+        ar & ai_field->left_goalkeeper_area_ulc & ai_field->left_goalkeeper_area_lrc;
+        ar & ai_field->right_goalkeeper_area_ulc & ai_field->right_goalkeeper_area_lrc;
+        //ar & ai_field; // & other stuff to be saved
     };
 
     QMutex lock;
@@ -48,13 +56,20 @@ private:
     std::string settings_file;
 
     //Vision variables
-    VisionField vision_field;
+    VisionField *vision_field;
 
     //AI variables
-    AIField ai_field;
+    AIField *ai_field;
 
     //Communication variables
     Movement robot_movement[N_ROBOTS];
+
+    //Boost Interprocess Allocators
+    boost::interprocess::managed_shared_memory allocator_provider; //only used to provide allocators
+    CharAllocator *char_allocator;
+    StringAllocator *string_allocator;
+    ColorAllocator *color_allocator;
+    ColoredObjectAllocator *colored_object_allocator;
 
 public:
     SharedParameters();

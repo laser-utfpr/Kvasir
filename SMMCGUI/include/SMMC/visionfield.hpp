@@ -9,7 +9,14 @@
 #include <boost/serialization/serialization.hpp>
 #include <boost/serialization/vector.hpp>
 
+#include <boost/interprocess/managed_shared_memory.hpp>
+#include <boost/interprocess/containers/vector.hpp>
+#include <boost/interprocess/containers/string.hpp>
+#include <boost/interprocess/allocators/allocator.hpp>
+
 #include <vector>
+
+#include "interprocessvariabledefinitions.hpp"
 
 #include "smmcconstants.h"
 #include "coord.hpp"
@@ -23,7 +30,7 @@ private:
     template<class Archive>
     inline void serialize(Archive &ar, const unsigned int /* file_version */)
     {
-        ar & ball_color & ally_center & ally_tag & enemy_center;
+        ar & ball_color & ally_center & enemy_center;
         ar & searched_region_ulc & searched_region_lrc;
     };
 
@@ -33,7 +40,7 @@ public:
     double image_height;
     useconds_t time_us;
 
-    std::vector<ColoredObject> found_object;
+    ColoredObjectVector found_object;
 
     Entity ball;
     Entity robot[N_ROBOTS];
@@ -41,16 +48,16 @@ public:
 
     Color ball_color;
     Color ally_center;
-    std::vector<Color> ally_tag;
+    ColorVector ally_tag;
     Color enemy_center;
 
     Coord searched_region_ulc; //upper left corner
     Coord searched_region_lrc; //lower right corner
 
-    //use filters?
-
-    inline VisionField() : image_width(NAN), image_height(NAN), time_us(0),
-    ball_color(UNCOLORED), ally_center(UNCOLORED), enemy_center(UNCOLORED) {};
+    inline VisionField(ColorAllocator &color_allocator, ColoredObjectAllocator &colored_object_allocator) :
+    image_width(NAN), image_height(NAN), time_us(0),
+    ball_color(UNCOLORED), ally_center(UNCOLORED), enemy_center(UNCOLORED),
+    ally_tag(color_allocator), found_object(colored_object_allocator) {};
 };
 
 #endif // VISIONFIELD_HPP

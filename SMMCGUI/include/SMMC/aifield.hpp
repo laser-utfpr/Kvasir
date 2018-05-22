@@ -7,6 +7,9 @@
 #include <boost/serialization/serialization.hpp>
 
 #include <vector>
+#include <string>
+
+#include "interprocessvariabledefinitions.hpp"
 
 #include "smmcconstants.h"
 #include "coord.hpp"
@@ -49,10 +52,13 @@ public:
     Coord right_goalkeeper_area_ulc;
     Coord right_goalkeeper_area_lrc;
 
-    std::string command;
-    std::vector<std::string> command_list;
+    BoostInterprocessString command;
+    StringVector command_list;
 
-    inline AIField() : image_width(NAN), image_height(NAN), time_us(0) {};
+    inline AIField(CharAllocator &char_allocator, StringAllocator &string_allocator) :
+    image_width(NAN), image_height(NAN), time_us(0),
+    command(char_allocator), command_list(string_allocator) {};
+
     inline AIField& operator<<(const VisionField& vision)
     {
         image_width = vision.image_width;

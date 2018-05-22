@@ -9,6 +9,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->setupUi(this);
 
+    //loading the modules' paths
+    QString qstr;
+    qstr = (shared_parameters.getVisionPath()).c_str();
+    ui->vision_path_input->setText(qstr);
+    qstr = (shared_parameters.getAIPath()).c_str();
+    ui->ai_path_input->setText(qstr);
+    qstr = (shared_parameters.getCommPath()).c_str();
+    ui->comm_path_input->setText(qstr);
+
     //creating the AI command menu and connecting it's signals
     ui->command_menu->setMenu(&command_menu);
     command_menu_action = nullptr;
@@ -36,7 +45,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
         ui->enemy_center_menu->setText(color_name[static_cast<int>(init)]);
 
     //for each color add it's action to the menus that should have it
-    QString qstr;
     for(int i=0; i<N_COLORS; i++)
     {
         //creates the color action with the color name

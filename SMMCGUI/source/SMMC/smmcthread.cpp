@@ -25,7 +25,11 @@ SMMCThread::SMMCThread(SharedParameters &sp) : shared_parameters(sp)
     shared_memory_object::remove(SHARED_MEMORY_BLOCK_NAME);
     shared_memory = new managed_shared_memory(create_only,
             SHARED_MEMORY_BLOCK_NAME, SHARED_MEMORY_SIZE);
+
     char_allocator = new CharAllocator(shared_memory->get_segment_manager());
+    string_allocator = new StringAllocator(shared_memory->get_segment_manager());
+    color_allocator = new ColorAllocator(shared_memory->get_segment_manager());
+    colored_object_allocator = new ColoredObjectAllocator(shared_memory->get_segment_manager());
 
     constructVisionSMVariables();
     constructAISMVariables();
@@ -35,6 +39,9 @@ SMMCThread::SMMCThread(SharedParameters &sp) : shared_parameters(sp)
 SMMCThread::~SMMCThread()
 {
     delete char_allocator;
+    delete string_allocator;
+    delete color_allocator;
+    delete colored_object_allocator;
     shared_memory_object::remove(SHARED_MEMORY_BLOCK_NAME);
     delete shared_memory;
 }
@@ -78,7 +85,7 @@ void SMMCThread::constructVisionSMVariables(void)
     *sm_vision_shutdown_key = vision_shutdown_key.c_str();
 
     sm_vision_field = shared_memory->construct<VisionField>
-                              (VISION_FIELD_MEMORY_NAME)();
+                              (VISION_FIELD_MEMORY_NAME)(*color_allocator, *colored_object_allocator);
 }
 
 void SMMCThread::constructAISMVariables(void)
@@ -97,7 +104,7 @@ void SMMCThread::constructAISMVariables(void)
     *sm_ai_shutdown_key = ai_shutdown_key.c_str();
 
     sm_ai_field = shared_memory->construct<AIField>
-                              (AI_FIELD_MEMORY_NAME)();
+                              (AI_FIELD_MEMORY_NAME)(*char_allocator, *string_allocator);
 }
 
 void SMMCThread::constructCommSMVariables(void)
@@ -239,7 +246,8 @@ void SMMCThread::updateVisionOutputSettings(void)
     sm_vision_field->ball_color = shared_parameters.getBallColor();
     sm_vision_field->ally_center = shared_parameters.getAllyCenter();
     sm_vision_field->enemy_center = shared_parameters.getEnemyCenter();
-    sm_vision_field->ally_tag = shared_parameters.getTags();
+    auto tags = shared_parameters.getTags();
+    sm_vision_field->ally_tag.insert(sm_vision_field->ally_tag.begin(), tags.begin(), tags.end());
     sm_vision_field->searched_region_ulc = shared_parameters.getSearchedRegionULC();
     sm_vision_field->searched_region_lrc = shared_parameters.getSearchedRegionLRC();
 
@@ -262,7 +270,7 @@ void SMMCThread::updateAIOutputSettings(void)
     sm_ai_field->right_goalkeeper_area_ulc = shared_parameters.getRightGKAreaULC();
     sm_ai_field->right_goalkeeper_area_lrc = shared_parameters.getRightGKAreaLRC();
 
-    sm_ai_field->command = shared_parameters.getAICommand();
+    sm_ai_field->command = (shared_parameters.getAICommand()).c_str();
 
     //writing key
     *sm_ai_read_key = ai_read_key.c_str();
