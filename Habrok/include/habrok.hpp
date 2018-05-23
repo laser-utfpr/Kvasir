@@ -36,7 +36,11 @@ private:
     std::string read_key;
     std::string shutdown_key;
 
-    VisionFieldHandler vision_field_handler;
+    VisionFieldHandler *vision_field_handler;
+    //Boost Interprocess Allocators
+    boost::interprocess::managed_shared_memory allocator_provider; //only used to provide allocators
+    ColorAllocator *color_allocator;
+    ColoredObjectAllocator *colored_object_allocator;
 
     ImageProcessingSettings image_processing_settings;
 

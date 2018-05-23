@@ -15,9 +15,13 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
         exit(1);
     }
 
+    color_allocator = new ColorAllocator(allocator_provider.get_segment_manager());;
+    colored_object_allocator = new ColoredObjectAllocator(allocator_provider.get_segment_manager());
+    vision_field_handler = new VisionFieldHandler(*color_allocator, *colored_object_allocator);
+
     image_processing_thread = new ImageProcessingThread(image_processing_settings,
-                                                        vision_field_handler);
-    robot_recognizer_thread = new RobotRecognizerThread(vision_field_handler);
+                                                        *vision_field_handler);
+    robot_recognizer_thread = new RobotRecognizerThread(*vision_field_handler);
     write_changes = false;
 
     connect(this, SIGNAL(stopImageProcessingThread(void)), image_processing_thread, SLOT(stopThread()));
@@ -39,6 +43,14 @@ Habrok::~Habrok()
         emit stopImageProcessingThread();
     if(robot_recognizer_thread != nullptr)
         emit stopRobotRecognizerThread();
+
+    if(vision_field_handler != nullptr)
+        delete vision_field_handler;
+    if(color_allocator != nullptr)
+        delete color_allocator;
+    if(colored_object_allocator != nullptr)
+        delete colored_object_allocator;
+
     if(shared_memory != nullptr)
         delete shared_memory;
 }
@@ -73,12 +85,14 @@ int Habrok::runHabrok(void)
     {
         if(*sm_read_key == read_key.c_str())
         {
+            std::cout << "lendo algo" << std::endl;
             *sm_read_key = EMPTY_KEY;
-            vision_field_handler.readChanges(*shared_memory);
+            vision_field_handler->readChanges(*shared_memory);
         }
         if(write_changes)
         {
-            vision_field_handler.writeChanges(*shared_memory);
+            std::cout << "escrevendo algo" << std::endl;
+            vision_field_handler->writeChanges(*shared_memory);
             *sm_write_key = write_key.c_str();
             write_changes = false;
         }

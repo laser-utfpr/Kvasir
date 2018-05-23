@@ -1,6 +1,7 @@
 #include "visionfieldhandler.hpp"
 
-VisionFieldHandler::VisionFieldHandler() : VisionField()
+VisionFieldHandler::VisionFieldHandler(ColorAllocator &color_allocator,
+    ColoredObjectAllocator &colored_object_allocator) : VisionField(color_allocator, colored_object_allocator)
 {
 
 }
@@ -63,7 +64,7 @@ void VisionFieldHandler::updateImage(cv::Mat &new_image)
 void VisionFieldHandler::updateObjects(std::vector<ColoredObject> &new_objects)
 {
     QMutexLocker m(&lock);
-    found_object = new_objects;
+    found_object.insert(found_object.begin(), new_objects.begin(), new_objects.end());
 }
 
 bool VisionFieldHandler::isColorUsed(Color color)

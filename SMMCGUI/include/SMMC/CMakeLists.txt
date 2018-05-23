@@ -17,5 +17,5 @@ install(TARGETS ${SMMC_LIB_NAME}
 
 install(FILES ${CMAKE_BINARY_DIR}/include/SMMC/smmclib.pc DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
 
-install(FILES aifield.hpp coloredobject.hpp coord.hpp entity.hpp movement.hpp player.hpp smmcconstants.h visionfield.hpp
+install(FILES aifield.hpp coloredobject.hpp coord.hpp entity.hpp interprocessvariabledefinitions.hpp movement.hpp player.hpp smmcconstants.h visionfield.hpp
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
