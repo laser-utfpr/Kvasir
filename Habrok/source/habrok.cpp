@@ -1,7 +1,8 @@
 #include "habrok.hpp"
 
 Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
-               write_key(wk), read_key(rk), shutdown_key(sk)
+               write_key(wk), read_key(rk), shutdown_key(sk),
+               provider_name("sharedparametersallocatorprovider")
 {
     try
     {
@@ -15,8 +16,11 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
         exit(1);
     }
 
-    color_allocator = new ColorAllocator(allocator_provider.get_segment_manager());;
-    colored_object_allocator = new ColoredObjectAllocator(allocator_provider.get_segment_manager());
+    boost::interprocess::shared_memory_object::remove(provider_name.c_str());
+    allocator_provider = new boost::interprocess::managed_shared_memory(boost::interprocess::create_only, provider_name.c_str(), 65536);
+
+    color_allocator = new ColorAllocator(allocator_provider->get_segment_manager());;
+    colored_object_allocator = new ColoredObjectAllocator(allocator_provider->get_segment_manager());
     vision_field_handler = new VisionFieldHandler(*color_allocator, *colored_object_allocator);
 
     image_processing_thread = new ImageProcessingThread(image_processing_settings,
@@ -27,8 +31,8 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
     connect(this, SIGNAL(stopImageProcessingThread(void)), image_processing_thread, SLOT(stopThread()));
     connect(this, SIGNAL(stopRobotRecognizerThread(void)), robot_recognizer_thread, SLOT(stopThread()));
 
-    connect(image_processing_thread, SIGNAL(frameProcessed(void)), robot_recognizer_thread, SLOT(recognizeRobots(void)));
-    connect(robot_recognizer_thread, SIGNAL(robotsRecognized(void)), this, SLOT(writeChanges(void)));
+    connect(image_processing_thread, &ImageProcessingThread::frameProcessed, robot_recognizer_thread, &RobotRecognizerThread::recognizeRobots);
+    connect(robot_recognizer_thread, &RobotRecognizerThread::robotsRecognized, this, &Habrok::writeChanges);
 }
 
 Habrok::Habrok()
@@ -50,6 +54,8 @@ Habrok::~Habrok()
         delete color_allocator;
     if(colored_object_allocator != nullptr)
         delete colored_object_allocator;
+    if(allocator_provider != nullptr)
+        delete allocator_provider;
 
     if(shared_memory != nullptr)
         delete shared_memory;

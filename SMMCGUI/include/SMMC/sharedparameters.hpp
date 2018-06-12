@@ -65,7 +65,8 @@ private:
     Movement robot_movement[N_ROBOTS];
 
     //Boost Interprocess Allocators
-    boost::interprocess::managed_shared_memory allocator_provider; //only used to provide allocators
+    boost::interprocess::managed_shared_memory *allocator_provider; //only used to provide allocators
+    std::string provider_name;
     CharAllocator *char_allocator;
     StringAllocator *string_allocator;
     ColorAllocator *color_allocator;

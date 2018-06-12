@@ -5,7 +5,7 @@ void SharedParameters::loadDefaults(void)
     //find good defaults;
 }
 
-SharedParameters::SharedParameters()
+SharedParameters::SharedParameters() : provider_name("sharedparametersallocatorprovider")
 {
     vision_path.clear();
     ai_path.clear();
@@ -15,10 +15,13 @@ SharedParameters::SharedParameters()
 
     settings_file.clear();
 
-    char_allocator = new CharAllocator(allocator_provider.get_segment_manager());;
-    string_allocator = new StringAllocator(allocator_provider.get_segment_manager());;
-    color_allocator = new ColorAllocator(allocator_provider.get_segment_manager());;
-    colored_object_allocator = new ColoredObjectAllocator(allocator_provider.get_segment_manager());
+    boost::interprocess::shared_memory_object::remove(provider_name.c_str());
+    allocator_provider = new boost::interprocess::managed_shared_memory(boost::interprocess::create_only, provider_name.c_str(), 65536);
+
+    char_allocator = new CharAllocator(allocator_provider->get_segment_manager());;
+    string_allocator = new StringAllocator(allocator_provider->get_segment_manager());;
+    color_allocator = new ColorAllocator(allocator_provider->get_segment_manager());;
+    colored_object_allocator = new ColoredObjectAllocator(allocator_provider->get_segment_manager());
 
     vision_field = new VisionField(*color_allocator, *colored_object_allocator);
     ai_field = new AIField(*char_allocator, *string_allocator);
@@ -79,6 +82,7 @@ SharedParameters::~SharedParameters()
     delete string_allocator;
     delete color_allocator;
     delete colored_object_allocator;
+    delete allocator_provider;
 }
 
 void SharedParameters::loadSettingsFromFile(void)

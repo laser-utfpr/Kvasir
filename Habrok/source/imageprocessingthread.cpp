@@ -55,7 +55,6 @@ void ImageProcessingThread::findObjects(HSVMask mask)
 void ImageProcessingThread::run()
 {
     clock_start = clock();
-
     while(!stop_thread)
     {
         vision_field_handler.updateTime((useconds_t)((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001)));

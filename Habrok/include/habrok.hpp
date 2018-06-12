@@ -38,7 +38,8 @@ private:
 
     VisionFieldHandler *vision_field_handler;
     //Boost Interprocess Allocators
-    boost::interprocess::managed_shared_memory allocator_provider; //only used to provide allocators
+    boost::interprocess::managed_shared_memory *allocator_provider; //only used to provide allocators
+    std::string provider_name;
     ColorAllocator *color_allocator;
     ColoredObjectAllocator *colored_object_allocator;
 
