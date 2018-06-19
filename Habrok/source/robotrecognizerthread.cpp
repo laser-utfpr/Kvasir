@@ -19,6 +19,7 @@ void RobotRecognizerThread::stopThread(void)
 void RobotRecognizerThread::recognizeRobots(void)
 {
     recognize_robots = true;
+    std::cout << "AE FOI PORRA CARLHO" << std::endl << std::flush;
 }
 
 void RobotRecognizerThread::run()
@@ -31,6 +32,7 @@ void RobotRecognizerThread::run()
             recognize_robots = false;
         }
     }
+    std::cout << "parow";
 }
 
 #include "moc_robotrecognizerthread.cpp"

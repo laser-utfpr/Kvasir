@@ -28,8 +28,8 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
     robot_recognizer_thread = new RobotRecognizerThread(*vision_field_handler);
     write_changes = false;
 
-    connect(this, SIGNAL(stopImageProcessingThread(void)), image_processing_thread, SLOT(stopThread()));
-    connect(this, SIGNAL(stopRobotRecognizerThread(void)), robot_recognizer_thread, SLOT(stopThread()));
+    connect(this, &Habrok::stopImageProcessingThread, image_processing_thread, &ImageProcessingThread::stopThread);
+    connect(this, &Habrok::stopRobotRecognizerThread, robot_recognizer_thread, &RobotRecognizerThread::stopThread);
 
     connect(image_processing_thread, &ImageProcessingThread::frameProcessed, robot_recognizer_thread, &RobotRecognizerThread::recognizeRobots);
     connect(robot_recognizer_thread, &RobotRecognizerThread::robotsRecognized, this, &Habrok::writeChanges);
@@ -47,6 +47,8 @@ Habrok::~Habrok()
         emit stopImageProcessingThread();
     if(robot_recognizer_thread != nullptr)
         emit stopRobotRecognizerThread();
+
+    usleep(500000);
 
     if(vision_field_handler != nullptr)
         delete vision_field_handler;

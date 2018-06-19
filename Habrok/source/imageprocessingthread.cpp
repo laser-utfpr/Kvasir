@@ -70,6 +70,8 @@ void ImageProcessingThread::run()
         }
         vision_field_handler.updateObjects(object);
 
+        std::cout << "estraga tudo" << std::endl << std::flush;
+
         emit frameProcessed();
     }
 }

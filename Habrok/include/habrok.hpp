@@ -5,7 +5,6 @@
 #include <QtCore>
 #include <QWidget>
 #include <QMainWindow>
-#include <QMenu>
 
 #include <boost/interprocess/managed_shared_memory.hpp>
 #include <boost/interprocess/containers/vector.hpp>
