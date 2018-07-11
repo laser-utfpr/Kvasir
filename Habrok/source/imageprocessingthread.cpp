@@ -4,6 +4,8 @@ ImageProcessingThread::ImageProcessingThread(ImageProcessingSettings &ips,
                                              VisionFieldHandler &vfh) :
                         image_processing_settings(ips), vision_field_handler(vfh)
 {
+    this->moveToThread(this);
+
     stop_thread = false;
 
     cam.open(0);
@@ -70,10 +72,10 @@ void ImageProcessingThread::run()
         }
         vision_field_handler.updateObjects(object);
 
-        std::cout << "estraga tudo" << std::endl << std::flush;
-
         emit frameProcessed();
     }
+
+    std::cout << "parow";
 }
 
 #include "moc_imageprocessingthread.cpp"

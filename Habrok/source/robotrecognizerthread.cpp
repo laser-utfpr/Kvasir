@@ -2,6 +2,8 @@
 
 RobotRecognizerThread::RobotRecognizerThread(VisionFieldHandler &vfh) : vision_field_handler(vfh)
 {
+    this->moveToThread(this);
+
     recognize_robots = false;
     stop_thread = false;
 }

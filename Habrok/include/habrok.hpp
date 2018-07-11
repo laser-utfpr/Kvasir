@@ -61,9 +61,12 @@ public:
 signals:
     void stopImageProcessingThread(void);
     void stopRobotRecognizerThread(void);
+    void sendFrameProcessed(void);
 
 private slots:
     void writeChanges(void);
+
+    void receivedFrameProcessed(void);
 
 };
 

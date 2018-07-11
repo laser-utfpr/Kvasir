@@ -33,6 +33,9 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
 
     connect(image_processing_thread, &ImageProcessingThread::frameProcessed, robot_recognizer_thread, &RobotRecognizerThread::recognizeRobots);
     connect(robot_recognizer_thread, &RobotRecognizerThread::robotsRecognized, this, &Habrok::writeChanges);
+
+    image_processing_thread->moveToThread(image_processing_thread);
+    robot_recognizer_thread->moveToThread(robot_recognizer_thread);
 }
 
 Habrok::Habrok()
@@ -66,6 +69,11 @@ Habrok::~Habrok()
 void Habrok::writeChanges(void)
 {
     write_changes = true;
+}
+
+void Habrok::receivedFrameProcessed(void)
+{
+    emit sendFrameProcessed();
 }
 
 int Habrok::runHabrok(void)
