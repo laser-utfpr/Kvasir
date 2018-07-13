@@ -35,7 +35,6 @@ private:
     };
 
 public:
-    cv::Mat image;
     double image_width;
     double image_height;
     useconds_t time_us;

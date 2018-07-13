@@ -166,7 +166,6 @@ void SharedParameters::readVisionParameters(VisionField v_field)
     QMutexLocker m(&lock);
 
     //assigning variables that should be updated from vision
-    vision_field->image = v_field.image;
     vision_field->image_width = v_field.image_width;
     vision_field->image_height = v_field.image_height;
     vision_field->time_us = v_field.time_us;
@@ -234,10 +233,16 @@ void SharedParameters::setCommPath(std::string str)
     comm_path = str;
 }
 
-cv::Mat SharedParameters::getVisionImage(void)
+double SharedParameters::getImageWidth(void)
 {
     QMutexLocker m(&lock);
-    return vision_field->image;
+    return vision_field->image_width;
+}
+
+double SharedParameters::getImageHeight(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field->image_height;
 }
 
 std::vector<ColoredObject> SharedParameters::getColorObjects(void)
