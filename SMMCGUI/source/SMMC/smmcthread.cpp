@@ -4,7 +4,7 @@ using namespace boost::interprocess;
 
 SMMCThread::SMMCThread(SharedParameters &sp) : shared_parameters(sp)
 {
-    this->moveToThread(this);
+    //this->moveToThread(this);
 
     std::cout << "SMMC thread created" << std::endl << std::endl;
     run_thread = true;
