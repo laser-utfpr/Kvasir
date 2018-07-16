@@ -134,10 +134,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     smmc->start();
     usleep(THREAD_START_WAIT_TIME_US);
 
-    //for testing
-    //cam.open(0);
-    //cam.set(CV_CAP_PROP_FRAME_WIDTH, 1920);
-    //cam.set(CV_CAP_PROP_FRAME_HEIGHT, 1080);
+    cam.open(0);
+    cam_image_width = 0.0;
+    cam_image_height = 0.0;
+    cam.set(CV_CAP_PROP_FRAME_WIDTH, cam_image_width);
+    cam.set(CV_CAP_PROP_FRAME_HEIGHT, cam_image_height);
 
     frame_update_timer = new QTimer(this);
     connect(frame_update_timer, SIGNAL(timeout()), this, SLOT(processImages()));
@@ -187,12 +188,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::processGameControlImage(void)
 {
-    //for testing
-    //cam.read(cam_image);
-    //if(cam_image.empty())
-    //    return;
+    cv::Mat image;
+    auto vision_image_width = shared_parameters.getImageWidth();
+    auto vision_image_height = shared_parameters.getImageHeight();
+    if(cam_image_width != vision_image_width || cam_image_height != vision_image_height)
+    {
+        cam_image_width = vision_image_width;
+        cam_image_height = vision_image_height;
+        cam.set(CV_CAP_PROP_FRAME_WIDTH, cam_image_width);
+        cam.set(CV_CAP_PROP_FRAME_HEIGHT, cam_image_height);
+    }
+    cam.read(image);
+    if(image.empty())
+        return;
 
-    cv::Mat image = shared_parameters.getVisionImage();
     if(image.rows > 0 && image.cols > 0)
     {
         if(ui->color_objects_cb->isChecked())
@@ -365,12 +374,19 @@ void MainWindow::processGameControlImage(void)
 
 void MainWindow::processVisionSettingsImage(void)
 {
-    //for testing
-    //cam.read(cam_image);
-    //if(cam_image.empty())
-    //    return;
-
-    cv::Mat image = shared_parameters.getVisionImage();
+    cv::Mat image;
+    auto vision_image_width = shared_parameters.getImageWidth();
+    auto vision_image_height = shared_parameters.getImageHeight();
+    if(cam_image_width != vision_image_width || cam_image_height != vision_image_height)
+    {
+        cam_image_width = vision_image_width;
+        cam_image_height = vision_image_height;
+        cam.set(CV_CAP_PROP_FRAME_WIDTH, cam_image_width);
+        cam.set(CV_CAP_PROP_FRAME_HEIGHT, cam_image_height);
+    }
+    cam.read(image);
+    if(image.empty())
+        return;
 
     if(image.rows > 0 && image.cols > 0)
     {
@@ -432,12 +448,19 @@ void MainWindow::processVisionSettingsImage(void)
 
 void MainWindow::processAISettingsImage(void)
 {
-    //for testing
-    //cam.read(cam_image);
-    //if(cam_image.empty())
-    //    return;
-
-    cv::Mat image = shared_parameters.getVisionImage();
+    cv::Mat image;
+    auto vision_image_width = shared_parameters.getImageWidth();
+    auto vision_image_height = shared_parameters.getImageHeight();
+    if(cam_image_width != vision_image_width || cam_image_height != vision_image_height)
+    {
+        cam_image_width = vision_image_width;
+        cam_image_height = vision_image_height;
+        cam.set(CV_CAP_PROP_FRAME_WIDTH, cam_image_width);
+        cam.set(CV_CAP_PROP_FRAME_HEIGHT, cam_image_height);
+    }
+    cam.read(image);
+    if(image.empty())
+        return;
 
     if(image.rows > 0 && image.cols > 0)
     {

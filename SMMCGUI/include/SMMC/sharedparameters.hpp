@@ -11,8 +11,6 @@
 #include <boost/serialization/string.hpp>
 #include <boost/serialization/serialization.hpp>
 
-#include <opencv2/opencv.hpp>
-
 #include <QCoreApplication>
 
 #include <QMutex>
@@ -94,7 +92,8 @@ public:
 
     void setForceStop(bool stop);
 
-    cv::Mat getVisionImage(void);
+    double getImageWidth(void);
+    double getImageHeight(void);
     std::vector<ColoredObject> getColorObjects(void);
 
     Color setBallColor(Color color);
