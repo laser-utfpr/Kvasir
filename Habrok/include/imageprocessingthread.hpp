@@ -10,6 +10,7 @@
 
 #include <smmclib.hpp>
 
+#include "habrokconstants.h"
 #include "visionfieldhandler.hpp"
 #include "imageprocessingsettings.hpp"
 #include "hsvmask.hpp"

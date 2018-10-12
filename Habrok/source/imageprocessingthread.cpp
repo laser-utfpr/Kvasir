@@ -9,8 +9,8 @@ ImageProcessingThread::ImageProcessingThread(ImageProcessingSettings &ips,
     stop_thread = false;
 
     cam.open(0);
-    cam.set(CV_CAP_PROP_FRAME_WIDTH, 1920);
-    cam.set(CV_CAP_PROP_FRAME_HEIGHT, 1080);
+    cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);
+    cam.set(CV_CAP_PROP_FRAME_HEIGHT, IMAGE_CAPTURE_HEIGHT);
 }
 
 ImageProcessingThread::~ImageProcessingThread()

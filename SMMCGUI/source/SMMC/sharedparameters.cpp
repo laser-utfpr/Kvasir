@@ -22,8 +22,9 @@ SharedParameters::SharedParameters() : provider_name("sharedparametersallocatorp
     string_allocator = new StringAllocator(allocator_provider->get_segment_manager());;
     color_allocator = new ColorAllocator(allocator_provider->get_segment_manager());;
     colored_object_allocator = new ColoredObjectAllocator(allocator_provider->get_segment_manager());
+    float_allocator = new FloatAllocator(allocator_provider->get_segment_manager());
 
-    vision_field = new VisionField(*color_allocator, *colored_object_allocator);
+    vision_field = new VisionField(*color_allocator, *colored_object_allocator, *float_allocator);
     ai_field = new AIField(*char_allocator, *string_allocator);
 
     //tests
@@ -231,6 +232,14 @@ void SharedParameters::setCommPath(std::string str)
 {
     QMutexLocker m(&lock);
     comm_path = str;
+}
+
+std::vector<float> SharedParameters::getImageData(void)
+{
+    QMutexLocker m(&lock);
+    std::vector<float> image_data;
+    image_data.insert(image_data.begin(), vision_field->image_data.begin(), vision_field->image_data.end());
+    return image_data;
 }
 
 double SharedParameters::getImageWidth(void)

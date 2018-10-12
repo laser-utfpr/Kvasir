@@ -1,7 +1,8 @@
 #include "visionfieldhandler.hpp"
 
 VisionFieldHandler::VisionFieldHandler(ColorAllocator &color_allocator,
-    ColoredObjectAllocator &colored_object_allocator) : VisionField(color_allocator, colored_object_allocator)
+    ColoredObjectAllocator &colored_object_allocator, FloatAllocator &float_allocator) :
+    VisionField(color_allocator, colored_object_allocator, float_allocator)
 {
 
 }
@@ -28,7 +29,7 @@ void VisionFieldHandler::readChanges(boost::interprocess::managed_shared_memory 
 
 void VisionFieldHandler::writeChanges(boost::interprocess::managed_shared_memory &sm)
 {
-    QMutexLocker m(&lock);
+    /*QMutexLocker m(&lock);
 
     VisionField *sm_vf = sm.find<VisionField>(VISION_FIELD_MEMORY_NAME).first;
 
@@ -44,7 +45,7 @@ void VisionFieldHandler::writeChanges(boost::interprocess::managed_shared_memory
     {
         sm_vf->robot[i] = this->robot[i];
         sm_vf->enemy_robot[i] = this->enemy_robot[i];
-    }
+    }*/
 }
 
 void VisionFieldHandler::updateTime(useconds_t new_time)
@@ -56,9 +57,19 @@ void VisionFieldHandler::updateTime(useconds_t new_time)
 void VisionFieldHandler::updateImage(cv::Mat &new_image)
 {
     QMutexLocker m(&lock);
-    image = new_image;
-    image_width = static_cast<double>(image.cols);
-    image_width = static_cast<double>(image.rows);
+
+    if(new_image.isContinuous())
+    {
+        image_data.assign((float*)new_image.datastart, (float*)new_image.dataend);
+    }
+    else
+    {
+        for(int i=0; i<new_image.rows; ++i)
+            image_data.insert(image_data.end(), new_image.ptr<float>(i), new_image.ptr<float>(i)+new_image.cols);
+    }
+
+    image_width = static_cast<double>(new_image.cols);
+    image_width = static_cast<double>(new_image.rows);
 }
 
 void VisionFieldHandler::updateObjects(std::vector<ColoredObject> &new_objects)

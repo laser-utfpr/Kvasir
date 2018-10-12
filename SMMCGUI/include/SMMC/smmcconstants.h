@@ -7,15 +7,15 @@ typedef enum {UNCOLORED = -1, RED = 0, ORANGE, YELLOW, GREEN, BLUE, VIOLET} Colo
 #define COLOR_MEMBER_NAMES {"RED","ORANGE","YELLOW","GREEN","BLUE","VIOLET"}
 #define N_COLORS 6
 
-#define N_ROBOTS 3
+#define N_ROBOTS 5
 
 #define SAVED_SETTINGS_FILENAME "settings.sp"
 
 #define SHARED_MEMORY_BLOCK_NAME "smmc_memory_block"
 #define SHARED_MEMORY_SIZE 65536
 
-#define KEY_SIZE 9
-#define EMPTY_KEY "777777777"
+#define KEY_SIZE 5
+#define EMPTY_KEY "77777"
 
 #define VISION_WRITE_KEY_MEMORY_NAME "vision_write_key"
 #define VISION_READ_KEY_MEMORY_NAME "vision_read_key"

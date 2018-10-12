@@ -35,6 +35,7 @@ private:
     };
 
 public:
+    FloatVector image_data;
     double image_width;
     double image_height;
     useconds_t time_us;
@@ -53,7 +54,8 @@ public:
     Coord searched_region_ulc; //upper left corner
     Coord searched_region_lrc; //lower right corner
 
-    inline VisionField(ColorAllocator &color_allocator, ColoredObjectAllocator &colored_object_allocator) :
+    inline VisionField(ColorAllocator &color_allocator, ColoredObjectAllocator &colored_object_allocator, FloatAllocator &float_allocator) :
+    image_data(float_allocator),
     image_width(NAN), image_height(NAN), time_us(0),
     ball_color(UNCOLORED), ally_center(UNCOLORED), enemy_center(UNCOLORED),
     ally_tag(color_allocator), found_object(colored_object_allocator) {};

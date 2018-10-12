@@ -41,6 +41,7 @@ private:
     std::string provider_name;
     ColorAllocator *color_allocator;
     ColoredObjectAllocator *colored_object_allocator;
+    FloatAllocator *float_allocator;
 
     ImageProcessingSettings image_processing_settings;
 

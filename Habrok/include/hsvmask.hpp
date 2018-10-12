@@ -8,6 +8,8 @@
 
 #include <smmclib.hpp>
 
+#include "habrokconstants.h"
+
 class HSVMask
 {
 private:

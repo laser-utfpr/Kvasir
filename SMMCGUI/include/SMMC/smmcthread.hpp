@@ -55,6 +55,7 @@ private:
     StringAllocator *string_allocator;
     ColorAllocator *color_allocator;
     ColoredObjectAllocator *colored_object_allocator;
+    FloatAllocator *float_allocator;
 
     //vision shared memory variables
     VisionField* sm_vision_field;
@@ -80,7 +81,7 @@ protected:
     void run() override;
 
 public:
-    SMMCThread(SharedParameters &sp);
+    SMMCThread(SharedParameters &sp, QObject *mainwindow);
     ~SMMCThread();
 
 signals:

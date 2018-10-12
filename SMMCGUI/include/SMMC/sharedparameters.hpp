@@ -69,6 +69,7 @@ private:
     StringAllocator *string_allocator;
     ColorAllocator *color_allocator;
     ColoredObjectAllocator *colored_object_allocator;
+    FloatAllocator *float_allocator;
 
 public:
     SharedParameters();
@@ -92,6 +93,7 @@ public:
 
     void setForceStop(bool stop);
 
+    std::vector<float> getImageData(void);
     double getImageWidth(void);
     double getImageHeight(void);
     std::vector<ColoredObject> getColorObjects(void);

@@ -8,6 +8,7 @@
 
 #include <smmclib.hpp>
 
+#include "habrokconstants.h"
 #include "hsvmask.hpp"
 
 class ImageProcessingSettings

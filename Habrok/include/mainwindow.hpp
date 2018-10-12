@@ -8,6 +8,7 @@
 
 #include <opencv2/opencv.hpp>
 
+#include "habrokconstants.h"
 #include <iostream>
 #include <cmath>
 

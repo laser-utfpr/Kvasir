@@ -109,7 +109,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->right_gka_lrc_y->setText(QString::number(right_gka_lrc.y));
 
     std::cout << std::endl << "Creating SMMC thread" << std::endl;
-    smmc = new SMMCThread(shared_parameters);
+    smmc = new SMMCThread(shared_parameters, static_cast<QObject*>(this));
 
     //conecting signals and slots of the smmc thread
     connect(this, SIGNAL(stopSMMC()), smmc, SLOT(stopThread()));
@@ -133,12 +133,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     std::cout << std::endl << "Starting SMMC thread" << std::endl;
     smmc->start();
     usleep(THREAD_START_WAIT_TIME_US);
-
-    cam.open(0);
-    cam_image_width = 0.0;
-    cam_image_height = 0.0;
-    cam.set(CV_CAP_PROP_FRAME_WIDTH, cam_image_width);
-    cam.set(CV_CAP_PROP_FRAME_HEIGHT, cam_image_height);
 
     frame_update_timer = new QTimer(this);
     connect(frame_update_timer, SIGNAL(timeout()), this, SLOT(processImages()));
@@ -188,17 +182,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::processGameControlImage(void)
 {
-    cv::Mat image;
-    auto vision_image_width = shared_parameters.getImageWidth();
-    auto vision_image_height = shared_parameters.getImageHeight();
-    if(cam_image_width != vision_image_width || cam_image_height != vision_image_height)
-    {
-        cam_image_width = vision_image_width;
-        cam_image_height = vision_image_height;
-        cam.set(CV_CAP_PROP_FRAME_WIDTH, cam_image_width);
-        cam.set(CV_CAP_PROP_FRAME_HEIGHT, cam_image_height);
-    }
-    cam.read(image);
+    auto image_data = shared_parameters.getImageData();
+    cv::Mat image(image_data);
+    image.cols = shared_parameters.getImageWidth();
+    image.rows = shared_parameters.getImageHeight();
     if(image.empty())
         return;
 
@@ -374,17 +361,10 @@ void MainWindow::processGameControlImage(void)
 
 void MainWindow::processVisionSettingsImage(void)
 {
-    cv::Mat image;
-    auto vision_image_width = shared_parameters.getImageWidth();
-    auto vision_image_height = shared_parameters.getImageHeight();
-    if(cam_image_width != vision_image_width || cam_image_height != vision_image_height)
-    {
-        cam_image_width = vision_image_width;
-        cam_image_height = vision_image_height;
-        cam.set(CV_CAP_PROP_FRAME_WIDTH, cam_image_width);
-        cam.set(CV_CAP_PROP_FRAME_HEIGHT, cam_image_height);
-    }
-    cam.read(image);
+    auto image_data = shared_parameters.getImageData();
+    cv::Mat image(image_data);
+    image.cols = shared_parameters.getImageWidth();
+    image.rows = shared_parameters.getImageHeight();
     if(image.empty())
         return;
 
@@ -448,17 +428,10 @@ void MainWindow::processVisionSettingsImage(void)
 
 void MainWindow::processAISettingsImage(void)
 {
-    cv::Mat image;
-    auto vision_image_width = shared_parameters.getImageWidth();
-    auto vision_image_height = shared_parameters.getImageHeight();
-    if(cam_image_width != vision_image_width || cam_image_height != vision_image_height)
-    {
-        cam_image_width = vision_image_width;
-        cam_image_height = vision_image_height;
-        cam.set(CV_CAP_PROP_FRAME_WIDTH, cam_image_width);
-        cam.set(CV_CAP_PROP_FRAME_HEIGHT, cam_image_height);
-    }
-    cam.read(image);
+    auto image_data = shared_parameters.getImageData();
+    cv::Mat image(image_data);
+    image.cols = shared_parameters.getImageWidth();
+    image.rows = shared_parameters.getImageHeight();
     if(image.empty())
         return;
 
@@ -1157,17 +1130,17 @@ void MainWindow::removeTagColor(QAction *action)
 
 void MainWindow::handleVisionUpdate(void)
 {
-
+    //std::cout << "Vision Update Recieved" << std::endl << std::endl;
 }
 
 void MainWindow::handleAIUpdate(void)
 {
-
+    //std::cout << "AI Update Recieved" << std::endl << std::endl;
 }
 
 void MainWindow::handleCommUpdate(void)
 {
-
+    //std::cout << "Comm Update Recieved" << std::endl << std::endl;
 }
 
 #include "moc_mainwindow.cpp"

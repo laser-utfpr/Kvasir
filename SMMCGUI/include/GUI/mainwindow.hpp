@@ -57,10 +57,6 @@ private:
     QPalette black_text;
     QPalette red_text;
 
-    cv::VideoCapture cam;
-    double cam_image_width;
-    double cam_image_height;
-
     QTimer* frame_update_timer;
 
     void processGameControlImage(void);

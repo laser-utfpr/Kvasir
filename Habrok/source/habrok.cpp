@@ -21,7 +21,8 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
 
     color_allocator = new ColorAllocator(allocator_provider->get_segment_manager());;
     colored_object_allocator = new ColoredObjectAllocator(allocator_provider->get_segment_manager());
-    vision_field_handler = new VisionFieldHandler(*color_allocator, *colored_object_allocator);
+    float_allocator = new FloatAllocator(allocator_provider->get_segment_manager());;
+    vision_field_handler = new VisionFieldHandler(*color_allocator, *colored_object_allocator, *float_allocator);
 
     image_processing_thread = new ImageProcessingThread(image_processing_settings,
                                                         *vision_field_handler);
@@ -78,8 +79,8 @@ void Habrok::receivedFrameProcessed(void)
 
 int Habrok::runHabrok(void)
 {
-    image_processing_thread->start();
-    robot_recognizer_thread->start();
+    //image_processing_thread->start();
+    //robot_recognizer_thread->start();
 
     BoostInterprocessString *sm_write_key;
     BoostInterprocessString *sm_read_key;
@@ -107,12 +108,13 @@ int Habrok::runHabrok(void)
         }
         if(write_changes)
         {
-            std::cout << "escrevendo algo" << std::endl;
             vision_field_handler->writeChanges(*shared_memory);
             *sm_write_key = write_key.c_str();
             write_changes = false;
         }
     }
+
+    std::cout << "Habrok Received Shutdown Signal" << std::endl;
 
     emit stopImageProcessingThread();
     emit stopRobotRecognizerThread();

@@ -3,6 +3,7 @@
 
 #include <QtCore>
 
+#include "habrokconstants.h"
 #include "visionfieldhandler.hpp"
 
 class RobotRecognizerThread : public QThread

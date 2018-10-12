@@ -25,4 +25,8 @@ typedef boost::interprocess::vector<ColoredObject, ColoredObjectAllocator> Color
 
 typedef boost::interprocess::vector<BoostInterprocessString, StringAllocator> StringVector;
 
+typedef boost::interprocess::allocator<float,
+        boost::interprocess::managed_shared_memory::segment_manager> FloatAllocator;
+typedef boost::interprocess::vector<float, FloatAllocator> FloatVector;
+
 #endif //INTERPROCESSVARIABLEDEFINITIONS_HPP

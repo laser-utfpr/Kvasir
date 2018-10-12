@@ -2,7 +2,7 @@
 
 using namespace boost::interprocess;
 
-SMMCThread::SMMCThread(SharedParameters &sp) : shared_parameters(sp)
+SMMCThread::SMMCThread(SharedParameters &sp, QObject *mainwindow) : shared_parameters(sp)
 {
     //this->moveToThread(this);
 
@@ -11,6 +11,10 @@ SMMCThread::SMMCThread(SharedParameters &sp) : shared_parameters(sp)
 
     connect(this, SIGNAL(sendVisionChangesToAI()), this, SLOT(updateAIFromVision()));
     connect(this, SIGNAL(sendAIChangeToComm()), this, SLOT(updateCommFromAI()));
+
+    connect(this, SIGNAL(visionInputUpdate()), mainwindow, SLOT(handleVisionUpdate()));
+    connect(this, SIGNAL(aiInputUpdate()), mainwindow, SLOT(handleAIUpdate()));
+    connect(this, SIGNAL(commInputUpdate()), mainwindow, SLOT(handleCommUpdate()));
 
     generateKeys();
     std::cout << std::endl <<"Modules keys generated:" << std::endl;
@@ -32,6 +36,7 @@ SMMCThread::SMMCThread(SharedParameters &sp) : shared_parameters(sp)
     string_allocator = new StringAllocator(shared_memory->get_segment_manager());
     color_allocator = new ColorAllocator(shared_memory->get_segment_manager());
     colored_object_allocator = new ColoredObjectAllocator(shared_memory->get_segment_manager());
+    float_allocator = new FloatAllocator(shared_memory->get_segment_manager());
 
     constructVisionSMVariables();
     constructAISMVariables();
@@ -84,10 +89,10 @@ void SMMCThread::constructVisionSMVariables(void)
 
     sm_vision_shutdown_key = shared_memory->construct<BoostInterprocessString>
                                (VISION_SHUTDOWN_KEY_MEMORY_NAME)(*char_allocator);
-    *sm_vision_shutdown_key = vision_shutdown_key.c_str();
+    *sm_vision_shutdown_key = EMPTY_KEY;
 
     sm_vision_field = shared_memory->construct<VisionField>
-                              (VISION_FIELD_MEMORY_NAME)(*color_allocator, *colored_object_allocator);
+                              (VISION_FIELD_MEMORY_NAME)(*color_allocator, *colored_object_allocator, *float_allocator);
 }
 
 void SMMCThread::constructAISMVariables(void)
@@ -103,7 +108,7 @@ void SMMCThread::constructAISMVariables(void)
 
     sm_ai_shutdown_key = shared_memory->construct<BoostInterprocessString>
                                (AI_SHUTDOWN_KEY_MEMORY_NAME)(*char_allocator);
-    *sm_ai_shutdown_key = ai_shutdown_key.c_str();
+    *sm_ai_shutdown_key = EMPTY_KEY;
 
     sm_ai_field = shared_memory->construct<AIField>
                               (AI_FIELD_MEMORY_NAME)(*char_allocator, *string_allocator);
@@ -122,7 +127,7 @@ void SMMCThread::constructCommSMVariables(void)
 
     sm_comm_shutdown_key = shared_memory->construct<BoostInterprocessString>
                                (COMM_SHUTDOWN_KEY_MEMORY_NAME)(*char_allocator);
-    *sm_comm_shutdown_key = comm_shutdown_key.c_str();
+    *sm_comm_shutdown_key = EMPTY_KEY;
 
     sm_robot_movement = shared_memory->construct<Movement>
                               (ROBOT_MOVEMENT_MEMORY_NAME)[N_ROBOTS]();

@@ -18,7 +18,7 @@ private:
     QMutex lock;
 
 public:
-    VisionFieldHandler(ColorAllocator &color_allocator, ColoredObjectAllocator &colored_object_allocator);
+    VisionFieldHandler(ColorAllocator &color_allocator, ColoredObjectAllocator &colored_object_allocator, FloatAllocator &float_allocator);
     ~VisionFieldHandler();
 
     void readChanges(boost::interprocess::managed_shared_memory &sm);
