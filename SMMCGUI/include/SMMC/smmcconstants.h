@@ -12,7 +12,7 @@ typedef enum {UNCOLORED = -1, RED = 0, ORANGE, YELLOW, GREEN, BLUE, VIOLET} Colo
 #define SAVED_SETTINGS_FILENAME "settings.sp"
 
 #define SHARED_MEMORY_BLOCK_NAME "smmc_memory_block"
-#define SHARED_MEMORY_SIZE 65536
+#define SHARED_MEMORY_SIZE 67108864
 
 #define KEY_SIZE 5
 #define EMPTY_KEY "77777"

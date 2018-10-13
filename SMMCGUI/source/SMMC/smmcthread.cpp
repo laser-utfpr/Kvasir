@@ -353,6 +353,7 @@ void SMMCThread::run()
                 *sm_comm_write_key = EMPTY_KEY;
             }
         }
+        usleep(50);
     }
     std::cout << "SMMC thread ended" << std::endl << std::endl;
 }

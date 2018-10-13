@@ -16,7 +16,7 @@ SharedParameters::SharedParameters() : provider_name("sharedparametersallocatorp
     settings_file.clear();
 
     boost::interprocess::shared_memory_object::remove(provider_name.c_str());
-    allocator_provider = new boost::interprocess::managed_shared_memory(boost::interprocess::create_only, provider_name.c_str(), 65536);
+    allocator_provider = new boost::interprocess::managed_shared_memory(boost::interprocess::create_only, provider_name.c_str(), SHARED_MEMORY_SIZE);
 
     char_allocator = new CharAllocator(allocator_provider->get_segment_manager());;
     string_allocator = new StringAllocator(allocator_provider->get_segment_manager());;
@@ -83,6 +83,7 @@ SharedParameters::~SharedParameters()
     delete string_allocator;
     delete color_allocator;
     delete colored_object_allocator;
+    delete float_allocator;
     delete allocator_provider;
 }
 

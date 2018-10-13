@@ -14,6 +14,7 @@
 #include <string>
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
 
 #include <smmclib.hpp>
 
@@ -21,7 +22,6 @@
 #include "mainwindow.hpp"
 #include "imageprocessingsettings.hpp"
 #include "imageprocessingthread.hpp"
-#include "robotrecognizerthread.hpp"
 #include "visionfieldhandler.hpp"
 
 class Habrok : public QObject
@@ -46,7 +46,6 @@ private:
     ImageProcessingSettings image_processing_settings;
 
     ImageProcessingThread *image_processing_thread;
-    RobotRecognizerThread *robot_recognizer_thread;
 
     bool write_changes;
 
@@ -61,13 +60,9 @@ public:
 
 signals:
     void stopImageProcessingThread(void);
-    void stopRobotRecognizerThread(void);
-    void sendFrameProcessed(void);
 
 private slots:
     void writeChanges(void);
-
-    void receivedFrameProcessed(void);
 
 };
 

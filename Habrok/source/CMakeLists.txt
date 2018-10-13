@@ -4,7 +4,7 @@ set(APP_SOURCES
   ${SOURCE_DIR}/habrok.cpp
   ${SOURCE_DIR}/mainwindow.cpp
   ${SOURCE_DIR}/imageprocessingthread.cpp
-  ${SOURCE_DIR}/robotrecognizerthread.cpp
+  ${SOURCE_DIR}/robotrecognizer.cpp
   ${SOURCE_DIR}/visionfieldhandler.cpp
   ${SOURCE_DIR}/imageprocessingsettings.cpp
 )

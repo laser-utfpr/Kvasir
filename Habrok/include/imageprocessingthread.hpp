@@ -13,6 +13,7 @@
 #include "habrokconstants.h"
 #include "visionfieldhandler.hpp"
 #include "imageprocessingsettings.hpp"
+#include "robotrecognizer.hpp"
 #include "hsvmask.hpp"
 
 class ImageProcessingThread : public QThread
@@ -22,6 +23,8 @@ class ImageProcessingThread : public QThread
 private:
     ImageProcessingSettings &image_processing_settings;
     VisionFieldHandler &vision_field_handler;
+
+    RobotRecognizer *robot_recognizer;
 
     bool stop_thread;
 

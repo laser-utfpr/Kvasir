@@ -4,9 +4,11 @@ ImageProcessingThread::ImageProcessingThread(ImageProcessingSettings &ips,
                                              VisionFieldHandler &vfh) :
                         image_processing_settings(ips), vision_field_handler(vfh)
 {
-    this->moveToThread(this);
+    //this->moveToThread(this);
 
     stop_thread = false;
+
+    robot_recognizer = new RobotRecognizer(vision_field_handler);
 
     cam.open(0);
     cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);
@@ -59,7 +61,6 @@ void ImageProcessingThread::run()
     clock_start = clock();
     while(!stop_thread)
     {
-        vision_field_handler.updateTime((useconds_t)((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001)));
         cam.read(cam_image);
         vision_field_handler.updateImage(cam_image);
         cvtColor(cam_image,hsv_image,cv::COLOR_RGB2HSV);
@@ -71,11 +72,13 @@ void ImageProcessingThread::run()
                 findObjects(image_processing_settings.mask[i]);
         }
         vision_field_handler.updateObjects(object);
+        vision_field_handler.updateTime((useconds_t)((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001)));
+
+        robot_recognizer->recognizeRobots();
 
         emit frameProcessed();
     }
 
-    std::cout << "parow";
 }
 
 #include "moc_imageprocessingthread.cpp"

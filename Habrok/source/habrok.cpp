@@ -2,7 +2,7 @@
 
 Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
                write_key(wk), read_key(rk), shutdown_key(sk),
-               provider_name("sharedparametersallocatorprovider")
+               provider_name("habrokallocatorprovider")
 {
     try
     {
@@ -17,7 +17,7 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
     }
 
     boost::interprocess::shared_memory_object::remove(provider_name.c_str());
-    allocator_provider = new boost::interprocess::managed_shared_memory(boost::interprocess::create_only, provider_name.c_str(), 65536);
+    allocator_provider = new boost::interprocess::managed_shared_memory(boost::interprocess::create_only, provider_name.c_str(), SHARED_MEMORY_SIZE);
 
     color_allocator = new ColorAllocator(allocator_provider->get_segment_manager());;
     colored_object_allocator = new ColoredObjectAllocator(allocator_provider->get_segment_manager());
@@ -26,31 +26,21 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
 
     image_processing_thread = new ImageProcessingThread(image_processing_settings,
                                                         *vision_field_handler);
-    robot_recognizer_thread = new RobotRecognizerThread(*vision_field_handler);
     write_changes = false;
 
     connect(this, &Habrok::stopImageProcessingThread, image_processing_thread, &ImageProcessingThread::stopThread);
-    connect(this, &Habrok::stopRobotRecognizerThread, robot_recognizer_thread, &RobotRecognizerThread::stopThread);
-
-    connect(image_processing_thread, &ImageProcessingThread::frameProcessed, robot_recognizer_thread, &RobotRecognizerThread::recognizeRobots);
-    connect(robot_recognizer_thread, &RobotRecognizerThread::robotsRecognized, this, &Habrok::writeChanges);
-
-    image_processing_thread->moveToThread(image_processing_thread);
-    robot_recognizer_thread->moveToThread(robot_recognizer_thread);
+    connect(image_processing_thread, &ImageProcessingThread::frameProcessed, this, &Habrok::writeChanges);
 }
 
 Habrok::Habrok()
 {
     image_processing_thread = nullptr;
-    robot_recognizer_thread = nullptr;
 }
 
 Habrok::~Habrok()
 {
     if(image_processing_thread != nullptr)
         emit stopImageProcessingThread();
-    if(robot_recognizer_thread != nullptr)
-        emit stopRobotRecognizerThread();
 
     usleep(500000);
 
@@ -60,6 +50,8 @@ Habrok::~Habrok()
         delete color_allocator;
     if(colored_object_allocator != nullptr)
         delete colored_object_allocator;
+    if(float_allocator != nullptr)
+        delete float_allocator;
     if(allocator_provider != nullptr)
         delete allocator_provider;
 
@@ -70,17 +62,12 @@ Habrok::~Habrok()
 void Habrok::writeChanges(void)
 {
     write_changes = true;
-}
-
-void Habrok::receivedFrameProcessed(void)
-{
-    emit sendFrameProcessed();
+    std::cout << "hello mah friend" << std::endl;
 }
 
 int Habrok::runHabrok(void)
 {
-    //image_processing_thread->start();
-    //robot_recognizer_thread->start();
+    image_processing_thread->start();
 
     BoostInterprocessString *sm_write_key;
     BoostInterprocessString *sm_read_key;
@@ -102,22 +89,21 @@ int Habrok::runHabrok(void)
     {
         if(*sm_read_key == read_key.c_str())
         {
-            std::cout << "lendo algo" << std::endl;
+            std::cout << "Read signal received, reading settings from the shared memory" << std::endl;
             *sm_read_key = EMPTY_KEY;
             vision_field_handler->readChanges(*shared_memory);
         }
         if(write_changes)
         {
+            std::cout << "Frame processed, writing vision field into the shared memory" << std::endl;
             vision_field_handler->writeChanges(*shared_memory);
             *sm_write_key = write_key.c_str();
             write_changes = false;
         }
+        usleep(50);
     }
 
     std::cout << "Habrok Received Shutdown Signal" << std::endl;
-
-    emit stopImageProcessingThread();
-    emit stopRobotRecognizerThread();
 
     return 0;
 }

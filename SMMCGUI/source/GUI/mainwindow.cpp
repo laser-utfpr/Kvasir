@@ -186,6 +186,11 @@ void MainWindow::processGameControlImage(void)
     cv::Mat image(image_data);
     image.cols = shared_parameters.getImageWidth();
     image.rows = shared_parameters.getImageHeight();
+
+    /*for(std::vector<float>::const_iterator i = image_data.begin(); i != image_data.end(); ++i)
+        std::cout << *i << ' ';
+    std::cout << std::endl;*/
+
     if(image.empty())
         return;
 

@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
     if(argc > 1)
     {
-        if(argv[1] == "-c" || argv[1] == "-C")
+        if(argv[1] == "-c" || argv[1] == "-C" || argv[1] == "--calibrate")
         {
             Habrok habrok;
             return habrok.calibrate();
