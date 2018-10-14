@@ -23,6 +23,7 @@ private:
         ar & use_morphing_operations;
         ar & erode_rect_size & dilate_rect_size;
         ar & minimum_object_area;
+        ar & camera_id;
     };
 
     bool use_morphing_operations;

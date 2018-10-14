@@ -14,1225 +14,247 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QLabel" name="image">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1440</width>
-      <height>960</height>
+      <width>1080</width>
+      <height>720</height>
      </rect>
     </property>
-    <property name="currentIndex">
-     <number>0</number>
+    <property name="text">
+     <string/>
     </property>
-    <widget class="QWidget" name="run_modules">
-     <attribute name="title">
-      <string>Run Modules</string>
-     </attribute>
-     <widget class="QLabel" name="vision_path_label">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>260</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Vision path:</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="ai_path_label">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>460</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>AI path:</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="comm_path_label">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>660</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Comm path:</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="vision_path_input">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>260</y>
-        <width>500</width>
-        <height>30</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="ai_path_input">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>460</y>
-        <width>500</width>
-        <height>30</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="comm_path_input">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>660</y>
-        <width>500</width>
-        <height>30</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="run_vision">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>260</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Run</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="run_ai">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>460</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Run</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="run_comm">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>660</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Run</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="vision_message">
-      <property name="geometry">
-       <rect>
-        <x>1120</x>
-        <y>260</y>
-        <width>280</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="ai_message">
-      <property name="geometry">
-       <rect>
-        <x>1120</x>
-        <y>460</y>
-        <width>280</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="comm_message">
-      <property name="geometry">
-       <rect>
-        <x>1120</x>
-        <y>660</y>
-        <width>280</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="shutdown_vision">
-      <property name="geometry">
-       <rect>
-        <x>960</x>
-        <y>260</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Shutdown</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="shutdown_ai">
-      <property name="geometry">
-       <rect>
-        <x>960</x>
-        <y>460</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Shutdown</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="shutdown_comm">
-      <property name="geometry">
-       <rect>
-        <x>960</x>
-        <y>660</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Shutdown</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="game_control">
-     <attribute name="title">
-      <string>Game Control</string>
-     </attribute>
-     <widget class="QLabel" name="game_control_image">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1080</width>
-        <height>720</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="color_objects_cb">
-      <property name="geometry">
-       <rect>
-        <x>1140</x>
-        <y>140</y>
-        <width>240</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Show color objects</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="robot_positions_cb">
-      <property name="geometry">
-       <rect>
-        <x>1140</x>
-        <y>200</y>
-        <width>240</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Show robot positions</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="player_status_cb">
-      <property name="geometry">
-       <rect>
-        <x>1140</x>
-        <y>260</y>
-        <width>240</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Show player status</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="player_movements_cb">
-      <property name="geometry">
-       <rect>
-        <x>1140</x>
-        <y>320</y>
-        <width>240</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Show player movements</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="command_menu">
-      <property name="geometry">
-       <rect>
-        <x>1160</x>
-        <y>460</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Available Commands</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>1160</x>
-        <y>420</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>AI Commands:</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="stop_resume">
-      <property name="geometry">
-       <rect>
-        <x>1200</x>
-        <y>640</y>
-        <width>100</width>
-        <height>60</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Force Stop</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="send_command">
-      <property name="geometry">
-       <rect>
-        <x>1260</x>
-        <y>500</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Send</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="vision_settings">
-     <attribute name="title">
-      <string>Vision Settings</string>
-     </attribute>
-     <widget class="QLabel" name="vision_settings_image">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1080</width>
-        <height>720</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="ally_center_menu">
-      <property name="geometry">
-       <rect>
-        <x>1210</x>
-        <y>200</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="ally_center_label">
-      <property name="geometry">
-       <rect>
-        <x>1190</x>
-        <y>140</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Ally Center Color</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="enemy_center_label">
-      <property name="geometry">
-       <rect>
-        <x>1190</x>
-        <y>260</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Enemy Center Color</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="enemy_center_menu">
-      <property name="geometry">
-       <rect>
-        <x>1210</x>
-        <y>320</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="available_tag_label">
-      <property name="geometry">
-       <rect>
-        <x>1120</x>
-        <y>420</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Available Colors</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="current_tag_label">
-      <property name="geometry">
-       <rect>
-        <x>1260</x>
-        <y>420</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Current Colors</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="tags_label">
-      <property name="geometry">
-       <rect>
-        <x>1190</x>
-        <y>380</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Tags</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="available_tag_menu">
-      <property name="geometry">
-       <rect>
-        <x>1140</x>
-        <y>470</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="current_tag_menu">
-      <property name="geometry">
-       <rect>
-        <x>1280</x>
-        <y>470</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="searched_region_label">
-      <property name="geometry">
-       <rect>
-        <x>1190</x>
-        <y>540</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Searched Region</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="sr_ulc_label">
-      <property name="geometry">
-       <rect>
-        <x>1190</x>
-        <y>580</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Upper Left Corner</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="sr_ulc_x">
-      <property name="geometry">
-       <rect>
-        <x>1140</x>
-        <y>680</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="sr_ulc_y">
-      <property name="geometry">
-       <rect>
-        <x>1280</x>
-        <y>680</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="sr_ulc_x_label">
-      <property name="geometry">
-       <rect>
-        <x>1120</x>
-        <y>630</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>x</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="sr_ulc_y_label">
-      <property name="geometry">
-       <rect>
-        <x>1260</x>
-        <y>630</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>y</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="sr_lrc_label">
-      <property name="geometry">
-       <rect>
-        <x>1190</x>
-        <y>730</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Lower Right Corner</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="sr_lrc_x">
-      <property name="geometry">
-       <rect>
-        <x>1140</x>
-        <y>830</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="sr_lrc_x_label">
-      <property name="geometry">
-       <rect>
-        <x>1120</x>
-        <y>780</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>x</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="sr_lrc_y">
-      <property name="geometry">
-       <rect>
-        <x>1280</x>
-        <y>830</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="sr_lrc_y_label">
-      <property name="geometry">
-       <rect>
-        <x>1260</x>
-        <y>780</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>y</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="ball_menu">
-      <property name="geometry">
-       <rect>
-        <x>1210</x>
-        <y>80</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="ball_label">
-      <property name="geometry">
-       <rect>
-        <x>1190</x>
-        <y>20</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Ball Color</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="ai_settings">
-     <attribute name="title">
-      <string>AI Settings</string>
-     </attribute>
-     <widget class="QLabel" name="ai_settings_image">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1080</width>
-        <height>720</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="pf_ulc_x">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>100</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="x_column_label">
-      <property name="geometry">
-       <rect>
-        <x>1130</x>
-        <y>20</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>x column</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="y_column_label">
-      <property name="geometry">
-       <rect>
-        <x>1270</x>
-        <y>20</y>
-        <width>140</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>y column</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="pf_ulc_y">
-      <property name="geometry">
-       <rect>
-        <x>1290</x>
-        <y>100</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="playable_field_ulc">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>60</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Playable Field ULC</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="pf_lrc_x">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>180</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="playable_field_lrc">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>140</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Playable Field LRC</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="pf_lrc_y">
-      <property name="geometry">
-       <rect>
-        <x>1290</x>
-        <y>180</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="left_goal_ulc_x">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>260</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="left_goal_ulc">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>220</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Left Goal ULC</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="left_goal_ulc_y">
-      <property name="geometry">
-       <rect>
-        <x>1290</x>
-        <y>260</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="left_goal_lrc_x">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>340</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="left_goal_lrc">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>300</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Left Goal LRC</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="left_goal_lrc_y">
-      <property name="geometry">
-       <rect>
-        <x>1290</x>
-        <y>340</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="right_goal_ulc_x">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>420</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="right_goal_ulc">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>380</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Right Goal ULC</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="right_goal_ulc_y">
-      <property name="geometry">
-       <rect>
-        <x>1290</x>
-        <y>420</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="right_goal_lrc_x">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>500</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="right_goal_lrc">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>460</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Right Goal LRC</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="right_goal_lrc_y">
-      <property name="geometry">
-       <rect>
-        <x>1290</x>
-        <y>500</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="left_gka_ulc_x">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>580</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="left_gk_area_ulc">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>540</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Left Goalkeeper Area ULC</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="left_gka_ulc_y">
-      <property name="geometry">
-       <rect>
-        <x>1290</x>
-        <y>580</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="left_gka_lrc_x">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>660</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="left_gk_area_lrc">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>620</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Left Goalkeeper Area LRC</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="left_gka_lrc_y">
-      <property name="geometry">
-       <rect>
-        <x>1290</x>
-        <y>660</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="right_gka_ulc_x">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>740</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="right_gk_area_ulc">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>700</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Right Goalkeeper Area ULC</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="right_gka_ulc_y">
-      <property name="geometry">
-       <rect>
-        <x>1290</x>
-        <y>740</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="right_gka_lrc_x">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>820</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="right_gk_area_lrc">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>780</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Right Goalkeeper Area LRC</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="right_gka_lrc_y">
-      <property name="geometry">
-       <rect>
-        <x>1290</x>
-        <y>820</y>
-        <width>100</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </widget>
+   </widget>
+   <widget class="QLabel" name="camera_id_label">
+    <property name="geometry">
+     <rect>
+      <x>1150</x>
+      <y>60</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Camera ID:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="camera_id_input">
+    <property name="geometry">
+     <rect>
+      <x>1250</x>
+      <y>60</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="camera_id_message">
+    <property name="geometry">
+     <rect>
+      <x>1160</x>
+      <y>100</y>
+      <width>171</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QSlider" name="h_min_slider">
+    <property name="geometry">
+     <rect>
+      <x>1090</x>
+      <y>230</y>
+      <width>331</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="h_min_label">
+    <property name="geometry">
+     <rect>
+      <x>1200</x>
+      <y>200</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>H_MIN</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="h_max_label">
+    <property name="geometry">
+     <rect>
+      <x>1200</x>
+      <y>260</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>H_MAX</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QSlider" name="h_max_slider">
+    <property name="geometry">
+     <rect>
+      <x>1090</x>
+      <y>290</y>
+      <width>331</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="s_min_label">
+    <property name="geometry">
+     <rect>
+      <x>1200</x>
+      <y>320</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>S_MIN</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QSlider" name="s_min_slider">
+    <property name="geometry">
+     <rect>
+      <x>1090</x>
+      <y>350</y>
+      <width>331</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="s_max_label">
+    <property name="geometry">
+     <rect>
+      <x>1200</x>
+      <y>380</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>S_MAX</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QSlider" name="s_max_slider">
+    <property name="geometry">
+     <rect>
+      <x>1090</x>
+      <y>410</y>
+      <width>331</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="v_min_label">
+    <property name="geometry">
+     <rect>
+      <x>1200</x>
+      <y>440</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>V_MIN</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QSlider" name="v_min_slider">
+    <property name="geometry">
+     <rect>
+      <x>1090</x>
+      <y>470</y>
+      <width>331</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="v_max_label">
+    <property name="geometry">
+     <rect>
+      <x>1200</x>
+      <y>500</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>V_MAX</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QSlider" name="v_max_slider">
+    <property name="geometry">
+     <rect>
+      <x>1090</x>
+      <y>530</y>
+      <width>331</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="color_menu">
+    <property name="geometry">
+     <rect>
+      <x>1200</x>
+      <y>140</y>
+      <width>99</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Color</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
