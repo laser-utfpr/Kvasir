@@ -2,12 +2,27 @@
 
    Dependencies:  
   
-   -CMake 3.9  
-      get it at: https://cmake.org/download/
+   -CMake 3.9
+
+      for Ubuntu: (older version at the packages center atm) get it at: https://cmake.org/download/
       (if you have an older version it's advisable to unistall it first)  
+
+      for Fedora: sudo dnf install cmake
+
    -OpenCV 2  
-      try: apt-get install libopencv-dev  
+
+      for Ubuntu: sudo apt install libopencv-dev  
+
+      for Fedora: sudo dnf install opencv-devel
+
    -Boost Libraries  
-      try: apt-get install libboost-all-dev  
-   -Qt5  
-      try: apt-get install qttools5-dev  
+
+      for Ubuntu: sudo apt install libboost-all-dev
+
+      for Fedora: sudo dnf install boost-devel
+
+   -Qt5
+
+      for Ubuntu: sudo apt install qttools5-dev
+
+      for Fedora: sudo dnf install qt5-devel-5.11.1-3.fc28.noarch  

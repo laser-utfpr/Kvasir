@@ -21,6 +21,6 @@ DONE-modify commands
 
 DONE-make menus load from configuration file
 
--change image cam_image to the image from vision
+-DONE change image cam_image to the image from vision
 
--make boost serialization work or make some XML thingy
+-DONE make boost serialization work or make some XML thingy
