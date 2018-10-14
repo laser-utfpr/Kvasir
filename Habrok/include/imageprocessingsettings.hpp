@@ -31,6 +31,8 @@ private:
 
     double minimum_object_area;
 
+    int camera_id;
+
 public:
     HSVMask mask[N_COLORS];
 

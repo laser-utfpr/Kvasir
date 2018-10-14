@@ -30,54 +30,6 @@
      <attribute name="title">
       <string>Run Modules</string>
      </attribute>
-     <widget class="QLabel" name="vision_path_label">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>260</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Vision path:</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="ai_path_label">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>460</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>AI path:</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="comm_path_label">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>660</y>
-        <width>100</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Comm path:</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
      <widget class="QLineEdit" name="vision_path_input">
       <property name="geometry">
        <rect>
@@ -223,6 +175,45 @@
       </property>
       <property name="text">
        <string>Shutdown</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="vision_path_button">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>260</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Vision path:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ai_path_button">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>460</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>AI path:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="comm_path_button">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>660</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Comm path:</string>
       </property>
      </widget>
     </widget>

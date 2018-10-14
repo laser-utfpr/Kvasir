@@ -45,12 +45,17 @@ SMMCThread::SMMCThread(SharedParameters &sp, QObject *mainwindow) : shared_param
 
 SMMCThread::~SMMCThread()
 {
-    delete char_allocator;
-    delete string_allocator;
-    delete color_allocator;
-    delete colored_object_allocator;
+    if(char_allocator != nullptr)
+        delete char_allocator;
+    if(string_allocator != nullptr)
+        delete string_allocator;
+    if(color_allocator != nullptr)
+        delete color_allocator;
+    if(colored_object_allocator != nullptr)
+        delete colored_object_allocator;
     shared_memory_object::remove(SHARED_MEMORY_BLOCK_NAME);
-    delete shared_memory;
+    if(shared_memory != nullptr)
+        delete shared_memory;
 }
 
 void SMMCThread::generateKeys(void)

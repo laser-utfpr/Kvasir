@@ -24,26 +24,18 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
     float_allocator = new FloatAllocator(allocator_provider->get_segment_manager());;
     vision_field_handler = new VisionFieldHandler(*color_allocator, *colored_object_allocator, *float_allocator);
 
-    image_processing_thread = new ImageProcessingThread(image_processing_settings,
-                                                        *vision_field_handler);
-    write_changes = false;
-
-    connect(this, &Habrok::stopImageProcessingThread, image_processing_thread, &ImageProcessingThread::stopThread);
-    connect(image_processing_thread, &ImageProcessingThread::frameProcessed, this, &Habrok::writeChanges);
+    image_processing = new ImageProcessing(image_processing_settings, *vision_field_handler);
 }
 
 Habrok::Habrok()
 {
-    image_processing_thread = nullptr;
+    image_processing = nullptr;
 }
 
 Habrok::~Habrok()
 {
-    if(image_processing_thread != nullptr)
-        emit stopImageProcessingThread();
-
-    usleep(500000);
-
+    if(image_processing != nullptr)
+        delete image_processing;
     if(vision_field_handler != nullptr)
         delete vision_field_handler;
     if(color_allocator != nullptr)
@@ -59,16 +51,8 @@ Habrok::~Habrok()
         delete shared_memory;
 }
 
-void Habrok::writeChanges(void)
-{
-    write_changes = true;
-    std::cout << "hello mah friend" << std::endl;
-}
-
 int Habrok::runHabrok(void)
 {
-    image_processing_thread->start();
-
     BoostInterprocessString *sm_write_key;
     BoostInterprocessString *sm_read_key;
     BoostInterprocessString *sm_shutdown_key;
@@ -93,14 +77,12 @@ int Habrok::runHabrok(void)
             *sm_read_key = EMPTY_KEY;
             vision_field_handler->readChanges(*shared_memory);
         }
-        if(write_changes)
         {
+            image_processing->processFrame();
             std::cout << "Frame processed, writing vision field into the shared memory" << std::endl;
             vision_field_handler->writeChanges(*shared_memory);
             *sm_write_key = write_key.c_str();
-            write_changes = false;
         }
-        usleep(50);
     }
 
     std::cout << "Habrok Received Shutdown Signal" << std::endl;

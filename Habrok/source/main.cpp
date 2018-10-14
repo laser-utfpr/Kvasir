@@ -11,7 +11,8 @@ int main(int argc, char *argv[])
 {
     if(argc > 1)
     {
-        if(argv[1] == "-c" || argv[1] == "-C" || argv[1] == "--calibrate")
+        std::string argv1(argv[1]);
+        if(argv1 == "-c" || argv1 == "-C" || argv1 == "--calibrate")
         {
             Habrok habrok;
             return habrok.calibrate();

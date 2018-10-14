@@ -38,6 +38,7 @@ public:
     FloatVector image_data;
     double image_width;
     double image_height;
+    int image_cv_type;
     useconds_t time_us;
 
     ColoredObjectVector found_object;
@@ -56,7 +57,7 @@ public:
 
     inline VisionField(ColorAllocator &color_allocator, ColoredObjectAllocator &colored_object_allocator, FloatAllocator &float_allocator) :
     image_data(float_allocator),
-    image_width(NAN), image_height(NAN), time_us(0),
+    image_width(NAN), image_height(NAN), image_cv_type(16), time_us(0),
     ball_color(UNCOLORED), ally_center(UNCOLORED), enemy_center(UNCOLORED),
     ally_tag(color_allocator), found_object(colored_object_allocator) {};
 };

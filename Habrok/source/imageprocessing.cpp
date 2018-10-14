@@ -1,31 +1,25 @@
-#include "imageprocessingthread.hpp"
+#include "imageprocessing.hpp"
 
-ImageProcessingThread::ImageProcessingThread(ImageProcessingSettings &ips,
+ImageProcessing::ImageProcessing(ImageProcessingSettings &ips,
                                              VisionFieldHandler &vfh) :
                         image_processing_settings(ips), vision_field_handler(vfh)
 {
-    //this->moveToThread(this);
-
-    stop_thread = false;
-
     robot_recognizer = new RobotRecognizer(vision_field_handler);
 
     cam.open(0);
     cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);
     cam.set(CV_CAP_PROP_FRAME_HEIGHT, IMAGE_CAPTURE_HEIGHT);
+
+    clock_start = clock();
 }
 
-ImageProcessingThread::~ImageProcessingThread()
+ImageProcessing::~ImageProcessing()
 {
-
+    if(robot_recognizer != nullptr)
+        delete robot_recognizer;
 }
 
-void ImageProcessingThread::stopThread(void)
-{
-    stop_thread = true;
-}
-
-void ImageProcessingThread::findObjects(HSVMask mask)
+void ImageProcessing::findObjects(HSVMask mask)
 {
     inRange(hsv_image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
             cv::Scalar(mask.h_max, mask.s_max, mask.v_max), thresholded_image);
@@ -56,29 +50,22 @@ void ImageProcessingThread::findObjects(HSVMask mask)
     }
 }
 
-void ImageProcessingThread::run()
+void ImageProcessing::processFrame(void)
 {
-    clock_start = clock();
-    while(!stop_thread)
+    cam.read(cam_image);
+    vision_field_handler.updateImage(cam_image);
+    cvtColor(cam_image,hsv_image,cv::COLOR_RGB2HSV);
+
+    object.clear();
+    for(int i=0; i<N_COLORS; i++)
     {
-        cam.read(cam_image);
-        vision_field_handler.updateImage(cam_image);
-        cvtColor(cam_image,hsv_image,cv::COLOR_RGB2HSV);
-
-        object.clear();
-        for(int i=0; i<N_COLORS; i++)
-        {
-            if(vision_field_handler.isColorUsed(static_cast<Color>(i)))
-                findObjects(image_processing_settings.mask[i]);
-        }
-        vision_field_handler.updateObjects(object);
-        vision_field_handler.updateTime((useconds_t)((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001)));
-
-        robot_recognizer->recognizeRobots();
-
-        emit frameProcessed();
+        if(vision_field_handler.isColorUsed(static_cast<Color>(i)))
+            findObjects(image_processing_settings.mask[i]);
     }
+    vision_field_handler.updateObjects(object);
+    vision_field_handler.updateTime((useconds_t)((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001)));
 
+    robot_recognizer->recognizeRobots();
 }
 
-#include "moc_imageprocessingthread.cpp"
+#include "moc_imageprocessing.cpp"

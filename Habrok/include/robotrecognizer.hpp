@@ -8,7 +8,6 @@
 
 class RobotRecognizer
 {
-
 private:
     VisionFieldHandler &vision_field_handler;
 
@@ -17,7 +16,6 @@ public:
     ~RobotRecognizer();
 
     void recognizeRobots(void);
-
 };
 
-#endif //ROBOTRECOGNIZERTHREAD_HPP
+#endif //ROBOTRECOGNIZER_HPP

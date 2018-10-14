@@ -76,15 +76,23 @@ SharedParameters::~SharedParameters()
         std::cout << "Unable to create settings file!" << std::endl;
     }
 
-    delete vision_field;
-    delete ai_field;
+    if(vision_field != nullptr)
+        delete vision_field;
+    if(ai_field != nullptr)
+        delete ai_field;
 
-    delete char_allocator;
-    delete string_allocator;
-    delete color_allocator;
-    delete colored_object_allocator;
-    delete float_allocator;
-    delete allocator_provider;
+    if(char_allocator != nullptr)
+        delete char_allocator;
+    if(string_allocator != nullptr)
+        delete string_allocator;
+    if(color_allocator != nullptr)
+        delete color_allocator;
+    if(colored_object_allocator != nullptr)
+        delete colored_object_allocator;
+    if(float_allocator != nullptr)
+        delete float_allocator;
+    if(allocator_provider != nullptr)
+        delete allocator_provider;
 }
 
 void SharedParameters::loadSettingsFromFile(void)
@@ -163,15 +171,19 @@ void SharedParameters::loadSettingsFromFile(void)
     }
 }
 
-void SharedParameters::readVisionParameters(VisionField v_field)
+void SharedParameters::readVisionParameters(VisionField &v_field)
 {
     QMutexLocker m(&lock);
 
     //assigning variables that should be updated from vision
+    vision_field->image_data.clear();
+    vision_field->image_data = v_field.image_data;
     vision_field->image_width = v_field.image_width;
     vision_field->image_height = v_field.image_height;
+    vision_field->image_cv_type = v_field.image_cv_type;
     vision_field->time_us = v_field.time_us;
 
+    vision_field->found_object.clear();
     vision_field->found_object = v_field.found_object;
 
     vision_field->ball = v_field.ball;
@@ -184,7 +196,7 @@ void SharedParameters::readVisionParameters(VisionField v_field)
     (*ai_field) << (*vision_field);
 }
 
-void SharedParameters::readAIParameters(AIField a_field)
+void SharedParameters::readAIParameters(AIField &a_field)
 {
     QMutexLocker m(&lock);
 
@@ -240,6 +252,7 @@ std::vector<float> SharedParameters::getImageData(void)
     QMutexLocker m(&lock);
     std::vector<float> image_data;
     image_data.insert(image_data.begin(), vision_field->image_data.begin(), vision_field->image_data.end());
+
     return image_data;
 }
 
@@ -253,6 +266,12 @@ double SharedParameters::getImageHeight(void)
 {
     QMutexLocker m(&lock);
     return vision_field->image_height;
+}
+
+int SharedParameters::getImageCVType(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field->image_cv_type;
 }
 
 std::vector<ColoredObject> SharedParameters::getColorObjects(void)

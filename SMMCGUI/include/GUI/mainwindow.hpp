@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QMainWindow>
 #include <QMenu>
+#include <QFileDialog>
 
 #include <opencv2/opencv.hpp>
 
@@ -83,6 +84,10 @@ signals:
     void shutdownComm(void);
 
 private slots:
+    void on_vision_path_button_clicked(void);
+    void on_ai_path_button_clicked(void);
+    void on_comm_path_button_clicked(void);
+
     void on_vision_path_input_textChanged(const QString &arg1);
     void on_ai_path_input_textChanged(const QString &arg1);
     void on_comm_path_input_textChanged(const QString &arg1);

@@ -183,16 +183,18 @@ MainWindow::~MainWindow()
 void MainWindow::processGameControlImage(void)
 {
     auto image_data = shared_parameters.getImageData();
-    cv::Mat image(image_data);
-    image.cols = shared_parameters.getImageWidth();
-    image.rows = shared_parameters.getImageHeight();
 
-    /*for(std::vector<float>::const_iterator i = image_data.begin(); i != image_data.end(); ++i)
+    /*for(auto i = image_data.begin(); i != image_data.end(); ++i)
         std::cout << *i << ' ';
     std::cout << std::endl;*/
 
+    cv::Mat image(shared_parameters.getImageHeight(), shared_parameters.getImageWidth(), shared_parameters.getImageCVType(), &image_data[0]);
+
     if(image.empty())
+    {
+        std::cout << "Image is empty" << std::endl;
         return;
+    }
 
     if(image.rows > 0 && image.cols > 0)
     {
@@ -367,11 +369,12 @@ void MainWindow::processGameControlImage(void)
 void MainWindow::processVisionSettingsImage(void)
 {
     auto image_data = shared_parameters.getImageData();
-    cv::Mat image(image_data);
-    image.cols = shared_parameters.getImageWidth();
-    image.rows = shared_parameters.getImageHeight();
+    cv::Mat image(shared_parameters.getImageHeight(), shared_parameters.getImageWidth(), shared_parameters.getImageCVType(), &image_data[0]);
     if(image.empty())
+    {
+        std::cout << "Image is empty" << std::endl;
         return;
+    }
 
     if(image.rows > 0 && image.cols > 0)
     {
@@ -434,11 +437,12 @@ void MainWindow::processVisionSettingsImage(void)
 void MainWindow::processAISettingsImage(void)
 {
     auto image_data = shared_parameters.getImageData();
-    cv::Mat image(image_data);
-    image.cols = shared_parameters.getImageWidth();
-    image.rows = shared_parameters.getImageHeight();
+    cv::Mat image(shared_parameters.getImageHeight(), shared_parameters.getImageWidth(), shared_parameters.getImageCVType(), &image_data[0]);
     if(image.empty())
+    {
+        std::cout << "Image is empty" << std::endl;
         return;
+    }
 
     if(image.rows > 0 && image.cols > 0)
     {
@@ -502,6 +506,24 @@ void MainWindow::processImages(void)
         default:
         break;
     }
+}
+
+void MainWindow::on_vision_path_button_clicked(void)
+{
+    QString vision_path = QFileDialog::getOpenFileName(this, tr("Vision Path"));
+    ui->vision_path_input->setText(vision_path);
+}
+
+void MainWindow::on_ai_path_button_clicked(void)
+{
+    QString vision_path = QFileDialog::getOpenFileName(this, tr("AI Path"));
+    ui->ai_path_input->setText(ai_path);
+}
+
+void MainWindow::on_comm_path_button_clicked(void)
+{
+    QString vision_path = QFileDialog::getOpenFileName(this, tr("Comm Path"));
+    ui->comm_path_input->setText(comm_path);
 }
 
 void MainWindow::on_vision_path_input_textChanged(const QString &arg1)

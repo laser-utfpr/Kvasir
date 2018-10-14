@@ -1,5 +1,5 @@
-#ifndef IMAGEPROCESSINGTHREAD_HPP
-#define IMAGEPROCESSINGTHREAD_HPP
+#ifndef IMAGEPROCESSING_HPP
+#define IMAGEPROCESSING_HPP
 
 #include <QtCore>
 
@@ -16,17 +16,13 @@
 #include "robotrecognizer.hpp"
 #include "hsvmask.hpp"
 
-class ImageProcessingThread : public QThread
+class ImageProcessing
 {
-    Q_OBJECT
-
 private:
     ImageProcessingSettings &image_processing_settings;
     VisionFieldHandler &vision_field_handler;
 
     RobotRecognizer *robot_recognizer;
-
-    bool stop_thread;
 
     cv::VideoCapture cam;
     cv::Mat cam_image;
@@ -40,17 +36,11 @@ private:
     void findObjects(HSVMask mask);
 
 public:
-    ImageProcessingThread(ImageProcessingSettings &ips, VisionFieldHandler &vfh);
-    ~ImageProcessingThread();
+    ImageProcessing(ImageProcessingSettings &ips, VisionFieldHandler &vfh);
+    ~ImageProcessing();
 
-    void run() override;
-
-signals:
-    void frameProcessed(void);
-
-public slots:
-    void stopThread(void);
+    void processFrame(void);
 
 };
 
-#endif //IMAGEPROCESSINGTHREAD_HPP
+#endif //IMAGEPROCESSING_HPP

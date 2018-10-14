@@ -21,12 +21,11 @@
 #include "habrokconstants.h"
 #include "mainwindow.hpp"
 #include "imageprocessingsettings.hpp"
-#include "imageprocessingthread.hpp"
+#include "imageprocessing.hpp"
 #include "visionfieldhandler.hpp"
 
 class Habrok : public QObject
 {
-    Q_OBJECT
 
 private:
     boost::interprocess::managed_shared_memory *shared_memory;
@@ -45,9 +44,7 @@ private:
 
     ImageProcessingSettings image_processing_settings;
 
-    ImageProcessingThread *image_processing_thread;
-
-    bool write_changes;
+    ImageProcessing *image_processing;
 
 public:
     Habrok(std::string wk, std::string rk, std::string sk);
@@ -57,12 +54,6 @@ public:
     int runHabrok(void);
 
     int calibrate(void);
-
-signals:
-    void stopImageProcessingThread(void);
-
-private slots:
-    void writeChanges(void);
 
 };
 

@@ -77,8 +77,8 @@ public:
     void loadSettingsFromFile(void);
     void loadDefaults(void);
 
-    void readVisionParameters(VisionField v_field);
-    void readAIParameters(AIField a_field);
+    void readVisionParameters(VisionField &v_field);
+    void readAIParameters(AIField &a_field);
 
     std::string getVisionPath(void);
     std::string getAIPath(void);
@@ -96,6 +96,7 @@ public:
     std::vector<float> getImageData(void);
     double getImageWidth(void);
     double getImageHeight(void);
+    int getImageCVType(void);
     std::vector<ColoredObject> getColorObjects(void);
 
     Color setBallColor(Color color);

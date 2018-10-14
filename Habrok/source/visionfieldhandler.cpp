@@ -33,12 +33,18 @@ void VisionFieldHandler::writeChanges(boost::interprocess::managed_shared_memory
 
     VisionField *sm_vf = sm.find<VisionField>(VISION_FIELD_MEMORY_NAME).first;
 
+    sm_vf->image_data.clear();
     sm_vf->image_data = this->image_data;
+    this->image_data.clear();
+
     sm_vf->image_width = this->image_width;
     sm_vf->image_height = this->image_height;
+    sm_vf->image_cv_type = this->image_cv_type;
     sm_vf->time_us = this->time_us;
 
+    sm_vf->found_object.clear();
     sm_vf->found_object = this->found_object;
+    this->found_object.clear();
 
     sm_vf->ball = this->ball;
     for(int i=0; i<N_ROBOTS; i++)
@@ -61,19 +67,20 @@ void VisionFieldHandler::updateImage(cv::Mat &new_image)
     std::vector<float> image_data_tmp;
 
     if(new_image.isContinuous())
-    {
         image_data_tmp.assign((float*)new_image.datastart, (float*)new_image.dataend);
-    }
     else
-    {
         for(int i=0; i<new_image.rows; ++i)
             image_data_tmp.insert(image_data_tmp.end(), new_image.ptr<float>(i), new_image.ptr<float>(i)+new_image.cols);
-    }
 
-    //image_data.insert(image_data.begin(), image_data_tmp.begin(), image_data_tmp.end());
+    image_data.insert(image_data.begin(), image_data_tmp.begin(), image_data_tmp.end());
+
+    /*for(auto i = image_data.begin(); i != image_data.end(); ++i)
+        std::cout << *i << ' ';
+    std::cout << std::endl;*/
 
     image_width = static_cast<double>(new_image.cols);
     image_height = static_cast<double>(new_image.rows);
+    image_cv_type = new_image.type();
 }
 
 void VisionFieldHandler::updateObjects(std::vector<ColoredObject> &new_objects)
