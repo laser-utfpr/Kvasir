@@ -30,6 +30,12 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
 Habrok::Habrok()
 {
     image_processing = nullptr;
+    vision_field_handler = nullptr;
+    color_allocator = nullptr;
+    colored_object_allocator = nullptr;
+    float_allocator = nullptr;
+    allocator_provider = nullptr;
+    shared_memory = nullptr;
 }
 
 Habrok::~Habrok()

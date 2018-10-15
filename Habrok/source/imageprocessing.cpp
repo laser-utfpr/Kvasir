@@ -43,7 +43,6 @@ void ImageProcessing::findObjects(HSVMask mask)
                 new_object.area = area;
                 new_object.coord.x = moment.m10/area;
                 new_object.coord.y = moment.m01/area;
-                new_object.contour = contours[j];
                 object.push_back(new_object);
             }
         }
