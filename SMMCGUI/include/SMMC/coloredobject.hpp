@@ -14,7 +14,6 @@ public:
     Coord coord;
     double area;
     Color color;
-    cv::vector<cv::Point> contour;
     bool linked_to_entity;
 
     inline ColoredObject() : area(NAN),

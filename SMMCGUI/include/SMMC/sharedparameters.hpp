@@ -99,7 +99,7 @@ public:
     int getImageCVType(void);
     std::vector<ColoredObject> getColorObjects(void);
 
-    Color setBallColor(Color color);
+    void setBallColor(Color color);
     void setAllyCenter(Color color);
     void setEnemyCenter(Color color);
     Color getBallColor(void);

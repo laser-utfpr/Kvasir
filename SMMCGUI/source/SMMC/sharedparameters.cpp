@@ -282,7 +282,7 @@ std::vector<ColoredObject> SharedParameters::getColorObjects(void)
     return objects;
 }
 
-Color SharedParameters::setBallColor(Color color)
+void SharedParameters::setBallColor(Color color)
 {
     QMutexLocker m(&lock);
     vision_field->ball_color = color;
@@ -621,6 +621,8 @@ Movement SharedParameters::getRobotMovement(int index)
         mov.stay_still = force_stop;
         return mov;
     }
+    Movement trash;
+    return trash;
 }
 
 Entity SharedParameters::getBall(void)
@@ -633,10 +635,14 @@ Player SharedParameters::getAllyRobot(int index)
 {
     if(index >= 0 && index < N_ROBOTS)
         return ai_field->robot[index];
+    Player trash;
+    return trash;
 }
 
 Entity SharedParameters::getEnemyRobot(int index)
 {
     if(index >= 0 && index < N_ROBOTS)
         return vision_field->enemy_robot[index];
+    Entity trash;
+    return trash;
 }
