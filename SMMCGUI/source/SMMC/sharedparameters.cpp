@@ -135,7 +135,7 @@ void SharedParameters::loadSettingsFromFile(void)
             std::stringstream ss;
             ss << entry;
             s = ss.str();
-            s.erase(remove( s.begin(), s.end(), '\"' ),s.end());
+            s.erase(remove(s.begin(), s.end(), '\"' ),s.end());
             if(s[s.size()-3] == '.' && s[s.size()-2] == 's' && s[s.size()-1] == 'p')
             {
                 settings_file = s;
