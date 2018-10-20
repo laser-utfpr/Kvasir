@@ -35,14 +35,14 @@ private:
     int camera_id;
 
 public:
-    HSVMask mask[N_COLORS];
-
     ImageProcessingSettings();
     ~ImageProcessingSettings();
 
     void applyMorphingOperations(cv::Mat &thresholded_image);
 
     double getMinimumObjectArea(void);
+
+    HSVMask mask[N_COLORS];
 };
 
 #endif //IMAGEPROCESSINGSETTINGS_HPP

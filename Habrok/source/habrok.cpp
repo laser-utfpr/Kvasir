@@ -101,7 +101,7 @@ int Habrok::calibrate(void)
     int argc = 0;
     char **argv;
     QApplication a(argc, argv);
-    MainWindow w;
+    MainWindow w(0, &image_processing_settings);
     w.setWindowTitle(CALIBRATION_WINDOW_TITLE);
     w.show();
     return a.exec();

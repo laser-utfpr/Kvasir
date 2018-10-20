@@ -389,9 +389,9 @@
    <widget class="QPushButton" name="image_type_menu">
     <property name="geometry">
      <rect>
-      <x>1200</x>
+      <x>1188</x>
       <y>40</y>
-      <width>99</width>
+      <width>131</width>
       <height>30</height>
      </rect>
     </property>
