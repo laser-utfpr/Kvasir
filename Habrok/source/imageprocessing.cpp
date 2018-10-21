@@ -53,7 +53,7 @@ void ImageProcessing::processFrame(void)
 {
     cam.read(cam_image);
     vision_field_handler.updateImage(cam_image);
-    cvtColor(cam_image,hsv_image,cv::COLOR_RGB2HSV);
+    cvtColor(cam_image, hsv_image, cv::COLOR_RGB2HSV);
 
     object.clear();
     for(int i=0; i<N_COLORS; i++)

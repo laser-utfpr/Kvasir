@@ -31,10 +31,14 @@ private:
 
     QMenu image_type_menu;
     QMenu color_menu;
+    ImageType active_image_type = RAW;
     Color active_color = UNCOLORED;
 
     QAction *image_type_action[N_IMAGE_TYPES];
     QAction *color_action[N_COLORS];
+
+    QTimer* frame_update_timer;
+    cv::VideoCapture cam;
 
 public:
     explicit MainWindow(QWidget *parent = 0, ImageProcessingSettings *ips = nullptr);
@@ -49,7 +53,11 @@ private slots:
     void on_s_max_slider_valueChanged(void);
     void on_v_min_slider_valueChanged(void);
     void on_v_max_slider_valueChanged(void);
+
     void changeColor(QAction *action);
+    void changeImageType(QAction *action);
+
+    void displayImage(void);
 
 };
 

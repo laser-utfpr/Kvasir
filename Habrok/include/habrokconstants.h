@@ -6,8 +6,12 @@
 #define IMAGE_CAPTURE_WIDTH 1920.0
 #define IMAGE_CAPTURE_HEIGHT 1080.0
 
-typedef enum {RAW = 0, HSV, THRESHOLDED} ImageType;
+typedef enum {NO_IMAGE = -1, RAW = 0, HSV, THRESHOLDED} ImageType;
 #define IMAGE_TYPE_MEMBER_NAMES {"Raw Image","HSV Image","Thresholded Image"}
 #define N_IMAGE_TYPES 3
+
+#define FRAME_REFRESH_RATE_MS 10
+
+#define INTERPOLATION_METHOD CV_INTER_LANCZOS4 //CV_INTER_CUBIC
 
 #endif //HABROKCONSTANTS_H

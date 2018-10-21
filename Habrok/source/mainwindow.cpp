@@ -27,7 +27,16 @@ MainWindow::MainWindow(QWidget *parent, ImageProcessingSettings *ips) : QMainWin
         color_menu.addAction(color_action[i]);
     }
 
+    connect(&image_type_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeImageType(QAction*)));
     connect(&color_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeColor(QAction*)));
+
+    frame_update_timer = new QTimer(this);
+    connect(frame_update_timer, SIGNAL(timeout()), this, SLOT(displayImage()));
+    frame_update_timer->start(FRAME_REFRESH_RATE_MS);
+
+    cam.open(0);
+    cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);
+    cam.set(CV_CAP_PROP_FRAME_HEIGHT, IMAGE_CAPTURE_HEIGHT);
 }
 
 MainWindow::~MainWindow()
@@ -96,5 +105,66 @@ void MainWindow::changeColor(QAction *action)
     ui->v_min_slider->setValue(mask.v_min);
     ui->v_max_slider->setValue(mask.v_max);
 }
+
+void MainWindow::changeImageType(QAction *action)
+{
+    QString qstr = action->text();
+    ui->image_type_menu->setText(qstr);
+
+    std::string new_image_type_name = qstr.toStdString();
+    const char *image_type_name[] = IMAGE_TYPE_MEMBER_NAMES;
+    for(int i=0; i<N_IMAGE_TYPES; i++)
+    {
+        std::string tested_type = image_type_name[i];
+        if(new_image_type_name == tested_type)
+            active_image_type = static_cast<ImageType>(i);
+    }
+}
+
+void MainWindow::displayImage(void)
+{
+    if(cam.isOpened())
+    {
+        cv::Mat image;
+        cam.read(image);
+
+        if(active_image_type == THRESHOLDED && active_color != UNCOLORED)
+        {
+            cv::cvtColor(image, image, cv::COLOR_RGB2HSV);
+
+            HSVMask mask = image_processing_settings.mask[static_cast<int>(active_color)];
+            cv::inRange(image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
+                    cv::Scalar(mask.h_max, mask.s_max, mask.v_max), image);
+
+            cv::Mat resized_image;
+            cv::Size new_size(ui->image->width(),ui->image->height());
+            cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
+
+            QImage qimage((uchar*)resized_image.data, resized_image.cols, resized_image.rows,
+                      resized_image.step, QImage::Format_Grayscale8);
+
+            ui->image->setPixmap(QPixmap::fromImage(qimage));
+
+            return;
+        }
+
+        if(active_image_type == RAW || active_image_type == HSV)
+        {
+            if(active_image_type == HSV)
+                cvtColor(image, image, cv::COLOR_RGB2HSV);
+
+            cv::Mat resized_image;
+            cv::Size new_size(ui->image->width(),ui->image->height());
+            cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
+
+            cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
+            QImage qimage((uchar*)resized_image.data, resized_image.cols, resized_image.rows,
+                      resized_image.step, QImage::Format_RGB888);
+
+            ui->image->setPixmap(QPixmap::fromImage(qimage));
+        }
+    }
+}
+
 
 #include "moc_mainwindow.cpp"
