@@ -32,3 +32,12 @@ double ImageProcessingSettings::getMinimumObjectArea(void)
 {
     return minimum_object_area;
 }
+
+void setCameraID(int id)
+{
+    camera_id = id;
+}
+int getCameraID(void)
+{
+    return camera_id;
+}

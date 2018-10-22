@@ -40,6 +40,9 @@ private:
     QTimer* frame_update_timer;
     cv::VideoCapture cam;
 
+    QPalette black_text;
+    QPalette red_text;
+
 public:
     explicit MainWindow(QWidget *parent = 0, ImageProcessingSettings *ips = nullptr);
     ~MainWindow();

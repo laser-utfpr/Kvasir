@@ -42,6 +42,9 @@ public:
 
     double getMinimumObjectArea(void);
 
+    void setCameraID(int id);
+    int getCameraID(void);
+
     HSVMask mask[N_COLORS];
 };
 

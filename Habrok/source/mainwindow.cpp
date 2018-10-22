@@ -34,9 +34,15 @@ MainWindow::MainWindow(QWidget *parent, ImageProcessingSettings *ips) : QMainWin
     connect(frame_update_timer, SIGNAL(timeout()), this, SLOT(displayImage()));
     frame_update_timer->start(FRAME_REFRESH_RATE_MS);
 
-    cam.open(0);
+    cam.open(value);
     cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);
     cam.set(CV_CAP_PROP_FRAME_HEIGHT, IMAGE_CAPTURE_HEIGHT);
+    if(cam.isOpened())
+        ui->camera_id_message->setText("ID opened successfully");
+    else
+        ui->camera_id_message->setText("Couldn't open inputted ID");
+
+    //get settings
 }
 
 MainWindow::~MainWindow()
@@ -166,5 +172,28 @@ void MainWindow::displayImage(void)
     }
 }
 
+void MainWindow::on_camera_id_input_textChanged(const QString &new_text)
+{
+    bool ok = false;
+    int value = new_text.toInt(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->sr_camera_id_input->foregroundRole(), Qt::black);
+        ui->camera_id_input->setPalette(black_text);
+        cam.open(value);
+        cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);
+        cam.set(CV_CAP_PROP_FRAME_HEIGHT, IMAGE_CAPTURE_HEIGHT);
+        if(cam.isOpened())
+            ui->camera_id_message->setText("ID opened successfully");
+        else
+            ui->camera_id_message->setText("Couldn't open inputted ID");
+        image_processing_settings.setCameraID(value);
+    }
+    else
+    {
+        red_text.setColor(ui->camera_id_input->foregroundRole(), Qt::red);
+        ui->camera_id_input->setPalette(red_text);
+    }
+}
 
 #include "moc_mainwindow.cpp"
