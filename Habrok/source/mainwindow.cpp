@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent, ImageProcessingSettings *ips) : QMainWin
     connect(frame_update_timer, SIGNAL(timeout()), this, SLOT(displayImage()));
     frame_update_timer->start(FRAME_REFRESH_RATE_MS);
 
-    cam.open(value);
+    cam.open(image_processing_settings.getCameraID());
     cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);
     cam.set(CV_CAP_PROP_FRAME_HEIGHT, IMAGE_CAPTURE_HEIGHT);
     if(cam.isOpened())
@@ -178,8 +178,9 @@ void MainWindow::on_camera_id_input_textChanged(const QString &new_text)
     int value = new_text.toInt(&ok);
     if(ok)
     {
-        black_text.setColor(ui->sr_camera_id_input->foregroundRole(), Qt::black);
+        black_text.setColor(ui->camera_id_input->foregroundRole(), Qt::black);
         ui->camera_id_input->setPalette(black_text);
+        cam.release();
         cam.open(value);
         cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);
         cam.set(CV_CAP_PROP_FRAME_HEIGHT, IMAGE_CAPTURE_HEIGHT);

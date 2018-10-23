@@ -50,6 +50,8 @@ public:
 signals:
 
 private slots:
+    void on_camera_id_input_textChanged(const QString &new_text);
+
     void on_h_min_slider_valueChanged(void);
     void on_h_max_slider_valueChanged(void);
     void on_s_min_slider_valueChanged(void);
