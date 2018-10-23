@@ -34,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent, ImageProcessingSettings *ips) : QMainWin
     connect(frame_update_timer, SIGNAL(timeout()), this, SLOT(displayImage()));
     frame_update_timer->start(FRAME_REFRESH_RATE_MS);
 
+    ui->camera_id_input->setText(QString::number(image_processing_settings.getCameraID()));
     cam.open(image_processing_settings.getCameraID());
     cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);
     cam.set(CV_CAP_PROP_FRAME_HEIGHT, IMAGE_CAPTURE_HEIGHT);
