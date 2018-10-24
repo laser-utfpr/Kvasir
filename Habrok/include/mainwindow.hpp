@@ -51,6 +51,10 @@ signals:
 
 private slots:
     void on_camera_id_input_textChanged(const QString &new_text);
+    void on_minimum_object_area_input_textChanged(const QString &new_text);
+    void on_erode_rect_size_input_textChanged(const QString &new_text);
+    void on_dilate_rect_size_input_textChanged(const QString &new_text);
+    void on_use_morphing_operations_stateChanged(int state);
 
     void on_h_min_slider_valueChanged(void);
     void on_h_max_slider_valueChanged(void);

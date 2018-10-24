@@ -43,7 +43,10 @@ MainWindow::MainWindow(QWidget *parent, ImageProcessingSettings *ips) : QMainWin
     else
         ui->camera_id_message->setText("Couldn't open inputted ID");
 
-    //get settings
+    ui->minimum_object_area_input->setText(QString::number(image_processing_settings.getMinimumObjectArea()));
+    ui->erode_rect_size_input->setText(QString::number(image_processing_settings.getErodeRectSize()));
+    ui->dilate_rect_size_input->setText(QString::number(image_processing_settings.getDilateRectSize()));
+    ui->use_morphing_operations->setChecked(image_processing_settings.getUseMorphingOperations());
 }
 
 MainWindow::~MainWindow()
@@ -196,6 +199,62 @@ void MainWindow::on_camera_id_input_textChanged(const QString &new_text)
         red_text.setColor(ui->camera_id_input->foregroundRole(), Qt::red);
         ui->camera_id_input->setPalette(red_text);
     }
+}
+
+void MainWindow::on_minimum_object_area_input_textChanged(const QString &new_text)
+{
+    bool ok = false;
+    int value = new_text.toInt(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->minimum_object_area_input->foregroundRole(), Qt::black);
+        ui->minimum_object_area_input->setPalette(black_text);
+        image_processing_settings.setMinimumObjectArea(value);
+    }
+    else
+    {
+        red_text.setColor(ui->minimum_object_area_input->foregroundRole(), Qt::red);
+        ui->minimum_object_area_input->setPalette(red_text);
+    }
+}
+
+void MainWindow::on_erode_rect_size_input_textChanged(const QString &new_text)
+{
+    bool ok = false;
+    int value = new_text.toInt(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->erode_rect_size_input->foregroundRole(), Qt::black);
+        ui->erode_rect_size_input->setPalette(black_text);
+        image_processing_settings.setErodeRectSize(value);
+    }
+    else
+    {
+        red_text.setColor(ui->erode_rect_size_input->foregroundRole(), Qt::red);
+        ui->erode_rect_size_input->setPalette(red_text);
+    }
+}
+
+void MainWindow::on_dilate_rect_size_input_textChanged(const QString &new_text)
+{
+    bool ok = false;
+    int value = new_text.toInt(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->dilate_rect_size_input->foregroundRole(), Qt::black);
+        ui->dilate_rect_size_input->setPalette(black_text);
+        image_processing_settings.setDilateRectSize(value);
+    }
+    else
+    {
+        red_text.setColor(ui->dilate_rect_size_input->foregroundRole(), Qt::red);
+        ui->dilate_rect_size_input->setPalette(red_text);
+    }
+}
+
+void MainWindow::on_use_morphing_operations_stateChanged(int state)
+{
+    image_processing_settings.setUseMorphingOperations(static_cast<bool>(state));
 }
 
 #include "moc_mainwindow.cpp"

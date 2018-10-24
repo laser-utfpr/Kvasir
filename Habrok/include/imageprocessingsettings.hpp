@@ -30,7 +30,7 @@ private:
     int erode_rect_size;
     int dilate_rect_size;
 
-    double minimum_object_area;
+    int minimum_object_area;
 
     int camera_id;
 
@@ -40,10 +40,20 @@ public:
 
     void applyMorphingOperations(cv::Mat &thresholded_image);
 
-    double getMinimumObjectArea(void);
-
     void setCameraID(int id);
     int getCameraID(void);
+
+    void setMinimumObjectArea(int moa);
+    int getMinimumObjectArea(void);
+
+    void setUseMorphingOperations(bool umo);
+    bool getUseMorphingOperations(void);
+
+    void setErodeRectSize(int ers);
+    int getErodeRectSize(void);
+
+    void setDilateRectSize(int drs);
+    int getDilateRectSize(void);
 
     HSVMask mask[N_COLORS];
 };

@@ -1,0 +1,9 @@
+#Jogo Da Velha Sinaliza comentário
+#O formato deve ser:
+#nome com
+#":NOME DO ROBO @ ADDRESS do Receptor (5 bytes)" (SEM ESPAÇO)
+:0@ALEFE
+:1@LUCCA
+:2@TALES
+:3@FABRO
+:4@ALLAN

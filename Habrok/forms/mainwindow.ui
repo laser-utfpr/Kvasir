@@ -309,7 +309,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QCheckBox" name="use_morphing_operations">
     <property name="geometry">
      <rect>
       <x>1140</x>
