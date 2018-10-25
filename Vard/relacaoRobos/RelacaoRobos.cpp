@@ -17,7 +17,10 @@ RelacaoRobos::RelacaoRobos()
 {
     resetFileMatrix();
     acesso = 1;
-    strcpy(url,"../relacaoRobos/RELACAO.txt");
+    QString a = qApp->applicationDirPath();
+    a += "/../relacaoRobos/RELACAO.txt";
+    std::cout << a.toStdString() << std::endl;
+    strcpy(url,a.toStdString().c_str());
     arq = fopen(url, "r");
     openArchive();
     fclose(arq);
@@ -35,8 +38,8 @@ void RelacaoRobos::openArchive()
 
     if(arq == NULL)
     {
-        while(1)//--Não foi possível carregar os arquivos!
-            printf("Arquivo não Carregado!!");
+        printf("Não foi possível carregar o arquivo! Fechando o programa.\n");
+        exit(1);
     }
     else
         while((ch=fgetc(arq))!= EOF)
@@ -107,4 +110,3 @@ int RelacaoRobos::getNumero()
 {
     return atoi(fileNumbers[acesso]);
 }
-

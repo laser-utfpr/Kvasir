@@ -30,6 +30,12 @@ find_package(Threads REQUIRED)
 find_package(PkgConfig)
 pkg_check_modules(smmclib REQUIRED smmclib)
 
+<<<<<<< HEAD
+find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
+
+target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Widgets) 
+=======
+>>>>>>> 5511d705d78f393f82bcaef7b66e6c3f59b8d9cb
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} Threads::Threads)
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} rt)
 target_link_libraries(${PROJECT_NAME} smmclib)

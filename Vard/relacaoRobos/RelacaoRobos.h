@@ -4,7 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <string>
+#include <iostream>
 #include "../ServerConstantes.h"
+
+#include <QtCore>
+#include <QCoreApplication>
 
 class RelacaoRobos{
 private:

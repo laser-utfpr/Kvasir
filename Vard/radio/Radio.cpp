@@ -47,4 +47,3 @@ void Radio::send(unsigned char *transmitir)
     usleep(100000);  // sleep for 100 milliSeconds
   return saida;
 }*/
-

@@ -1,7 +1,0 @@
-#Jogo Da Velha Sinaliza comentário
-#O formato deve ser:
-#0013A20040E64516
-#":NOME DO ROBO @ MAC ADDRESS do XBEE" (SEM ESPAÇO)
-:0@0013a20040bd9fbe
-:1@0013a20040bda005
-:2@0013a20040c0460e
