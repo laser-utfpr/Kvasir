@@ -516,13 +516,21 @@ void MainWindow::on_vision_path_button_clicked(void)
 
 void MainWindow::on_ai_path_button_clicked(void)
 {
+<<<<<<< HEAD
+    QString ai_path = QFileDialog::getOpenFileName(this, tr("AI Path"));
+=======
     QString vision_path = QFileDialog::getOpenFileName(this, tr("AI Path"));
+>>>>>>> 5511d705d78f393f82bcaef7b66e6c3f59b8d9cb
     ui->ai_path_input->setText(ai_path);
 }
 
 void MainWindow::on_comm_path_button_clicked(void)
 {
+<<<<<<< HEAD
+    QString comm_path = QFileDialog::getOpenFileName(this, tr("Comm Path"));
+=======
     QString vision_path = QFileDialog::getOpenFileName(this, tr("Comm Path"));
+>>>>>>> 5511d705d78f393f82bcaef7b66e6c3f59b8d9cb
     ui->comm_path_input->setText(comm_path);
 }
 
