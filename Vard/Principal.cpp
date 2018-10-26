@@ -27,9 +27,9 @@ chave_escrita(arg1), chave_leitura(arg2), chave_desligamento(arg3)
     BoostInterprocessString *chave_desligamento_mem;
     try
     {
-        chave_escrita_mem = (memoria_compartilhada->find<BoostInterprocessString>(VISION_WRITE_KEY_MEMORY_NAME)).first;
-        chave_leitura_mem = (memoria_compartilhada->find<BoostInterprocessString>(VISION_READ_KEY_MEMORY_NAME)).first;
-        chave_desligamento_mem = (memoria_compartilhada->find<BoostInterprocessString>(VISION_SHUTDOWN_KEY_MEMORY_NAME)).first;
+        chave_escrita_mem = (memoria_compartilhada->find<BoostInterprocessString>(COMM_WRITE_KEY_MEMORY_NAME)).first;
+        chave_leitura_mem = (memoria_compartilhada->find<BoostInterprocessString>(COMM_READ_KEY_MEMORY_NAME)).first;
+        chave_desligamento_mem = (memoria_compartilhada->find<BoostInterprocessString>(COMM_SHUTDOWN_KEY_MEMORY_NAME)).first;
     }
     catch(const std::exception& e)
     {
@@ -37,7 +37,6 @@ chave_escrita(arg1), chave_leitura(arg2), chave_desligamento(arg3)
         std::cout << e.what() << std::endl;
         exit(1);
     }
-
     while(*chave_desligamento_mem != chave_desligamento.c_str())
     {
         if(*chave_leitura_mem == chave_leitura.c_str())

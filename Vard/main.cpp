@@ -3,19 +3,13 @@
 #include <smmclib.hpp>
 #include <iostream>
 #include <string>
-<<<<<<< HEAD
 #include <QApplication>
-=======
->>>>>>> 5511d705d78f393f82bcaef7b66e6c3f59b8d9cb
 
 #include "Principal.h"
 
 int main(int argc, char *argv[])
 {
-<<<<<<< HEAD
     QApplication a(argc, argv);
-=======
->>>>>>> 5511d705d78f393f82bcaef7b66e6c3f59b8d9cb
     if(argc > 1)
     {
         if(argc == 4)
@@ -30,10 +24,7 @@ int main(int argc, char *argv[])
             if(right_key_sizes)
             {
                 Principal START(argv[1], argv[2], argv[3]);
-<<<<<<< HEAD
                 std::cout << "Vard received shutdown signal";
-=======
->>>>>>> 5511d705d78f393f82bcaef7b66e6c3f59b8d9cb
                 return 0;
             }
         }
