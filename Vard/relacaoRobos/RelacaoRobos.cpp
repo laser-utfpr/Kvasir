@@ -16,13 +16,13 @@ void RelacaoRobos::resetFileMatrix()
 RelacaoRobos::RelacaoRobos()
 {
     resetFileMatrix();
-    acesso = 1;
     QString a = qApp->applicationDirPath();
     a += "/../relacaoRobos/RELACAO.txt";
-    std::cout << a.toStdString() << std::endl;
     strcpy(url,a.toStdString().c_str());
     arq = fopen(url, "r");
+    acesso = 1;
     openArchive();
+
     fclose(arq);
 }
 
