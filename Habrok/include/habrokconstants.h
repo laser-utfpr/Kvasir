@@ -2,6 +2,7 @@
 #define HABROKCONSTANTS_H
 
 #define CALIBRATION_WINDOW_TITLE "Habrok Calibration"
+#define SAVED_CALIBRATION_FILENAME "calibration.cl"
 
 #define IMAGE_CAPTURE_WIDTH 1920.0
 #define IMAGE_CAPTURE_HEIGHT 1080.0
