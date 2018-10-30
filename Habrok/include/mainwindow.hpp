@@ -27,7 +27,7 @@ class MainWindow : public QMainWindow
 private:
     Ui::MainWindow *ui;
 
-    ImageProcessingSettings image_processing_settings;
+    ImageProcessingSettings &image_processing_settings;
 
     QMenu image_type_menu;
     QMenu color_menu;

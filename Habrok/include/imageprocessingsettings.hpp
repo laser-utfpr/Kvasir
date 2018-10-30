@@ -1,10 +1,22 @@
 #ifndef IMAGEPROCESSINGSETTINGS_HPP
 #define IMAGEPROCESSINGSETTINGS_HPP
 
-#include <opencv2/opencv.hpp>
+#include <boost/serialization/utility.hpp>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 
 #include <boost/serialization/string.hpp>
 #include <boost/serialization/serialization.hpp>
+
+#include <boost/filesystem.hpp>
+#include <boost/range/iterator_range.hpp>
+
+#include <QtCore>
+
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
 
 #include <smmclib.hpp>
 
@@ -26,19 +38,22 @@ private:
         ar & camera_id;
     };
 
-    bool use_morphing_operations;
-    int erode_rect_size;
-    int dilate_rect_size;
+    std::string settings_file;
 
-    int minimum_object_area;
+    bool use_morphing_operations = false;
+    int erode_rect_size = 0;
+    int dilate_rect_size = 0;
 
-    int camera_id;
+    int minimum_object_area = 100;
+
+    int camera_id = 0;
 
 public:
     ImageProcessingSettings();
     ~ImageProcessingSettings();
 
-    void applyMorphingOperations(cv::Mat &thresholded_image);
+    void loadCalibration(void);
+    void loadDefaults(void);
 
     void setCameraID(int id);
     int getCameraID(void);

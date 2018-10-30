@@ -59,6 +59,11 @@ Habrok::~Habrok()
 
 int Habrok::runHabrok(void)
 {
+    int argc = 0;
+    char **argv;
+    QApplication a(argc, argv);
+    image_processing_settings.loadCalibration();
+
     BoostInterprocessString *sm_write_key;
     BoostInterprocessString *sm_read_key;
     BoostInterprocessString *sm_shutdown_key;

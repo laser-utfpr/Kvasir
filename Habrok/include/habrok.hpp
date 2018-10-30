@@ -42,7 +42,7 @@ private:
     ColoredObjectAllocator *colored_object_allocator;
     FloatAllocator *float_allocator;
 
-    ImageProcessingSettings image_processing_settings;
+    ImageProcessingSettings  image_processing_settings;
 
     ImageProcessing *image_processing;
 
