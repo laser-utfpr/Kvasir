@@ -23,7 +23,22 @@ void ImageProcessing::findObjects(HSVMask mask)
 {
     inRange(hsv_image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
             cv::Scalar(mask.h_max, mask.s_max, mask.v_max), thresholded_image);
-    image_processing_settings.applyMorphingOperations(thresholded_image);
+    if(image_processing_settings.getUseMorphingOperations() == true)
+    {
+        auto erode_rect_size = image_processing_settings.getErodeRectSize();
+        auto dilate_rect_size = image_processing_settings.getDilateRectSize();
+
+        cv::Mat erode_element = getStructuringElement(cv::MORPH_RECT,
+                                cv::Size(erode_rect_size, erode_rect_size));
+        cv::Mat dilate_element = getStructuringElement(cv::MORPH_RECT,
+                                 cv::Size(dilate_rect_size, dilate_rect_size));
+
+        cv::erode(thresholded_image, thresholded_image, erode_element);
+        cv::erode(thresholded_image, thresholded_image, erode_element);
+
+        cv::dilate(thresholded_image, thresholded_image, dilate_element);
+        cv::dilate(thresholded_image, thresholded_image, dilate_element);
+    }
 
     cv::vector<cv::vector<cv::Point>> contours;
     cv::vector<cv::Vec4i> hierarchy;
