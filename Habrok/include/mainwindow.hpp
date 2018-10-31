@@ -68,6 +68,7 @@ private slots:
 
     void displayImage(void);
 
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // MAINWINDOW_HPP

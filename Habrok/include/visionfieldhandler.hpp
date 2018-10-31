@@ -28,6 +28,9 @@ public:
     void updateImage(cv::Mat &new_image);
     void updateObjects(std::vector<ColoredObject> &new_objects);
     bool isColorUsed(Color color);
+    bool isInSearchedRegion(Coord coord);
+
+    Color getballColor(void);
 
 };
 

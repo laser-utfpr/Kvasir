@@ -100,3 +100,13 @@ bool VisionFieldHandler::isColorUsed(Color color)
             return true;
     return false;
 }
+
+bool VisionFieldHandler::isInSearchedRegion(Coord coord)
+{
+    return coord.isInRect(searched_region_ulc, searched_region_lrc);
+}
+
+Color VisionFieldHandler::getballColor(void)
+{
+    return ball_color;
+}

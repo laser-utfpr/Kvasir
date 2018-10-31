@@ -257,4 +257,9 @@ void MainWindow::on_use_morphing_operations_stateChanged(int state)
     image_processing_settings.setUseMorphingOperations(static_cast<bool>(state));
 }
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    image_processing_settings.saveCalibration();
+}
+
 #include "moc_mainwindow.cpp"

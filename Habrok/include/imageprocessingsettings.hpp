@@ -52,6 +52,7 @@ public:
     ImageProcessingSettings();
     ~ImageProcessingSettings();
 
+    void saveCalibration(void);
     void loadCalibration(void);
     void loadDefaults(void);
 

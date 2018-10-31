@@ -10,7 +10,19 @@ ImageProcessingSettings::ImageProcessingSettings()
 
 ImageProcessingSettings::~ImageProcessingSettings()
 {
-    std::ofstream new_file(settings_file);
+
+}
+
+void ImageProcessingSettings::saveCalibration(void)
+{
+    QString q_app_path = QCoreApplication::applicationDirPath();
+    std::string app_path = q_app_path.toStdString();
+
+    std::string file_dir(app_path);
+    file_dir += '/';
+    file_dir += SAVED_CALIBRATION_FILENAME;
+
+    std::ofstream new_file(file_dir);
 
     if(!new_file.fail())
     {

@@ -58,7 +58,8 @@ void ImageProcessing::findObjects(HSVMask mask)
                 new_object.area = area;
                 new_object.coord.x = moment.m10/area;
                 new_object.coord.y = moment.m01/area;
-                object.push_back(new_object);
+                if(vision_field_handler.isInSearchedRegion(Coord(new_object.coord.x, new_object.coord.y)))
+                    object.push_back(new_object);
             }
         }
     }
@@ -77,9 +78,10 @@ void ImageProcessing::processFrame(void)
             findObjects(image_processing_settings.mask[i]);
     }
     vision_field_handler.updateObjects(object);
-    vision_field_handler.updateTime((useconds_t)((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001)));
 
-    robot_recognizer->recognizeRobots();
+    robot_recognizer->recognizeRobots(object);
+
+    vision_field_handler.updateTime((useconds_t)((clock()-clock_start)/(CLOCKS_PER_SEC*0.000001)));
 }
 
 #include "moc_imageprocessing.cpp"

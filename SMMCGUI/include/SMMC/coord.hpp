@@ -23,6 +23,7 @@ public:
     double y;
 
     inline Coord() : x(0), y(0) {};
+    inline Coord(double xi, double yi) : x(xi), y(yi) {};
     inline Coord& operator=(const Coord &copied)
     {
         if(this != &copied)
@@ -43,6 +44,30 @@ public:
         double dx = c.x - x;
         double dy = c.y - y;
         return atan2(dy,dx);
+    }
+    inline bool isInRect(Coord r1, Coord r2)
+    {
+        if(r1.x <= r2.x && r1.y <= r2.y)
+        {
+            if(x >= r1.x && x <= r2.x && y >= r1.y && y <= r2.y)
+                return true;
+        }
+        else if(r1.x <= r2.x && r1.y >= r2.y)
+        {
+            if(x >= r1.x && x <= r2.x && y >= r2.y && y <= r1.y)
+                return true;
+        }
+        else if(r1.x >= r2.x && r1.y <= r2.y)
+        {
+            if(x >= r2.x && x <= r1.x && y >= r1.y && y <= r2.y)
+                return true;
+        }
+        else //if(r1.x >= r2.x && r1.y >= r2.y)
+        {
+            if(x >= r2.x && x <= r1.x && y >= r2.y && y <= r1.y)
+                return true;
+        }
+        return false;
     }
 };
 
