@@ -30,7 +30,11 @@ public:
     bool isColorUsed(Color color);
     bool isInSearchedRegion(Coord coord);
 
-    Color getballColor(void);
+    Color getBallColor(void);
+    Color getAllyCenterColor(void);
+    Color getTagColor(int n);
+    void setBall(Entity new_ball);
+    void setBallAsNotFound(void);
 
 };
 

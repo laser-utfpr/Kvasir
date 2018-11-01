@@ -15,6 +15,8 @@ typedef enum {NO_IMAGE = -1, RAW = 0, HSV, THRESHOLDED} ImageType;
 
 #define INTERPOLATION_METHOD CV_INTER_LANCZOS4 //CV_INTER_CUBIC
 
+#define TAG_MAX_DISTANCE 200 //to be change to calibrate
+
 /*
  * T = team color
  * 0 = color 0

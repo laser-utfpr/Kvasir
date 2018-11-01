@@ -106,7 +106,28 @@ bool VisionFieldHandler::isInSearchedRegion(Coord coord)
     return coord.isInRect(searched_region_ulc, searched_region_lrc);
 }
 
-Color VisionFieldHandler::getballColor(void)
+Color VisionFieldHandler::getBallColor(void)
 {
     return ball_color;
+}
+
+Color VisionFieldHandler::getAllyCenterColor(void)
+{
+    return ally_center;
+}
+
+Color VisionFieldHandler::getTagColor(int n)
+{
+    if(n < ally_tag.size() && n >= 0)
+        return ally_tag[n];
+}
+
+void VisionFieldHandler::setBall(Entity new_ball)
+{
+    ball = new_ball;
+}
+
+void VisionFieldHandler::setBallAsNotFound(void)
+{
+    ball.found_last_frame = false;
 }

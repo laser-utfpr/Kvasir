@@ -80,6 +80,8 @@ int Habrok::runHabrok(void)
         exit(1);
     }
 
+    vision_field_handler->readChanges(*shared_memory);
+
     while(*sm_shutdown_key != shutdown_key.c_str())
     {
         if(*sm_read_key == read_key.c_str())
@@ -106,6 +108,7 @@ int Habrok::calibrate(void)
     int argc = 0;
     char **argv;
     QApplication a(argc, argv);
+    image_processing_settings.loadCalibration();
     MainWindow w(0, &image_processing_settings);
     w.setWindowTitle(CALIBRATION_WINDOW_TITLE);
     w.show();

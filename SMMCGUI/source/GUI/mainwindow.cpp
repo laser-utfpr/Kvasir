@@ -134,6 +134,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     smmc->start();
     usleep(THREAD_START_WAIT_TIME_US);
 
+    emit visionSettingsChanged();
+    emit aiSettingsChanged();
+    emit commSettingsChanged();
+
     frame_update_timer = new QTimer(this);
     connect(frame_update_timer, SIGNAL(timeout()), this, SLOT(processImages()));
     frame_update_timer->start(FRAME_REFRESH_RATE_MS);

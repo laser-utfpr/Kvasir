@@ -12,25 +12,28 @@ class RobotRecognizer
 private:
     VisionFieldHandler &vision_field_handler;
 
-
+    Coord last_ball_coord;
+    bool ball_found = false;
+    Coord last_ally_coord[N_ROBOTS];
+    bool ally_found[N_ROBOTS];
 
     static Coord compared_object_coord;
 
-    void findBall(void);
-    void findEnemies(void);
+    void findBall(std::vector<ColoredObject> object);
+    void findEnemies(std::vector<ColoredObject> object);
 
-    void findRobot1(void);
-    void findRobot2(void);
-    void findRobot3(void);
-    void findRobot4(void);
-    void findRobot5(void);
-    void findRobot6(void);
+    void findRobot1(std::vector<ColoredObject> object);
+    void findRobot2(std::vector<ColoredObject> object);
+    void findRobot3(std::vector<ColoredObject> object);
+    void findRobot4(std::vector<ColoredObject> object);
+    void findRobot5(std::vector<ColoredObject> object);
+    void findRobot6(std::vector<ColoredObject> object);
 
 public:
     RobotRecognizer(VisionFieldHandler &vfh);
     ~RobotRecognizer();
 
-    void recognizeRobots(void);
+    void recognizeRobots(std::vector<ColoredObject> object);
 
     static bool compareColoredObjectDistance(ColoredObject c1, ColoredObject c2);
 };
