@@ -44,7 +44,9 @@ MainWindow::MainWindow(QWidget *parent, ImageProcessingSettings *ips) : QMainWin
         ui->camera_id_message->setText("Couldn't open inputted ID");
 
     ui->minimum_object_area_input->setText(QString::number(image_processing_settings.getMinimumObjectArea()));
+    erode_rect_size = image_processing_settings.getErodeRectSize();
     ui->erode_rect_size_input->setText(QString::number(image_processing_settings.getErodeRectSize()));
+    dilate_rect_size = image_processing_settings.getDilateRectSize();
     ui->dilate_rect_size_input->setText(QString::number(image_processing_settings.getDilateRectSize()));
     ui->use_morphing_operations->setChecked(image_processing_settings.getUseMorphingOperations());
 }
@@ -146,6 +148,20 @@ void MainWindow::displayImage(void)
             cv::inRange(image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
                     cv::Scalar(mask.h_max, mask.s_max, mask.v_max), image);
 
+            if(ui->use_morphing_operations->isChecked())
+            {
+                cv::Mat erode_element = getStructuringElement(cv::MORPH_RECT,
+                                        cv::Size(erode_rect_size, erode_rect_size));
+                cv::Mat dilate_element = getStructuringElement(cv::MORPH_RECT,
+                                         cv::Size(dilate_rect_size, dilate_rect_size));
+
+                cv::erode(image, image, erode_element);
+                cv::erode(image, image, erode_element);
+
+                cv::dilate(image, image, dilate_element);
+                cv::dilate(image, image, dilate_element);
+            }
+
             cv::Mat resized_image;
             cv::Size new_size(ui->image->width(),ui->image->height());
             cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
@@ -226,6 +242,7 @@ void MainWindow::on_erode_rect_size_input_textChanged(const QString &new_text)
     {
         black_text.setColor(ui->erode_rect_size_input->foregroundRole(), Qt::black);
         ui->erode_rect_size_input->setPalette(black_text);
+        erode_rect_size = value;
         image_processing_settings.setErodeRectSize(value);
     }
     else
@@ -243,6 +260,7 @@ void MainWindow::on_dilate_rect_size_input_textChanged(const QString &new_text)
     {
         black_text.setColor(ui->dilate_rect_size_input->foregroundRole(), Qt::black);
         ui->dilate_rect_size_input->setPalette(black_text);
+        dilate_rect_size = value;
         image_processing_settings.setDilateRectSize(value);
     }
     else

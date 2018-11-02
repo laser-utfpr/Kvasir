@@ -41,8 +41,8 @@ private:
     std::string settings_file;
 
     bool use_morphing_operations = false;
-    int erode_rect_size = 0;
-    int dilate_rect_size = 0;
+    int erode_rect_size = 1;
+    int dilate_rect_size = 1;
 
     int minimum_object_area = 100;
 
@@ -54,7 +54,6 @@ public:
 
     void saveCalibration(void);
     void loadCalibration(void);
-    void loadDefaults(void);
 
     void setCameraID(int id);
     int getCameraID(void);

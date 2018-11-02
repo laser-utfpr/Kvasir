@@ -43,6 +43,9 @@ private:
     QPalette black_text;
     QPalette red_text;
 
+    int erode_rect_size = 1;
+    int dilate_rect_size = 1;
+
 public:
     explicit MainWindow(QWidget *parent = 0, ImageProcessingSettings *ips = nullptr);
     ~MainWindow();

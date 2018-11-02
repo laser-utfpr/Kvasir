@@ -62,7 +62,7 @@ void RobotRecognizer::findBall(std::vector<ColoredObject> object)
     ball_found = false;
     Color ball_color = vision_field_handler.getBallColor();
     Entity ball;
-    for(auto i=object.begin(); i != object.end() && !ball_found; i++)
+    for(auto i=object.begin(); i != object.end() && !ball_found; ++i)
         if(i->color == ball_color)
         {
             ball_found = true;
@@ -84,29 +84,45 @@ void RobotRecognizer::findRobot1(std::vector<ColoredObject> object)
         compared_object_coord = last_ally_coord[0];
         std::sort(object.begin(), object.end(), &RobotRecognizer::compareColoredObjectDistance);
     }
+    ally_found[0] = false;
     Color ally_center_color = vision_field_handler.getAllyCenterColor();
-    Color tag_color = vision_field_handler.getTag(0);
+    Color tag_color = vision_field_handler.getTagColor(0);
     Entity robot1;
-    for(auto i=object.begin(); i != object.end(); i++)
+    for(auto i=object.begin(); i != object.end() && !ally_found[0]; ++i)
         if(i->color == ally_center_color)
         {
-
-            //to be done now - only assign robot1 if there's 1 tag in the range
-
-            auto sorted_tags = object;
-            compared_object_coord = i->coord;
-            std::sort(sorted_tags.begin(), sorted_tags.end(), &RobotRecognizer::compareColoredObjectDistance);
-            for(auto j=sorted_tags.begin(); j != sorted_tags.end(); j++)
+            int tags_nearby = 0;
+            ColoredObject tag;
+            for(auto j=object.begin(); j != object.end(); ++j)
                 if(j->color == tag_color && i->coord.distance(j->coord) < TAG_MAX_DISTANCE)
                 {
-                    ally_found[0] = true;
+                    tags_nearby++;
+                    tag = *j;
                 }
+            //std::cout << tags_nearby << std::endl;
+            if(tags_nearby == 1)
+            {
+                ally_found[0] = true;
+                last_ally_coord[0] = i->coord;
+                robot1.coord = i->coord;
+                Coord center_tag_vector = tag.coord - robot1.coord;
+                robot1.angle = atan2(center_tag_vector.y, center_tag_vector.x) + 3*M_PI_4;
+                robot1.already_found = true;
+                robot1.found_last_frame = true;
+            }
         }
+    if(ally_found[0])
+    {
+        vision_field_handler.setAlly(robot1, 0);
+        std::cout << robot1.angle << std::endl;
+    }
+    else
+        vision_field_handler.setAllyAsNotFound(0);
 }
 
 void RobotRecognizer::findRobot2(std::vector<ColoredObject> object)
 {
-
+    //put stuff on calibration first you newb
 }
 
 void RobotRecognizer::findRobot3(std::vector<ColoredObject> object)

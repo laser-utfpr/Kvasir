@@ -68,7 +68,6 @@ void ImageProcessingSettings::loadCalibration(void)
         {
             std::cout << "Exception called while trying to read " << SAVED_SETTINGS_FILENAME
             << " with boost serialization!" << std::endl;
-            loadDefaults();
         }
     }
     else
@@ -105,20 +104,13 @@ void ImageProcessingSettings::loadCalibration(void)
             {
                 std::cout << "Exception called while trying to read " << s
                 << " with boost serialization!" << std::endl;
-                loadDefaults();
             }
         }
         else
         {
             std::cout << "No .cl file found, loading defaults" << std::endl;
-            loadDefaults();
         }
     }
-}
-
-void ImageProcessingSettings::loadDefaults(void)
-{
-
 }
 
 void ImageProcessingSettings::setCameraID(int id)

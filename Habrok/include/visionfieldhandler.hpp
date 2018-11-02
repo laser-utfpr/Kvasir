@@ -35,6 +35,8 @@ public:
     Color getTagColor(int n);
     void setBall(Entity new_ball);
     void setBallAsNotFound(void);
+    void setAlly(Entity new_ally, int n);
+    void setAllyAsNotFound(int n);
 
 };
 

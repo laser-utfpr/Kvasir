@@ -2,6 +2,7 @@
 #define ROBOTRECOGNIZER_HPP
 
 #include <QtCore>
+#include <cmath>
 #include <algorithm>
 
 #include "habrokconstants.h"

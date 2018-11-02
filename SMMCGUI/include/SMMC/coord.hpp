@@ -33,6 +33,16 @@ public:
         }
         return *this;
     }
+    inline Coord operator+(const Coord &added)
+    {
+        Coord new_coord(x + added.x, y + added.y);
+        return new_coord;
+    }
+    inline Coord operator-(const Coord &subtracted)
+    {
+        Coord new_coord(x - subtracted.x, y - subtracted.y);
+        return new_coord;
+    }
     inline double distance(Coord c)
     {
         double dx = c.x - x;

@@ -120,6 +120,8 @@ Color VisionFieldHandler::getTagColor(int n)
 {
     if(n < ally_tag.size() && n >= 0)
         return ally_tag[n];
+    Color trash;
+    return trash;
 }
 
 void VisionFieldHandler::setBall(Entity new_ball)
@@ -130,4 +132,15 @@ void VisionFieldHandler::setBall(Entity new_ball)
 void VisionFieldHandler::setBallAsNotFound(void)
 {
     ball.found_last_frame = false;
+}
+
+void VisionFieldHandler::setAlly(Entity new_ally, int n)
+{
+    if(n < N_ROBOTS && n >= 0)
+        robot[n] = new_ally;
+}
+void VisionFieldHandler::setAllyAsNotFound(int n)
+{
+    if(n < N_ROBOTS && n >= 0)
+        robot[n].found_last_frame = false;
 }

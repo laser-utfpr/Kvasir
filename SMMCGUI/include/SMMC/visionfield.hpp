@@ -30,7 +30,7 @@ private:
     template<class Archive>
     inline void serialize(Archive &ar, const unsigned int /* file_version */)
     {
-        ar & ball_color & ally_center & enemy_center;
+        ar & ball_color & ally_center & enemy_center & ally_tag;
         ar & searched_region_ulc & searched_region_lrc;
     };
 
