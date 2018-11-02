@@ -280,8 +280,8 @@
    <widget class="QLineEdit" name="minimum_object_area_input">
     <property name="geometry">
      <rect>
-      <x>1290</x>
-      <y>700</y>
+      <x>800</x>
+      <y>820</y>
       <width>101</width>
       <height>30</height>
      </rect>
@@ -296,8 +296,8 @@
    <widget class="QLabel" name="minimum_object_area_label">
     <property name="geometry">
      <rect>
-      <x>1120</x>
-      <y>700</y>
+      <x>630</x>
+      <y>820</y>
       <width>161</width>
       <height>30</height>
      </rect>
@@ -313,7 +313,7 @@
     <property name="geometry">
      <rect>
       <x>1140</x>
-      <y>780</y>
+      <y>680</y>
       <width>211</width>
       <height>30</height>
      </rect>
@@ -326,7 +326,7 @@
     <property name="geometry">
      <rect>
       <x>1290</x>
-      <y>860</y>
+      <y>760</y>
       <width>71</width>
       <height>30</height>
      </rect>
@@ -342,7 +342,7 @@
     <property name="geometry">
      <rect>
       <x>1120</x>
-      <y>860</y>
+      <y>760</y>
       <width>161</width>
       <height>30</height>
      </rect>
@@ -358,7 +358,7 @@
     <property name="geometry">
      <rect>
       <x>1290</x>
-      <y>820</y>
+      <y>720</y>
       <width>71</width>
       <height>30</height>
      </rect>
@@ -374,7 +374,7 @@
     <property name="geometry">
      <rect>
       <x>1120</x>
-      <y>820</y>
+      <y>720</y>
       <width>161</width>
       <height>30</height>
      </rect>
@@ -397,6 +397,64 @@
     </property>
     <property name="text">
      <string>Image Type</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="show_minimum_object_area">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>780</y>
+      <width>221</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show Minimum Object Area</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="maximum_tag_distance_input">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>820</y>
+      <width>101</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="maximum_tag_distance_label">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>820</y>
+      <width>161</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Maximum Tag Distance</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="show_maximum_tag_distance">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>780</y>
+      <width>231</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show Maximum Tag Distance</string>
     </property>
    </widget>
   </widget>

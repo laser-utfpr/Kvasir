@@ -4,7 +4,7 @@ ImageProcessing::ImageProcessing(ImageProcessingSettings &ips,
                                              VisionFieldHandler &vfh) :
                         image_processing_settings(ips), vision_field_handler(vfh)
 {
-    robot_recognizer = new RobotRecognizer(vision_field_handler);
+    robot_recognizer = new RobotRecognizer(vision_field_handler, image_processing_settings);
 
     cam.open(0);
     cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);

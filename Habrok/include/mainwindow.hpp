@@ -55,6 +55,7 @@ signals:
 private slots:
     void on_camera_id_input_textChanged(const QString &new_text);
     void on_minimum_object_area_input_textChanged(const QString &new_text);
+    void on_maximum_tag_distance_input_textChanged(const QString &new_text);
     void on_erode_rect_size_input_textChanged(const QString &new_text);
     void on_dilate_rect_size_input_textChanged(const QString &new_text);
     void on_use_morphing_operations_stateChanged(int state);

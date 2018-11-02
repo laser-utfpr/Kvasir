@@ -35,6 +35,7 @@ private:
         ar & use_morphing_operations;
         ar & erode_rect_size & dilate_rect_size;
         ar & minimum_object_area;
+        ar & maximum_tag_distance;
         ar & camera_id;
     };
 
@@ -44,7 +45,9 @@ private:
     int erode_rect_size = 1;
     int dilate_rect_size = 1;
 
-    int minimum_object_area = 100;
+    int minimum_object_area = 200;
+
+    int maximum_tag_distance = 150;
 
     int camera_id = 0;
 
@@ -60,6 +63,9 @@ public:
 
     void setMinimumObjectArea(int moa);
     int getMinimumObjectArea(void);
+
+    void setMaximumTagDistance(int mtd);
+    int getMaximumTagDistance(void);
 
     void setUseMorphingOperations(bool umo);
     bool getUseMorphingOperations(void);

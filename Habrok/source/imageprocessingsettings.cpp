@@ -132,6 +132,16 @@ int ImageProcessingSettings::getMinimumObjectArea(void)
     return minimum_object_area;
 }
 
+void ImageProcessingSettings::setMaximumTagDistance(int mtd)
+{
+    maximum_tag_distance = mtd;
+}
+
+int ImageProcessingSettings::getMaximumTagDistance(void)
+{
+    return maximum_tag_distance;
+}
+
 void ImageProcessingSettings::setUseMorphingOperations(bool umo)
 {
     use_morphing_operations = umo;

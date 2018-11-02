@@ -2,7 +2,8 @@
 
 Coord RobotRecognizer::compared_object_coord;
 
-RobotRecognizer::RobotRecognizer(VisionFieldHandler &vfh) : vision_field_handler(vfh)
+RobotRecognizer::RobotRecognizer(VisionFieldHandler &vfh, ImageProcessingSettings &ips) :
+vision_field_handler(vfh), image_processing_settings(ips)
 {
     for(int i=0; i<N_ROBOTS; i++)
         ally_found[i] = false;
@@ -94,7 +95,7 @@ void RobotRecognizer::findRobot1(std::vector<ColoredObject> object)
             int tags_nearby = 0;
             ColoredObject tag;
             for(auto j=object.begin(); j != object.end(); ++j)
-                if(j->color == tag_color && i->coord.distance(j->coord) < TAG_MAX_DISTANCE)
+                if(j->color == tag_color && i->coord.distance(j->coord) < image_processing_settings.getMaximumTagDistance())
                 {
                     tags_nearby++;
                     tag = *j;
@@ -122,7 +123,7 @@ void RobotRecognizer::findRobot1(std::vector<ColoredObject> object)
 
 void RobotRecognizer::findRobot2(std::vector<ColoredObject> object)
 {
-    //put stuff on calibration first you newb
+
 }
 
 void RobotRecognizer::findRobot3(std::vector<ColoredObject> object)
@@ -132,7 +133,45 @@ void RobotRecognizer::findRobot3(std::vector<ColoredObject> object)
 
 void RobotRecognizer::findRobot4(std::vector<ColoredObject> object)
 {
-
+    if(ally_found[3])
+    {
+        compared_object_coord = last_ally_coord[3];
+        std::sort(object.begin(), object.end(), &RobotRecognizer::compareColoredObjectDistance);
+    }
+    ally_found[3] = false;
+    Color ally_center_color = vision_field_handler.getAllyCenterColor();
+    Color tag_color = vision_field_handler.getTagColor(1);
+    Entity robot4;
+    for(auto i=object.begin(); i != object.end() && !ally_found[3]; ++i)
+        if(i->color == ally_center_color)
+        {
+            int tags_nearby = 0;
+            ColoredObject tag;
+            for(auto j=object.begin(); j != object.end(); ++j)
+                if(j->color == tag_color && i->coord.distance(j->coord) < image_processing_settings.getMaximumTagDistance())
+                {
+                    tags_nearby++;
+                    tag = *j;
+                }
+            //std::cout << tags_nearby << std::endl;
+            if(tags_nearby == 1)
+            {
+                ally_found[3] = true;
+                last_ally_coord[3] = i->coord;
+                robot4.coord = i->coord;
+                Coord center_tag_vector = tag.coord - robot4.coord;
+                robot4.angle = atan2(center_tag_vector.y, center_tag_vector.x) + 3*M_PI_4;
+                robot4.already_found = true;
+                robot4.found_last_frame = true;
+            }
+        }
+    if(ally_found[3])
+    {
+        vision_field_handler.setAlly(robot4, 3);
+        std::cout << robot4.angle << std::endl;
+    }
+    else
+        vision_field_handler.setAllyAsNotFound(0);
 }
 
 void RobotRecognizer::findRobot5(std::vector<ColoredObject> object)

@@ -43,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent, ImageProcessingSettings *ips) : QMainWin
     else
         ui->camera_id_message->setText("Couldn't open inputted ID");
 
+    ui->maximum_tag_distance_input->setText(QString::number(image_processing_settings.getMaximumTagDistance()));
     ui->minimum_object_area_input->setText(QString::number(image_processing_settings.getMinimumObjectArea()));
     erode_rect_size = image_processing_settings.getErodeRectSize();
     ui->erode_rect_size_input->setText(QString::number(image_processing_settings.getErodeRectSize()));
@@ -179,6 +180,18 @@ void MainWindow::displayImage(void)
             if(active_image_type == HSV)
                 cvtColor(image, image, cv::COLOR_RGB2HSV);
 
+            if(ui->show_minimum_object_area->isChecked())
+            {
+                int radius = sqrt(image_processing_settings.getMinimumObjectArea()/M_PI);
+                cv::circle(image, cv::Point(IMAGE_CAPTURE_WIDTH/2, IMAGE_CAPTURE_HEIGHT/2), radius, SCALAR_GREEN, CV_FILLED);
+            }
+
+            if(ui->show_maximum_tag_distance->isChecked())
+            {
+                cv::circle(image, cv::Point(IMAGE_CAPTURE_WIDTH/2, IMAGE_CAPTURE_HEIGHT/2), image_processing_settings.getMaximumTagDistance(),
+                           SCALAR_RED, 3);
+            }
+
             cv::Mat resized_image;
             cv::Size new_size(ui->image->width(),ui->image->height());
             cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
@@ -231,6 +244,23 @@ void MainWindow::on_minimum_object_area_input_textChanged(const QString &new_tex
     {
         red_text.setColor(ui->minimum_object_area_input->foregroundRole(), Qt::red);
         ui->minimum_object_area_input->setPalette(red_text);
+    }
+}
+
+void MainWindow::on_maximum_tag_distance_input_textChanged(const QString &new_text)
+{
+    bool ok = false;
+    int value = new_text.toInt(&ok);
+    if(ok)
+    {
+        black_text.setColor(ui->maximum_tag_distance_input->foregroundRole(), Qt::black);
+        ui->maximum_tag_distance_input->setPalette(black_text);
+        image_processing_settings.setMaximumTagDistance(value);
+    }
+    else
+    {
+        red_text.setColor(ui->maximum_tag_distance_input->foregroundRole(), Qt::red);
+        ui->maximum_tag_distance_input->setPalette(red_text);
     }
 }
 

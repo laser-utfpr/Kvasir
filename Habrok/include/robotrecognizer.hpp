@@ -7,11 +7,13 @@
 
 #include "habrokconstants.h"
 #include "visionfieldhandler.hpp"
+#include "imageprocessingsettings.hpp"
 
 class RobotRecognizer
 {
 private:
     VisionFieldHandler &vision_field_handler;
+    ImageProcessingSettings &image_processing_settings;
 
     Coord last_ball_coord;
     bool ball_found = false;
@@ -31,7 +33,7 @@ private:
     void findRobot6(std::vector<ColoredObject> object);
 
 public:
-    RobotRecognizer(VisionFieldHandler &vfh);
+    RobotRecognizer(VisionFieldHandler &vfh, ImageProcessingSettings &ips);
     ~RobotRecognizer();
 
     void recognizeRobots(std::vector<ColoredObject> object);
