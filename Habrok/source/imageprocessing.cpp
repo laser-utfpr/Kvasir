@@ -40,8 +40,8 @@ void ImageProcessing::findObjects(HSVMask mask)
         cv::dilate(thresholded_image, thresholded_image, dilate_element);
     }
 
-    cv::vector<cv::vector<cv::Point>> contours;
-    cv::vector<cv::Vec4i> hierarchy;
+    std::vector<std::vector<cv::Point>> contours;
+    std::vector<cv::Vec4i> hierarchy;
 
     findContours(thresholded_image, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
 
