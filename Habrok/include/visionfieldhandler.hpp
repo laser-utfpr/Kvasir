@@ -32,11 +32,14 @@ public:
 
     Color getBallColor(void);
     Color getAllyCenterColor(void);
+    Color getEnemyCenterColor(void);
     Color getTagColor(int n);
     void setBall(Entity new_ball);
     void setBallAsNotFound(void);
     void setAlly(Entity new_ally, int n);
     void setAllyAsNotFound(int n);
+    void setEnemy(Entity new_ally, int n);
+    void setEnemyAsNotFound(int n);
 
 };
 

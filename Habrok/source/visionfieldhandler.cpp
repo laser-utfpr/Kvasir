@@ -116,12 +116,16 @@ Color VisionFieldHandler::getAllyCenterColor(void)
     return ally_center;
 }
 
+Color VisionFieldHandler::getEnemyCenterColor(void)
+{
+    return enemy_center;
+}
+
 Color VisionFieldHandler::getTagColor(int n)
 {
     if(n < ally_tag.size() && n >= 0)
         return ally_tag[n];
-    Color trash;
-    return trash;
+    return UNCOLORED;
 }
 
 void VisionFieldHandler::setBall(Entity new_ball)
@@ -143,4 +147,15 @@ void VisionFieldHandler::setAllyAsNotFound(int n)
 {
     if(n < N_ROBOTS && n >= 0)
         robot[n].found_last_frame = false;
+}
+
+void VisionFieldHandler::setEnemy(Entity new_enemy, int n)
+{
+    if(n < N_ROBOTS && n >= 0)
+        enemy_robot[n] = new_enemy;
+}
+void VisionFieldHandler::setEnemyAsNotFound(int n)
+{
+    if(n < N_ROBOTS && n >= 0)
+        enemy_robot[n].found_last_frame = false;
 }

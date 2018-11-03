@@ -55,6 +55,14 @@ public:
         double dy = c.y - y;
         return atan2(dy,dx);
     }
+    inline double angle()
+    {
+        return atan2(y,x);
+    }
+    inline double norm()
+    {
+        return sqrt(x*x+y*y);
+    }
     inline bool isInRect(Coord r1, Coord r2)
     {
         if(r1.x <= r2.x && r1.y <= r2.y)
@@ -78,6 +86,14 @@ public:
                 return true;
         }
         return false;
+    }
+    inline Coord bisector(Coord c1, Coord c2)
+    {
+        Coord vec1(c1.x-x, c1.y-y);
+        Coord vec2(c2.x-x, c2.y-y);
+        Coord bisec(vec1.x/vec1.norm() + vec2.x/vec2.norm(),
+                    vec1.y/vec1.norm() + vec2.y/vec2.norm());
+        return bisec;
     }
 };
 

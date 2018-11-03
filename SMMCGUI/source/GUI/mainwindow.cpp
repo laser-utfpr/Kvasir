@@ -196,7 +196,6 @@ void MainWindow::processGameControlImage(void)
 
     if(image.empty())
     {
-        std::cout << "Image is empty" << std::endl;
         return;
     }
 
@@ -279,7 +278,7 @@ void MainWindow::processGameControlImage(void)
                                DOT_RADIUS, *scalar_color, DOT_THICKNESS);
 
                     std::string ally_name("ROBOT_");
-                    ally_name += std::to_string(i);
+                    ally_name += std::to_string(i+1);
                     cv::putText(image, ally_name, cv::Point(ally[i].coord.x - TEXT_X_OFFSET,
                                 ally[i].coord.y + TEXT_Y_OFFSET), DEFAULT_IMAGE_TEXT_FONT,
                                 IMAGE_TEXT_SCALING, *scalar_color);
@@ -376,7 +375,6 @@ void MainWindow::processVisionSettingsImage(void)
     cv::Mat image(shared_parameters.getImageHeight(), shared_parameters.getImageWidth(), shared_parameters.getImageCVType(), &image_data[0]);
     if(image.empty())
     {
-        std::cout << "Image is empty" << std::endl;
         return;
     }
 
@@ -444,7 +442,6 @@ void MainWindow::processAISettingsImage(void)
     cv::Mat image(shared_parameters.getImageHeight(), shared_parameters.getImageWidth(), shared_parameters.getImageCVType(), &image_data[0]);
     if(image.empty())
     {
-        std::cout << "Image is empty" << std::endl;
         return;
     }
 
