@@ -33,7 +33,7 @@
      <widget class="QLineEdit" name="vision_path_input">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>350</x>
         <y>260</y>
         <width>500</width>
         <height>30</height>
@@ -43,7 +43,7 @@
      <widget class="QLineEdit" name="ai_path_input">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>350</x>
         <y>460</y>
         <width>500</width>
         <height>30</height>
@@ -53,7 +53,7 @@
      <widget class="QLineEdit" name="comm_path_input">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>350</x>
         <y>660</y>
         <width>500</width>
         <height>30</height>
@@ -63,7 +63,7 @@
      <widget class="QPushButton" name="run_vision">
       <property name="geometry">
        <rect>
-        <x>800</x>
+        <x>910</x>
         <y>260</y>
         <width>100</width>
         <height>30</height>
@@ -76,7 +76,7 @@
      <widget class="QPushButton" name="run_ai">
       <property name="geometry">
        <rect>
-        <x>800</x>
+        <x>910</x>
         <y>460</y>
         <width>100</width>
         <height>30</height>
@@ -89,7 +89,7 @@
      <widget class="QPushButton" name="run_comm">
       <property name="geometry">
        <rect>
-        <x>800</x>
+        <x>910</x>
         <y>660</y>
         <width>100</width>
         <height>30</height>
@@ -141,7 +141,7 @@
      <widget class="QPushButton" name="shutdown_vision">
       <property name="geometry">
        <rect>
-        <x>960</x>
+        <x>1070</x>
         <y>260</y>
         <width>100</width>
         <height>30</height>
@@ -154,7 +154,7 @@
      <widget class="QPushButton" name="shutdown_ai">
       <property name="geometry">
        <rect>
-        <x>960</x>
+        <x>1070</x>
         <y>460</y>
         <width>100</width>
         <height>30</height>
@@ -167,7 +167,7 @@
      <widget class="QPushButton" name="shutdown_comm">
       <property name="geometry">
        <rect>
-        <x>960</x>
+        <x>1070</x>
         <y>660</y>
         <width>100</width>
         <height>30</height>
@@ -180,7 +180,7 @@
      <widget class="QPushButton" name="vision_path_button">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>190</x>
         <y>260</y>
         <width>100</width>
         <height>30</height>
@@ -193,7 +193,7 @@
      <widget class="QPushButton" name="ai_path_button">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>190</x>
         <y>460</y>
         <width>100</width>
         <height>30</height>
@@ -206,7 +206,7 @@
      <widget class="QPushButton" name="comm_path_button">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>190</x>
         <y>660</y>
         <width>100</width>
         <height>30</height>
