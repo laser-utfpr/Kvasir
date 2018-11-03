@@ -91,7 +91,7 @@ signals:
     void commInputUpdate(void);
 
     void sendVisionChangesToAI(void);
-    void sendAIChangeToComm(void);
+    void sendAIChangesToComm(void);
 
 public slots:
     void stopThread(void);

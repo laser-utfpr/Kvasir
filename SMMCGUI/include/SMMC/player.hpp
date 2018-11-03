@@ -19,6 +19,18 @@ public:
     std::string status;
 
     inline Player() : Entity() {};
+    inline Player& operator=(const Player &copied)
+    {
+        coord = copied.coord;
+        angle = copied.angle;
+        already_found = copied.already_found;
+        found_last_frame = copied.found_last_frame;
+
+        destination = copied.destination;
+        movement = copied.movement;
+
+        return *this;
+    }
     inline Player& operator=(const Entity &copied)
     {
         if(static_cast<Entity*>(this) != &copied)

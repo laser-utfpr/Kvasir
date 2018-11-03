@@ -10,7 +10,7 @@ SMMCThread::SMMCThread(SharedParameters &sp, QObject *mainwindow) : shared_param
     run_thread = true;
 
     connect(this, SIGNAL(sendVisionChangesToAI()), this, SLOT(updateAIFromVision()));
-    connect(this, SIGNAL(sendAIChangeToComm()), this, SLOT(updateCommFromAI()));
+    connect(this, SIGNAL(sendAIChangesToComm()), this, SLOT(updateCommFromAI()));
 
     connect(this, SIGNAL(visionInputUpdate()), mainwindow, SLOT(handleVisionUpdate()));
     connect(this, SIGNAL(aiInputUpdate()), mainwindow, SLOT(handleAIUpdate()));
@@ -301,6 +301,7 @@ void SMMCThread::updateAIFromVision(void)
     AIField sp_ai_field = shared_parameters.getAIField();
     sm_ai_field->image_width = sp_ai_field.image_width;
     sm_ai_field->image_height = sp_ai_field.image_height;
+    sm_ai_field->time_us = sp_ai_field.time_us;
     sm_ai_field->ball = sp_ai_field.ball;
     for(int i=0; i<N_ROBOTS; i++)
         sm_ai_field->robot[i] = *(static_cast<Entity*>(&(sp_ai_field.robot[i])));
@@ -331,6 +332,7 @@ void SMMCThread::run()
                 std::cout << std::endl << "Vision input update detected" << std::endl << std::endl;
                 shared_parameters.readVisionParameters(*sm_vision_field);
                 emit visionInputUpdate();
+                usleep(1);
                 emit sendVisionChangesToAI();
                 *sm_vision_write_key = EMPTY_KEY;
             }
@@ -343,7 +345,7 @@ void SMMCThread::run()
                 std::cout << std::endl << "AI input update detected" << std::endl << std::endl;
                 shared_parameters.readAIParameters(*sm_ai_field);
                 emit aiInputUpdate();
-                emit sendAIChangeToComm();
+                emit sendAIChangesToComm();
                 *sm_ai_write_key = EMPTY_KEY;
             }
         }

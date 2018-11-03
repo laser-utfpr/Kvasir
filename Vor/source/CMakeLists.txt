@@ -2,6 +2,8 @@
 set(APP_SOURCES
   ${SOURCE_DIR}/main.cpp
   ${SOURCE_DIR}/vor.cpp
+  ${SOURCE_DIR}/aifieldhandler.cpp
+  ${SOURCE_DIR}/strategy.cpp
 )
 
 #Creating the executable

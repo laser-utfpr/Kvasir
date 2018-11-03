@@ -19,9 +19,9 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
     boost::interprocess::shared_memory_object::remove(provider_name.c_str());
     allocator_provider = new boost::interprocess::managed_shared_memory(boost::interprocess::create_only, provider_name.c_str(), SHARED_MEMORY_SIZE);
 
-    color_allocator = new ColorAllocator(allocator_provider->get_segment_manager());;
+    color_allocator = new ColorAllocator(allocator_provider->get_segment_manager());
     colored_object_allocator = new ColoredObjectAllocator(allocator_provider->get_segment_manager());
-    float_allocator = new FloatAllocator(allocator_provider->get_segment_manager());;
+    float_allocator = new FloatAllocator(allocator_provider->get_segment_manager());
     vision_field_handler = new VisionFieldHandler(*color_allocator, *colored_object_allocator, *float_allocator);
 
     image_processing = new ImageProcessing(image_processing_settings, *vision_field_handler);
@@ -55,6 +55,8 @@ Habrok::~Habrok()
 
     if(shared_memory != nullptr)
         delete shared_memory;
+
+    boost::interprocess::shared_memory_object::remove(provider_name.c_str());
 }
 
 int Habrok::runHabrok(void)
@@ -75,7 +77,7 @@ int Habrok::runHabrok(void)
     }
     catch(const std::exception& e)
     {
-        std::cout << std::endl << "Exception called while acessing shared memory keys:" << std::endl;
+        std::cout << std::endl << "Habrok got an exception called while acessing shared memory keys:" << std::endl;
         std::cout << e.what() << std::endl;
         exit(1);
     }
@@ -86,13 +88,13 @@ int Habrok::runHabrok(void)
     {
         if(*sm_read_key == read_key.c_str())
         {
-            std::cout << "Read signal received, reading settings from the shared memory" << std::endl;
+            std::cout << "Habrok recieved read signal, reading settings from the shared memory" << std::endl;
             *sm_read_key = EMPTY_KEY;
             vision_field_handler->readChanges(*shared_memory);
         }
         {
             image_processing->processFrame();
-            std::cout << "Frame processed, writing vision field into the shared memory" << std::endl;
+            std::cout << "Habrok processed a frame, writing vision field into the shared memory" << std::endl;
             vision_field_handler->writeChanges(*shared_memory);
             *sm_write_key = write_key.c_str();
         }

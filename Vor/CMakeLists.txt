@@ -8,6 +8,9 @@ set(CMAKE_CXX_STANDARD 11)
 #Setting build type to release
 set(CMAKE_BUILD_TYPE Release)
 
+set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
 #Setting directory for the outputted executable
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
