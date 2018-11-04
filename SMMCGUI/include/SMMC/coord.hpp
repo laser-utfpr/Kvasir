@@ -33,6 +33,12 @@ public:
         }
         return *this;
     }
+    inline bool operator==(const Coord &compared)
+    {
+        if(this->x == compared.x && this->y == compared.y)
+            return true;
+        return false;
+    }
     inline Coord operator+(const Coord &added)
     {
         Coord new_coord(x + added.x, y + added.y);

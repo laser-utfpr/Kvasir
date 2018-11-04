@@ -77,8 +77,8 @@ int Vor::runVor(void)
         }
         if(ai_field_handler->sampleTime() != last_sample_time)
         {
-            strategy->calculateVelocities();
-            std::cout << "Vor calculated velocities, writing ai field into the shared memory" << std::endl;
+            strategy->calculateMovements();
+            std::cout << "Vor calculated movements, writing ai field into the shared memory" << std::endl;
             ai_field_handler->writeChanges(*shared_memory);
             *sm_write_key = write_key.c_str();
             last_sample_time = ai_field_handler->sampleTime();

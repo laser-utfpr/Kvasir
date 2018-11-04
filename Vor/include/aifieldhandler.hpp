@@ -25,6 +25,27 @@ public:
 
     std::string commandReceived(void);
     void addCommand(const char* new_command);
+
+    Entity getBall(void);
+    Player getAlly(int n);
+    Entity getEnemy(int n);
+
+    void setMovement(Movement mov, int n);
+    void setStatus(std::string stat, int n);
+
+    Coord getPlayableFieldULC(void);
+    Coord getPlayableFieldLRC(void);
+
+    Coord getLeftGoalULC(void);
+    Coord getLeftGoalLRC(void);
+    Coord getRightGoalULC(void);
+    Coord getRightGoalLRC(void);
+
+    Coord getLeftGoalkeeperAreaULC(void);
+    Coord getLeftGoalkeeperAreaLRC(void);
+    Coord getRightGoalkeeperAreaULC(void);
+    Coord getRightGoalkeeperAreaLRC(void);
+
 };
 
 #endif //AIFIELDHANDLER_HPP

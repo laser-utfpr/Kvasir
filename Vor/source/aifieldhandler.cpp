@@ -69,3 +69,86 @@ void AIFieldHandler::addCommand(const char* new_command)
     s = new_command;
     command_list.push_back(s);
 }
+
+Entity AIFieldHandler::getBall(void)
+{
+    return ball;
+}
+
+Player AIFieldHandler::getAlly(int n)
+{
+    if(n < N_ROBOTS && n >= 0)
+        return robot[n];
+    Player trash;
+    return trash;
+}
+
+Entity AIFieldHandler::getEnemy(int n)
+{
+    if(n < N_ROBOTS && n >= 0)
+        return enemy_robot[n];
+    Entity trash;
+    return trash;
+}
+
+void AIFieldHandler::setMovement(Movement mov, int n)
+{
+    if(n < N_ROBOTS && n >= 0)
+        robot[n].movement = mov;
+}
+
+void AIFieldHandler::setStatus(std::string stat, int n)
+{
+    if(n < N_ROBOTS && n >= 0)
+        robot[n].status = stat;
+}
+
+Coord AIFieldHandler::getPlayableFieldULC(void)
+{
+    return playable_field_ulc;
+}
+
+Coord AIFieldHandler::getPlayableFieldLRC(void)
+{
+    return playable_field_lrc;
+}
+
+Coord AIFieldHandler::getLeftGoalULC(void)
+{
+    return left_goal_ulc;
+}
+
+Coord AIFieldHandler::getLeftGoalLRC(void)
+{
+    return left_goal_lrc;
+}
+
+Coord AIFieldHandler::getRightGoalULC(void)
+{
+    return right_goal_ulc;
+}
+
+Coord AIFieldHandler::getRightGoalLRC(void)
+{
+    return right_goal_lrc;
+}
+
+Coord AIFieldHandler::getLeftGoalkeeperAreaULC(void)
+{
+    return left_goalkeeper_area_ulc;
+}
+
+Coord AIFieldHandler::getLeftGoalkeeperAreaLRC(void)
+{
+    return left_goalkeeper_area_lrc;
+}
+
+Coord AIFieldHandler::getRightGoalkeeperAreaULC(void)
+{
+    return right_goalkeeper_area_ulc;
+}
+
+Coord AIFieldHandler::getRightGoalkeeperAreaLRC(void)
+{
+    return right_goalkeeper_area_lrc;
+}
