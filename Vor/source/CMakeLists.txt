@@ -12,7 +12,7 @@ add_executable(${APPLICATION_NAME} ${APP_SOURCES})
 
 #Linking external libraries to the executable
 #target_link_libraries(${APPLICATION_NAME} Qt5::Widgets)
-#target_link_libraries(${APPLICATION_NAME} ${OpenCV_LIBS})
+target_link_libraries(${APPLICATION_NAME} ${OpenCV_LIBS})
 #target_link_libraries(${APPLICATION_NAME} Boost::serialization)
 #target_link_libraries(${APPLICATION_NAME} Boost::system)
 #target_link_libraries(${APPLICATION_NAME} Boost::filesystem)

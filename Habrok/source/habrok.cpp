@@ -23,8 +23,6 @@ Habrok::Habrok(std::string wk, std::string rk, std::string sk) :
     colored_object_allocator = new ColoredObjectAllocator(allocator_provider->get_segment_manager());
     float_allocator = new FloatAllocator(allocator_provider->get_segment_manager());
     vision_field_handler = new VisionFieldHandler(*color_allocator, *colored_object_allocator, *float_allocator);
-
-    image_processing = new ImageProcessing(image_processing_settings, *vision_field_handler);
 }
 
 Habrok::Habrok()
@@ -59,12 +57,12 @@ Habrok::~Habrok()
     boost::interprocess::shared_memory_object::remove(provider_name.c_str());
 }
 
-int Habrok::runHabrok(void)
+int Habrok::runHabrok(int argc, char *argv[])
 {
-    int argc = 0;
-    char **argv;
     QApplication a(argc, argv);
+
     image_processing_settings.loadCalibration();
+    image_processing = new ImageProcessing(image_processing_settings, *vision_field_handler);
 
     BoostInterprocessString *sm_write_key;
     BoostInterprocessString *sm_read_key;

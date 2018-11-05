@@ -51,7 +51,7 @@ public:
     Habrok();
     ~Habrok();
 
-    int runHabrok(void);
+    int runHabrok(int argc, char *argv[]);
 
     int calibrate(void);
 

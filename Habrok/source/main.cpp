@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
             if(right_key_sizes)
             {
                 Habrok habrok(argv[1], argv[2], argv[3]);
-                return habrok.runHabrok();
+                return habrok.runHabrok(argc, argv);
             }
         }
     }

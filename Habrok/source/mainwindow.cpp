@@ -58,6 +58,8 @@ MainWindow::~MainWindow()
         delete image_type_action[i];
     for(int i=0; i<N_COLORS; i++)
         delete color_action[i];
+
+    cam.release();
 }
 
 void MainWindow::on_h_min_slider_valueChanged(void)

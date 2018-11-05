@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_BUILD_TYPE Release)
 
 #set(CMAKE_CXX_FLAGS "-Wall -Wextra")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+#set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 #Setting directory for the outputted executable
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
@@ -42,8 +42,8 @@ pkg_check_modules(smmclib REQUIRED smmclib)
 #set(CMAKE_AUTOUIC_SEARCH_PATHS ${FORMS_DIR})
 
 #Including OpenCV
-#find_package(OpenCV REQUIRED)
-#include_directories(${OpenCV_INCLUDE_DIR})
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIR})
 
 #Including Boost
 #find_package(Boost COMPONENTS serialization system filesystem REQUIRED)

@@ -17,6 +17,8 @@ ImageProcessing::~ImageProcessing()
 {
     if(robot_recognizer != nullptr)
         delete robot_recognizer;
+
+    cam.release();
 }
 
 void ImageProcessing::findObjects(HSVMask mask)
