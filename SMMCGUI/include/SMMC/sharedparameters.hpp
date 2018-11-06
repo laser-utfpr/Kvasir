@@ -155,6 +155,8 @@ public:
     Entity getBall(void);
     Player getAllyRobot(int index);
     Entity getEnemyRobot(int index);
+
+    useconds_t getVisionTime(void);
 };
 
 #endif // SHAREDPARAMETERS_HPP

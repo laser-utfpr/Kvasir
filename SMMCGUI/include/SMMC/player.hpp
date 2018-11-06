@@ -28,6 +28,7 @@ public:
 
         destination = copied.destination;
         movement = copied.movement;
+        //status = copied.status;
 
         return *this;
     }

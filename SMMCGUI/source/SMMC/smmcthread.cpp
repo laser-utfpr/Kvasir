@@ -343,6 +343,7 @@ void SMMCThread::run()
             if(s == ai_write_key)
             {
                 std::cout << std::endl << "AI input update detected" << std::endl << std::endl;
+                std::cout << sm_ai_field->robot[0].status;
                 shared_parameters.readAIParameters(*sm_ai_field);
                 emit aiInputUpdate();
                 emit sendAIChangesToComm();

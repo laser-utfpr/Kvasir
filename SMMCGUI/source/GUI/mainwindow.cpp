@@ -188,13 +188,13 @@ void MainWindow::processGameControlImage(void)
 {
     auto image_data = shared_parameters.getImageData();
 
-    /*for(auto i = image_data.begin(); i != image_data.end(); ++i)
-        std::cout << *i << ' ';
-    std::cout << std::endl;*/
-
-    cv::Mat image(shared_parameters.getImageHeight(), shared_parameters.getImageWidth(), shared_parameters.getImageCVType(), &image_data[0]);
-
-    if(image.empty())
+    cv::Mat image;
+    if(image_data.size() > 0)
+    {
+        cv::Mat zimage(shared_parameters.getImageHeight(), shared_parameters.getImageWidth(), shared_parameters.getImageCVType(), &image_data[0]);
+        image = zimage;
+    }
+    if(image.empty() || shared_parameters.getVisionTime() == 0)
     {
         return;
     }
@@ -348,8 +348,8 @@ void MainWindow::processGameControlImage(void)
                         scalar_color = new SCALAR_BLUE;
 
                     cv::line(image, cv::Point(ally[i].coord.x, ally[i].coord.y),
-                    cv::Point(ally[i].coord.x + MOVEMENT_ARROW_LENGTH*cos(ally[i].movement.linear_vel_angle)*ally[i].movement.linear_vel_scaling,
-                          ally[i].coord.y + MOVEMENT_ARROW_LENGTH*sin(ally[i].movement.linear_vel_angle)*ally[i].movement.linear_vel_scaling),
+                    cv::Point(ally[i].coord.x + MOVEMENT_ARROW_LENGTH*cos(M_PI - ally[i].movement.linear_vel_angle + ally[i].angle)*ally[i].movement.linear_vel_scaling,
+                              ally[i].coord.y + MOVEMENT_ARROW_LENGTH*sin(M_PI - ally[i].movement.linear_vel_angle + ally[i].angle)*ally[i].movement.linear_vel_scaling),
                     *scalar_color);
 
                     delete scalar_color;
@@ -372,8 +372,14 @@ void MainWindow::processGameControlImage(void)
 void MainWindow::processVisionSettingsImage(void)
 {
     auto image_data = shared_parameters.getImageData();
-    cv::Mat image(shared_parameters.getImageHeight(), shared_parameters.getImageWidth(), shared_parameters.getImageCVType(), &image_data[0]);
-    if(image.empty())
+
+    cv::Mat image;
+    if(image_data.size() > 0)
+    {
+        cv::Mat zimage(shared_parameters.getImageHeight(), shared_parameters.getImageWidth(), shared_parameters.getImageCVType(), &image_data[0]);
+        image = zimage;
+    }
+    if(image.empty() || shared_parameters.getVisionTime() == 0)
     {
         return;
     }
@@ -439,8 +445,14 @@ void MainWindow::processVisionSettingsImage(void)
 void MainWindow::processAISettingsImage(void)
 {
     auto image_data = shared_parameters.getImageData();
-    cv::Mat image(shared_parameters.getImageHeight(), shared_parameters.getImageWidth(), shared_parameters.getImageCVType(), &image_data[0]);
-    if(image.empty())
+
+    cv::Mat image;
+    if(image_data.size() > 0)
+    {
+        cv::Mat zimage(shared_parameters.getImageHeight(), shared_parameters.getImageWidth(), shared_parameters.getImageCVType(), &image_data[0]);
+        image = zimage;
+    }
+    if(image.empty() || shared_parameters.getVisionTime() == 0)
     {
         return;
     }

@@ -17,4 +17,12 @@ typedef enum {LEFT, RIGHT} Side;
 
 #define INVERT_Y true
 
+#define ADJUST_ANGLE true
+
+#define FRAMES_TO_SPIN 3
+
+#define SPIN_RANGE 100
+
+#define ANGLE_COMPARE_EPSILON 0.1
+
 #endif //VORCONSTANTS_H

@@ -16,12 +16,13 @@ class Strategy
 private:
     AIFieldHandler &ai_field_handler;
 
-    Command command = NO_COMMAND;
+    Command command = NORMAL_PLAY;
 
     Entity ball;
 
     Player robot[N_ROBOTS];
     Role role[N_ROBOTS];
+    int frames_close[N_ROBOTS];
 
     Entity enemy_robot[N_ROBOTS];
 
@@ -54,6 +55,9 @@ private:
     void moveSupport(int n);
 
     void calculateMovementsFromDestinations(void);
+
+    double normalizeAngle(double angle);
+    bool angleCompare(double angle1, double angle2, double epsilon);
 
 public:
     Strategy(AIFieldHandler &afh);

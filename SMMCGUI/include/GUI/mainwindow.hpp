@@ -12,6 +12,7 @@
 #include <string>
 #include <iostream>
 #include <cmath>
+#include <ctime>
 
 #include "guiconstants.h"
 #include "smmcconstants.h"

@@ -5,7 +5,10 @@ Coord Strategy::compared_object_coord;
 Strategy::Strategy(AIFieldHandler &afh) : ai_field_handler(afh)
 {
     for(int i=0; i<N_ROBOTS; i++)
+    {
         role[i] = NO_ROLE;
+        frames_close[i] = 0;
+    }
 }
 
 Strategy::~Strategy()
@@ -37,6 +40,7 @@ void Strategy::calculateMovementsFromDestinations(void)
 
         robot[i].movement.angular_vel_scaling = 0;
 
+        //robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination);
         robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
         if(INVERT_Y)
             robot[i].movement.linear_vel_angle = M_PI - robot[i].movement.linear_vel_angle;
@@ -77,7 +81,7 @@ void Strategy::calculateMovements(void)
     switch(command)
     {
         case NO_COMMAND:
-        break;
+        normalPlay(); break;
 
         case NORMAL_PLAY:
         normalPlay(); break;
@@ -127,6 +131,8 @@ void Strategy::assignRoles(void)
         {
             //assign a goalkeeper
             std::vector<Player> goal_sorted;
+            for(int i=0; i<N_ROBOTS; i++)
+                goal_sorted.push_back(robot[i]);
             if(SIDE == LEFT)
             {
                 compared_object_coord.x = lg_lrc.x - lg_ulc.x;
@@ -149,7 +155,6 @@ void Strategy::assignRoles(void)
                             if(robot[j].coord == goal_sorted[1].coord)
                                 role[j] = GOALKEEPER;
                 }
-
             if(N_ROBOTS == 3)
             {
                 //assign a defender or support
@@ -211,7 +216,7 @@ void Strategy::assignRoles(void)
     for(int i=0; i<N_ROBOTS; i++)
     {
         if(static_cast<int>(role[i]) >= 0)
-            robot[i].status = role_name[static_cast<int>(role[i])];
+            ai_field_handler.setStatus(role_name[static_cast<int>(role[i])], i);
     }
 }
 
@@ -220,6 +225,7 @@ void Strategy::normalPlay(void)
     for(int i=0; i<N_ROBOTS; i++)
         role[i] = NO_ROLE;
     assignRoles();
+    std::cout << std::endl;
     for(int i=0; i<N_ROBOTS; i++)
     {
         switch(role[i])
@@ -233,7 +239,7 @@ void Strategy::normalPlay(void)
             case ATTACKER:
             moveAttacker(i); break;
             case SUPPORT:
-            moveAttacker(i); break;
+            moveDefender(i); break;
         }
     }
 }
@@ -276,19 +282,41 @@ void Strategy::moveDefender(int n)
 
 void Strategy::moveAttacker(int n)
 {
-    if(robot[n].coord.distance(ball.coord) < ATTACKER_OFFSET_RANGE)
+    if(robot[n].coord.distance(ball.coord) < SPIN_RANGE)
+        frames_close[n]++;
+    else
+        frames_close[n] = 0;
+
+    if(frames_close[n] < FRAMES_TO_SPIN)
     {
-        robot[n].destination = ball.coord;
-    }
-    else if(SIDE == LEFT)
-    {
-        robot[n].destination.x = ball.coord.x - ATTACKER_BALL_OFFSET;
-        robot[n].destination.y = ball.coord.y;
+        auto robot_ball_angle = robot[n].coord.angle(ball.coord);
+        if(ADJUST_ANGLE &&
+           !angleCompare(robot[n].angle, robot_ball_angle, ANGLE_COMPARE_EPSILON) &&
+           !angleCompare(robot[n].angle, robot_ball_angle + M_PI_4, ANGLE_COMPARE_EPSILON) &&
+           !angleCompare(robot[n].angle, robot_ball_angle + M_PI_2, ANGLE_COMPARE_EPSILON) &&
+           !angleCompare(robot[n].angle, robot_ball_angle + 3*M_PI_4, ANGLE_COMPARE_EPSILON))
+        {
+            robot[n].movement.angular_vel_scaling = 1;
+        }
+
+        if(robot[n].coord.distance(ball.coord) < ATTACKER_OFFSET_RANGE)
+        {
+            robot[n].destination = ball.coord;
+        }
+        else if(SIDE == LEFT)
+        {
+            robot[n].destination.x = ball.coord.x - ATTACKER_BALL_OFFSET;
+            robot[n].destination.y = ball.coord.y;
+        }
+        else
+        {
+            robot[n].destination.x = ball.coord.x + ATTACKER_BALL_OFFSET;
+            robot[n].destination.y = ball.coord.y;
+        }
     }
     else
     {
-        robot[n].destination.x = ball.coord.x + ATTACKER_BALL_OFFSET;
-        robot[n].destination.y = ball.coord.y;
+        robot[n].movement.angular_vel_scaling = 1;
     }
 }
 
@@ -315,4 +343,23 @@ void Strategy::freeKick(void)
 void Strategy::penalty(void)
 {
 
+}
+
+double Strategy::normalizeAngle(double angle)
+{
+    if(angle > 2.0*M_PI)
+        while(angle > 2.0*M_PI)
+            angle -= 2.0*M_PI;
+    else if(angle < 0.0)
+        while(angle < 0.0)
+            angle += 2.0*M_PI;
+    return angle;
+}
+
+bool Strategy::angleCompare(double angle1, double angle2, double epsilon)
+{
+    angle1 = normalizeAngle(angle1);
+    angle2 = normalizeAngle(angle2);
+    double diff = angle1 - angle2;
+    return (diff < epsilon) || (-diff > -epsilon);
 }

@@ -202,7 +202,7 @@ void SharedParameters::readAIParameters(AIField &a_field)
 
     //assigning variables that should be updated from AI
     for(int i=0; i<N_ROBOTS; i++)
-        ai_field->robot[i].movement = a_field.robot[i].movement;
+        ai_field->robot[i] = a_field.robot[i];
 
     ai_field->command_list = a_field.command_list;
 
@@ -633,6 +633,7 @@ Entity SharedParameters::getBall(void)
 
 Player SharedParameters::getAllyRobot(int index)
 {
+    QMutexLocker m(&lock);
     if(index >= 0 && index < N_ROBOTS)
         return ai_field->robot[index];
     Player trash;
@@ -641,8 +642,15 @@ Player SharedParameters::getAllyRobot(int index)
 
 Entity SharedParameters::getEnemyRobot(int index)
 {
+    QMutexLocker m(&lock);
     if(index >= 0 && index < N_ROBOTS)
         return vision_field->enemy_robot[index];
     Entity trash;
     return trash;
+}
+
+useconds_t SharedParameters::getVisionTime(void)
+{
+    QMutexLocker m(&lock);
+    return vision_field->time_us;
 }
