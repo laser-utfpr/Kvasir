@@ -2,9 +2,16 @@
 
 SerialCommunication::SerialCommunication()
 {
+    int i;
     queue = NULL;
-    address = new uint8_t [W_ADDRESS];
-    data = new unsigned char [W_DATA];
+    for(i = 0; i< W_ADDRESS; i++)
+    {
+        address[i] = 0;
+    }
+    for(i = 0; i< W_DATA; i++)
+    {
+        data[i] = 0;
+    }
 }
 
 int SerialCommunication::receberRS232()
@@ -26,7 +33,7 @@ int SerialCommunication::receberRS232()
         }
         if(queue->getByte()==BEGIN)
         {
-            while(queue!=NULL&&queue->getSize()>(W_DATA+W_ADDRESS+1))
+            while(queue!=NULL&&queue->getSize()>(W_DATA+W_ADDRESS+1))//+1 porque o BEGIN nao entra no tamanho do pacote
             {
                 queue = queue->removeByte(queue);
             }
@@ -65,6 +72,7 @@ uint8_t* SerialCommunication::getAdress()
             address[i] = queue->getByte();
           //  Serial.print(char(address[i]));
         }
+        queue=queue->removeByte(queue);
     }
     //Serial.println();
     return address;
@@ -100,16 +108,15 @@ char SerialCommunication::getName()
 {
     if(queue->getByte()!=BEGIN)
     {
-        queue=queue->removeByte(queue);
         if(queue!=NULL&&queue->getSize()==W_DATA)
         {
-       //     Serial.print("nome eh: ");
-       //     Serial.println(char(queue->getByte()));
+            //Serial.print("nome eh: ");
+            //Serial.println(char(queue->getByte()));
             data[0]=queue->getByte();
-      //      Serial.println(data[0], HEX);
+            //Serial.println(data[0], HEX);
             return (data[0]);
         }
     }
+    //return static_cast <char> (-1);
   //  Serial.println();
 }
-

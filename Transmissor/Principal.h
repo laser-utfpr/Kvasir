@@ -6,8 +6,8 @@
 #include "RadioWriter.h"
 
 class Principal{
-    SerialCommunication* serial;
-    RadioWriter* rWriter;
+    SerialCommunication serial;
+    RadioWriter rWriter;
 public:
     Principal();
     ~Principal() {}

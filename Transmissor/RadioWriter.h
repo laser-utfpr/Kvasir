@@ -6,7 +6,7 @@
 #include "Radio.h"
 
 class RadioWriter{
-    Radio* radio;
+    Radio radio;
 public:
     RadioWriter();
     ~RadioWriter() {}
