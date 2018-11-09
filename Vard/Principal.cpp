@@ -39,9 +39,9 @@ chave_escrita(arg1), chave_leitura(arg2), chave_desligamento(arg3)
     }
     while(*chave_desligamento_mem != chave_desligamento.c_str())
     {
-        if(*chave_leitura_mem == chave_leitura.c_str())
+        //if(*chave_leitura_mem == chave_leitura.c_str())
         {
-            *chave_leitura_mem = EMPTY_KEY;
+            //*chave_leitura_mem = EMPTY_KEY;
             checarRobosAtivos();
             transmitir();
         }

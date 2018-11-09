@@ -10,8 +10,8 @@
 class SerialCommunication{
 private:
     Buffer* queue;
-    uint8_t* address;
-    unsigned char* data;
+    uint8_t address[W_ADDRESS];
+    unsigned char data[W_DATA];
 
 public:
     SerialCommunication();

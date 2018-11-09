@@ -4,6 +4,6 @@
 #":NOME DO ROBO @ ADDRESS do Receptor (5 bytes)" (SEM ESPAÇO)
 :0@ALEFE
 :1@LUCCA
-:2@TALES
-:3@FABRO
+:2@FABRO
+:3@TALES
 :4@ALLAN

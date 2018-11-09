@@ -219,6 +219,8 @@ void SMMCThread::startComm(void)
     *sm_comm_shutdown_key = EMPTY_KEY;
     std::string path = shared_parameters.getCommPath();
     std::string command;
+    command += "sudo";
+    command += ' ';
     command += path;
     command += ' ';
     command += comm_write_key;

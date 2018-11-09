@@ -23,8 +23,9 @@ ImageProcessing::~ImageProcessing()
 
 void ImageProcessing::findObjects(HSVMask mask)
 {
-    inRange(hsv_image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
+    cv::inRange(hsv_image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
             cv::Scalar(mask.h_max, mask.s_max, mask.v_max), thresholded_image);
+
     if(image_processing_settings.getUseMorphingOperations() == true)
     {
         auto erode_rect_size = image_processing_settings.getErodeRectSize();
@@ -69,9 +70,16 @@ void ImageProcessing::findObjects(HSVMask mask)
 
 void ImageProcessing::processFrame(void)
 {
-    cam.read(cam_image);
-    vision_field_handler.updateImage(cam_image);
-    cvtColor(cam_image, hsv_image, cv::COLOR_RGB2HSV);
+    #ifdef USE_GPU
+        cam.read(cpu_cam_image);
+        vision_field_handler.updateImage(cpu_cam_image);
+        cam_image.upload(cpu_cam_image);
+    #else
+        cam.read(cam_image);
+        vision_field_handler.updateImage(cam_image);
+    #endif
+
+    cv::cvtColor(cam_image, hsv_image, cv::COLOR_RGB2HSV);
 
     object.clear();
     for(int i=0; i<N_COLORS; i++)

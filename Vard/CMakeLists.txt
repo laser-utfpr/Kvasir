@@ -30,8 +30,13 @@ find_package(Threads REQUIRED)
 find_package(PkgConfig)
 pkg_check_modules(smmclib REQUIRED smmclib)
 
+#Including OpenCV
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIR})
+
 find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
 
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
 target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Widgets)
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} Threads::Threads)
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} rt)

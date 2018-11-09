@@ -348,9 +348,9 @@ void MainWindow::processGameControlImage(void)
                         scalar_color = new SCALAR_BLUE;
 
                     cv::line(image, cv::Point(ally[i].coord.x, ally[i].coord.y),
-                    cv::Point(ally[i].coord.x + MOVEMENT_ARROW_LENGTH*cos(M_PI - ally[i].movement.linear_vel_angle + ally[i].angle)*ally[i].movement.linear_vel_scaling,
-                              ally[i].coord.y + MOVEMENT_ARROW_LENGTH*sin(M_PI - ally[i].movement.linear_vel_angle + ally[i].angle)*ally[i].movement.linear_vel_scaling),
-                    *scalar_color);
+                    cv::Point(ally[i].coord.x + MOVEMENT_ARROW_LENGTH*cos(ally[i].angle-ally[i].movement.linear_vel_angle)*ally[i].movement.linear_vel_scaling,
+                              ally[i].coord.y + MOVEMENT_ARROW_LENGTH*sin(ally[i].angle-ally[i].movement.linear_vel_angle)*ally[i].movement.linear_vel_scaling),
+                              *scalar_color);
 
                     delete scalar_color;
                 }
@@ -636,7 +636,7 @@ void MainWindow::on_stop_resume_clicked(void)
     }
     else // if(force_stop == true)
     {
-        shared_parameters.setForceStop(true);
+        shared_parameters.setForceStop(false);
         ui->stop_resume->setText("Force Stop");
         force_stop = false;
     }
@@ -1160,7 +1160,7 @@ void MainWindow::removeTagColor(QAction *action)
         if(dead_tag_color == tested_color)
             dead_color = static_cast<Color>(i);
     }
-    shared_parameters.addTagColor(dead_color);
+    shared_parameters.removeTagColor(dead_color);
 
     current_tag_menu.removeAction(action);
     available_tag_menu.addAction(action);

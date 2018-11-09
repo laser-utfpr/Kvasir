@@ -1,6 +1,8 @@
 #ifndef HABROKCONSTANTS_H
 #define HABROKCONSTANTS_H
 
+//#define USE_GPU
+
 #define CALIBRATION_WINDOW_TITLE "Habrok Calibration"
 #define SAVED_CALIBRATION_FILENAME "calibration.cl"
 

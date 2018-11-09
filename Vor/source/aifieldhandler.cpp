@@ -72,11 +72,25 @@ void AIFieldHandler::addCommand(const char* new_command)
 
 Entity AIFieldHandler::getBall(void)
 {
+    //ball.coord = Coord(200,200);
     return ball;
 }
 
 Player AIFieldHandler::getAlly(int n)
 {
+    /*switch(n)
+    {
+        case 0:
+            robot[n].coord = Coord(400,400); break;
+        case 1:
+            robot[n].coord = Coord(600,600); break;
+        case 2:
+            robot[n].coord = Coord(800,800); break;
+        case 3:
+            robot[n].coord = Coord(800,800); break;
+        case 4:
+            robot[n].coord = Coord(800,800); break;
+    }*/
     if(n < N_ROBOTS && n >= 0)
         return robot[n];
     Player trash;

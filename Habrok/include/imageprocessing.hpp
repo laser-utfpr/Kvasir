@@ -4,6 +4,9 @@
 #include <QtCore>
 
 #include <opencv2/opencv.hpp>
+#ifdef USE_GPU
+    #include <opencv2/core/cuda.hpp>
+#endif
 
 #include <ctime>
 #include <vector>
@@ -25,9 +28,16 @@ private:
     RobotRecognizer *robot_recognizer;
 
     cv::VideoCapture cam;
-    cv::Mat cam_image;
-    cv::Mat hsv_image;
-    cv::Mat thresholded_image;
+    #ifdef USE_GPU
+        cv::Mat cpu_cam_image;
+        cv::cuda::GpuMat cam_image;
+        cv::cuda::GpuMat hsv_image;
+        cv::cuda::GpuMat thresholded_image;
+    #else
+        cv::Mat cam_image;
+        cv::Mat hsv_image;
+        cv::Mat thresholded_image;
+    #endif
 
     std::vector<ColoredObject> object;
 
