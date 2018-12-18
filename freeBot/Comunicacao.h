@@ -8,7 +8,7 @@
 
 class Comunicacao{
 private:
-    RFreceiver* rReceiver;
+    RFreceiver rReceiver;
     float velocidadeEixoX;
     float velocidadeEixoY;
     float velAng;
@@ -19,7 +19,7 @@ public:
     float getVelocidadeEixoX();
     float getVelocidadeEixoY();
     float getVelocidadeAng();
-    int aguardarDados(int captar); 
+    int aguardarDados(int captar);
     ~Comunicacao() {};
 };
 #endif

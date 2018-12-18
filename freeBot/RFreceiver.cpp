@@ -6,10 +6,10 @@ RFreceiver::RFreceiver()
     velocidadeX = 0;
     velAng = 0;
     queue = NULL;
-    radio = new Radio();
+    radio = Radio();
     uint8_t address[] = {ADDRESS};
-    radio->openReadingPipe(1, address);
-    radio->startListening();
+    radio.openReadingPipe(1, address);
+    radio.startListening();
 }
 
 int RFreceiver::receber()
@@ -17,9 +17,9 @@ int RFreceiver::receber()
     int i, a=0;
     unsigned char data[W_DATA];
 
-    if(radio->available())
+    if(radio.available())
     {
-        radio->read(&data,W_DATA);
+        radio.read(&data,W_DATA);
         if(data[0]==NAME&&data[1]!=0)
         {
            // Serial.print("Data recebida: ");
@@ -69,7 +69,7 @@ int RFreceiver::atualizarBuffer()
 
 void RFreceiver::debug()
 {
-    radio->printDetails();
+    radio.printDetails();
 }
 
 float RFreceiver::getVelY()

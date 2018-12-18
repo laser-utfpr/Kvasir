@@ -16,7 +16,7 @@ Movimentacao::Movimentacao()
 void Movimentacao::mover(float velX, float velY, float w)
 {
     calculo(velX,velY, w);
-    
+
     motor1->setVelocidade(velocidade.motor1);
     motor2->setVelocidade(velocidade.motor2);
     motor3->setVelocidade(velocidade.motor3);
@@ -39,7 +39,7 @@ void Movimentacao::calculo(float velX, float velY, float w)
     //      |
     //      M3
     //
-    
+
     float  vox=0, voy=0;
     vox=cos(ANG)*velX+sin(ANG)*velY;
     voy=-sin(ANG)*velX+cos(ANG)*velY;

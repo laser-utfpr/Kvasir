@@ -11,8 +11,8 @@
 
 class Hardware{
 private:
-    Comunicacao* comunicacao;  //--Abriga o modulo xbee e a serial
-    Movimentacao* movimentacao;//--Abriga os motores e os calculos
+    Comunicacao comunicacao;  //--Abriga o modulo xbee e a serial
+    Movimentacao movimentacao;//--Abriga os motores e os calculos
 
 public:
     Hardware();

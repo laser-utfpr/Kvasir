@@ -2,7 +2,7 @@
 
 Comunicacao::Comunicacao()
 {
-    rReceiver = new RFreceiver();
+    rReceiver = RFreceiver();
     a=0;
     tempo=0;
     aux=0;
@@ -15,7 +15,7 @@ int Comunicacao::aguardarDados(int captar)
     {
         if(captar == 1)
         {
-            a+=rReceiver->receber();
+            a+=rReceiver.receber();
             aux = millis()-tempo;
             if(aux >= 27000)
             {
@@ -27,10 +27,10 @@ int Comunicacao::aguardarDados(int captar)
             }
             //Serial.print(*a);
         }
-        buffer_vazio = rReceiver->atualizarBuffer(); //retorna 1 quando o Buffer local estiver sem pacotes completos
-        velocidadeEixoX = rReceiver->getVelX();
-        velocidadeEixoY = rReceiver->getVelY();
-        velAng = rReceiver->getVelAng();
+        buffer_vazio = rReceiver.atualizarBuffer(); //retorna 1 quando o Buffer local estiver sem pacotes completos
+        velocidadeEixoX = rReceiver.getVelX();
+        velocidadeEixoY = rReceiver.getVelY();
+        velAng = rReceiver.getVelAng();
         //rReceiver->debug();
     }
     return buffer_vazio;
@@ -50,4 +50,3 @@ float Comunicacao::getVelocidadeAng()
 {
     return velAng;
 }
-

@@ -14,7 +14,7 @@ private:
     float velocidadeY;
     float velAng;
     Buffer* queue;
-    Radio* radio;
+    Radio radio;
     uint8_t address;
 
 public:
