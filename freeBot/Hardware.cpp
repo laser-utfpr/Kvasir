@@ -3,7 +3,11 @@
 Hardware::Hardware()
 {
     comunicacao = Comunicacao();
+<<<<<<< HEAD
+    movimentacao = new Movimentacao();
+=======
     movimentacao = Movimentacao();
+>>>>>>> cb7f1da065620fe6ff221ce749a10261c0cfc086
 }
 
 void Hardware::atualizar(EspinhaDorsal *espinhaDorsal)

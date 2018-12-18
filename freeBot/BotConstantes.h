@@ -23,8 +23,8 @@
 #define W_ADDRESS 5 //quantidade de bytes do endereco
 #define W_DATA 14 //quantidade de bytes do pacote para envio
 #define DATA_RATE RF24_2MBPS //velocidade de transmissao de dados
-#define ADDRESS "ALLAN"
-#define NAME 4
+#define ADDRESS "ALEFE"
+#define NAME 0
 
 #define DADOS 12 //tamanho de dados efetivamente usados no programa arduino (no momento, 3 velocidades float)
 #define KEY 0xa0 //chave que indica o inicio de um pacote efetivo de velocidades

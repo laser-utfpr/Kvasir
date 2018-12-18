@@ -2,7 +2,11 @@
 
 void PrincipalStart()
 {
+<<<<<<< HEAD
+	   Hardware hardware = Hardware();//--Corpo do Robo
+=======
      Hardware hardware = Hardware();//--Corpo do Robo
+>>>>>>> cb7f1da065620fe6ff221ce749a10261c0cfc086
      Software software = Software();//--Estrategia do Robo
      EspinhaDorsal espinhaDorsal = EspinhaDorsal();//--Comunicação das princiopais classes
 	   //--O metodo espinha dorsal eh dividido em dois
