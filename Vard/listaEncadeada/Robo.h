@@ -2,13 +2,11 @@
 #define _ROBO_H_
 
 #include "VelocitiesLoader.hpp"
-#include "RobotMsg.h"
 
 class Robo{
 private:
     int nome;
     VelocitiesLoader *loader;
-    RobotMsg* mensagem;
     char MAC[30];
     Robo* ptrProx;
 
