@@ -14,14 +14,14 @@ void Principal::PrincipalStart()
 	   {
   		  if(serial.receberRS232())
         {
-  			    adress=serial.getAdress();
+  			    adress=serial.getAddress();
             name = serial.getName();
             rWriter.setChannel(name);
-  			    rWriter.setAdress(adress);
+  			    rWriter.setAddress(adress);
   			    rWriter.sendData(serial.getData());
             //rWriter.debug();
         }
-       
+
    		    //delay(1000);
   	   }
 }

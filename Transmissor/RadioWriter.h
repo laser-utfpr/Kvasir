@@ -10,7 +10,7 @@ class RadioWriter{
 public:
     RadioWriter();
     ~RadioWriter() {}
-    void setAdress(const uint8_t* addres);
+    void setAddress(const uint8_t* addres);
     void setChannel(char name);
     void sendData(const void* data);
     void debug();

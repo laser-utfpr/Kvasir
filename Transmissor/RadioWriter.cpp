@@ -10,7 +10,7 @@ void RadioWriter::setChannel(char name)
     radio.setChannel(uint8_t(CHANNEL+2*name));
 }
 
-void RadioWriter::setAdress(const uint8_t* address)
+void RadioWriter::setAddress(const uint8_t* address)
 {
     radio.openWritingPipe(address);
 }

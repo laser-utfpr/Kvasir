@@ -26,7 +26,7 @@ int SerialCommunication::receberRS232()
             queue = queue->addByte(Serial1.read(), queue);
         }
         //jogar fora os caras atrasados
-    
+
         while(queue!=NULL&&queue->getByte()!=BEGIN)
         {
             queue = queue->removeByte(queue);
@@ -44,7 +44,7 @@ int SerialCommunication::receberRS232()
             }
             else
                 return 1;
-        }  
+        }
     }
     else
     {
@@ -53,11 +53,11 @@ int SerialCommunication::receberRS232()
     }
 }
 
-uint8_t* SerialCommunication::getAdress()
+uint8_t* SerialCommunication::getAddress()
 {
     int i;
-    
-    
+
+
     if(queue!=NULL&&queue->getByte()==BEGIN)
     {
         //Serial.print("tamanho da fila eh ");
@@ -100,7 +100,7 @@ unsigned char* SerialCommunication::getData()
     {
         data[1]=0;
     }
-        
+
     return data;
 }
 

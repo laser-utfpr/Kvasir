@@ -3,7 +3,7 @@
 Buffer::Buffer(unsigned char _byte)
 {
     amount = 1;
-    Byte = _byte;
+    byte = _byte;
     next = NULL;
 }
 
@@ -52,5 +52,5 @@ int Buffer::getSize()
 
 unsigned char Buffer::getByte()
 {
-    return Byte;
+    return byte;
 }

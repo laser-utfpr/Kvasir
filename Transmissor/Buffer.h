@@ -7,8 +7,8 @@
 
 class Buffer{
     int amount;
-    unsigned char Byte;
-    
+    unsigned char byte;
+
 public:
     Buffer* next;
     Buffer(unsigned char _byte);
