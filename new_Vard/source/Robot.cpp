@@ -20,17 +20,17 @@ int Robot::getName()
 float Robot::getVelX()
 {
     loader->updateVelocities();
-    return loader->getVelX(nome);
+    return loader->getVelX(name);
 }
 
 float Robot::getVelY()
 {
     loader->updateVelocities();
-    return loader->getVelY(nome);
+    return loader->getVelY(name);
 }
 
 float Robot::getVelAng()
 {
     loader->updateVelocities();
-    return loader->getVelAng(nome);
+    return loader->getVelAng(name);
 }

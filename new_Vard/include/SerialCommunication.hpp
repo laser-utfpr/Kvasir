@@ -3,7 +3,7 @@
 #ifndef _SERIALCOMMUNICATION_HPP_
 #define _SERIALCOMMUNICATION_HPP_
 
-#include "VardConstats.h"
+#include "VardConstants.h"
 #include "rs232.h"
 
 class SerialCommunication{

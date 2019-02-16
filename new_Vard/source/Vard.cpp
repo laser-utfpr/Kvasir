@@ -3,31 +3,23 @@
 Vard::Vard(const char* arg1, const char* arg2, const char* arg3):
 write_key(arg1), read_key(arg2), shutdown_key(arg3)
 {
-    robot_settings.open("caminho.txt");
+    robot_settings.open("robots_settings.txt");
     serial_comm = new SerialCommunication();
     if(robot_settings.is_open())
     {
-        std::string aux;
-        bool start_reading = false;
-        while(!start_reading)
+        int i = 0;
+        while(!robot_settings.fail() && i < N_ROBOTS)
         {
-            if(!robot_settings.fail())
+            std::string aux;
+            std::getline (robot_settings, aux);
+            std::size_t pos = aux.find("#");//comentario
+            while(pos != std::string::npos && !robot_settings.fail())
             {
-                getline (robot_settings, aux);
-                std::size_t pos = aux.find("#");
-                if(found == std::string::npos)
-                {
-                    start_reading = true;
-                }
+                std::getline (robot_settings, aux);
+                pos = aux.find("#");
             }
-        }
-        for(int i=0; i < N_ROBOTS; i++)
-        {
-            if(!robot_settings.fail())
-            {
-                getline (robot_settings, aux);
-                robot[i] = new Robot(getRobotNameFromFile(aux), getRobotRFAddressFromFile(aux));
-            }
+            robot[i] = new Robot(getRobotNameFromFile(aux), getRobotRFAddressFromFile(aux));
+            i++;
         }
         robot_settings.close();
     }
@@ -99,7 +91,7 @@ int Vard::getRobotNameFromFile(std::string str)
 char *Vard::getRobotRFAddressFromFile(std::string str)
 {
     char *rf_address;
-    std::size_t pos = aux.find("@");
+    std::size_t pos = str.find("@");
     str.copy(rf_address, str.size()-(pos+1), pos+1);
     return rf_address;
 }
