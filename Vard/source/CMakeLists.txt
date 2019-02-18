@@ -6,7 +6,7 @@ set(APPLICATION_NAME Vard)
 add_executable(${APPLICATION_NAME} ${SRC_LIST})
 
 #Linking external libraries to the executable
-#target_link_libraries(${APPLICATION_NAME} Qt5::Core Qt5::Widgets)
+target_link_libraries(${APPLICATION_NAME} Qt5::Core Qt5::Widgets)
 target_link_libraries(${APPLICATION_NAME} ${OpenCV_LIBS})
 #target_link_libraries(${APPLICATION_NAME} Boost::serialization)
 #target_link_libraries(${APPLICATION_NAME} Boost::system)

@@ -12,6 +12,8 @@
 #include <boost/interprocess/allocators/allocator.hpp>
 #include "Robot.hpp"
 #include "SerialCommunication.hpp"
+#include <QtCore>
+#include <QCoreApplication>
 
 class Vard{
     std::string write_key;

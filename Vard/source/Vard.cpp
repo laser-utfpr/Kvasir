@@ -3,7 +3,9 @@
 Vard::Vard(const char* arg1, const char* arg2, const char* arg3):
 write_key(arg1), read_key(arg2), shutdown_key(arg3)
 {
-    robot_settings.open("robots_settings.txt");
+    QString a = qApp->applicationDirPath();
+    a += "/../../source/robots_settings.txt";
+    robot_settings.open(a.toStdString());
     serial_comm = new SerialCommunication();
     if(robot_settings.is_open())
     {
@@ -83,15 +85,16 @@ void Vard::start()
 
 int Vard::getRobotNameFromFile(std::string str)
 {
-    std::string::size_type sz;
-    int name = std::stoi (str, &sz);
+    std::size_t pos = str.find(":");
+    std::string str_dec = str.substr(pos+1, str.size());
+    int name = std::stoi (str_dec);
     return name;
 }
 
 char *Vard::getRobotRFAddressFromFile(std::string str)
 {
-    char *rf_address;
     std::size_t pos = str.find("@");
-    str.copy(rf_address, str.size()-(pos+1), pos+1);
+    str = str.substr(pos+1, str.size());
+    char *rf_address = (char*)str.c_str();
     return rf_address;
 }
