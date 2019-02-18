@@ -4,7 +4,11 @@ Vard::Vard(const char* arg1, const char* arg2, const char* arg3):
 write_key(arg1), read_key(arg2), shutdown_key(arg3)
 {
     QString a = qApp->applicationDirPath();
-    a += "/../../source/robots_settings.txt";
+    #ifndef XBEE
+        a += "/../../source/robots_settings.txt";
+    #else
+        a += "/../../source/robots_settings_xbee.txt";
+    #endif
     robot_settings.open(a.toStdString());
     serial_comm = new SerialCommunication();
     if(robot_settings.is_open())
