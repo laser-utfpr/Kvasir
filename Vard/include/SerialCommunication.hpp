@@ -5,6 +5,7 @@
 
 #include "VardConstants.h"
 #include "rs232.h"
+#include <iostream>
 
 class SerialCommunication{
     unsigned char data[PACKET_SIZE];

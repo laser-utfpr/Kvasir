@@ -5,6 +5,7 @@ SerialCommunication::SerialCommunication()
     if(RS232_OpenComport(CPORT_NR, BDRATE, "8N1"))
     {
         printf("AVISO: NENHUMA serial encontrada!!\n");
+        exit(1);
     }
     else
     {
