@@ -34,7 +34,6 @@ void SerialCommunication::mountPacket(int name, char *rf_address, float vel_x, f
     *((float*)&string_velY) = vel_y;
     *((float*)&string_velAng) = vel_ang;
 #ifndef XBEE
-    printf("beleza mano");
     // string saida foi craida com base na documentacao da biblioteca para nrf24l01 -- http://tmrh20.github.io/RF24/ //nrf24l01
     data[0] = BEGIN;  //--Padr�o
     data[1] = rf_address[0];  //--Adress
@@ -52,7 +51,6 @@ void SerialCommunication::mountPacket(int name, char *rf_address, float vel_x, f
     }
 
 #else
-    printf("chato mano");
     int j = 0, address[8], aux;
     for(i=0; i<16; i++)
     {
