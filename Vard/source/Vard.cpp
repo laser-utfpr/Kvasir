@@ -80,6 +80,7 @@ void Vard::start()
             serial_comm->mountPacket(robot[i]->getName(), robot[i]->getRFAddress(), robot[i]->getVelX(), robot[i]->getVelY(), robot[i]->getVelAng());
             serial_comm->sendData();
         }
+        usleep(COMMUNICATION_DELAY);
     }
 }
 
