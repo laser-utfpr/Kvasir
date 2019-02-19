@@ -26,6 +26,9 @@ public:
     std::string commandReceived(void);
     void addCommand(const char* new_command);
 
+    std::string manualCommandReceived(void);
+    void addManualCommand(const char* new_command);
+
     Entity getBall(void);
     Player getAlly(int n);
     Entity getEnemy(int n);

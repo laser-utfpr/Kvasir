@@ -55,9 +55,13 @@ public:
     BoostInterprocessString command;
     StringVector command_list;
 
+    BoostInterprocessString manual_command;
+    StringVector manual_command_list;
+
     inline AIField(CharAllocator &char_allocator, StringAllocator &string_allocator) :
     image_width(NAN), image_height(NAN), time_us(0),
-    command(char_allocator), command_list(string_allocator) {};
+    command(char_allocator), command_list(string_allocator),
+    manual_command(char_allocator), manual_command_list(string_allocator){};
 
     inline AIField& operator<<(const VisionField& vision)
     {

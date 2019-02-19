@@ -40,6 +40,7 @@ void AIFieldHandler::readChanges(boost::interprocess::managed_shared_memory &sm)
     this->right_goalkeeper_area_lrc = sm_vf->right_goalkeeper_area_lrc;
 
     this->command = sm_vf->command;
+    this->manual_command = sm_vf->manual_command;
 }
 
 void AIFieldHandler::writeChanges(boost::interprocess::managed_shared_memory &sm)
@@ -50,6 +51,7 @@ void AIFieldHandler::writeChanges(boost::interprocess::managed_shared_memory &sm
         sm_vf->robot[i] = this->robot[i];
 
     sm_vf->command_list = this->command_list;
+    sm_vf->manual_command_list = this->manual_command_list;
 }
 
 useconds_t AIFieldHandler::sampleTime(void)
@@ -68,6 +70,18 @@ void AIFieldHandler::addCommand(const char* new_command)
     BoostInterprocessString s(char_allocator);
     s = new_command;
     command_list.push_back(s);
+}
+
+std::string AIFieldHandler::manualCommandReceived(void)
+{
+
+}
+
+void AIFieldHandler::addManualCommand(const char* new_command)
+{
+    BoostInterprocessString s(char_allocator);
+    s = new_command;
+    manual_command_list.push_back(s);
 }
 
 Entity AIFieldHandler::getBall(void)

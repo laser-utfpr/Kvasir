@@ -39,9 +39,9 @@ private:
     QString ai_path;
     QString comm_path;
 
-    QMenu command_menu;
-    QAction **command_menu_action;
-    int n_command_actions;
+    QMenu command_menu, manual_command_menu, players_menu;
+    QAction **command_menu_action, **manual_command_menu_action, **players_menu_action;
+    int n_command_actions, n_manual_command_action, n_available_players;
 
     bool force_stop;
 
@@ -104,6 +104,14 @@ private slots:
     void makeCommandMenu(void);
     void changeCommand(QAction *action);
     void on_send_command_clicked(void);
+
+    void makeManualCommandMenu(void);
+    void changeManualCommand(QAction *action);
+    void on_send_manual_command_clicked(void);
+
+    void makePlayersMenu(void);
+    void changePlayer(QAction *action);
+    void on_send_manual_player_clicked(void);
 
     void on_stop_resume_clicked(void);
 

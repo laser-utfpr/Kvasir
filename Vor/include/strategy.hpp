@@ -48,6 +48,7 @@ private:
     void enemyKickOff(void);
     void freeKick(void);
     void penalty(void);
+    void manualControl(void);
 
     void moveGoalkeeper(int n);
     void moveDefender(int n);
@@ -64,6 +65,7 @@ public:
     ~Strategy();
 
     void makeCommandList(void);
+    void makeManualCommandList(void);
     void calculateMovements(void);
 
     static bool comparePlayerDistance(Player p1, Player p2);

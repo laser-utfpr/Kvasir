@@ -25,6 +25,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect(&command_menu, SIGNAL(aboutToShow()), this, SLOT(makeCommandMenu()));
     connect(&command_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeCommand(QAction*)));
 
+    //creating the AI manual command and connecting it's signals
+    ui->manual_command_menu->setMenu(&manual_command_menu);
+    manual_command_menu_action = nullptr;
+    n_manual_command_action = 0;
+    connect(&manual_command_menu, SIGNAL(aboutToShow()), this, SLOT(makeManualCommandMenu()));
+    connect(&manual_command_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeManualCommand(QAction*)));
+
+    //creating the available players menu
+    ui->players_menu->setMenu(&players_menu);
+    players_menu_action = nullptr;
+    n_available_players = 0;
+    connect(&players_menu, SIGNAL(aboutToShow()), this, SLOT(makePlayersMenu()));
+    connect(&players_menu, SIGNAL(triggered(QAction*)), this, SLOT(changePlayer(QAction*)));
+
+
     force_stop = false;
 
     //setting the menus' variables to it's buttons
@@ -624,6 +639,61 @@ void MainWindow::on_send_command_clicked(void)
     QString qstr = ui->command_menu->text();
     shared_parameters.setAICommand(qstr.toStdString());
     emit aiSettingsChanged();
+}
+
+void MainWindow::makeManualCommandMenu(void)
+{
+    manual_command_menu.clear();
+    if(manual_command_menu_action != nullptr)
+    {
+        for(int i=0; i<n_manual_command_action; i++)
+        {
+            if(manual_command_menu_action[i] != nullptr)
+            {
+                delete manual_command_menu_action[i];
+                manual_command_menu_action[i] = nullptr;
+            }
+        }
+        delete manual_command_menu_action;
+        manual_command_menu_action = nullptr;
+    }
+
+    std::vector<std::string> manual_command_list = shared_parameters.getCommandList();
+    n_manual_command_action = manual_command_list.size();
+    manual_command_menu_action = new QAction*[n_manual_command_action];
+
+    QString qstr;
+    for(int i=0; i<n_manual_command_action; i++)
+    {
+        qstr = manual_command_list[i].c_str();
+        manual_command_menu_action[i] = new QAction(qstr,this);
+        manual_command_menu.addAction(manual_command_menu_action[i]);
+    }
+}
+
+void MainWindow::changeManualCommand(QAction *action)
+{
+
+}
+
+void MainWindow::on_send_manual_command_clicked(void)
+{
+
+}
+
+void MainWindow::makePlayersMenu(void)
+{
+
+}
+
+void MainWindow::changePlayer(QAction *action)
+{
+
+}
+
+void MainWindow::on_send_manual_player_clicked(void)
+{
+
 }
 
 void MainWindow::on_stop_resume_clicked(void)

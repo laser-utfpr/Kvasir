@@ -29,6 +29,13 @@ void Strategy::makeCommandList(void)
         ai_field_handler.addCommand(command_name[i]);
 }
 
+void Strategy::makeManualCommandList(void)
+{
+    const char *manual_command_name[] = MANUAL_COMMAND_NAMES;
+    for(int i=0; i < N_MANUAL_COMMANDS; i++)
+        ai_field_handler.addManualCommand(manual_command_name[i]);
+}
+
 void Strategy::calculateMovementsFromDestinations(void)
 {
     for(int i=0; i<N_ROBOTS; i++)
@@ -93,6 +100,9 @@ void Strategy::calculateMovements(void)
 
         case PENALTY:
         penalty(); break;
+
+        case MANUAL_CONTROL:
+        manualControl(); break;
     }
 
     calculateMovementsFromDestinations();
@@ -350,6 +360,13 @@ void Strategy::freeKick(void)
 
 void Strategy::penalty(void)
 {
+
+}
+
+void Strategy::manualControl(void)
+{
+    std::cout << "legal" <<std::endl;
+    makeManualCommandList();
 
 }
 
