@@ -74,7 +74,8 @@ void AIFieldHandler::addCommand(const char* new_command)
 
 std::string AIFieldHandler::manualCommandReceived(void)
 {
-
+    std::string smanual_command = manual_command.c_str();
+    return smanual_command;
 }
 
 void AIFieldHandler::addManualCommand(const char* new_command)

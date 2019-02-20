@@ -205,6 +205,7 @@ void SharedParameters::readAIParameters(AIField &a_field)
         ai_field->robot[i] = a_field.robot[i];
 
     ai_field->command_list = a_field.command_list;
+    ai_field->manual_command_list = a_field.manual_command_list;
 
     //applying changes to comm movements
     for(int i=0; i<N_ROBOTS; i++)
@@ -591,6 +592,19 @@ void SharedParameters::setAICommand(std::string str)
     ai_field->command = str.c_str();
 }
 
+std::string SharedParameters::getAIManualCommand(void)
+{
+    QMutexLocker m(&lock);
+    std::string str = ai_field->manual_command.c_str();
+    return str;
+}
+
+void SharedParameters::setAIManualCommand(std::string str)
+{
+    QMutexLocker m(&lock);
+    ai_field->manual_command = str.c_str();
+}
+
 void SharedParameters::setForceStop(bool stop)
 {
     QMutexLocker m(&lock);
@@ -612,6 +626,14 @@ std::vector<std::string> SharedParameters::getCommandList(void)
     return v;
 }
 
+std::vector<std::string> SharedParameters::getManualCommandList(void)
+{
+    QMutexLocker m(&lock);
+    std::vector<std::string> v;
+    for(int i=0; i<ai_field->manual_command_list.size(); i++)
+        v.push_back(ai_field->manual_command_list[i].c_str());
+    return v;
+}
 Movement SharedParameters::getRobotMovement(int index)
 {
     QMutexLocker m(&lock);

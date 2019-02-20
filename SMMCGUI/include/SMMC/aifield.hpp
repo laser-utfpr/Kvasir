@@ -52,11 +52,8 @@ public:
     Coord right_goalkeeper_area_ulc;
     Coord right_goalkeeper_area_lrc;
 
-    BoostInterprocessString command;
-    StringVector command_list;
-
-    BoostInterprocessString manual_command;
-    StringVector manual_command_list;
+    BoostInterprocessString command, manual_command;
+    StringVector command_list, manual_command_list;
 
     inline AIField(CharAllocator &char_allocator, StringAllocator &string_allocator) :
     image_width(NAN), image_height(NAN), time_us(0),

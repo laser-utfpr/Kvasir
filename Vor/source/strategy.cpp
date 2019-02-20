@@ -365,9 +365,45 @@ void Strategy::penalty(void)
 
 void Strategy::manualControl(void)
 {
-    std::cout << "legal" <<std::endl;
-    makeManualCommandList();
-
+    Manual_Command manual_command;
+    const char *manual_command_name[] = MANUAL_COMMAND_NAMES;
+    std::string manual_command_received = ai_field_handler.manualCommandReceived();
+    for(int i=0; i < N_MANUAL_COMMANDS; i++)
+    {
+        if(manual_command_received == manual_command_name[i])
+        {
+            manual_command = static_cast<Manual_Command>(i);
+            break;
+        }
+    }
+    int n = 0;
+    switch (manual_command)
+    {
+        case FORWARD:
+            robot[n].destination.x = 0;
+            robot[n].destination.y = 1; break;
+        case TURN_LEFT:
+            robot[n].destination.x = 1;
+            robot[n].destination.y = 0; break;
+        case TURN_RIGHT:
+            robot[n].destination.x = -1;
+            robot[n].destination.y = 0; break;
+        case BACK:
+            robot[n].destination.x = 0;
+            robot[n].destination.y = -1; break;
+        case FL:
+            robot[n].destination.x = 1;
+            robot[n].destination.y = 1; break;
+        case FR:
+            robot[n].destination.x = -1;
+            robot[n].destination.y = 1; break;
+        case BL:
+            robot[n].destination.x = 1;
+            robot[n].destination.y = -1; break;
+        case BR:
+            robot[n].destination.x = -1;
+            robot[n].destination.y = -1; break;
+    }
 }
 
 double Strategy::normalizeAngle(double angle)

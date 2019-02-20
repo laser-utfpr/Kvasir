@@ -187,6 +187,21 @@ MainWindow::~MainWindow()
         command_menu_action = nullptr;
     }
 
+    //deleting the AI manual commands' actions
+    if(manual_command_menu_action != nullptr)
+    {
+        for(int i=0; i<n_command_actions; i++)
+        {
+            if(command_menu_action[i] != nullptr)
+            {
+                delete manual_command_menu_action[i];
+                manual_command_menu_action[i] = nullptr;
+            }
+        }
+        delete manual_command_menu_action;
+        manual_command_menu_action = nullptr;
+    }
+
     //deleting color actions
     for(int i=0; i<N_COLORS; i++)
     {
@@ -657,28 +672,31 @@ void MainWindow::makeManualCommandMenu(void)
         delete manual_command_menu_action;
         manual_command_menu_action = nullptr;
     }
-
-    std::vector<std::string> manual_command_list = shared_parameters.getCommandList();
-    n_manual_command_action = manual_command_list.size();
-    manual_command_menu_action = new QAction*[n_manual_command_action];
-
-    QString qstr;
-    for(int i=0; i<n_manual_command_action; i++)
+    if(ui->command_menu->text() == "Manual Control")
     {
-        qstr = manual_command_list[i].c_str();
-        manual_command_menu_action[i] = new QAction(qstr,this);
-        manual_command_menu.addAction(manual_command_menu_action[i]);
+        std::vector<std::string> manual_command_list = shared_parameters.getManualCommandList();
+        n_manual_command_action = manual_command_list.size();
+        manual_command_menu_action = new QAction*[n_manual_command_action];
+        QString qstr;
+        for(int i=0; i<n_manual_command_action; i++)
+        {
+            qstr = manual_command_list[i].c_str();
+            manual_command_menu_action[i] = new QAction(qstr,this);
+            manual_command_menu.addAction(manual_command_menu_action[i]);
+        }
     }
 }
 
 void MainWindow::changeManualCommand(QAction *action)
 {
-
+    ui->manual_command_menu->setText(action->text());
 }
 
 void MainWindow::on_send_manual_command_clicked(void)
 {
-
+    QString qstr = ui->manual_command_menu->text();
+    shared_parameters.setAIManualCommand(qstr.toStdString());
+    emit aiSettingsChanged();
 }
 
 void MainWindow::makePlayersMenu(void)
