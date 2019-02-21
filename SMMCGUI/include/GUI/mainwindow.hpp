@@ -107,10 +107,9 @@ private slots:
 
     void makeManualCommandMenu(void);
     void changeManualCommand(QAction *action);
-    void on_send_manual_command_clicked(void);
 
     void makePlayersMenu(void);
-    void changePlayer(QAction *action);
+    void changeManualPlayer(QAction *action);
     void on_send_manual_player_clicked(void);
 
     void on_stop_resume_clicked(void);

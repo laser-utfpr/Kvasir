@@ -95,6 +95,9 @@ public:
     void setAIManualCommand(std::string str);
     std::vector<std::string> getManualCommandList(void);
 
+    std::string getAIManualPlayer(void);
+    void setAIManualPlayer(std::string str);
+
     void setForceStop(bool stop);
 
     std::vector<float> getImageData(void);

@@ -41,6 +41,7 @@ void AIFieldHandler::readChanges(boost::interprocess::managed_shared_memory &sm)
 
     this->command = sm_vf->command;
     this->manual_command = sm_vf->manual_command;
+    this->manual_player = sm_vf->manual_player;
 }
 
 void AIFieldHandler::writeChanges(boost::interprocess::managed_shared_memory &sm)
@@ -83,6 +84,12 @@ void AIFieldHandler::addManualCommand(const char* new_command)
     BoostInterprocessString s(char_allocator);
     s = new_command;
     manual_command_list.push_back(s);
+}
+
+int AIFieldHandler::manualPlayer(void)
+{
+    int imanual_player = std::stoi(manual_player.c_str());
+    return imanual_player;
 }
 
 Entity AIFieldHandler::getBall(void)

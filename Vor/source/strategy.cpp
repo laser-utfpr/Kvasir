@@ -368,41 +368,50 @@ void Strategy::manualControl(void)
     Manual_Command manual_command;
     const char *manual_command_name[] = MANUAL_COMMAND_NAMES;
     std::string manual_command_received = ai_field_handler.manualCommandReceived();
+    bool there_is_command = false;
     for(int i=0; i < N_MANUAL_COMMANDS; i++)
     {
         if(manual_command_received == manual_command_name[i])
         {
             manual_command = static_cast<Manual_Command>(i);
+            there_is_command = true;
             break;
         }
     }
-    int n = 0;
-    switch (manual_command)
+    if(there_is_command)
     {
-        case FORWARD:
-            robot[n].destination.x = 0;
-            robot[n].destination.y = 1; break;
-        case TURN_LEFT:
-            robot[n].destination.x = 1;
-            robot[n].destination.y = 0; break;
-        case TURN_RIGHT:
-            robot[n].destination.x = -1;
-            robot[n].destination.y = 0; break;
-        case BACK:
-            robot[n].destination.x = 0;
-            robot[n].destination.y = -1; break;
-        case FL:
-            robot[n].destination.x = 1;
-            robot[n].destination.y = 1; break;
-        case FR:
-            robot[n].destination.x = -1;
-            robot[n].destination.y = 1; break;
-        case BL:
-            robot[n].destination.x = 1;
-            robot[n].destination.y = -1; break;
-        case BR:
-            robot[n].destination.x = -1;
-            robot[n].destination.y = -1; break;
+        int n = ai_field_handler.manualPlayer();
+        std::cout <<"mandando comando "<<manual_command<<"para o jogador "<<n<<std::endl;
+        switch (manual_command)
+        {
+            case STOP:
+                robot[n].destination.x = 0;
+                robot[n].destination.y = 0; break;
+            case FORWARD:
+                robot[n].destination.x = 0;
+                robot[n].destination.y = 1; break;
+            case TURN_LEFT:
+                robot[n].destination.x = 1;
+                robot[n].destination.y = 0; break;
+            case TURN_RIGHT:
+                robot[n].destination.x = -1;
+                robot[n].destination.y = 0; break;
+            case BACK:
+                robot[n].destination.x = 0;
+                robot[n].destination.y = -1; break;
+            case FL:
+                robot[n].destination.x = 1;
+                robot[n].destination.y = 1; break;
+            case FR:
+                robot[n].destination.x = -1;
+                robot[n].destination.y = 1; break;
+            case BL:
+                robot[n].destination.x = 1;
+                robot[n].destination.y = -1; break;
+            case BR:
+                robot[n].destination.x = -1;
+                robot[n].destination.y = -1; break;
+        }
     }
 }
 

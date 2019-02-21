@@ -605,6 +605,19 @@ void SharedParameters::setAIManualCommand(std::string str)
     ai_field->manual_command = str.c_str();
 }
 
+std::string SharedParameters::getAIManualPlayer(void)
+{
+    QMutexLocker m(&lock);
+    std::string str = ai_field->manual_player.c_str();
+    return str;
+}
+
+void SharedParameters::setAIManualPlayer(std::string str)
+{
+    QMutexLocker m(&lock);
+    ai_field->manual_player = str.c_str();
+}
+
 void SharedParameters::setForceStop(bool stop)
 {
     QMutexLocker m(&lock);

@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     players_menu_action = nullptr;
     n_available_players = 0;
     connect(&players_menu, SIGNAL(aboutToShow()), this, SLOT(makePlayersMenu()));
-    connect(&players_menu, SIGNAL(triggered(QAction*)), this, SLOT(changePlayer(QAction*)));
+    connect(&players_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeManualPlayer(QAction*)));
 
 
     force_stop = false;
@@ -200,6 +200,20 @@ MainWindow::~MainWindow()
         }
         delete manual_command_menu_action;
         manual_command_menu_action = nullptr;
+    }
+
+    if(players_menu_action != nullptr)
+    {
+        for(int i=0; i<n_available_players; i++)
+        {
+            if(players_menu_action[i] != nullptr)
+            {
+                delete players_menu_action[i];
+                players_menu_action[i] = nullptr;
+            }
+        }
+        delete players_menu_action;
+        players_menu_action = nullptr;
     }
 
     //deleting color actions
@@ -692,26 +706,53 @@ void MainWindow::changeManualCommand(QAction *action)
     ui->manual_command_menu->setText(action->text());
 }
 
-void MainWindow::on_send_manual_command_clicked(void)
-{
-    QString qstr = ui->manual_command_menu->text();
-    shared_parameters.setAIManualCommand(qstr.toStdString());
-    emit aiSettingsChanged();
-}
-
 void MainWindow::makePlayersMenu(void)
 {
-
+    players_menu.clear();
+    if(players_menu_action != nullptr)
+    {
+        for(int i=0; i<n_available_players; i++)
+        {
+            if(players_menu_action[i] != nullptr)
+            {
+                delete players_menu_action[i];
+                players_menu_action[i] = nullptr;
+            }
+        }
+        delete players_menu_action;
+        players_menu_action = nullptr;
+    }
+    if(ui->command_menu->text() == "Manual Control")
+    {
+        std::vector<std::string> players_list;
+        for(int i=0; i<N_ROBOTS; i++)
+        {
+            players_list.push_back(std::to_string(i));
+        }
+        n_available_players = players_list.size();
+        players_menu_action = new QAction*[n_available_players];
+        QString qstr;
+        for(int i=0; i<n_available_players; i++)
+        {
+            qstr = players_list[i].c_str();
+            players_menu_action[i] = new QAction(qstr,this);
+            players_menu.addAction(players_menu_action[i]);
+        }
+    }
 }
 
-void MainWindow::changePlayer(QAction *action)
+void MainWindow::changeManualPlayer(QAction *action)
 {
-
+    ui->players_menu->setText(action->text());
 }
 
 void MainWindow::on_send_manual_player_clicked(void)
 {
-
+    QString qstr = ui->manual_command_menu->text();
+    shared_parameters.setAIManualCommand(qstr.toStdString());
+    qstr = ui->players_menu->text();
+    shared_parameters.setAIManualPlayer(qstr.toStdString());
+    emit aiSettingsChanged();
 }
 
 void MainWindow::on_stop_resume_clicked(void)
