@@ -64,10 +64,10 @@ double VelocitiesLoader::getVelX(int robot)
 
 double VelocitiesLoader::getVelY(int robot)
 {
-    std::cout << "stay_still " << robot_movement[robot].stay_still << std::endl;
+    /*std::cout << "stay_still " << robot_movement[robot].stay_still << std::endl;
     std::cout << "linear_vel_scaling " << robot_movement[robot].linear_vel_scaling << std::endl;
     std::cout << "linear_vel_angle " << robot_movement[robot].linear_vel_angle << std::endl;
-    std::cout << "angular_vel_scaling " << robot_movement[robot].angular_vel_scaling << std::endl << std::endl;
+    std::cout << "angular_vel_scaling " << robot_movement[robot].angular_vel_scaling << std::endl << std::endl;*/
 
     if(robot >= N_ROBOTS || robot < 0)
         return 0.0;

@@ -40,14 +40,16 @@ void Strategy::calculateMovementsFromDestinations(void)
 {
     for(int i=0; i<N_ROBOTS; i++)
     {
-        if(robot[i].already_found)
-            robot[i].movement.stay_still = false;
-        else
-            robot[i].movement.stay_still = false;
-
-        robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
+        if(command != MANUAL_CONTROL)
+        {
+            if(robot[i].already_found)
+                robot[i].movement.stay_still = false;
+            else
+                robot[i].movement.stay_still = true;
+        }
+        robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination);// - robot[i].angle;
         robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
-        robot[i].movement.linear_vel_scaling = 0.5;
+        robot[i].movement.linear_vel_scaling = 1;
         ai_field_handler.setMovement(robot[i].movement, i);
     }
 }
@@ -381,12 +383,10 @@ void Strategy::manualControl(void)
     if(there_is_command)
     {
         int n = ai_field_handler.manualPlayer();
-        std::cout <<"mandando comando "<<manual_command<<"para o jogador "<<n<<std::endl;
         switch (manual_command)
         {
             case STOP:
-                robot[n].destination.x = 0;
-                robot[n].destination.y = 0; break;
+                robot[n].movement.stay_still = true;
             case FORWARD:
                 robot[n].destination.x = 0;
                 robot[n].destination.y = 1; break;
@@ -412,6 +412,7 @@ void Strategy::manualControl(void)
                 robot[n].destination.x = -1;
                 robot[n].destination.y = -1; break;
         }
+        robot[n].movement.angular_vel_scaling = 0;
     }
 }
 

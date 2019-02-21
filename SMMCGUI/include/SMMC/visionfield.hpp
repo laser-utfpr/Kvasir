@@ -57,7 +57,7 @@ public:
 
     inline VisionField(ColorAllocator &color_allocator, ColoredObjectAllocator &colored_object_allocator, FloatAllocator &float_allocator) :
     image_data(float_allocator),
-    image_width(NAN), image_height(NAN), image_cv_type(16), time_us(0),
+    image_width(0.0), image_height(0.0), image_cv_type(16), time_us(0),
     ball_color(UNCOLORED), ally_center(UNCOLORED), enemy_center(UNCOLORED),
     ally_tag(color_allocator), found_object(colored_object_allocator) {};
 };

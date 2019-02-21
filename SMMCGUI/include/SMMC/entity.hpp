@@ -13,7 +13,7 @@ public:
     bool already_found;
     bool found_last_frame;
 
-    inline Entity() : angle(NAN), already_found(false),
+    inline Entity() : angle(0.0), already_found(false),
     found_last_frame(false) {};
 
     inline Entity& operator=(const Entity &copied)

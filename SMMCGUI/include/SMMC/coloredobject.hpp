@@ -16,7 +16,7 @@ public:
     Color color;
     bool linked_to_entity;
 
-    inline ColoredObject() : area(NAN),
+    inline ColoredObject() : area(0.0),
     color(UNCOLORED), linked_to_entity(false) {};
 
     inline ColoredObject& operator=(const ColoredObject &copied)
