@@ -255,7 +255,7 @@ void SMMCThread::shutdownComm(void)
 
 void SMMCThread::updateVisionOutputSettings(void)
 {
-    std::cout << std::endl << "Outputting Vision settings" << std::endl << std::endl;
+    //std::cout << std::endl << "Outputting Vision settings" << std::endl << std::endl;
     //outputting settings to shared memory
     sm_vision_field->ball_color = shared_parameters.getBallColor();
     sm_vision_field->ally_center = shared_parameters.getAllyCenter();
@@ -271,7 +271,7 @@ void SMMCThread::updateVisionOutputSettings(void)
 
 void SMMCThread::updateAIOutputSettings(void)
 {
-    std::cout << std::endl << "Outputting AI settings" << std::endl << std::endl;
+    //std::cout << std::endl << "Outputting AI settings" << std::endl << std::endl;
     //outputting settings to shared memory
     sm_ai_field->playable_field_ulc = shared_parameters.getPlayableFieldULC();
     sm_ai_field->playable_field_lrc = shared_parameters.getPlayableFieldLRC();
@@ -294,7 +294,7 @@ void SMMCThread::updateAIOutputSettings(void)
 
 void SMMCThread::updateCommOutputSettings(void)
 {
-    std::cout << std::endl << "Outputting Comm settings" << std::endl << std::endl;
+    //std::cout << std::endl << "Outputting Comm settings" << std::endl << std::endl;
     //no comm settings to be output for now
     *sm_comm_read_key = comm_read_key.c_str();
 }
@@ -333,7 +333,7 @@ void SMMCThread::run()
             std::string s(sm_vision_write_key->begin(), sm_vision_write_key->end());
             if(s == vision_write_key)
             {
-                std::cout << std::endl << "Vision input update detected" << std::endl << std::endl;
+                //std::cout << std::endl << "Vision input update detected" << std::endl << std::endl;
                 shared_parameters.readVisionParameters(*sm_vision_field);
                 emit visionInputUpdate();
                 usleep(1);
@@ -346,8 +346,8 @@ void SMMCThread::run()
             std::string s(sm_ai_write_key->begin(), sm_ai_write_key->end());
             if(s == ai_write_key)
             {
-                std::cout << std::endl << "AI input update detected" << std::endl << std::endl;
-                std::cout << sm_ai_field->robot[0].status;
+                //std::cout << std::endl << "AI input update detected" << std::endl << std::endl;
+                //std::cout << sm_ai_field->robot[0].status;
                 shared_parameters.readAIParameters(*sm_ai_field);
                 emit aiInputUpdate();
                 emit sendAIChangesToComm();
@@ -360,7 +360,7 @@ void SMMCThread::run()
             if(s == comm_write_key)
             {
                 //no comm parameters to be recieved for now
-                std::cout << std::endl << "Comm input update detected" << std::endl << std::endl;
+                //std::cout << std::endl << "Comm input update detected" << std::endl << std::endl;
                 emit commInputUpdate();
                 *sm_comm_write_key = EMPTY_KEY;
             }

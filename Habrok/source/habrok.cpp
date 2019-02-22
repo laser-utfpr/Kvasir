@@ -86,13 +86,13 @@ int Habrok::runHabrok(int argc, char *argv[])
     {
         if(*sm_read_key == read_key.c_str())
         {
-            std::cout << "Habrok recieved read signal, reading settings from the shared memory" << std::endl;
+            //std::cout << "Habrok recieved read signal, reading settings from the shared memory" << std::endl;
             *sm_read_key = EMPTY_KEY;
             vision_field_handler->readChanges(*shared_memory);
         }
         {
             image_processing->processFrame();
-            std::cout << "Habrok processed a frame, writing vision field into the shared memory" << std::endl;
+            //std::cout << "Habrok processed a frame, writing vision field into the shared memory" << std::endl;
             vision_field_handler->writeChanges(*shared_memory);
             *sm_write_key = write_key.c_str();
         }

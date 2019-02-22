@@ -72,14 +72,14 @@ int Vor::runVor(void)
     {
         if(*sm_read_key == read_key.c_str())
         {
-            std::cout << "Vor received read signal, reading settings from the shared memory" << std::endl;
+            //std::cout << "Vor received read signal, reading settings from the shared memory" << std::endl;
             *sm_read_key = EMPTY_KEY;
             ai_field_handler->readChanges(*shared_memory);
         }
         if(ai_field_handler->sampleTime() != last_sample_time)
         {
             strategy->calculateMovements();
-            std::cout << "Vor calculated movements, writing ai field into the shared memory" << std::endl;
+            //std::cout << "Vor calculated movements, writing ai field into the shared memory" << std::endl;
             ai_field_handler->writeChanges(*shared_memory);
             *sm_write_key = write_key.c_str();
             last_sample_time = ai_field_handler->sampleTime();

@@ -82,7 +82,7 @@ void Vard::start()
         for(int i=0; i<N_ROBOTS; i++)
         {
             serial_comm->mountPacket(robot[i]->getName(), robot[i]->getRFAddress(), robot[i]->getVelX(), robot[i]->getVelY(), robot[i]->getVelAng());
-            std::cout <<"robo: " << robot[i]->getName() << ", endr: " << robot[i]->getRFAddress() <<", x: "<<robot[i]->getVelX()<<", y: "<< robot[i]->getVelY()<<", ang: "<< robot[i]->getVelAng() <<std::endl;
+            //std::cout <<"robo: " << robot[i]->getName() << ", endr: " << robot[i]->getRFAddress() <<", x: "<<robot[i]->getVelX()<<", y: "<< robot[i]->getVelY()<<", ang: "<< robot[i]->getVelAng() <<std::endl;
             serial_comm->sendData();
         }
         usleep(COMMUNICATION_DELAY);

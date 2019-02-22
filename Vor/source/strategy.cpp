@@ -326,7 +326,7 @@ void Strategy::moveAttacker(int n)
             robot[n].movement.angular_vel_scaling = 0;
         }
 
-        std::cout << robot[n].coord.distance(ball.coord) << std::endl;
+        //std::cout << robot[n].coord.distance(ball.coord) << std::endl;
         if(robot[n].coord.distance(ball.coord) < ATTACKER_OFFSET_RANGE)
         {
             robot[n].destination = ball.coord;
