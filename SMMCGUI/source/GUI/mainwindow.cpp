@@ -254,7 +254,7 @@ void MainWindow::processGameControlImage(void)
             {
                 cv::circle(image, cv::Point(object[i].coord.x, object[i].coord.y),
                                              DOT_RADIUS, SCALAR_GREEN, DOT_THICKNESS);
-                if(object[i].color != UNCOLORED && object[i].coord.x != NAN && object[i].coord.y != NAN)
+                if(object[i].color != UNCOLORED && !std::isnan(object[i].coord.x) && !std::isnan(object[i].coord.y))
                 {
                     if(object[i].coord.y - TEXT_Y_OFFSET >= 0)
                     {
@@ -292,7 +292,7 @@ void MainWindow::processGameControlImage(void)
             for(int i=0; i<N_ROBOTS; i++)
                 enemy[i] = shared_parameters.getEnemyRobot(i);
 
-            if(ball.already_found && ball.coord.x != NAN && ball.coord.y != NAN)
+            if(ball.already_found && !std::isnan(ball.coord.x) && !std::isnan(ball.coord.y))
             {
                 cv::Scalar *scalar_color;
                 if(ball.found_last_frame)
@@ -311,7 +311,7 @@ void MainWindow::processGameControlImage(void)
 
             for(int i=0; i<N_ROBOTS; i++)
             {
-                if(ally[i].already_found && ally[i].coord.x != NAN && ally[i].coord.y != NAN)
+                if(ally[i].already_found && !std::isnan(ally[i].coord.x) && !std::isnan(ally[i].coord.y))
                 {
                     cv::Scalar *scalar_color;
                     if(ally[i].found_last_frame)
@@ -332,7 +332,7 @@ void MainWindow::processGameControlImage(void)
 
             for(int i=0; i<N_ROBOTS; i++)
             {
-                if(enemy[i].already_found && enemy[i].coord.x != NAN && enemy[i].coord.y != NAN)
+                if(enemy[i].already_found && !std::isnan(enemy[i].coord.x) && !std::isnan(enemy[i].coord.y))
                 {
                     cv::Scalar *scalar_color;
                     if(enemy[i].found_last_frame)
@@ -359,7 +359,7 @@ void MainWindow::processGameControlImage(void)
 
             for(int i=0; i<N_ROBOTS; i++)
             {
-                if(ally[i].already_found && ally[i].coord.x != NAN && ally[i].coord.y != NAN)
+                if(ally[i].already_found && !std::isnan(ally[i].coord.x) && !std::isnan(ally[i].coord.y))
                 {
                     cv::Scalar *scalar_color;
                     if(ally[i].found_last_frame)
@@ -382,8 +382,8 @@ void MainWindow::processGameControlImage(void)
 
             for(int i=0; i<N_ROBOTS; i++)
             {
-                if(ally[i].already_found && ally[i].coord.x != NAN && ally[i].coord.y != NAN
-                   && ally[i].movement.linear_vel_angle != NAN && ally[i].movement.linear_vel_scaling != NAN)
+                if(ally[i].already_found && !std::isnan(ally[i].coord.x) && !std::isnan(ally[i].coord.y)
+                   && !std::isnan(ally[i].movement.linear_vel_angle) && !std::isnan(ally[i].movement.linear_vel_scaling))
                 {
                     cv::Scalar *scalar_color;
                     if(ally[i].movement.stay_still)
@@ -438,7 +438,7 @@ void MainWindow::processVisionSettingsImage(void)
             {
                 cv::circle(image, cv::Point(object[i].coord.x, object[i].coord.y),
                                              DOT_RADIUS, SCALAR_GREEN, DOT_THICKNESS);
-                if(object[i].color != UNCOLORED && object[i].coord.x != NAN && object[i].coord.y != NAN)
+                if(object[i].color != UNCOLORED && !std::isnan(object[i].coord.x) && !std::isnan(object[i].coord.y))
                 {
                     if(object[i].coord.y - TEXT_Y_OFFSET >= 0)
                     {
@@ -470,7 +470,7 @@ void MainWindow::processVisionSettingsImage(void)
             //draws searched region rectangle
             Coord ulc = shared_parameters.getSearchedRegionULC();
             Coord lrc = shared_parameters.getSearchedRegionLRC();
-            if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            if(!std::isnan(ulc.x) && !std::isnan(ulc.y) && !std::isnan(lrc.x) && !std::isnan(lrc.y))
                 cv::rectangle(image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_RED, REC_THICKNESS);
         }
 
@@ -508,27 +508,27 @@ void MainWindow::processAISettingsImage(void)
 
             Coord ulc = shared_parameters.getPlayableFieldULC();
             Coord lrc = shared_parameters.getPlayableFieldLRC();
-            if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            if(!std::isnan(ulc.x) && !std::isnan(ulc.y) && !std::isnan(lrc.x) && !std::isnan(lrc.y))
                 cv::rectangle(image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_GREEN, REC_THICKNESS);
 
             ulc = shared_parameters.getLeftGoalULC();
             lrc = shared_parameters.getLeftGoalLRC();
-            if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            if(!std::isnan(ulc.x) && !std::isnan(ulc.y) && !std::isnan(lrc.x) && !std::isnan(lrc.y))
                 cv::rectangle(image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_RED, REC_THICKNESS);
 
             ulc = shared_parameters.getRightGoalULC();
             lrc = shared_parameters.getRightGoalLRC();
-            if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            if(!std::isnan(ulc.x) && !std::isnan(ulc.y) && !std::isnan(lrc.x) && !std::isnan(lrc.y))
                 cv::rectangle(image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_RED, REC_THICKNESS);
 
             ulc = shared_parameters.getLeftGKAreaULC();
             lrc = shared_parameters.getLeftGKAreaLRC();
-            if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            if(!std::isnan(ulc.x) && !std::isnan(ulc.y) && !std::isnan(lrc.x) && !std::isnan(lrc.y))
                 cv::rectangle(image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_BLUE, REC_THICKNESS);
 
             ulc = shared_parameters.getRightGKAreaULC();
             lrc = shared_parameters.getRightGKAreaLRC();
-            if(ulc.x != NAN && ulc.y != NAN && lrc.x != NAN && lrc.y != NAN)
+            if(!std::isnan(ulc.x) && !std::isnan(ulc.y) && !std::isnan(lrc.x) && !std::isnan(lrc.y))
                 cv::rectangle(image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_BLUE, REC_THICKNESS);
         }
 

@@ -45,13 +45,13 @@ void Strategy::calculateMovementsFromDestinations(void)
             if(robot[i].already_found)
                 robot[i].movement.stay_still = false;
             else
-            {
                 robot[i].movement.stay_still = true;
-                robot[i].angle = 0;
-            }
+        }
+        if(std::isnan(robot[i].angle))
+        {
+            robot[i].angle = 0;
         }
         robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
-        std::cout << robot[i].angle << std::endl;
         robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
         robot[i].movement.linear_vel_scaling = 1;
         ai_field_handler.setMovement(robot[i].movement, i);

@@ -59,7 +59,7 @@ public:
     {
         double dx = c.x - x;
         double dy = c.y - y;
-        if((dx == 0 && dy == 0) || (dx == NAN || dy == NAN))
+        if((y == 0 && x == 0) || (std::isnan(y) || std::isnan(x)))
         {
             return 0;
         }
@@ -67,7 +67,7 @@ public:
     }
     inline double angle()
     {
-        if((y == 0 && x == 0) || (y == NAN || x == NAN))
+        if((y == 0 && x == 0) || (std::isnan(y) || std::isnan(x)))
         {
             return 0;
         }
