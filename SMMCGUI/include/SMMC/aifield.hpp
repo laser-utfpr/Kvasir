@@ -56,7 +56,7 @@ public:
     StringVector command_list, manual_command_list;
 
     inline AIField(CharAllocator &char_allocator, StringAllocator &string_allocator) :
-    image_width(NAN), image_height(NAN), time_us(0),
+    image_width(0), image_height(0), time_us(0),
     command(char_allocator), command_list(string_allocator),
     manual_command(char_allocator), manual_command_list(string_allocator), manual_player((char_allocator)){};
 

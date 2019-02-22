@@ -45,9 +45,13 @@ void Strategy::calculateMovementsFromDestinations(void)
             if(robot[i].already_found)
                 robot[i].movement.stay_still = false;
             else
+            {
                 robot[i].movement.stay_still = true;
+                robot[i].angle = 0;
+            }
         }
-        robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination);// - robot[i].angle;
+        robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
+        std::cout << robot[i].angle << std::endl;
         robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
         robot[i].movement.linear_vel_scaling = 1;
         ai_field_handler.setMovement(robot[i].movement, i);
@@ -383,6 +387,7 @@ void Strategy::manualControl(void)
     if(there_is_command)
     {
         int n = ai_field_handler.manualPlayer();
+        robot[n].movement.stay_still = false;
         switch (manual_command)
         {
             case STOP:

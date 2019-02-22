@@ -653,7 +653,10 @@ Movement SharedParameters::getRobotMovement(int index)
     if(index >= 0 && index < N_ROBOTS)
     {
         Movement mov = robot_movement[index];
-        mov.stay_still = force_stop;
+        if(force_stop)
+        {
+            mov.stay_still = force_stop;
+        }
         return mov;
     }
     Movement trash;

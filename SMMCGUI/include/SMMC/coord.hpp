@@ -59,10 +59,18 @@ public:
     {
         double dx = c.x - x;
         double dy = c.y - y;
+        if((dx == 0 && dy == 0) || (dx == NAN || dy == NAN))
+        {
+            return 0;
+        }
         return atan2(dy,dx);
     }
     inline double angle()
     {
+        if((y == 0 && x == 0) || (y == NAN || x == NAN))
+        {
+            return 0;
+        }
         return atan2(y,x);
     }
     inline double norm()

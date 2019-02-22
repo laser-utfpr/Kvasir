@@ -208,12 +208,12 @@ void RobotRecognizer::findRobot3(std::vector<ColoredObject> object)
                 robot3.coord = i->coord;
                 if(tag2.coord.distance(tag3.coord) > tag1.coord.distance(tag3.coord) &&
                    tag2.coord.distance(tag3.coord) > tag1.coord.distance(tag2.coord))
-                    robot3.angle = robot3.angle = robot3.coord.angle(tag1.coord) + M_PI_4;
+                    robot3.angle = robot3.coord.angle(tag1.coord) + M_PI_4;
                 else if(tag3.coord.distance(tag1.coord) > tag2.coord.distance(tag3.coord) &&
                         tag3.coord.distance(tag1.coord) > tag2.coord.distance(tag1.coord))
-                    robot3.angle = robot3.angle = robot3.coord.angle(tag2.coord) + M_PI_4;
+                    robot3.angle = robot3.coord.angle(tag2.coord) + M_PI_4;
                 else
-                    robot3.angle = robot3.angle = robot3.coord.angle(tag3.coord) + M_PI_4;
+                    robot3.angle = robot3.coord.angle(tag3.coord) + M_PI_4;
                 robot3.already_found = true;
                 robot3.found_last_frame = true;
             }
@@ -356,12 +356,12 @@ void RobotRecognizer::findRobot6(std::vector<ColoredObject> object)
                 robot6.coord = i->coord;
                 if(tag2.coord.distance(tag3.coord) > tag1.coord.distance(tag3.coord) &&
                    tag2.coord.distance(tag3.coord) > tag1.coord.distance(tag2.coord))
-                    robot6.angle = robot6.angle = robot6.coord.angle(tag1.coord) + M_PI_4;
+                    robot6.angle = robot6.coord.angle(tag1.coord) + M_PI_4;
                 else if(tag3.coord.distance(tag1.coord) > tag2.coord.distance(tag3.coord) &&
                         tag3.coord.distance(tag1.coord) > tag2.coord.distance(tag1.coord))
-                    robot6.angle = robot6.angle = robot6.coord.angle(tag2.coord) + M_PI_4;
+                    robot6.angle = robot6.coord.angle(tag2.coord) + M_PI_4;
                 else
-                    robot6.angle = robot6.angle = robot6.coord.angle(tag3.coord) + M_PI_4;
+                    robot6.angle = robot6.coord.angle(tag3.coord) + M_PI_4;
                 robot6.already_found = true;
                 robot6.found_last_frame = true;
             }
