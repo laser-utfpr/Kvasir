@@ -4,7 +4,7 @@ Robot::Robot(int _name, char *_rf_address)
 {
     name = _name;
     rf_address = _rf_address;
-    loader = VelocitiesLoader::getInstance();
+    loader = VelocitiesLoader::getInstance();//estranho
 }
 
 char *Robot::getRFAddress()

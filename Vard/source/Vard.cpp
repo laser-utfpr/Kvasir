@@ -28,6 +28,8 @@ write_key(arg1), read_key(arg2), shutdown_key(arg3)
             i++;
         }
         robot_settings.close();
+        for(i=0; i<N_ROBOTS; i++)
+            std::cout <<"endereço eh" << robot[i]->getRFAddress()<< "e nome eh "<<robot[i]->getName()<<std::endl;
     }
     else
     {

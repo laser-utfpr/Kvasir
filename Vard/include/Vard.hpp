@@ -21,7 +21,7 @@ class Vard{
     std::string shutdown_key;
     std::ifstream robot_settings;
     SerialCommunication *serial_comm;
-    Robot* robot[N_ROBOTS];
+    Robot *robot[N_ROBOTS];
     boost::interprocess::managed_shared_memory *shared_memory;
 
     int getRobotNameFromFile(std::string str);

@@ -3,8 +3,8 @@
 #include "Principal.hpp"
 #include <printf.h>
 
-Principal principal = Principal();
 
+ 
 void setup()
 {
   //--Sets
@@ -17,5 +17,6 @@ void setup()
 
 void loop()
 {
+    Principal principal = Principal();
     principal.start();
 }

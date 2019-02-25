@@ -16,7 +16,7 @@ RFreceiver::RFreceiver()
 
 void RFreceiver::receiveData()
 {
-    int i, a=0;
+    int i;
     unsigned char data[W_DATA];
 #ifndef XBEE
     if(radio->available())
@@ -24,19 +24,19 @@ void RFreceiver::receiveData()
         radio->read(&data,W_DATA);
         if(data[0]==NAME && data[1]!=0)
         {
-           // Serial.print("Data recebida: ");
+            Serial.print("Data recebida: ");
             for(i=0; i<W_DATA; i++)
             {
                 queue = queue->addByte(data[i], queue);
-           //     Serial.print(data[i], HEX);
-           //     Serial.print("  ");
+                Serial.print(data[i], HEX);
+                Serial.print("  ");
             }
-            a++;
         }
         else
             queue = NULL;
-       // Serial.println();
+        Serial.println();
     }
+    Serial.println("nao tem pacote");
 #else
     int siz = Serial.available();
     if(siz>0)
@@ -71,9 +71,9 @@ int RFreceiver::updateBuffer()
     }
     if(queue!=NULL&&queue->getSize()>(DATA_SIZE+1))//significa que ainda tem um pacote inteiro a ser lido, nesse caso nao se verifica o Buffer do arduino ate que o Buffer local seja totalmente usado
     {
-        return 0;
+        return 1;
     }
-    return 1;
+    return 0;
 }
 
 void RFreceiver::debug()
