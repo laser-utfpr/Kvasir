@@ -1,18 +1,21 @@
 //Este programa tem por objetivo captar as informacoes recebidas de um transmissor e converte-las em conteudo util para o robo
 
-#include "Principal.h"
+#include "Principal.hpp"
 #include <printf.h>
 
-void setup() 
+Principal principal = Principal();
+
+void setup()
 {
   //--Sets
      Serial.begin(BDRATE);
-     pinMode(MOTOR1_PINO, OUTPUT);
-     pinMode(MOTOR2_PINO, OUTPUT);
-     pinMode(MOTOR3_PINO, OUTPUT);
-     pinMode(MOTOR4_PINO, OUTPUT);
-     PrincipalStart();
+     pinMode(MOTOR1_PIN, OUTPUT);
+     pinMode(MOTOR2_PIN, OUTPUT);
+     pinMode(MOTOR3_PIN, OUTPUT);
+     pinMode(MOTOR4_PIN, OUTPUT);
 }
 
-void loop() {}
-
+void loop()
+{
+    principal.start();
+}

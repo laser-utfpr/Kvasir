@@ -1,5 +1,6 @@
-#include "Radio.h"
+#include "Radio.hpp"
 
+#ifndef XBEE
 Radio::Radio() : RF24(CE_PIN, CSN_PIN)
 {
     radioSets();
@@ -13,4 +14,4 @@ void Radio::radioSets()
     setPayloadSize(W_DATA);
     setDataRate(DATA_RATE);
 }
-
+#endif

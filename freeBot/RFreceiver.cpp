@@ -1,26 +1,28 @@
-#include "RFreceiver.h"
+#include "RFreceiver.hpp"
 
 RFreceiver::RFreceiver()
 {
-    velocidadeY = 0;
-    velocidadeX = 0;
-    velAng = 0;
+    vel_x = 0;
+    vel_y = 0;
+    vel_ang = 0;
     queue = NULL;
-    radio = Radio();
+#ifndef XBEE
+    radio = new Radio();
     uint8_t address[] = {ADDRESS};
-    radio.openReadingPipe(1, address);
-    radio.startListening();
+    radio->openReadingPipe(1, address);
+    radio->startListening();
+#endif
 }
 
-int RFreceiver::receber()
+void RFreceiver::receiveData()
 {
     int i, a=0;
     unsigned char data[W_DATA];
-
-    if(radio.available())
+#ifndef XBEE
+    if(radio->available())
     {
-        radio.read(&data,W_DATA);
-        if(data[0]==NAME&&data[1]!=0)
+        radio->read(&data,W_DATA);
+        if(data[0]==NAME && data[1]!=0)
         {
            // Serial.print("Data recebida: ");
             for(i=0; i<W_DATA; i++)
@@ -35,32 +37,39 @@ int RFreceiver::receber()
             queue = NULL;
        // Serial.println();
     }
-    //else
-      //  Serial.println("erro");
-    return a;
+#else
+    int siz = Serial.available();
+    if(siz>0)
+    {
+        for(i=0; i<siz; i++)
+        {
+            queue = queue->addByte(Serial.read(), queue);
+        }
+    }
+#endif
 }
 
-int RFreceiver::atualizarBuffer()
+int RFreceiver::updateBuffer()
 {
-    unsigned char byte_entrada[DADOS];
+    unsigned char input_byte[DATA_SIZE];
     int i;
     while(queue!=NULL&&queue->getByte()!=KEY)
     {
         queue = queue->removeByte(queue);
     }
-    if(queue!=NULL&&queue->getByte()==KEY&&queue->getSize()>DADOS)//mudar isso, passar para constantes
+    if(queue!=NULL&&queue->getByte()==KEY&&queue->getSize()>DATA_SIZE)//mudar isso, passar para constantes
     {
-        for(i=0; i<DADOS; i++)
+        for(i=0; i<DATA_SIZE; i++)
         {
             queue = queue->removeByte(queue);
-            byte_entrada[i] = queue->getByte();
+            input_byte[i] = queue->getByte();
         }
 	//estas operacoes convertem 4 char em 1 float
-        velocidadeX = *(float*)&byte_entrada[0];
-        velocidadeY = *(float*)&byte_entrada[4];
-        velAng = *(float*)&byte_entrada[8];
+        vel_x = *(float*)&input_byte[0];
+        vel_y = *(float*)&input_byte[4];
+        vel_ang = *(float*)&input_byte[8];
     }
-    if(queue!=NULL&&queue->getSize()>(DADOS+1))//significa que ainda tem um pacote inteiro a ser lido, nesse caso nao se verifica o Buffer do arduino ate que o Buffer local seja totalmente usado
+    if(queue!=NULL&&queue->getSize()>(DATA_SIZE+1))//significa que ainda tem um pacote inteiro a ser lido, nesse caso nao se verifica o Buffer do arduino ate que o Buffer local seja totalmente usado
     {
         return 0;
     }
@@ -69,19 +78,21 @@ int RFreceiver::atualizarBuffer()
 
 void RFreceiver::debug()
 {
-    radio.printDetails();
+#ifndef XBEE
+    radio->printDetails();
+#endif
 }
 
 float RFreceiver::getVelY()
 {
-    return velocidadeY;
+    return vel_y;
 }
 
 float RFreceiver::getVelX()
 {
-    return velocidadeX;
+    return vel_x;
 }
 float RFreceiver::getVelAng()
 {
-    return velAng;
+    return vel_ang;
 }
