@@ -10,21 +10,34 @@ void Principal::PrincipalStart()
 {
     uint8_t* address;
     char name;
+    //long time = millis();
+    //int qt = 0;
 	  while(1)
 	  {
         if(serial->receberRS232())
         {
             address=serial->getAddress();
             name = serial->getName();
-            //Serial.print("nome eh: ");
-            //Serial.print((int)name);
-            //Serial.print(" ende eh: ");
-            //Serial.println((char)address[4]);
+            /*if(name == 0)
+            {
+              //Serial.print("nome eh: ");
+              //Serial.print((int)name);
+              //Serial.print(" ende eh: ");
+              //Serial.println((char)address[4]);
+              qt++;
+            }*/
             rWriter->setChannel(name);
 		        rWriter->setAddress(address);
 		        rWriter->sendData(serial->getData());
             //rWriter.debug();
+            //qt++;
         }
+        /*if(millis()-time >=1000)
+        {
+            Serial.println(qt);
+            time = millis();
+            qt = 0;
+        }*/
    		    //delay(1000);
     }
 }

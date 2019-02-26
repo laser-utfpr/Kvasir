@@ -24,6 +24,14 @@ int SerialCommunication::receberRS232()
         for(i=0; i<siz; i++)
         {
             queue = queue->addByte(Serial1.read(), queue);
+            
+            //Serial.print(queue->getByte(), HEX);
+        }
+        delayMicroseconds(100); 
+        //Serial.println();
+        if(queue->getSize() < (W_DATA+W_ADDRESS+1))
+        {
+            return 0;
         }
         //jogar fora os caras atrasados
 
@@ -74,7 +82,7 @@ uint8_t* SerialCommunication::getAddress()
         }
         queue=queue->removeByte(queue);
     }
-    Serial.println();
+    //Serial.println();
     return address;
 }
 
@@ -111,7 +119,7 @@ char SerialCommunication::getName()
         if(queue!=NULL&&queue->getSize()==W_DATA)
         {
             //Serial.print("nome eh: ");
-            Serial.println(char(queue->getByte()));
+            //Serial.println(char(queue->getByte()));
             data[0]=queue->getByte();
             //Serial.println(data[0], HEX);
             return (data[0]);

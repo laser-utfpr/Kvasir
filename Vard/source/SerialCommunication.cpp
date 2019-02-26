@@ -1,4 +1,5 @@
 #include "SerialCommunication.hpp"
+#include <iomanip>
 
 SerialCommunication::SerialCommunication()
 {

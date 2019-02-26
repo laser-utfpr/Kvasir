@@ -22,6 +22,7 @@ void RFreceiver::receiveData()
     if(radio->available())
     {
         radio->read(&data,W_DATA);
+        Serial.println("legal");
         if(data[0]==NAME && data[1]!=0)
         {
             //Serial.print("Data recebida: ");

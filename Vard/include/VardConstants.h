@@ -17,7 +17,7 @@
 #define CPORT_NR 16
 #define KEY 0xa0
 #define BEGIN 0x77
-#define COMMUNICATION_DELAY 1000//delay em us da comunicacao
+#define COMMUNICATION_DELAY 3350//delay em us da comunicacao
 
 
 #endif
