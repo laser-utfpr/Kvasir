@@ -24,12 +24,10 @@ write_key(arg1), read_key(arg2), shutdown_key(arg3)
                 std::getline (robot_settings, aux);
                 pos = aux.find("#");
             }
-            robot[i] = new Robot(getRobotNameFromFile(aux), getRobotRFAddressFromFile(aux));
+            robot.push_back(Robot(getRobotNameFromFile(aux), getRobotRFAddressFromFile(aux)));
             i++;
         }
         robot_settings.close();
-        for(i=0; i<N_ROBOTS; i++)
-            std::cout <<"endereço eh" << robot[i]->getRFAddress()<< "e nome eh "<<robot[i]->getName()<<std::endl;
     }
     else
     {
@@ -52,10 +50,6 @@ write_key(arg1), read_key(arg2), shutdown_key(arg3)
 Vard::~Vard()
 {
     delete serial_comm;
-    for(int i=0; i < N_ROBOTS; i++)
-    {
-        delete robot[i];
-    }
     if(shared_memory != NULL)
         delete shared_memory;
 
@@ -83,11 +77,12 @@ void Vard::start()
     {
         for(int i=0; i<N_ROBOTS; i++)
         {
-            serial_comm->mountPacket(robot[i]->getName(), robot[i]->getRFAddress(), robot[i]->getVelX(), robot[i]->getVelY(), robot[i]->getVelAng());
+            serial_comm->mountPacket(robot[i].getName(), robot[i].getRFAddress(), robot[i].getVelX(), robot[i].getVelY(), robot[i].getVelAng());
             //std::cout <<"robo: " << robot[i]->getName() << ", endr: " << robot[i]->getRFAddress() <<", x: "<<robot[i]->getVelX()<<", y: "<< robot[i]->getVelY()<<", ang: "<< robot[i]->getVelAng() <<std::endl;
             serial_comm->sendData();
+            usleep(COMMUNICATION_DELAY);
         }
-        usleep(COMMUNICATION_DELAY);
+
     }
 }
 
@@ -99,10 +94,10 @@ int Vard::getRobotNameFromFile(std::string str)
     return name;
 }
 
-char *Vard::getRobotRFAddressFromFile(std::string str)
+std::string Vard::getRobotRFAddressFromFile(std::string str)
 {
     std::size_t pos = str.find("@");
     str = str.substr(pos+1, str.size());
-    char *rf_address = (char*)str.c_str();
-    return rf_address;
+    //char *rf_address = (char*)str.c_str();
+    return str;
 }

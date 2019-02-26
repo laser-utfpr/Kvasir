@@ -9,8 +9,10 @@ void setup()
      Serial1.begin(BDRATE);
      Serial.begin(BDRATE);
      printf_begin();
-     Principal principal = Principal();
-     principal.PrincipalStart();
 }
 
-void loop() {}
+void loop()
+{
+    Principal principal = Principal();
+    principal.PrincipalStart();
+}

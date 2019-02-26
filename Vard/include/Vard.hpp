@@ -21,11 +21,11 @@ class Vard{
     std::string shutdown_key;
     std::ifstream robot_settings;
     SerialCommunication *serial_comm;
-    Robot *robot[N_ROBOTS];
+    std::vector<Robot>robot;
     boost::interprocess::managed_shared_memory *shared_memory;
 
     int getRobotNameFromFile(std::string str);
-    char *getRobotRFAddressFromFile(std::string str);
+    std::string getRobotRFAddressFromFile(std::string str);
 public:
     Vard(const char* arg1, const char* arg2, const char* arg3);
     ~Vard();

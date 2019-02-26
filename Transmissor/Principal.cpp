@@ -8,16 +8,20 @@ Principal::Principal()
 
 void Principal::PrincipalStart()
 {
-    uint8_t* adress;
+    uint8_t* address;
     char name;
 	  while(1)
 	  {
         if(serial->receberRS232())
         {
-            adress=serial->getAddress();
+            address=serial->getAddress();
             name = serial->getName();
+            //Serial.print("nome eh: ");
+            //Serial.print((int)name);
+            //Serial.print(" ende eh: ");
+            //Serial.println((char)address[4]);
             rWriter->setChannel(name);
-		        rWriter->setAddress(adress);
+		        rWriter->setAddress(address);
 		        rWriter->sendData(serial->getData());
             //rWriter.debug();
         }

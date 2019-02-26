@@ -6,11 +6,11 @@
 
 class Robot{
     int name;
-    char *rf_address;
+    std::string rf_address;
     VelocitiesLoader *loader;
 
 public:
-    Robot(int _name, char *_rf_address);
+    Robot(int _name, std::string _rf_address);
     ~Robot(){};
     char *getRFAddress();
     int getName();

@@ -65,12 +65,12 @@ uint8_t* SerialCommunication::getAddress()
     }
     if(queue!=NULL&&queue->getByte()==BEGIN&&queue->getSize()>=(W_DATA+W_ADDRESS))//sigmifica que tem um pacote inteiro
     {
-        Serial.print("Endereço eh: ");
+        //Serial.print("Endereço eh: ");
         for(i=0; i<W_ADDRESS; i++)
         {
             queue = queue->removeByte(queue);
             address[i] = queue->getByte();
-            Serial.print(char(address[i]));
+            //Serial.print(char(address[i]));
         }
         queue=queue->removeByte(queue);
     }
@@ -87,14 +87,14 @@ unsigned char* SerialCommunication::getData()
     }
     if(queue!=NULL&&queue->getByte()==KEY&&queue->getSize()==(W_DATA-1))//significa que tem um pacote efetivo inteiro (-=1 pq o nome já foi adicionado)
     {
-        Serial.print("pacote inteiro: ");
+        //Serial.print("pacote inteiro: ");
         for(i=1; i<W_DATA; i++)
         {
             data[i] = queue->getByte();
-            Serial.print(data[i], HEX);
+            //Serial.print(data[i], HEX);
             queue = queue->removeByte(queue);
         }
-        Serial.println();
+        //Serial.println();
     }
     else if (queue==NULL)
     {
@@ -110,10 +110,10 @@ char SerialCommunication::getName()
     {
         if(queue!=NULL&&queue->getSize()==W_DATA)
         {
-            Serial.print("nome eh: ");
-            //Serial.println(char(queue->getByte()));
+            //Serial.print("nome eh: ");
+            Serial.println(char(queue->getByte()));
             data[0]=queue->getByte();
-            Serial.println(data[0], HEX);
+            //Serial.println(data[0], HEX);
             return (data[0]);
         }
     }

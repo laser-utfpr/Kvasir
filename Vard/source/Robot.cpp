@@ -1,6 +1,6 @@
 #include "Robot.hpp"
 
-Robot::Robot(int _name, char *_rf_address)
+Robot::Robot(int _name, std::string _rf_address)
 {
     name = _name;
     rf_address = _rf_address;
@@ -9,7 +9,7 @@ Robot::Robot(int _name, char *_rf_address)
 
 char *Robot::getRFAddress()
 {
-    return rf_address;
+    return (char*)rf_address.c_str();
 }
 
 int Robot::getName()
