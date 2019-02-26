@@ -95,14 +95,14 @@ unsigned char* SerialCommunication::getData()
     }
     if(queue!=NULL&&queue->getByte()==KEY&&queue->getSize()==(W_DATA-1))//significa que tem um pacote efetivo inteiro (-=1 pq o nome já foi adicionado)
     {
-        //Serial.print("pacote inteiro: ");
+        Serial.print("pacote inteiro: ");
         for(i=1; i<W_DATA; i++)
         {
             data[i] = queue->getByte();
-            //Serial.print(data[i], HEX);
+            Serial.print(data[i], HEX);
             queue = queue->removeByte(queue);
         }
-        //Serial.println();
+        Serial.println();
     }
     else if (queue==NULL)
     {

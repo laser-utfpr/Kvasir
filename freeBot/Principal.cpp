@@ -12,11 +12,15 @@ void Principal::start()
     while(1)
     {
         rf_receiver->receiveData();
-        do
+        if(rf_receiver->updateBuffer())
         {
-            robot->move(rf_receiver->getVelX(), rf_receiver->getVelY(), rf_receiver->getVelAng());
+            robot->move(rf_receiver->getVelX(), rf_receiver->getVelY(), rf_receiver->getVelAng()); 
+        }
+        //do
+        //{
+        //    robot->move(rf_receiver->getVelX(), rf_receiver->getVelY(), rf_receiver->getVelAng());
             
-        }while(rf_receiver->updateBuffer());
+        //}while(rf_receiver->updateBuffer());
         //delay(COMMUNICATION_DELAY);
         if(millis()-time >=1000)
         {

@@ -17,7 +17,10 @@ void RadioWriter::setAddress(const uint8_t* address)
 
 void RadioWriter::sendData(const void* data)
 {
-    radio->write(data, W_DATA);
+    //if(data[1] != 0)
+    //{
+        radio->write(data, W_DATA);
+    //}
 }
 
 void RadioWriter::debug()

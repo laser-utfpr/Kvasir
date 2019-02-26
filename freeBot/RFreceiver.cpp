@@ -22,20 +22,19 @@ void RFreceiver::receiveData()
     if(radio->available())
     {
         radio->read(&data,W_DATA);
-        Serial.println("legal");
-        if(data[0]==NAME && data[1]!=0)
+        if(data[0]==NAME && data[1]!=0)//se for 0 eh pq deu erro no envio
         {
-            //Serial.print("Data recebida: ");
+            Serial.print("Data recebida: ");
             for(i=0; i<W_DATA; i++)
             {
                 queue = queue->addByte(data[i], queue);
-                //Serial.print(data[i], HEX);
-                //Serial.print("  ");
+                Serial.print(data[i], HEX);
+                Serial.print("  ");
             }
         }
         else
             queue = NULL;
-        //Serial.println();
+        Serial.println();
     }
     //Serial.println("nao tem pacote");
 #else
@@ -54,6 +53,10 @@ int RFreceiver::updateBuffer()
 {
     unsigned char input_byte[DATA_SIZE];
     int i;
+    if(queue->getSize()<W_DATA)//nao tem um pacote completo
+    {
+        return 0;
+    }
     while(queue!=NULL&&queue->getByte()!=KEY)
     {
         queue = queue->removeByte(queue);
@@ -70,11 +73,11 @@ int RFreceiver::updateBuffer()
         vel_y = *(float*)&input_byte[4];
         vel_ang = *(float*)&input_byte[8];
     }
-    if(queue!=NULL&&queue->getSize()>(DATA_SIZE+1))//significa que ainda tem um pacote inteiro a ser lido, nesse caso nao se verifica o Buffer do arduino ate que o Buffer local seja totalmente usado
-    {
-        return 1;
-    }
-    return 0;
+    //if(queue!=NULL&&queue->getSize()>(DATA_SIZE+1))//significa que ainda tem um pacote inteiro a ser lido, nesse caso nao se verifica o Buffer do arduino ate que o Buffer local seja totalmente usado
+    //{
+    //    return 1;
+    //}
+    return 1;
 }
 
 void RFreceiver::debug()

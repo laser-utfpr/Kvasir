@@ -28,7 +28,7 @@
 #define RETRIES 3 //numero de tentativas de envio para os receptores
 #define CHANNEL 33 //canal RF de comunicacao, 0-125 (2400+CHANNEL MHZ)
 #define W_ADDRESS 5 //quantidade de bytes do endereco
-#define W_DATA 14 //quantidade de bytes do pacote para envio
+#define W_DATA 14 //quantidade de bytes do pacote para envio - 3 velocidades 1 nome e 1 inicio
 #define DATA_RATE RF24_2MBPS //velocidade de transmissao de dados
 
 //chaves de comunicacao
