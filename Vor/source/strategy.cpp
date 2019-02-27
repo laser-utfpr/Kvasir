@@ -391,7 +391,7 @@ void Strategy::manualControl(void)
         switch (manual_command)
         {
             case STOP:
-                robot[n].movement.stay_still = true;
+                robot[n].movement.stay_still = true; break;
             case FORWARD:
                 robot[n].destination.x = 0;
                 robot[n].destination.y = 1; break;

@@ -17,7 +17,7 @@
 #define CPORT_NR 16
 #define KEY 0xa0
 #define BEGIN 0x77
-#define COMMUNICATION_DELAY 10000//delay em us da comunicacao 3350 eh o maximo que le, porem arduiino trava
+#define COMMUNICATION_DELAY 3350//delay em us da comunicacao 3350 eh o maximo que le, porem arduiino trava
 
 
 #endif

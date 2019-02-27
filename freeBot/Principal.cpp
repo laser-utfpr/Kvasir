@@ -16,17 +16,12 @@ void Principal::start()
         {
             robot->move(rf_receiver->getVelX(), rf_receiver->getVelY(), rf_receiver->getVelAng()); 
         }
-        //do
-        //{
-        //    robot->move(rf_receiver->getVelX(), rf_receiver->getVelY(), rf_receiver->getVelAng());
-            
-        //}while(rf_receiver->updateBuffer());
-        //delay(COMMUNICATION_DELAY);
-        if(millis()-time >=1000)
+        delay(COMMUNICATION_DELAY);
+        /*if(millis()-time >=1000)
         {
             time = millis();
             Serial.println("1 segundo");
-        }
+        }*/
     }
     
 }

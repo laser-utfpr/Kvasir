@@ -59,7 +59,7 @@ public:
     {
         double dx = c.x - x;
         double dy = c.y - y;
-        if((y == 0 && x == 0) || (std::isnan(y) || std::isnan(x)))
+        if((dy == 0 && dx == 0) || (std::isnan(dy) || std::isnan(dx)))
         {
             return 0;
         }
