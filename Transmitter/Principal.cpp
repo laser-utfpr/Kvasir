@@ -3,10 +3,10 @@
 Principal::Principal()
 {
     serial = new SerialCommunication(); //comunicacao Serial1
-	  rWriter = new RadioWriter(); //envio de dados
+    rWriter = new RadioWriter(); //envio de dados
 }
 
-void Principal::PrincipalStart()
+void Principal::start()
 {
     uint8_t* address;
     char name;
@@ -14,7 +14,7 @@ void Principal::PrincipalStart()
     int qt = 0;
 	  while(1)
 	  {
-        if(serial->receberRS232())
+        if(serial->receiveRS232())
         {
             address=serial->getAddress();
             name = serial->getName();
@@ -27,8 +27,8 @@ void Principal::PrincipalStart()
               qt++;
             }
             rWriter->setChannel(name);
-		        rWriter->setAddress(address);
-		        rWriter->sendData(serial->getData());
+	        rWriter->setAddress(address);
+	        rWriter->sendData(serial->getData());
             //rWriter.debug();
             //qt++;
         }

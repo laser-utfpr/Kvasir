@@ -14,7 +14,7 @@ SerialCommunication::SerialCommunication()
     }
 }
 
-int SerialCommunication::receberRS232()
+int SerialCommunication::receiveRS232()
 {
     int i, siz;
     unsigned char a;
@@ -24,10 +24,10 @@ int SerialCommunication::receberRS232()
         for(i=0; i<siz; i++)
         {
             queue = queue->addByte(Serial1.read(), queue);
-            
+
             //Serial.print(queue->getByte(), HEX);
         }
-        delayMicroseconds(500); 
+        delayMicroseconds(500);
         //Serial.println();
         if(queue->getSize() < (W_DATA+W_ADDRESS+1))
         {

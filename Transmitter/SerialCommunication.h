@@ -15,7 +15,7 @@ private:
 
 public:
     SerialCommunication();
-    int receberRS232();
+    int receiveRS232();
     uint8_t* getAddress();
     unsigned char* getData();
     char getName();

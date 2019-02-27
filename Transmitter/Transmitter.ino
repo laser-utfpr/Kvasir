@@ -14,5 +14,5 @@ void setup()
 void loop()
 {
     Principal principal = Principal();
-    principal.PrincipalStart();
+    principal.start();
 }

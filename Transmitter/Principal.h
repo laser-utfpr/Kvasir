@@ -11,7 +11,7 @@ class Principal{
 public:
     Principal();
     ~Principal() {}
-    void PrincipalStart();
+    void start();
 };
 
 #endif
