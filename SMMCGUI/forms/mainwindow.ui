@@ -339,19 +339,6 @@
           </property>
          </widget>
         </item>
-        <item row="20" column="1" rowspan="2">
-         <widget class="QPushButton" name="stop_resume">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Force Stop</string>
-          </property>
-         </widget>
-        </item>
         <item row="16" column="1">
          <widget class="QPushButton" name="players_menu">
           <property name="sizePolicy">
@@ -460,11 +447,24 @@
           <property name="maximumSize">
            <size>
             <width>1080</width>
-            <height>720</height>
+            <height>650</height>
            </size>
           </property>
           <property name="text">
            <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="19" column="1">
+         <widget class="QPushButton" name="stop_resume">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Force Stop</string>
           </property>
          </widget>
         </item>
