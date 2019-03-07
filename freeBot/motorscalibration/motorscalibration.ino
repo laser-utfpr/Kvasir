@@ -14,10 +14,10 @@ void setup() {
 void loop() 
 {
     Serial.println("digite o numero do motor");
-    servo1.write(109);
-    servo2.write(92);
-    servo3.write(96);
-    servo4.write(101);
+    servo1.write(80);
+    servo2.write(85);
+    servo3.write(80);
+    servo4.write(85);
     /*if(Serial.available() > 0)
     {
         motorNum = Serial.parseInt();
@@ -59,4 +59,3 @@ void loop()
         }
     }*/
 }
-

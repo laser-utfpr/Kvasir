@@ -53,9 +53,9 @@
 #define WHEEL_RADIUS 0.0375 //raio da roda
 
 //velocidade de parada. Ajustes digitais podem ser feitos no programa motorscalibration.ino, na pasta MotorsCalibration
-#define MOTOR1_ADJUST_SPEED 109
-#define MOTOR2_ADJUST_SPEED 92
-#define MOTOR3_ADJUST_SPEED 96
-#define MOTOR4_ADJUST_SPEED 101
+#define MOTOR1_ADJUST_SPEED 80
+#define MOTOR2_ADJUST_SPEED 85
+#define MOTOR3_ADJUST_SPEED 80
+#define MOTOR4_ADJUST_SPEED 85
 
 #endif

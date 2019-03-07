@@ -25,7 +25,7 @@ void Robot::move(float vel_x, float vel_y, float vel_ang)
 void Robot::calculateMotorsVelocity(float vel_x, float vel_y, float vel_ang)
 {
     //--Robô Visto de Cima
-    //            _
+    //    botao   _
     //      M1    /|
     //   ___|___ /
     //   |     |
