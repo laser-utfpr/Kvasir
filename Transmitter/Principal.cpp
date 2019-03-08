@@ -16,6 +16,7 @@ void Principal::start()
 	  {
         if(serial->receiveRS232())
         {
+            digitalWrite(13, HIGH);
             address=serial->getAddress();
             name = serial->getName();
             if(name == 0)
@@ -27,10 +28,14 @@ void Principal::start()
               qt++;
             }
             rWriter->setChannel(name);
-	        rWriter->setAddress(address);
-	        rWriter->sendData(serial->getData());
+	          rWriter->setAddress(address);
+	          rWriter->sendData(serial->getData());
             //rWriter.debug();
             //qt++;
+        }
+        else
+        {
+            digitalWrite(13, LOW);
         }
         if(millis()-time >=1000)
         {

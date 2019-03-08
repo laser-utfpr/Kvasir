@@ -8,6 +8,7 @@ void setup()
   //--Sets
      Serial1.begin(BDRATE);
      Serial.begin(BDRATE);
+     pinMode(13, OUTPUT);
      printf_begin();
 }
 

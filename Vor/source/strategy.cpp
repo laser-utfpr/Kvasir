@@ -52,7 +52,7 @@ void Strategy::calculateMovementsFromDestinations(void)
             robot[i].angle = 0;
         }
         robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
-        robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
+        //robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
         robot[i].movement.linear_vel_scaling = 1;
         ai_field_handler.setMovement(robot[i].movement, i);
     }
@@ -396,25 +396,25 @@ void Strategy::manualControl(void)
                 robot[n].destination.x = 0;
                 robot[n].destination.y = 1; break;
             case TURN_LEFT:
-                robot[n].destination.x = 1;
+                robot[n].destination.x = -1;
                 robot[n].destination.y = 0; break;
             case TURN_RIGHT:
-                robot[n].destination.x = -1;
+                robot[n].destination.x = 1;
                 robot[n].destination.y = 0; break;
             case BACK:
                 robot[n].destination.x = 0;
                 robot[n].destination.y = -1; break;
             case FL:
-                robot[n].destination.x = 1;
+                robot[n].destination.x = -1;
                 robot[n].destination.y = 1; break;
             case FR:
-                robot[n].destination.x = -1;
+                robot[n].destination.x = 1;
                 robot[n].destination.y = 1; break;
             case BL:
-                robot[n].destination.x = 1;
+                robot[n].destination.x = -1;
                 robot[n].destination.y = -1; break;
             case BR:
-                robot[n].destination.x = -1;
+                robot[n].destination.x = 1;
                 robot[n].destination.y = -1; break;
         }
         robot[n].movement.angular_vel_scaling = 0;
