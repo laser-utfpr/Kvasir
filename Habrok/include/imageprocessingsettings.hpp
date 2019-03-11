@@ -49,7 +49,7 @@ private:
 
     int maximum_tag_distance = 150;
 
-    int camera_id = 0;
+    int camera_id = 1;
 
 public:
     ImageProcessingSettings();

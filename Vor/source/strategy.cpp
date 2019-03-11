@@ -52,7 +52,7 @@ void Strategy::calculateMovementsFromDestinations(void)
             robot[i].angle = 0;
         }
         robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
-        //robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
+        robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
         robot[i].movement.linear_vel_scaling = 1;
         ai_field_handler.setMovement(robot[i].movement, i);
     }

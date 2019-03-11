@@ -17,17 +17,19 @@ SerialCommunication::SerialCommunication()
 int SerialCommunication::receiveRS232()
 {
     int i, siz;
-    unsigned char a;
-    siz = Serial1.available();
+    unsigned char data[W_DATA+W_ADDRESS+1];
+    siz = Serial1.readBytes(data, W_DATA+W_ADDRESS+1);
+    Serial1.flush();
+    delayMicroseconds(500);
     if(siz>0)
     {
         for(i=0; i<siz; i++)
         {
-            queue = queue->addByte(Serial1.read(), queue);
+            queue = queue->addByte(data[i], queue);
 
             //Serial.print(queue->getByte(), HEX);
         }
-        delayMicroseconds(500);
+        
         //Serial.println();
         if(queue->getSize() < (W_DATA+W_ADDRESS+1))
         {
@@ -61,7 +63,7 @@ int SerialCommunication::receiveRS232()
     }
 }
 
-uint8_t* SerialCommunication::getAddress()
+void SerialCommunication::getAddress(uint8_t *_address)
 {
     int i;
 
@@ -82,11 +84,16 @@ uint8_t* SerialCommunication::getAddress()
         }
         queue=queue->removeByte(queue);
     }
+    for(i=0; i<W_ADDRESS; i++)
+    {
+        _address[i] = address[i];
+    }
+    
     //Serial.println();
-    return address;
+    //_address = address;
 }
 
-unsigned char* SerialCommunication::getData()
+void SerialCommunication::getData(unsigned char *_data)
 {
     int i;
     while(queue!=NULL&&queue->getByte()!=KEY)
@@ -108,8 +115,15 @@ unsigned char* SerialCommunication::getData()
     {
         data[1]=0;
     }
-
-    return data;
+    for(i=0; i<W_DATA; i++)
+    {
+        
+        
+        _data[i] = data[i];
+    }
+    queue = NULL;
+    //*_data = data;
+    //return data;
 }
 
 char SerialCommunication::getName()

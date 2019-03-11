@@ -35,6 +35,11 @@ void SerialCommunication::mountPacket(int name, char *rf_address, float vel_x, f
     *((float*)&string_velX) = vel_x;
     *((float*)&string_velY) = vel_y;
     *((float*)&string_velAng) = vel_ang;
+
+    //reinterpret_cast<float*>(string_velX) = vel_x;
+    //reinterpret_cast<float*>(string_velY) = vel_y;
+    //reinterpret_cast<float*>(string_velAng) = vel_ang;
+
 #ifndef XBEE
     // string saida foi craida com base na documentacao da biblioteca para nrf24l01 -- http://tmrh20.github.io/RF24/ //nrf24l01
     data[0] = BEGIN;  //--Padr�o

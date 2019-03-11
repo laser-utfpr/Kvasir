@@ -8,7 +8,8 @@ Principal::Principal()
 
 void Principal::start()
 {
-    uint8_t* address;
+    uint8_t address[W_ADDRESS];
+    unsigned char data[W_DATA];
     char name;
     long time = millis();
     int qt = 0;
@@ -17,7 +18,7 @@ void Principal::start()
         if(serial->receiveRS232())
         {
             digitalWrite(13, HIGH);
-            address=serial->getAddress();
+            serial->getAddress(address);
             name = serial->getName();
             if(name == 0)
             {
@@ -29,7 +30,8 @@ void Principal::start()
             }
             rWriter->setChannel(name);
 	          rWriter->setAddress(address);
-	          rWriter->sendData(serial->getData());
+            serial->getData(data);
+	          rWriter->sendData(data);
             //rWriter.debug();
             //qt++;
         }
