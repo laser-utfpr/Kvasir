@@ -51,10 +51,19 @@ void Strategy::calculateMovementsFromDestinations(void)
         {
             robot[i].angle = 0;
         }
-        robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
+        robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination);
+        if(command != MANUAL_CONTROL)
+        {
+            robot[i].movement.linear_vel_angle -= robot[i].angle;
+        }
         robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
         robot[i].movement.linear_vel_scaling = 1;
+        if(command == MANUAL_CONTROL && i==manual_robot)
+        {
+            moveStraight(robot[i].movement.linear_vel_angle);
+        }
         ai_field_handler.setMovement(robot[i].movement, i);
+
     }
 }
 
@@ -387,6 +396,7 @@ void Strategy::manualControl(void)
     if(there_is_command)
     {
         int n = ai_field_handler.manualPlayer();
+        manual_robot = n;
         robot[n].movement.stay_still = false;
         switch (manual_command)
         {
@@ -394,7 +404,7 @@ void Strategy::manualControl(void)
                 robot[n].movement.stay_still = true; break;
             case FORWARD:
                 robot[n].destination.x = 0;
-                robot[n].destination.y = 1; break;
+                robot[n].destination.y = -1; break;
             case TURN_LEFT:
                 robot[n].destination.x = -1;
                 robot[n].destination.y = 0; break;
@@ -403,19 +413,19 @@ void Strategy::manualControl(void)
                 robot[n].destination.y = 0; break;
             case BACK:
                 robot[n].destination.x = 0;
-                robot[n].destination.y = -1; break;
+                robot[n].destination.y = 1; break;
             case FL:
                 robot[n].destination.x = -1;
-                robot[n].destination.y = 1; break;
+                robot[n].destination.y = -1; break;
             case FR:
                 robot[n].destination.x = 1;
-                robot[n].destination.y = 1; break;
+                robot[n].destination.y = -1; break;
             case BL:
                 robot[n].destination.x = -1;
-                robot[n].destination.y = -1; break;
+                robot[n].destination.y = 1; break;
             case BR:
                 robot[n].destination.x = 1;
-                robot[n].destination.y = -1; break;
+                robot[n].destination.y = 1; break;
         }
         robot[n].movement.angular_vel_scaling = 0;
     }
@@ -438,4 +448,16 @@ bool Strategy::angleCompare(double angle1, double angle2, double epsilon)
     angle2 = normalizeAngle(angle2);
     double diff = angle1 - angle2;
     return (diff < epsilon) || (-diff > -epsilon);
+}
+
+void Strategy::moveStraight(double _angle)
+{
+    if(robot[manual_robot].already_found)
+    {
+        //if(robot[manual_robot].angle-angle>=ANGLE_COMPARE_EPSILON)//pq a camera esta de lado
+        {
+            std::cout<<robot[manual_robot].angle<<"  "<<_angle<<std::endl;
+        }
+
+    }
 }

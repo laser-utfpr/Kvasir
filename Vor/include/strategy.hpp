@@ -39,6 +39,8 @@ private:
     Coord rga_ulc;
     Coord rga_lrc;
 
+    int manual_robot;
+
     static Coord compared_object_coord;
 
     void assignRoles(void);
@@ -59,6 +61,7 @@ private:
 
     double normalizeAngle(double angle);
     bool angleCompare(double angle1, double angle2, double epsilon);
+    void moveStraight(double angle);
 
 public:
     Strategy(AIFieldHandler &afh);
