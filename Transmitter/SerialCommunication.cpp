@@ -20,7 +20,7 @@ int SerialCommunication::receiveRS232()
     unsigned char data[W_DATA+W_ADDRESS+1];
     siz = Serial1.readBytes(data, W_DATA+W_ADDRESS+1);
     Serial1.flush();
-    delayMicroseconds(500);
+    //delayMicroseconds(500);
     if(siz>0)
     {
         for(i=0; i<siz; i++)
@@ -31,7 +31,7 @@ int SerialCommunication::receiveRS232()
         }
         
         //Serial.println();
-        if(queue->getSize() < (W_DATA+W_ADDRESS+1))
+        if(queue!=NULL && queue->getSize() < (W_DATA+W_ADDRESS+1))
         {
             return 0;
         }
@@ -41,13 +41,13 @@ int SerialCommunication::receiveRS232()
         {
             queue = queue->removeByte(queue);
         }
-        if(queue->getByte()==BEGIN)
+        if(queue!=NULL && queue->getByte()==BEGIN)
         {
             while(queue!=NULL&&queue->getSize()>(W_DATA+W_ADDRESS+1))//+1 porque o BEGIN nao entra no tamanho do pacote
             {
                 queue = queue->removeByte(queue);
             }
-            if(queue->getByte()!=BEGIN)
+            if(queue!=NULL&&queue->getByte()!=BEGIN)
             {
                 //Serial.println("ta errado");
                 return 0;
@@ -121,14 +121,14 @@ void SerialCommunication::getData(unsigned char *_data)
         
         _data[i] = data[i];
     }
-    queue = NULL;
+    //queue = NULL;
     //*_data = data;
     //return data;
 }
 
 char SerialCommunication::getName()
 {
-    if(queue->getByte()!=BEGIN)
+    if(queue!=NULL && queue->getByte()!=BEGIN)
     {
         if(queue!=NULL&&queue->getSize()==W_DATA)
         {
