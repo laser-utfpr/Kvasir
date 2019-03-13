@@ -444,6 +444,7 @@ bool Strategy::angleCompare(double angle1, double angle2, double epsilon)
     angle1 = normalizeAngle(angle1);
     angle2 = normalizeAngle(angle2);
     double diff = fabs(angle1 - angle2);
+    return (diff < epsilon);
 }
 
 void Strategy::moveStraight(double angle)
@@ -452,7 +453,7 @@ void Strategy::moveStraight(double angle)
     {
         if(!angleCompare(robot[manual_robot].angle, angle, ANGLE_COMPARE_EPSILON))
         {
-            std::cout<<robot[manual_robot].angle<<"  "<<angle<<std::endl;
+            std::cout<<robot[manual_robot].angle<<"  "<<angle<<std::endl;;
         }
 
     }
