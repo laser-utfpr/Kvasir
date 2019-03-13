@@ -40,27 +40,24 @@ void Strategy::calculateMovementsFromDestinations(void)
 {
     for(int i=0; i<N_ROBOTS; i++)
     {
-        if(command != MANUAL_CONTROL)
+        if(command != MANUAL_CONTROL && !robot[i].already_found)
         {
-            if(robot[i].already_found)
-                robot[i].movement.stay_still = false;
-            else
-                robot[i].movement.stay_still = true;
+            robot[i].movement.stay_still = true;
         }
         if(std::isnan(robot[i].angle))
         {
             robot[i].angle = 0;
         }
-        robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination);
-        if(command != MANUAL_CONTROL)
+        robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
+        if(command == MANUAL_CONTROL && i == manual_robot)
         {
-            robot[i].movement.linear_vel_angle -= robot[i].angle;
+            robot[i].movement.linear_vel_angle = atan2(robot[i].destination.y, robot[i].destination.x);
         }
         robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
         robot[i].movement.linear_vel_scaling = 1;
         if(command == MANUAL_CONTROL && i==manual_robot)
         {
-            moveStraight(robot[i].movement.linear_vel_angle);
+            moveStraight(M_PI_2);//passar o angulo do momento que foi pedido o comando
         }
         ai_field_handler.setMovement(robot[i].movement, i);
 
@@ -446,17 +443,17 @@ bool Strategy::angleCompare(double angle1, double angle2, double epsilon)
 {
     angle1 = normalizeAngle(angle1);
     angle2 = normalizeAngle(angle2);
-    double diff = angle1 - angle2;
-    return (diff < epsilon) || (-diff > -epsilon);
+    double diff = abs(angle1 - angle2);
+    return (diff < epsilon);
 }
 
-void Strategy::moveStraight(double _angle)
+void Strategy::moveStraight(double angle)
 {
     if(robot[manual_robot].already_found)
     {
-        //if(robot[manual_robot].angle-angle>=ANGLE_COMPARE_EPSILON)//pq a camera esta de lado
+        if(!angleCompare(robot[manual_robot].angle, angle, ANGLE_COMPARE_EPSILON))
         {
-            std::cout<<robot[manual_robot].angle<<"  "<<_angle<<std::endl;
+            std::cout<<robot[manual_robot].angle<<"  "<<angle<<std::endl;
         }
 
     }
