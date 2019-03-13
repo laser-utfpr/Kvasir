@@ -443,8 +443,7 @@ bool Strategy::angleCompare(double angle1, double angle2, double epsilon)
 {
     angle1 = normalizeAngle(angle1);
     angle2 = normalizeAngle(angle2);
-    double diff = abs(angle1 - angle2);
-    return (diff < epsilon);
+    double diff = fabs(angle1 - angle2);
 }
 
 void Strategy::moveStraight(double angle)
