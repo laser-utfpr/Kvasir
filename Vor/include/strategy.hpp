@@ -17,7 +17,7 @@ private:
     AIFieldHandler &ai_field_handler;
 
     Command command = NORMAL_PLAY;
-
+    Manual_Command current_manual_command = STOP;//futuramente usar para nao atualizar a direcao
     Entity ball;
 
     Player robot[N_ROBOTS];
@@ -39,7 +39,9 @@ private:
     Coord rga_ulc;
     Coord rga_lrc;
 
-    int manual_robot;
+    int manual_controlled_robot;
+    double previous_robot_angle;//futuramente usar para controle
+    bool update_position;
 
     static Coord compared_object_coord;
 

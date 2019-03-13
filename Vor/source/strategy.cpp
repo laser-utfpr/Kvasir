@@ -40,24 +40,30 @@ void Strategy::calculateMovementsFromDestinations(void)
 {
     for(int i=0; i<N_ROBOTS; i++)
     {
-        if(command != MANUAL_CONTROL && !robot[i].already_found)
+        if(command != MANUAL_CONTROL)
         {
-            robot[i].movement.stay_still = true;
+            if(!robot[i].already_found)
+                robot[i].movement.stay_still = true;
+            else
+                robot[i].movement.stay_still = false;
         }
         if(std::isnan(robot[i].angle))
         {
             robot[i].angle = 0;
         }
-        robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
-        if(command == MANUAL_CONTROL && i == manual_robot)
-        {
-            robot[i].movement.linear_vel_angle = atan2(robot[i].destination.y, robot[i].destination.x);
-        }
-        robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
-        robot[i].movement.linear_vel_scaling = 1;
-        if(command == MANUAL_CONTROL && i==manual_robot)
+        if(command == MANUAL_CONTROL && i==manual_controlled_robot)
         {
             moveStraight(M_PI_2);//passar o angulo do momento que foi pedido o comando
+        }
+        if(update_position)
+        {
+            robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
+            if(command == MANUAL_CONTROL && i == manual_controlled_robot)
+            {
+                robot[i].movement.linear_vel_angle = atan2(robot[i].destination.y, robot[i].destination.x);
+            }
+            robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
+            robot[i].movement.linear_vel_scaling = 1;
         }
         ai_field_handler.setMovement(robot[i].movement, i);
 
@@ -92,6 +98,7 @@ void Strategy::calculateMovements(void)
     lga_lrc = ai_field_handler.getLeftGoalkeeperAreaLRC();
     rga_ulc = ai_field_handler.getRightGoalkeeperAreaULC();
     rga_lrc = ai_field_handler.getRightGoalkeeperAreaLRC();
+    update_position = true;
 
     switch(command)
     {
@@ -246,6 +253,7 @@ void Strategy::normalPlay(void)
     for(int i=0; i<N_ROBOTS; i++)
         role[i] = NO_ROLE;
     assignRoles();
+    role[2] = GOALKEEPER;//teste
     for(int i=0; i<N_ROBOTS; i++)
     {
         //moveAttacker(i);
@@ -270,7 +278,7 @@ void Strategy::moveGoalkeeper(int n)
     if(SIDE == LEFT)
     {
         robot[n].destination.x = (lga_lrc.x-lga_ulc.x)/2 + lga_ulc.x;
-        if(ball.coord.isInRect(pf_ulc, Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_lrc.y)))
+        if(ball.coord.isInRect(pf_ulc, Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_lrc.y)) && ball.coord.y <= lga_lrc.y)
             robot[n].destination.y = ball.coord.y;
         else
             robot[n].destination.y = (lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y;
@@ -278,7 +286,7 @@ void Strategy::moveGoalkeeper(int n)
     else
     {
         robot[n].destination.x = (rga_lrc.x-rga_ulc.x)/2 + rga_ulc.x;
-        if(ball.coord.isInRect(Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_ulc.y), pf_lrc))
+        if(ball.coord.isInRect(Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_ulc.y), pf_lrc) && ball.coord.y >= rga_ulc.y)
             robot[n].destination.y = ball.coord.y;
         else
             robot[n].destination.y = (rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y;
@@ -393,38 +401,46 @@ void Strategy::manualControl(void)
     if(there_is_command)
     {
         int n = ai_field_handler.manualPlayer();
-        manual_robot = n;
-        robot[n].movement.stay_still = false;
-        switch (manual_command)
+        if(n != manual_controlled_robot || manual_command != current_manual_command)
         {
-            case STOP:
-                robot[n].movement.stay_still = true; break;
-            case FORWARD:
-                robot[n].destination.x = 0;
-                robot[n].destination.y = -1; break;
-            case TURN_LEFT:
-                robot[n].destination.x = -1;
-                robot[n].destination.y = 0; break;
-            case TURN_RIGHT:
-                robot[n].destination.x = 1;
-                robot[n].destination.y = 0; break;
-            case BACK:
-                robot[n].destination.x = 0;
-                robot[n].destination.y = 1; break;
-            case FL:
-                robot[n].destination.x = -1;
-                robot[n].destination.y = -1; break;
-            case FR:
-                robot[n].destination.x = 1;
-                robot[n].destination.y = -1; break;
-            case BL:
-                robot[n].destination.x = -1;
-                robot[n].destination.y = 1; break;
-            case BR:
-                robot[n].destination.x = 1;
-                robot[n].destination.y = 1; break;
+            manual_controlled_robot = n;
+            current_manual_command = manual_command;
+            robot[n].movement.stay_still = false;
+            switch (manual_command)
+            {
+                case STOP:
+                    robot[n].movement.stay_still = true; break;
+                case FORWARD:
+                    robot[n].destination.x = 0;
+                    robot[n].destination.y = -1; break;
+                case TURN_LEFT:
+                    robot[n].destination.x = -1;
+                    robot[n].destination.y = 0; break;
+                case TURN_RIGHT:
+                    robot[n].destination.x = 1;
+                    robot[n].destination.y = 0; break;
+                case BACK:
+                    robot[n].destination.x = 0;
+                    robot[n].destination.y = 1; break;
+                case FL:
+                    robot[n].destination.x = -1;
+                    robot[n].destination.y = -1; break;
+                case FR:
+                    robot[n].destination.x = 1;
+                    robot[n].destination.y = -1; break;
+                case BL:
+                    robot[n].destination.x = -1;
+                    robot[n].destination.y = 1; break;
+                case BR:
+                    robot[n].destination.x = 1;
+                    robot[n].destination.y = 1; break;
+            }
+            robot[n].movement.angular_vel_scaling = 0;
         }
-        robot[n].movement.angular_vel_scaling = 0;
+        else
+        {
+            update_position = false;
+        }
     }
 }
 
@@ -449,12 +465,28 @@ bool Strategy::angleCompare(double angle1, double angle2, double epsilon)
 
 void Strategy::moveStraight(double angle)
 {
-    if(robot[manual_robot].already_found)
+    if(robot[manual_controlled_robot].already_found)
     {
-        if(!angleCompare(robot[manual_robot].angle, angle, ANGLE_COMPARE_EPSILON))
+
+        if(robot[manual_controlled_robot].angle - angle > ANGLE_COMPARE_EPSILON)
         {
-            std::cout<<robot[manual_robot].angle<<"  "<<angle<<std::endl;;
+            std::cout<<"vou diminuir"<<std::endl;
+            //robot[manual_controlled_robot].movement.linear_vel_angle += robot[manual_controlled_robot].angle - angle;
+            robot[manual_controlled_robot].movement.linear_vel_angle += ANGLE_COMPARE_EPSILON/5;
+            //robot[manual_controlled_robot].movement.angular_vel_scaling += ANGLE_COMPARE_EPSILON;
+            if(robot[manual_controlled_robot].movement.linear_vel_angle > 2*M_PI)
+                robot[manual_controlled_robot].movement.linear_vel_angle -= 2*M_PI;
         }
+        else if(angle - robot[manual_controlled_robot].angle > ANGLE_COMPARE_EPSILON)
+        {
+            std::cout<<"vou aumentar"<<std::endl;
+            //robot[manual_controlled_robot].movement.linear_vel_angle -= angle - robot[manual_controlled_robot].angle;
+            robot[manual_controlled_robot].movement.linear_vel_angle -= ANGLE_COMPARE_EPSILON/5;
+            //robot[manual_controlled_robot].movement.angular_vel_scaling -= ANGLE_COMPARE_EPSILON;
+            if(robot[manual_controlled_robot].movement.linear_vel_angle < 2*M_PI)
+                robot[manual_controlled_robot].movement.linear_vel_angle += 2*M_PI;
+        }
+        std::cout<<robot[manual_controlled_robot].angle<<"  "<<robot[manual_controlled_robot].movement.linear_vel_angle<<std::endl;
 
     }
 }
