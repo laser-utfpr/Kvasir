@@ -42,7 +42,7 @@ void Strategy::calculateMovementsFromDestinations(void)
     {
         if(command != MANUAL_CONTROL)
         {
-            if(!robot[i].already_found)
+            if(!robot[i].already_found||(fabs(robot[i].coord.x -robot[i].destination.x) < 30 && fabs(robot[i].coord.y -robot[i].destination.y)<30))
                 robot[i].movement.stay_still = true;
             else
                 robot[i].movement.stay_still = false;
@@ -53,7 +53,7 @@ void Strategy::calculateMovementsFromDestinations(void)
         }
         if(command == MANUAL_CONTROL && i==manual_controlled_robot)
         {
-            moveStraight(M_PI_2);//passar o angulo do momento que foi pedido o comando
+            //moveStraight(M_PI_2);//passar o angulo do momento que foi pedido o comando
         }
         if(update_position)
         {
@@ -63,6 +63,7 @@ void Strategy::calculateMovementsFromDestinations(void)
                 robot[i].movement.linear_vel_angle = atan2(robot[i].destination.y, robot[i].destination.x);
             }
             robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
+            std::cout <<robot[i].coord.x <<" "<<robot[i].coord.y<<" "<<robot[i].movement.linear_vel_angle<<std::endl;
             robot[i].movement.linear_vel_scaling = 1;
         }
         ai_field_handler.setMovement(robot[i].movement, i);
@@ -131,7 +132,7 @@ void Strategy::assignRoles(void)
 {
     //assign an attacker
     if(N_ROBOTS == 1)
-        role[0] = ATTACKER;
+        role[0] = GOALKEEPER;//ATTACKER;
     else
     {
         //assign an attacker
@@ -253,7 +254,6 @@ void Strategy::normalPlay(void)
     for(int i=0; i<N_ROBOTS; i++)
         role[i] = NO_ROLE;
     assignRoles();
-    role[2] = GOALKEEPER;//teste
     for(int i=0; i<N_ROBOTS; i++)
     {
         //moveAttacker(i);
@@ -277,11 +277,13 @@ void Strategy::moveGoalkeeper(int n)
 {
     if(SIDE == LEFT)
     {
+        std::cout <<lga_lrc.x <<" "<<lga_ulc.x <<" "<<lga_lrc.y << " "<<lga_ulc.y<<std::endl;
         robot[n].destination.x = (lga_lrc.x-lga_ulc.x)/2 + lga_ulc.x;
-        if(ball.coord.isInRect(pf_ulc, Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_lrc.y)) && ball.coord.y <= lga_lrc.y)
-            robot[n].destination.y = ball.coord.y;
-        else
+        //if(ball.coord.isInRect(pf_ulc, Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_lrc.y)) && ball.coord.y <= lga_lrc.y)
+        //    robot[n].destination.y = ball.coord.y;
+        //else
             robot[n].destination.y = (lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y;
+            std::cout <<robot[n].destination.x <<" "<<robot[n].destination.y<<std::endl;
     }
     else
     {

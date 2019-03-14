@@ -392,8 +392,8 @@ void MainWindow::processGameControlImage(void)
                         scalar_color = new SCALAR_BLUE;
 
                     cv::line(image, cv::Point(ally[i].coord.x, ally[i].coord.y),
-                    cv::Point(ally[i].coord.x + MOVEMENT_ARROW_LENGTH*cos(ally[i].angle-ally[i].movement.linear_vel_angle)*ally[i].movement.linear_vel_scaling,
-                              ally[i].coord.y + MOVEMENT_ARROW_LENGTH*sin(ally[i].angle-ally[i].movement.linear_vel_angle)*ally[i].movement.linear_vel_scaling),
+                    cv::Point(ally[i].coord.x + MOVEMENT_ARROW_LENGTH*cos(ally[i].angle-ally[i].movement.linear_vel_angle),//*ally[i].movement.linear_vel_scaling,
+                              ally[i].coord.y + MOVEMENT_ARROW_LENGTH*sin(ally[i].angle-ally[i].movement.linear_vel_angle)),//*ally[i].movement.linear_vel_scaling),
                               *scalar_color);
 
                     delete scalar_color;

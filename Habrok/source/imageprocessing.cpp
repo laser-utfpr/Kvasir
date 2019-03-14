@@ -6,10 +6,18 @@ ImageProcessing::ImageProcessing(ImageProcessingSettings &ips,
 {
     robot_recognizer = new RobotRecognizer(vision_field_handler, image_processing_settings);
 
-    cam.open(image_processing_settings.getCameraID());
-    cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);
-    cam.set(CV_CAP_PROP_FRAME_HEIGHT, IMAGE_CAPTURE_HEIGHT);
-
+    try
+    {
+        cam.open(image_processing_settings.getCameraID());
+        cam.set(CV_CAP_PROP_FRAME_WIDTH, IMAGE_CAPTURE_WIDTH);
+        cam.set(CV_CAP_PROP_FRAME_HEIGHT, IMAGE_CAPTURE_HEIGHT);
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << std::endl << "Exception called while opening camera:" << std::endl;
+        std::cout << e.what() << std::endl;
+        exit(1);
+    }
     clock_start = clock();
 }
 
@@ -18,7 +26,16 @@ ImageProcessing::~ImageProcessing()
     if(robot_recognizer != nullptr)
         delete robot_recognizer;
 
-    cam.release();
+    try
+    {
+        cam.release();
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << std::endl << "Exception called while releasing camera:" << std::endl;
+        std::cout << e.what() << std::endl;
+        exit(1);
+    }
 }
 
 void ImageProcessing::findObjects(HSVMask mask)
