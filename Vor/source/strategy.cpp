@@ -40,13 +40,6 @@ void Strategy::calculateMovementsFromDestinations(void)
 {
     for(int i=0; i<N_ROBOTS; i++)
     {
-        if(command != MANUAL_CONTROL)
-        {
-            if(!robot[i].already_found||(fabs(robot[i].coord.x -robot[i].destination.x) < 30 && fabs(robot[i].coord.y -robot[i].destination.y)<30))
-                robot[i].movement.stay_still = true;
-            else
-                robot[i].movement.stay_still = false;
-        }
         if(std::isnan(robot[i].angle))
         {
             robot[i].angle = 0;
@@ -63,7 +56,7 @@ void Strategy::calculateMovementsFromDestinations(void)
                 robot[i].movement.linear_vel_angle = atan2(robot[i].destination.y, robot[i].destination.x);
             }
             robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
-            std::cout <<robot[i].coord.x <<" "<<robot[i].coord.y<<" "<<robot[i].movement.linear_vel_angle<<std::endl;
+            //std::cout <<robot[i].coord.x <<" "<<robot[i].coord.y<<" "<<robot[i].movement.linear_vel_angle<<std::endl;
             robot[i].movement.linear_vel_scaling = 1;
         }
         ai_field_handler.setMovement(robot[i].movement, i);
@@ -87,6 +80,10 @@ void Strategy::calculateMovements(void)
     {
         robot[i] = ai_field_handler.getAlly(i);
         enemy_robot[i] = ai_field_handler.getEnemy(i);
+        if(!robot[i].already_found)
+            robot[i].movement.stay_still = true;
+        else
+            robot[i].movement.stay_still = false;
     }
 
     pf_ulc = ai_field_handler.getPlayableFieldULC();
@@ -277,13 +274,32 @@ void Strategy::moveGoalkeeper(int n)
 {
     if(SIDE == LEFT)
     {
-        std::cout <<lga_lrc.x <<" "<<lga_ulc.x <<" "<<lga_lrc.y << " "<<lga_ulc.y<<std::endl;
-        robot[n].destination.x = (lga_lrc.x-lga_ulc.x)/2 + lga_ulc.x;
-        //if(ball.coord.isInRect(pf_ulc, Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_lrc.y)) && ball.coord.y <= lga_lrc.y)
-        //    robot[n].destination.y = ball.coord.y;
-        //else
-            robot[n].destination.y = (lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y;
-            std::cout <<robot[n].destination.x <<" "<<robot[n].destination.y<<std::endl;
+        //std::cout <<lga_lrc.x <<" "<<lga_ulc.x <<" "<<lga_lrc.y << " "<<lga_ulc.y<<std::endl;
+        if(ball.coord.x < ((pf_lrc.x - pf_ulc.x)/2+pf_ulc.x))
+        {
+            robot[n].destination.y = ball.coord.y;//(lga_lrc.y-lga_ulc.y)/2 + lga_ulc.y;
+            robot[n].destination.x = ball.coord.x;
+            if(robot[n].destination.y < lga_ulc.y)
+                robot[n].destination.y = lga_ulc.y;
+            else if(robot[n].destination.y > lga_lrc.y)
+                robot[n].destination.y = lga_lrc.y;
+            if(robot[n].destination.x > lga_lrc.x)
+                robot[n].destination.x = lga_lrc.x;
+            //pensaerif(ball.coord.isInRect(pf_ulc, Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_lrc.y)))
+
+            //else
+            //    robot[n].destination.x = (lga_lrc.x - lga_ulc.x)/2 + lga_ulc.x;
+        }
+        else if(robot[n].coord.y < lga_ulc.y || robot[n].coord.y > lga_lrc.y || robot[n].coord.x > lga_lrc.x)
+        {
+            robot[n].destination.x = (lga_lrc.x - lga_ulc.x)/2 + lga_ulc.x;
+            robot[n].destination.y = (lga_lrc.y-lga_ulc.y)/2 + lga_ulc.y;
+        }
+        else
+            robot[n].movement.stay_still = true;
+
+
+        //    std::cout <<robot[n].destination.x <<" "<<robot[n].destination.y<<std::endl;
     }
     else
     {
