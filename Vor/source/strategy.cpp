@@ -129,7 +129,7 @@ void Strategy::assignRoles(void)
 {
     //assign an attacker
     if(N_ROBOTS == 1)
-        role[0] = GOALKEEPER;//ATTACKER;
+        role[0] = DEFENDER;//ATTACKER;
     else
     {
         //assign an attacker
@@ -274,10 +274,9 @@ void Strategy::moveGoalkeeper(int n)
 {
     if(SIDE == LEFT)
     {
-        //std::cout <<lga_lrc.x <<" "<<lga_ulc.x <<" "<<lga_lrc.y << " "<<lga_ulc.y<<std::endl;
         if(ball.coord.x < ((pf_lrc.x - pf_ulc.x)/2+pf_ulc.x))
         {
-            robot[n].destination.y = ball.coord.y;//(lga_lrc.y-lga_ulc.y)/2 + lga_ulc.y;
+            robot[n].destination.y = ball.coord.y;
             robot[n].destination.x = ball.coord.x;
             if(robot[n].destination.y < lga_ulc.y)
                 robot[n].destination.y = lga_ulc.y;
@@ -285,10 +284,6 @@ void Strategy::moveGoalkeeper(int n)
                 robot[n].destination.y = lga_lrc.y;
             if(robot[n].destination.x > lga_lrc.x)
                 robot[n].destination.x = lga_lrc.x;
-            //pensaerif(ball.coord.isInRect(pf_ulc, Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_lrc.y)))
-
-            //else
-            //    robot[n].destination.x = (lga_lrc.x - lga_ulc.x)/2 + lga_ulc.x;
         }
         else if(robot[n].coord.y < lga_ulc.y || robot[n].coord.y > lga_lrc.y || robot[n].coord.x > lga_lrc.x)
         {
@@ -297,9 +292,6 @@ void Strategy::moveGoalkeeper(int n)
         }
         else
             robot[n].movement.stay_still = true;
-
-
-        //    std::cout <<robot[n].destination.x <<" "<<robot[n].destination.y<<std::endl;
     }
     else
     {
@@ -320,6 +312,19 @@ void Strategy::moveDefender(int n)
         Coord goal_center(lg_lrc.x, (lg_lrc.y-lg_ulc.y)/2 + lg_ulc.y);
         robot[n].destination.x = goal_center.x + (ball.coord.x - goal_center.x)/2;
         robot[n].destination.y = goal_center.y + (ball.coord.y - goal_center.y)/2;
+        if(robot[n].destination.x < lga_lrc.x)//colocar deltas depois
+        {
+            if(robot[n].destination.y > lga_ulc.y && robot[n].destination.y < ((lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y))
+            {
+                robot[n].destination.y = lga_ulc.y;
+                //robot[n].destination.x = lga_lrc.x;
+            }
+            else if(robot[n].destination.y < lga_lrc.y && robot[n].destination.y > ((lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y))
+            {
+                robot[n].destination.y = lga_lrc.y;
+                //robot[n].destination.x = lga_lrc.x;
+            }
+        }
     }
     else
     {
