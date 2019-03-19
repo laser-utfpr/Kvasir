@@ -78,7 +78,6 @@ double VelocitiesLoader::getVelY(int robot)
 
 double VelocitiesLoader::getVelAng(int robot)
 {
-    return 0.0;
     if(robot >= N_ROBOTS || robot < 0)
         return 0.0;
     if(robot_movement[robot].stay_still)

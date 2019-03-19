@@ -129,7 +129,7 @@ void Strategy::assignRoles(void)
 {
     //assign an attacker
     if(N_ROBOTS == 1)
-        role[0] = DEFENDER;//ATTACKER;
+        role[0] = ATTACKER;
     else
     {
         //assign an attacker
@@ -312,7 +312,7 @@ void Strategy::moveDefender(int n)
         Coord goal_center(lg_lrc.x, (lg_lrc.y-lg_ulc.y)/2 + lg_ulc.y);
         robot[n].destination.x = goal_center.x + (ball.coord.x - goal_center.x)/2;
         robot[n].destination.y = goal_center.y + (ball.coord.y - goal_center.y)/2;
-        if(robot[n].destination.x < lga_lrc.x)//colocar deltas depois
+        if(robot[n].destination.x < lga_lrc.x)//colocar deltas depois ou meio termo
         {
             if(robot[n].destination.y > lga_ulc.y && robot[n].destination.y < ((lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y))
             {
@@ -363,15 +363,16 @@ void Strategy::moveAttacker(int n)
             robot[n].movement.angular_vel_scaling = 0;
         }
 
-        //std::cout << robot[n].coord.distance(ball.coord) << std::endl;
-        if(robot[n].coord.distance(ball.coord) < ATTACKER_OFFSET_RANGE)
+        //std::cout << robot[n].coord.distance(ball.coord) <<" "<< robot[n].coord.x <<" " <<robot[n].coord.y<<" "<<ball.coord.x<<" "<<ball.coord.y<< std::endl;
+        if(robot[n].coord.distance(ball.coord) > ATTACKER_OFFSET_RANGE)
         {
-            robot[n].destination = ball.coord;
-        }
-        else if(SIDE == LEFT)
-        {
-            robot[n].destination.x = ball.coord.x - ATTACKER_BALL_OFFSET;
             robot[n].destination.y = ball.coord.y;
+            robot[n].destination.x = ball.coord.x - ATTACKER_BALL_OFFSET;
+        }
+        else if(SIDE == LEFT)//e a bola esta em reta com o gol
+        {
+            Coord goal_center(rg_ulc.x, (rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y);
+            robot[n].destination = goal_center;
         }
         else
         {
@@ -403,6 +404,12 @@ void Strategy::freeKick(void)
 
 void Strategy::penalty(void)
 {
+    if(SIDE == LEFT)
+    {
+        Coord goal_center(rg_ulc.x, (rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y);
+        robot[0].destination = goal_center;
+        robot[0].movement.angular_vel_scaling = 1;
+    }
 
 }
 
