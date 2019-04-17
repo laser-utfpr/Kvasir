@@ -431,8 +431,8 @@ void Strategy::manualControl(void)
     if(there_is_command)
     {
         int n = ai_field_handler.manualPlayer();
-        if(n != manual_controlled_robot || manual_command != current_manual_command)
-        {
+        //if(n != manual_controlled_robot || manual_command != current_manual_command)
+        //{
             manual_controlled_robot = n;
             current_manual_command = manual_command;
             robot[n].movement.stay_still = false;
@@ -466,11 +466,11 @@ void Strategy::manualControl(void)
                     robot[n].destination.y = 1; break;
             }
             robot[n].movement.angular_vel_scaling = 0;
-        }
-        else
-        {
-            update_position = false;
-        }
+        //}
+        //else
+        //{
+        //    update_position = false;
+        //}
     }
 }
 

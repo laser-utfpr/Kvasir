@@ -24,8 +24,8 @@
     #define W_ADDRESS 5 //quantidade de bytes do endereco
     #define W_DATA 14 //quantidade de bytes do pacote para envio - 3 velocidades 1 nome e 1 inicio
     #define DATA_RATE RF24_2MBPS //velocidade de transmissao de dados
-    #define ADDRESS "FABRO"
-    #define NAME 2
+    #define ADDRESS "ALEFE"
+    #define NAME 0
     //pinagem motores, dependera da placa de alimentacao criada.
     //ATENCAO: atentar para a correta localizacao, pois a pinagem errada podera queimar o Arduino, ja que uma saida estara recebendo a tensao do motor ou terra
     #define MOTOR1_PIN 3
@@ -53,9 +53,9 @@
 #define WHEEL_RADIUS 0.0375 //raio da roda
 
 //velocidade de parada. Ajustes digitais podem ser feitos no programa motorscalibration.ino, na pasta MotorsCalibration
-#define MOTOR1_ADJUST_SPEED 82 
-#define MOTOR2_ADJUST_SPEED 92
-#define MOTOR3_ADJUST_SPEED 87
-#define MOTOR4_ADJUST_SPEED 75
+#define MOTOR1_ADJUST_SPEED 84
+#define MOTOR2_ADJUST_SPEED 90
+#define MOTOR3_ADJUST_SPEED 85
+#define MOTOR4_ADJUST_SPEED 77
 
 #endif
