@@ -8,33 +8,35 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 cd $SCRIPTPATH
 
 #make the SMMCGUI if build don't exists
-SMMCGUI_PATH=$SCRIPTPATH$"/build"
+SMMCGUI_PATH=$SCRIPTPATH$"/build/bin"
 if [ ! -d "$SMMCGUI_PATH" ]; then
-    mkdir build && cd build
-    cmake .. && make && sudo make install
+    mkdir build
+    cd build && cmake .. && make && sudo make install
 fi
 
-
+cd $SCRIPTPATH
 #make the Habrok if build don't exists
-HABROK_PATH=$SCRIPTPATH$"/../Habrok/build"
+HABROK_PATH=$SCRIPTPATH$"/../Habrok/build/bin"
 if [ ! -d "$HABROK_PATH" ]; then
-    cd ../../Habrok && mkdir build && cd build
-    cmake .. && make
+    cd ../Habrok &&  mkdir build
+    cd build  &&  cmake .. && make
 fi
 
+cd $SCRIPTPATH
 #make the Vor if build don't exists
-VOR_PATH=$SCRIPTPATH$"/../Vor/build"
+VOR_PATH=$SCRIPTPATH$"/../Vor/build/bin"
 if [ ! -d "$VOR_PATH" ]; then
-    cd ../../Vor && mkdir build && cd build
-    cmake .. && make
+    cd ../Vor &&  mkdir build
+    cd build  &&  cmake .. && make
 fi
 
+cd $SCRIPTPATH
 #make the Vard if build don't exists
-VARD_PATH=$SCRIPTPATH$"/../Vard/build"
+VARD_PATH=$SCRIPTPATH$"/../Vard/build/bin"
 if [ ! -d "$VARD_PATH" ]; then
-    cd ../../Vard && mkdir build && cd build
-    cmake .. && make
+    cd ../Vard  &&  mkdir build
+    cd build  &&  cmake .. && make
 fi
 
 #execute
-$SMMCGUI_PATH$"/bin/SMMCGUI"
+$SMMCGUI_PATH$"/SMMCGUI"
