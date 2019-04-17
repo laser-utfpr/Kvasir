@@ -5,7 +5,7 @@ SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in, thus /home/user/bin
 SCRIPTPATH=$(dirname "$SCRIPT")
 
-cd $SCRIPTPATH
+cd "$SCRIPTPATH"
 
 #make the SMMCGUI if build don't exists
 SMMCGUI_PATH=$SCRIPTPATH$"/build/bin"
@@ -14,7 +14,7 @@ if [ ! -d "$SMMCGUI_PATH" ]; then
     cd build && cmake .. && make && sudo make install
 fi
 
-cd $SCRIPTPATH
+cd "$SCRIPTPATH"
 #make the Habrok if build don't exists
 HABROK_PATH=$SCRIPTPATH$"/../Habrok/build/bin"
 if [ ! -d "$HABROK_PATH" ]; then
@@ -22,7 +22,7 @@ if [ ! -d "$HABROK_PATH" ]; then
     cd build  &&  cmake .. && make
 fi
 
-cd $SCRIPTPATH
+cd "$SCRIPTPATH"
 #make the Vor if build don't exists
 VOR_PATH=$SCRIPTPATH$"/../Vor/build/bin"
 if [ ! -d "$VOR_PATH" ]; then
@@ -30,7 +30,7 @@ if [ ! -d "$VOR_PATH" ]; then
     cd build  &&  cmake .. && make
 fi
 
-cd $SCRIPTPATH
+cd "$SCRIPTPATH"
 #make the Vard if build don't exists
 VARD_PATH=$SCRIPTPATH$"/../Vard/build/bin"
 if [ ! -d "$VARD_PATH" ]; then
@@ -39,4 +39,4 @@ if [ ! -d "$VARD_PATH" ]; then
 fi
 
 #execute
-$SMMCGUI_PATH$"/SMMCGUI"
+"$SMMCGUI_PATH/SMMCGUI"
