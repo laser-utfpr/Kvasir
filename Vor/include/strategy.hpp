@@ -41,7 +41,6 @@ private:
 
     int manual_controlled_robot;
     double previous_robot_angle;//futuramente usar para controle
-    bool update_position;
 
     static Coord compared_object_coord;
 

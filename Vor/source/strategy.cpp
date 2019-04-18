@@ -48,17 +48,14 @@ void Strategy::calculateMovementsFromDestinations(void)
         {
             //moveStraight(M_PI_2);//passar o angulo do momento que foi pedido o comando
         }
-        if(update_position)
+        robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
+        if(command == MANUAL_CONTROL && i == manual_controlled_robot)
         {
-            robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
-            if(command == MANUAL_CONTROL && i == manual_controlled_robot)
-            {
-                robot[i].movement.linear_vel_angle = atan2(robot[i].destination.y, robot[i].destination.x);
-            }
-            robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
-            //std::cout <<robot[i].coord.x <<" "<<robot[i].coord.y<<" "<<robot[i].movement.linear_vel_angle<<std::endl;
-            robot[i].movement.linear_vel_scaling = 1;
+            robot[i].movement.linear_vel_angle = atan2(robot[i].destination.y, robot[i].destination.x);
         }
+        robot[i].movement.linear_vel_angle = -robot[i].movement.linear_vel_angle;
+        //std::cout <<robot[i].coord.x <<" "<<robot[i].coord.y<<" "<<robot[i].movement.linear_vel_angle<<std::endl;
+        robot[i].movement.linear_vel_scaling = 1;
         ai_field_handler.setMovement(robot[i].movement, i);
 
     }
@@ -96,7 +93,6 @@ void Strategy::calculateMovements(void)
     lga_lrc = ai_field_handler.getLeftGoalkeeperAreaLRC();
     rga_ulc = ai_field_handler.getRightGoalkeeperAreaULC();
     rga_lrc = ai_field_handler.getRightGoalkeeperAreaLRC();
-    update_position = true;
 
     switch(command)
     {
@@ -136,12 +132,17 @@ void Strategy::assignRoles(void)
         std::vector<Player> ball_sorted;
         for(int i=0; i<N_ROBOTS; i++)
             ball_sorted.push_back(robot[i]);
-        compared_object_coord = ball.coord;
+        compared_object_coord = ball.coord;//ordenar em relacao a bola
         std::sort(ball_sorted.begin(), ball_sorted.end(), &Strategy::comparePlayerDistance);
 
         for(int i=0; i<N_ROBOTS; i++)
+        {
             if(robot[i].coord == ball_sorted[0].coord)
+            {
                 role[i] = ATTACKER;
+                break;
+            }
+        }
 
         //assign a goalkeeper
         if(N_ROBOTS == 2)
@@ -156,8 +157,13 @@ void Strategy::assignRoles(void)
             //assign a goalkeeper
             std::vector<Player> goal_sorted;
             for(int i=0; i<N_ROBOTS; i++)
-                goal_sorted.push_back(robot[i]);
-            if(SIDE == LEFT)
+            {
+                if(role[i] == NO_ROLE)
+                {
+                    goal_sorted.push_back(robot[i]);
+                }
+            }
+            if(SIDE == LEFT)//ordenar em relacao a area do gol a ser defendida
             {
                 compared_object_coord.x = (lg_lrc.x - lg_ulc.x)/2 + lg_ulc.x;
                 compared_object_coord.y = (lg_lrc.y - lg_ulc.y)/2 + lg_ulc.x;
@@ -170,68 +176,55 @@ void Strategy::assignRoles(void)
             std::sort(goal_sorted.begin(), goal_sorted.end(), &Strategy::comparePlayerDistance);
 
             for(int i=0; i<N_ROBOTS; i++)
+            {
                 if(robot[i].coord == goal_sorted[0].coord)
                 {
-                    if(role[i] == NO_ROLE)
-                        role[i] = GOALKEEPER;
-                    else
-                        for(int j=0; j<N_ROBOTS; j++)
-                            if(robot[j].coord == goal_sorted[1].coord)
-                                role[j] = GOALKEEPER;
+                    role[i] = GOALKEEPER;
+                    break;
                 }
-            if(N_ROBOTS == 3)
+            }
+
+            bool enemies_defending = true;
+            for(int i=0; i<N_ROBOTS; i++)
             {
-                //assign a defender or support
-                bool enemies_defending = true;
+                if(SIDE == LEFT)
+                {
+                    if(enemy_robot[i].coord.isInRect(pf_ulc, Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_lrc.y)))
+                    {
+                        enemies_defending = false;
+                        break;
+                    }
+                }
+                else
+                {
+                    if(enemy_robot[i].coord.isInRect(Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_ulc.y), pf_lrc))
+                    {
+                        enemies_defending = false;
+                        break;
+                    }
+                }
+            }
+            if(enemies_defending)
+            {
+                //assign  supports
                 for(int i=0; i<N_ROBOTS; i++)
                 {
-                    if(SIDE == LEFT)
-                    {
-                        if(enemy_robot[i].coord.isInRect(pf_ulc, Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_lrc.y)))
-                        {
-                            enemies_defending = false;
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        if(enemy_robot[i].coord.isInRect(Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_ulc.y), pf_lrc))
-                        {
-                            enemies_defending = false;
-                            break;
-                        }
-                    }
-                }
-                for(int i=0; i<N_ROBOTS; i++)
                     if(role[i] == NO_ROLE)
                     {
-                        if(enemies_defending)
-                            role[i] = SUPPORT;
-                        else
-                            role[i] = DEFENDER;
+                        role[i] = SUPPORT;
                     }
+                }
             }
             else
             {
-                //assign a defender
+                //assign defenders
                 for(int i=0; i<N_ROBOTS; i++)
-                    if(robot[i].coord == ball_sorted[1].coord)
-                    {
-                        if(role[i] == NO_ROLE)
-                            role[i] = DEFENDER;
-                        else
-                            for(int j=0; j<N_ROBOTS; j++)
-                                if(role[j] == NO_ROLE || role[j] == DEFENDER)
-                                {
-                                    role[j] = DEFENDER;
-                                    break;
-                                }
-                    }
-
-                //assign supports
-                for(int i=0; i<N_ROBOTS; i++)
+                {
                     if(role[i] == NO_ROLE)
-                        role[i] = SUPPORT;
+                    {
+                        role[i] = DEFENDER;
+                    }
+                }
             }
         }
     }
@@ -242,6 +235,7 @@ void Strategy::assignRoles(void)
         if(static_cast<int>(role[i]) >= 0)
         {
             ai_field_handler.setStatus(role_name[static_cast<int>(role[i])], i);
+            std::cout <<"robo "<<i<<": "<<role_name[static_cast<int>(role[i])]<<std::endl;
         }
     }
 }
@@ -364,15 +358,18 @@ void Strategy::moveAttacker(int n)
         }
 
         //std::cout << robot[n].coord.distance(ball.coord) <<" "<< robot[n].coord.x <<" " <<robot[n].coord.y<<" "<<ball.coord.x<<" "<<ball.coord.y<< std::endl;
-        if(robot[n].coord.distance(ball.coord) > ATTACKER_OFFSET_RANGE)
+        if(SIDE == LEFT)
         {
-            robot[n].destination.y = ball.coord.y;
-            robot[n].destination.x = ball.coord.x - ATTACKER_BALL_OFFSET;
-        }
-        else if(SIDE == LEFT)//e a bola esta em reta com o gol
-        {
-            Coord goal_center(rg_ulc.x, (rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y);
-            robot[n].destination = goal_center;
+            if(robot[n].coord.distance(ball.coord) > ATTACKER_OFFSET_RANGE)
+            {
+                robot[n].destination.y = ball.coord.y;
+                robot[n].destination.x = ball.coord.x - ATTACKER_BALL_OFFSET;
+            }
+            else //se a bola esta em reta com o gol -- melhorar
+            {
+                Coord goal_center(rg_ulc.x, (rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y);
+                robot[n].destination = goal_center;
+            }
         }
         else
         {
@@ -431,46 +428,51 @@ void Strategy::manualControl(void)
     if(there_is_command)
     {
         int n = ai_field_handler.manualPlayer();
-        //if(n != manual_controlled_robot || manual_command != current_manual_command)
-        //{
-            manual_controlled_robot = n;
-            current_manual_command = manual_command;
-            robot[n].movement.stay_still = false;
-            switch (manual_command)
+        manual_controlled_robot = n;
+        current_manual_command = manual_command;
+        robot[n].movement.stay_still = false;
+        if(manual_command == STOP)
+        {
+            robot[n].movement.stay_still = true;
+        }
+        else
+        {
+            if(!robot[n].already_found)
             {
-                case STOP:
-                    robot[n].movement.stay_still = true; break;
-                case FORWARD:
-                    robot[n].destination.x = 0;
-                    robot[n].destination.y = -1; break;
-                case TURN_LEFT:
-                    robot[n].destination.x = -1;
-                    robot[n].destination.y = 0; break;
-                case TURN_RIGHT:
-                    robot[n].destination.x = 1;
-                    robot[n].destination.y = 0; break;
-                case BACK:
-                    robot[n].destination.x = 0;
-                    robot[n].destination.y = 1; break;
-                case FL:
-                    robot[n].destination.x = -1;
-                    robot[n].destination.y = -1; break;
-                case FR:
-                    robot[n].destination.x = 1;
-                    robot[n].destination.y = -1; break;
-                case BL:
-                    robot[n].destination.x = -1;
-                    robot[n].destination.y = 1; break;
-                case BR:
-                    robot[n].destination.x = 1;
-                    robot[n].destination.y = 1; break;
+                switch (manual_command)
+                {
+                    case FORWARD:
+                        robot[n].destination.x = 0;
+                        robot[n].destination.y = -1; break;
+                    case TURN_LEFT:
+                        robot[n].destination.x = -1;
+                        robot[n].destination.y = 0; break;
+                    case TURN_RIGHT:
+                        robot[n].destination.x = 1;
+                        robot[n].destination.y = 0; break;
+                    case BACK:
+                        robot[n].destination.x = 0;
+                        robot[n].destination.y = 1; break;
+                    case FL:
+                        robot[n].destination.x = -1;
+                        robot[n].destination.y = -1; break;
+                    case FR:
+                        robot[n].destination.x = 1;
+                        robot[n].destination.y = -1; break;
+                    case BL:
+                        robot[n].destination.x = -1;
+                        robot[n].destination.y = 1; break;
+                    case BR:
+                        robot[n].destination.x = 1;
+                        robot[n].destination.y = 1; break;
+                }
             }
-            robot[n].movement.angular_vel_scaling = 0;
-        //}
-        //else
-        //{
-        //    update_position = false;
-        //}
+            else
+            {
+                //pegar o angulo do robo e mirar no lado mais longe em linha reta em relação ao manual_command
+            }
+        }
+        robot[n].movement.angular_vel_scaling = 0;
     }
 }
 

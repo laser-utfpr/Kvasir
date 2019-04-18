@@ -17,7 +17,7 @@ typedef enum {LEFT, RIGHT} Side;
 #define SIDE LEFT
 
 #define ATTACKER_BALL_OFFSET 2 //60
-#define ATTACKER_OFFSET_RANGE 70//140
+#define ATTACKER_OFFSET_RANGE 10//140
 
 #define ADJUST_ANGLE false
 
