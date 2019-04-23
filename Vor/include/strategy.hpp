@@ -41,6 +41,8 @@ private:
 
     int manual_controlled_robot;
     double previous_robot_angle;//futuramente usar para controle
+    int previous_manual_controlled_robot = -1;
+    Manual_Command previous_command = STOP;
 
     static Coord compared_object_coord;
 
@@ -59,6 +61,7 @@ private:
     void moveSupport(int n);
 
     void calculateMovementsFromDestinations(void);
+    void calculateDestination(int robot, double x, double y);
 
     double normalizeAngle(double angle);
     bool angleCompare(double angle1, double angle2, double epsilon);

@@ -44,9 +44,11 @@ void Strategy::calculateMovementsFromDestinations(void)
         {
             robot[i].angle = 0;
         }
-        if(command == MANUAL_CONTROL && i==manual_controlled_robot)
+        if(command == MANUAL_CONTROL && i == manual_controlled_robot && i != previous_manual_controlled_robot)
         {
             //moveStraight(M_PI_2);//passar o angulo do momento que foi pedido o comando
+            previous_robot_angle = robot[i].angle;
+            previous_manual_controlled_robot = i;
         }
         robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
         if(command == MANUAL_CONTROL && i == manual_controlled_robot)
@@ -235,7 +237,7 @@ void Strategy::assignRoles(void)
         if(static_cast<int>(role[i]) >= 0)
         {
             ai_field_handler.setStatus(role_name[static_cast<int>(role[i])], i);
-            std::cout <<"robo "<<i<<": "<<role_name[static_cast<int>(role[i])]<<std::endl;
+            //std::cout <<"robo "<<i<<": "<<role_name[static_cast<int>(role[i])]<<std::endl;
         }
     }
 }
@@ -437,9 +439,9 @@ void Strategy::manualControl(void)
         }
         else
         {
-            if(!robot[n].already_found)
+            //if(!robot[n].already_found)
             {
-                switch (manual_command)
+                /*switch (manual_command)
                 {
                     case FORWARD:
                         robot[n].destination.x = 0;
@@ -465,15 +467,60 @@ void Strategy::manualControl(void)
                     case BR:
                         robot[n].destination.x = 1;
                         robot[n].destination.y = 1; break;
+                }*/
+
+
+                double x = 0;
+                double y = 0;
+
+
+                if (manual_command != previous_command)
+                {
+                    previous_manual_controlled_robot = -1;
+                    previous_command = manual_command;
+                }
+
+                //std::cout << "X: " << /*robot[n].destination.*/x << " Y: " << /*robot[n].destination.*/y << std::endl;
+
+                switch (manual_command)
+                {
+                    case FORWARD:
+                        //calculateDestination(n, 0, -1); break;
+                        calculateDestination(n, x - robot[n].coord.x, y - robot[n].coord.y); break;
+                    case TURN_LEFT:
+                        calculateDestination(n, -1, 0); break;
+                    case TURN_RIGHT:
+                        calculateDestination(n, 1, 0); break;
+                    case BACK:
+                        calculateDestination(n, 0, 1); break;
+                    case FL:
+                        calculateDestination(n, -1, -1); break;
+                    case FR:
+                        calculateDestination(n, 1, -1); break;
+                    case BL:
+                        calculateDestination(n, -1, 1); break;
+                    case BR:
+                        calculateDestination(n, 1, 1); break;
                 }
             }
-            else
+            /*else
             {
-                //pegar o angulo do robo e mirar no lado mais longe em linha reta em relação ao manual_command
-            }
+                //pegar o angulo do robo e mirar no lado mais longe em linha reta em relação ao manual_command_name
+
+            }*/
+
+            //std::cout << "angle: " << previous_robot_angle/* - robot[n].angle*/ << " X: " << robot[n].destination.x << " Y: " << robot[n].destination.y << std::endl;
         }
         robot[n].movement.angular_vel_scaling = 0;
     }
+}
+
+void Strategy::calculateDestination(int n, double x, double y)
+{
+    robot[n].destination.x = x * (cos (robot[n].angle - previous_robot_angle)) + y*(sin(robot[n].angle - previous_robot_angle));
+    robot[n].destination.y = x * (-sin(robot[n].angle - previous_robot_angle)) + y*(cos(robot[n].angle - previous_robot_angle));
+    std::cout << "X: " << robot[n].destination.x << " Y: " << robot[n].destination.y << std::endl;
+    std::cout << "-X: " << /*robot[n].destination.*/x << " Y: " << /*robot[n].destination.*/y << std::endl;
 }
 
 double Strategy::normalizeAngle(double angle)
