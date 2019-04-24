@@ -26,3 +26,7 @@
       for Ubuntu: sudo apt install qttools5-dev
 
       for Fedora: sudo dnf install qt5-devel-5.11.1-3.fc28.noarch  
+
+	If you want to use gpu, follow this instructions:
+		https://www.learnopencv.com/install-opencv3-on-ubuntu/
+		https://medium.com/@mengjiunchiou/build-opencv-caffe-with-cuda-9-0-on-ubuntu-16-04-b2794a41612d
