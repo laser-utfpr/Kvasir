@@ -31,7 +31,7 @@ private:
         cv::Mat cam_image;
         cv::gpu::GpuMat gpu_cam_image;
         cv::gpu::GpuMat gpu_hsv_image;
-        //cv::gpu::GpuMat gpu_thresholded_image; ver como fazer
+        cv::gpu::GpuMat gpu_thresholded_image;
     #else
         cv::Mat cam_image;
         cv::Mat hsv_image;

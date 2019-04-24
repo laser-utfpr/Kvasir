@@ -41,21 +41,31 @@ ImageProcessing::~ImageProcessing()
 void ImageProcessing::findObjects(HSVMask mask)
 {
     #ifdef USE_GPU
-        cv::Mat hsv_image;//por enquanto ate descobrir como fazer
+        cv::gpu::GpuMat gpu_hsv_image_split[3];
+        cv::gpu::GpuMat gpu_thresholded_image_split[3];
+        cv::gpu::GpuMat aux_gpu_thresholded_image;
+        cv::gpu::split(gpu_hsv_image, gpu_hsv_image_split);
+        cv::gpu::threshold(gpu_hsv_image_split[0], gpu_thresholded_image_split[0], mask.h_min, mask.h_max, cv::THRESH_BINARY);
+        cv::gpu::threshold(gpu_hsv_image_split[1], gpu_thresholded_image_split[1], mask.s_min, mask.s_max, cv::THRESH_BINARY);
+        cv::gpu::threshold(gpu_hsv_image_split[2], gpu_thresholded_image_split[2], mask.v_min, mask.v_max, cv::THRESH_BINARY);
+        cv::gpu::bitwise_and(gpu_thresholded_image_split[0], gpu_thresholded_image_split[1], aux_gpu_thresholded_image);
+        cv::gpu::bitwise_and(aux_gpu_thresholded_image, gpu_thresholded_image_split[2], gpu_thresholded_image);
         cv::Mat thresholded_image;
-        gpu_hsv_image.download(hsv_image);
+        gpu_thresholded_image.download(thresholded_image);
+    #else
+        cv::inRange(hsv_image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
+                cv::Scalar(mask.h_max, mask.s_max, mask.v_max), thresholded_image);
     #endif
-    cv::inRange(hsv_image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
-            cv::Scalar(mask.h_max, mask.s_max, mask.v_max), thresholded_image);
+
 
     if(image_processing_settings.getUseMorphingOperations() == true)
     {
         auto erode_rect_size = image_processing_settings.getErodeRectSize();
         auto dilate_rect_size = image_processing_settings.getDilateRectSize();
 
-        cv::Mat erode_element = getStructuringElement(cv::MORPH_RECT,
+        cv::Mat erode_element = cv::getStructuringElement(cv::MORPH_RECT,
                                 cv::Size(erode_rect_size, erode_rect_size));
-        cv::Mat dilate_element = getStructuringElement(cv::MORPH_RECT,
+        cv::Mat dilate_element = cv::getStructuringElement(cv::MORPH_RECT,
                                  cv::Size(dilate_rect_size, dilate_rect_size));
 
         cv::erode(thresholded_image, thresholded_image, erode_element);
