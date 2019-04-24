@@ -4,9 +4,6 @@
 #include <QtCore>
 
 #include <opencv2/opencv.hpp>
-#ifdef USE_GPU
-    #include <opencv2/core/cuda.hpp>
-#endif
 
 #include <ctime>
 #include <vector>
@@ -18,7 +15,9 @@
 #include "imageprocessingsettings.hpp"
 #include "robotrecognizer.hpp"
 #include "hsvmask.hpp"
-
+#ifdef USE_GPU
+    #include <opencv2/gpu/gpu.hpp>
+#endif
 class ImageProcessing
 {
 private:
@@ -29,10 +28,10 @@ private:
 
     cv::VideoCapture cam;
     #ifdef USE_GPU
-        cv::Mat cpu_cam_image;
-        cv::cuda::GpuMat cam_image;
-        cv::cuda::GpuMat hsv_image;
-        cv::cuda::GpuMat thresholded_image;
+        cv::Mat cam_image;
+        cv::gpu::GpuMat gpu_cam_image;
+        cv::gpu::GpuMat gpu_hsv_image;
+        //cv::gpu::GpuMat gpu_thresholded_image; ver como fazer
     #else
         cv::Mat cam_image;
         cv::Mat hsv_image;

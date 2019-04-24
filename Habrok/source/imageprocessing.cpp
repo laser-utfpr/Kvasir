@@ -40,6 +40,11 @@ ImageProcessing::~ImageProcessing()
 
 void ImageProcessing::findObjects(HSVMask mask)
 {
+    #ifdef USE_GPU
+        cv::Mat hsv_image;//por enquanto ate descobrir como fazer
+        cv::Mat thresholded_image;
+        gpu_hsv_image.download(hsv_image);
+    #endif
     cv::inRange(hsv_image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
             cv::Scalar(mask.h_max, mask.s_max, mask.v_max), thresholded_image);
 
@@ -88,15 +93,15 @@ void ImageProcessing::findObjects(HSVMask mask)
 void ImageProcessing::processFrame(void)
 {
     #ifdef USE_GPU
-        cam.read(cpu_cam_image);
-        vision_field_handler.updateImage(cpu_cam_image);
-        cam_image.upload(cpu_cam_image);
+        cam.read(cam_image);
+        vision_field_handler.updateImage(cam_image);
+        gpu_cam_image.upload(cam_image);
+        cv::gpu::cvtColor(gpu_cam_image, gpu_hsv_image, cv::COLOR_RGB2HSV);
     #else
         cam.read(cam_image);
         vision_field_handler.updateImage(cam_image);
+        cv::cvtColor(cam_image, hsv_image, cv::COLOR_RGB2HSV);
     #endif
-
-    cv::cvtColor(cam_image, hsv_image, cv::COLOR_RGB2HSV);
 
     object.clear();
     for(int i=0; i<N_COLORS; i++)
