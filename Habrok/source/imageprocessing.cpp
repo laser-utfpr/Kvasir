@@ -50,6 +50,24 @@ void ImageProcessing::findObjects(HSVMask mask)
         cv::gpu::threshold(gpu_hsv_image_split[2], gpu_thresholded_image_split[2], mask.v_min, mask.v_max, cv::THRESH_BINARY);
         cv::gpu::bitwise_and(gpu_thresholded_image_split[0], gpu_thresholded_image_split[1], aux_gpu_thresholded_image);
         cv::gpu::bitwise_and(aux_gpu_thresholded_image, gpu_thresholded_image_split[2], gpu_thresholded_image);
+        //std::vector<cv::gpu::GpuMat> founded_circles;
+        /*cv::gpu::GpuMat circles;
+        std::vector<cv::Vec3f> founded_circles;
+        cv::gpu::HoughCircles(gpu_thresholded_image, circles, CV_HOUGH_GRADIENT, 1.0, 70, 200, 100, 10, 100, 4096);
+        for(std::vector<cv::Vec3f>::const_iterator it = founded_circles.begin() ; it != founded_circles.end() ; ++it)
+        {
+            double area = it->val[2]*it->val[2]*M_PI;
+            if(area > image_processing_settings.getMinimumObjectArea())
+            {
+                ColoredObject new_object;
+                new_object.color = mask.color;
+                new_object.area = area;
+                new_object.coord.x = it->val[0];
+                new_object.coord.y = it->val[1];
+                if(vision_field_handler.isInSearchedRegion(Coord(new_object.coord.x, new_object.coord.y)))
+                    object.push_back(new_object);
+            }
+        }*/
         cv::Mat thresholded_image;
         gpu_thresholded_image.download(thresholded_image);
     #else
