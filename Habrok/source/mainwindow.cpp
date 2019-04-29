@@ -161,7 +161,7 @@ void MainWindow::displayImage(void)
                 cv::gpu::threshold(gpu_hsv_image_split[2], gpu_thresholded_image_split[2], mask.v_min, mask.v_max, cv::THRESH_BINARY);
                 cv::gpu::bitwise_and(gpu_thresholded_image_split[0], gpu_thresholded_image_split[1], aux_gpu_thresholded_image);
                 cv::gpu::bitwise_and(aux_gpu_thresholded_image, gpu_thresholded_image_split[2], gpu_image);
-                gpu_image.download(image);
+                //gpu_image.download(image);
             #else
                 cv::cvtColor(image, image, cv::COLOR_RGB2HSV);
                 cv::inRange(image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
@@ -175,18 +175,24 @@ void MainWindow::displayImage(void)
                 cv::Mat dilate_element = getStructuringElement(cv::MORPH_RECT,
                                          cv::Size(dilate_rect_size, dilate_rect_size));
 
-                cv::erode(image, image, erode_element);
-                cv::erode(image, image, erode_element);
+                 #ifdef USE_GPU
+                     cv::gpu::erode(gpu_image, gpu_image, erode_element);
+                     cv::gpu::dilate(gpu_image, gpu_image, dilate_element);
+                 #else
 
-                cv::dilate(image, image, dilate_element);
-                cv::dilate(image, image, dilate_element);
+                     cv::erode(image, image, erode_element);
+                     cv::erode(image, image, erode_element);
+
+                     cv::dilate(image, image, dilate_element);
+                     cv::dilate(image, image, dilate_element);
+                 #endif
             }
 
             cv::Mat resized_image;
             cv::Size new_size(ui->image->width(),ui->image->height());
             #ifdef USE_GPU
                 cv::gpu::GpuMat gpu_resized_image;
-                gpu_image.upload(image);
+                //gpu_image.upload(image);
                 cv::gpu::resize(gpu_image, gpu_resized_image, new_size, INTERPOLATION_METHOD);
                 gpu_resized_image.download(resized_image);
             #else

@@ -74,10 +74,7 @@ void ImageProcessing::findObjects(HSVMask mask)
                 cv::Scalar(mask.h_max, mask.s_max, mask.v_max), thresholded_image);
     #endif
 
-    #ifdef USE_GPU
-        cv::Mat thresholded_image;
-        gpu_thresholded_image.download(thresholded_image);
-    #endif
+
     if(image_processing_settings.getUseMorphingOperations() == true)
     {
         auto erode_rect_size = image_processing_settings.getErodeRectSize();
@@ -87,19 +84,22 @@ void ImageProcessing::findObjects(HSVMask mask)
                                 cv::Size(erode_rect_size, erode_rect_size));
         cv::Mat dilate_element = cv::getStructuringElement(cv::MORPH_RECT,
                                  cv::Size(dilate_rect_size, dilate_rect_size));
-        //#ifdef USE_GPU
-            //cv::gpu::erode(gpu_thresholded_image, gpu_thresholded_image, erode_element, cv::Point(-1, -1), 1);
-            //cv::gpu::dilate(gpu_thresholded_image, gpu_thresholded_image, dilate_element, cv::Point(-1, -1), 1);
-        //#else
+        #ifdef USE_GPU
+            cv::gpu::erode(gpu_thresholded_image, gpu_thresholded_image, erode_element);
+            cv::gpu::dilate(gpu_thresholded_image, gpu_thresholded_image, dilate_element);
+        #else
 
             cv::erode(thresholded_image, thresholded_image, erode_element);
             cv::erode(thresholded_image, thresholded_image, erode_element);
 
             cv::dilate(thresholded_image, thresholded_image, dilate_element);
             cv::dilate(thresholded_image, thresholded_image, dilate_element);
-        //#endif
+        #endif
     }
-
+    #ifdef USE_GPU
+        cv::Mat thresholded_image;
+        gpu_thresholded_image.download(thresholded_image);
+    #endif
     std::vector<std::vector<cv::Point>> contours;
     std::vector<cv::Vec4i> hierarchy;
 
