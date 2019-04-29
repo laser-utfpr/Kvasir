@@ -403,9 +403,16 @@ void MainWindow::processGameControlImage(void)
 
         cv::Mat resized_image;
         cv::Size new_size(ui->game_control_image->width(),ui->game_control_image->height());
-        cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
-
-        cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
+        #ifdef USE_GPU
+            cv::gpu::GpuMat gpu_image, gpu_resized_image;
+            gpu_image.upload(image);
+            cv::gpu::resize(gpu_image, gpu_resized_image, new_size, INTERPOLATION_METHOD);
+            cv::gpu::cvtColor(gpu_resized_image, gpu_resized_image, CV_BGR2RGB);
+            gpu_resized_image.download(resized_image);
+        #else
+            cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
+            cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
+        #endif
         QImage qimage((uchar*)resized_image.data, resized_image.cols, resized_image.rows,
                       resized_image.step, QImage::Format_RGB888);
 
@@ -473,12 +480,18 @@ void MainWindow::processVisionSettingsImage(void)
             if(!std::isnan(ulc.x) && !std::isnan(ulc.y) && !std::isnan(lrc.x) && !std::isnan(lrc.y))
                 cv::rectangle(image, cv::Point(ulc.x, ulc.y), cv::Point(lrc.x, lrc.y), SCALAR_RED, REC_THICKNESS);
         }
-
         cv::Mat resized_image;
         cv::Size new_size(ui->vision_settings_image->width(),ui->vision_settings_image->height());
-        cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
-
-        cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
+        #ifdef USE_GPU
+            cv::gpu::GpuMat gpu_image, gpu_resized_image;
+            gpu_image.upload(image);
+            cv::gpu::resize(gpu_image, gpu_resized_image, new_size, INTERPOLATION_METHOD);
+            cv::gpu::cvtColor(gpu_resized_image, gpu_resized_image, CV_BGR2RGB);
+            gpu_resized_image.download(resized_image);
+        #else
+            cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
+            cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
+        #endif
         QImage qimage((uchar*)resized_image.data, resized_image.cols, resized_image.rows,
                       resized_image.step, QImage::Format_RGB888);
 
@@ -534,9 +547,16 @@ void MainWindow::processAISettingsImage(void)
 
         cv::Mat resized_image;
         cv::Size new_size(ui->ai_settings_image->width(),ui->ai_settings_image->height());
-        cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
-
-        cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
+        #ifdef USE_GPU
+            cv::gpu::GpuMat gpu_image, gpu_resized_image;
+            gpu_image.upload(image);
+            cv::gpu::resize(gpu_image, gpu_resized_image, new_size, INTERPOLATION_METHOD);
+            cv::gpu::cvtColor(gpu_resized_image, gpu_resized_image, CV_BGR2RGB);
+            gpu_resized_image.download(resized_image);
+        #else
+            cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
+            cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
+        #endif
         QImage qimage((uchar*)resized_image.data, resized_image.cols, resized_image.rows,
                       resized_image.step, QImage::Format_RGB888);
 

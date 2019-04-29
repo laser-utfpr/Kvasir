@@ -32,4 +32,6 @@
 #define VISION_SETTINGS_INDEX 2
 #define AI_SETTINGS_INDEX 3
 
+#define USE_GPU
+
 #endif // GUICONSTANTS_H

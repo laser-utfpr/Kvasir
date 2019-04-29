@@ -142,14 +142,31 @@ void MainWindow::displayImage(void)
     {
         cv::Mat image;
         cam.read(image);
+        #ifdef USE_GPU
+            cv::gpu::GpuMat gpu_image;
+        #endif
 
         if(active_image_type == THRESHOLDED && active_color != UNCOLORED)
         {
-            cv::cvtColor(image, image, cv::COLOR_RGB2HSV);
-
             HSVMask mask = image_processing_settings.mask[static_cast<int>(active_color)];
-            cv::inRange(image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
-                    cv::Scalar(mask.h_max, mask.s_max, mask.v_max), image);
+            #ifdef USE_GPU
+                gpu_image.upload(image);
+                cv::gpu::cvtColor(gpu_image, gpu_image, cv::COLOR_RGB2HSV);
+                cv::gpu::GpuMat gpu_hsv_image_split[3];
+                cv::gpu::GpuMat gpu_thresholded_image_split[3];
+                cv::gpu::GpuMat aux_gpu_thresholded_image;
+                cv::gpu::split(gpu_image, gpu_hsv_image_split);
+                cv::gpu::threshold(gpu_hsv_image_split[0], gpu_thresholded_image_split[0], mask.h_min, mask.h_max, cv::THRESH_BINARY);
+                cv::gpu::threshold(gpu_hsv_image_split[1], gpu_thresholded_image_split[1], mask.s_min, mask.s_max, cv::THRESH_BINARY);
+                cv::gpu::threshold(gpu_hsv_image_split[2], gpu_thresholded_image_split[2], mask.v_min, mask.v_max, cv::THRESH_BINARY);
+                cv::gpu::bitwise_and(gpu_thresholded_image_split[0], gpu_thresholded_image_split[1], aux_gpu_thresholded_image);
+                cv::gpu::bitwise_and(aux_gpu_thresholded_image, gpu_thresholded_image_split[2], gpu_image);
+                gpu_image.download(image);
+            #else
+                cv::cvtColor(image, image, cv::COLOR_RGB2HSV);
+                cv::inRange(image, cv::Scalar(mask.h_min, mask.s_min, mask.v_min),
+                        cv::Scalar(mask.h_max, mask.s_max, mask.v_max), image);
+            #endif
 
             if(ui->use_morphing_operations->isChecked())
             {
@@ -167,7 +184,14 @@ void MainWindow::displayImage(void)
 
             cv::Mat resized_image;
             cv::Size new_size(ui->image->width(),ui->image->height());
-            cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
+            #ifdef USE_GPU
+                cv::gpu::GpuMat gpu_resized_image;
+                gpu_image.upload(image);
+                cv::gpu::resize(gpu_image, gpu_resized_image, new_size, INTERPOLATION_METHOD);
+                gpu_resized_image.download(resized_image);
+            #else
+                cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
+            #endif
 
             QImage qimage((uchar*)resized_image.data, resized_image.cols, resized_image.rows,
                       resized_image.step, QImage::Format_Grayscale8);
@@ -180,7 +204,15 @@ void MainWindow::displayImage(void)
         if(active_image_type == RAW || active_image_type == HSV)
         {
             if(active_image_type == HSV)
-                cvtColor(image, image, cv::COLOR_RGB2HSV);
+            {
+                #ifdef USE_GPU
+                    gpu_image.upload(image);
+                    cv::gpu::cvtColor(gpu_image, gpu_image, cv::COLOR_RGB2HSV);
+                    gpu_image.download(image);
+                #else
+                    cv::cvtColor(image, image, cv::COLOR_RGB2HSV);
+                #endif
+            }
 
             if(ui->show_minimum_object_area->isChecked())
             {
@@ -196,9 +228,16 @@ void MainWindow::displayImage(void)
 
             cv::Mat resized_image;
             cv::Size new_size(ui->image->width(),ui->image->height());
-            cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
-
-            cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
+            #ifdef USE_GPU
+                cv::gpu::GpuMat gpu_resized_image;
+                gpu_image.upload(image);
+                cv::gpu::resize(gpu_image, gpu_resized_image, new_size, INTERPOLATION_METHOD);
+                cv::gpu::cvtColor(gpu_resized_image, gpu_resized_image, CV_BGR2RGB);
+                gpu_resized_image.download(resized_image);
+            #else
+                cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
+                cv::cvtColor(resized_image, resized_image, CV_BGR2RGB);
+            #endif
             QImage qimage((uchar*)resized_image.data, resized_image.cols, resized_image.rows,
                       resized_image.step, QImage::Format_RGB888);
 

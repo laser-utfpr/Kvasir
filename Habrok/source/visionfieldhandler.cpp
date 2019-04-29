@@ -57,7 +57,7 @@ void VisionFieldHandler::writeChanges(boost::interprocess::managed_shared_memory
 void VisionFieldHandler::updateTime(useconds_t new_time)
 {
     QMutexLocker m(&lock);
-    std::cout << "processou em "<<(new_time-time_us)/1000000.0<< "s"<<std::endl;
+    //std::cout << "processou em "<<(new_time-time_us)/1000000.0<< "s"<<std::endl;
     time_us = new_time;
 }
 
