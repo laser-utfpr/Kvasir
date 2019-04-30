@@ -471,28 +471,17 @@ void Strategy::manualControl(void)
                         robot[n].destination.y = 1; break;
                 }*/
 
-
-                double x = previous_destination.x;
-                double y = previous_destination.y;
-
-                //std::cout << "angle: " << (robot[n].angle - previous_robot_angle) << std::endl;
-
-
                 if (manual_command != previous_command)
                 {
                     previous_manual_controlled_robot = -1;
                     previous_command = manual_command;
                 }
 
-                //std::cout << "X: " << /*robot[n].destination.*/x << " Y: " << /*robot[n].destination.*/y << std::endl;
-
                 switch (manual_command)
                 {
                     case FORWARD:
-                        //calculateDestination(n, 0, -1); break;
-                        robot[n].destination = calculateDestination(n, x - robot[n].coord.x, y - robot[n].coord.y);
-                        //std::cout << "Dest: " << robot[n].destination.x << ' ' << robot[n].destination.y << std::endl; break;
-                        //std::cout << "Angle: " << robot[n].angle - previous_robot_angle << std::endl;  break;
+                        robot[n].destination = calculateDestination(n, 0, -1); break;
+                        //robot[n].destination = calculateDestination(n, previous_destination.x - robot[n].coord.x, previous_destination.y - robot[n].coord.y);
                     case TURN_LEFT:
                         robot[n].destination = calculateDestination(n, -1, 0); break;
                     case TURN_RIGHT:
@@ -514,8 +503,6 @@ void Strategy::manualControl(void)
                 //pegar o angulo do robo e mirar no lado mais longe em linha reta em relação ao manual_command_name
 
             }*/
-
-            //std::cout << "angle: " << previous_robot_angle/* - robot[n].angle*/ << " X: " << robot[n].destination.x << " Y: " << robot[n].destination.y << std::endl;
         }
         robot[n].movement.angular_vel_scaling = 0;
     }
@@ -526,8 +513,6 @@ Coord Strategy::calculateDestination(int n, double x, double y)
     Coord destination;
     destination.x = x * (cos (robot[n].angle - previous_robot_angle)) + y * (sin(robot[n].angle - previous_robot_angle));
     destination.y = x * (-sin(robot[n].angle - previous_robot_angle)) + y * (cos(robot[n].angle - previous_robot_angle));
-    //std::cout << "X: " << x * (cos (robot[n].angle - previous_robot_angle)) << " Y: " << y * (sin(robot[n].angle - previous_robot_angle)) << std::endl;
-    //std::cout << "-X: " << /*robot[n].destination.*/x << " Y: " << /*robot[n].destination.*/y << std::endl;
     return destination;
 }
 
@@ -542,16 +527,22 @@ Coord Strategy::calculatePreviousDestination(int i)
 
     if (robot[i].angle == 0)
         return Coord(pos.x, pf_ulc.y);
-    if (robot[i].angle > 0 && robot[i].angle <= angle1 || (robot[i].angle > 2 * M_PI - angle4 && robot[i].angle < 0))
+    if (robot[i].angle > 0 && robot[i].angle <= angle1 || (robot[i].angle > - angle4 && robot[i].angle < 0))
+    {
         return Coord(pos.x + (pos.y - pf_ulc.y) * tan(robot[i].angle), pf_ulc.y);
+    }
     if (robot[i].angle > angle1 && robot[i].angle <= M_PI - angle2)
-        return Coord(rga_lrc.x, pf_ulc.y - (lg_lrc.x - pos.x) / tan(robot[i].angle));
+    {
+        return Coord(rga_lrc.x, pos.y - (rg_lrc.x - pos.x) / tan(robot[i].angle));
+    }
     if (robot[i].angle > M_PI - angle2 && robot[i].angle <= M_PI + angle3 && robot[i].angle != M_PI)
+    {
         return Coord(pos.x + (pos.y - pf_lrc.y) * tan(robot[i].angle), pf_lrc.y);
-    if (robot[i].angle > M_PI + angle3 && robot[i].angle <= 2 * M_PI - angle4)
-        return Coord(lga_ulc.x, pos.y - (pos.x - lga_ulc.x) / tan(robot[i].angle));
-
-
+    }
+    if (robot[i].angle > M_PI + angle3 && robot[i].angle <= 2 * M_PI - angle4 || (robot[i].angle < -angle4 && robot[i].angle < 0))
+    {
+        return Coord(lga_ulc.x, pos.y + (pos.x - lga_ulc.x) / tan(robot[i].angle));
+    }
     return Coord(0,0);
 }
 
