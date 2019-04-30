@@ -153,14 +153,21 @@ void MainWindow::displayImage(void)
                 gpu_image.upload(image);
                 cv::gpu::cvtColor(gpu_image, gpu_image, cv::COLOR_RGB2HSV);
                 cv::gpu::GpuMat gpu_hsv_image_split[3];
-                cv::gpu::GpuMat gpu_thresholded_image_split[3];
-                cv::gpu::GpuMat aux_gpu_thresholded_image;
+                cv::gpu::GpuMat gpu_thresholded_image_split[6];
+                cv::gpu::GpuMat aux_gpu_thresholded_image[3];
+                cv::gpu::GpuMat aux_thresholded_image;
                 cv::gpu::split(gpu_image, gpu_hsv_image_split);
-                cv::gpu::threshold(gpu_hsv_image_split[0], gpu_thresholded_image_split[0], mask.h_min, mask.h_max, cv::THRESH_BINARY);
-                cv::gpu::threshold(gpu_hsv_image_split[1], gpu_thresholded_image_split[1], mask.s_min, mask.s_max, cv::THRESH_BINARY);
-                cv::gpu::threshold(gpu_hsv_image_split[2], gpu_thresholded_image_split[2], mask.v_min, mask.v_max, cv::THRESH_BINARY);
-                cv::gpu::bitwise_and(gpu_thresholded_image_split[0], gpu_thresholded_image_split[1], aux_gpu_thresholded_image);
-                cv::gpu::bitwise_and(aux_gpu_thresholded_image, gpu_thresholded_image_split[2], gpu_image);
+                cv::gpu::threshold(gpu_hsv_image_split[0], gpu_thresholded_image_split[0], mask.h_min, 255, cv::THRESH_BINARY);
+                cv::gpu::threshold(gpu_hsv_image_split[0], gpu_thresholded_image_split[1], mask.h_max, 255, cv::THRESH_BINARY_INV);
+                cv::gpu::threshold(gpu_hsv_image_split[1], gpu_thresholded_image_split[2], mask.s_min, 255, cv::THRESH_BINARY);
+                cv::gpu::threshold(gpu_hsv_image_split[1], gpu_thresholded_image_split[3], mask.s_max, 255, cv::THRESH_BINARY_INV);
+                cv::gpu::threshold(gpu_hsv_image_split[2], gpu_thresholded_image_split[4], mask.v_min, 255, cv::THRESH_BINARY);
+                cv::gpu::threshold(gpu_hsv_image_split[2], gpu_thresholded_image_split[5], mask.v_max, 255, cv::THRESH_BINARY_INV);
+                cv::gpu::bitwise_and(gpu_thresholded_image_split[0], gpu_thresholded_image_split[1], aux_gpu_thresholded_image[0]);
+                cv::gpu::bitwise_and(gpu_thresholded_image_split[2], gpu_thresholded_image_split[3], aux_gpu_thresholded_image[1]);
+                cv::gpu::bitwise_and(gpu_thresholded_image_split[4], gpu_thresholded_image_split[5], aux_gpu_thresholded_image[2]);
+                cv::gpu::bitwise_and(aux_gpu_thresholded_image[0], aux_gpu_thresholded_image[1], aux_thresholded_image);
+                cv::gpu::bitwise_and(aux_thresholded_image, aux_gpu_thresholded_image[2], gpu_image);
                 //gpu_image.download(image);
             #else
                 cv::cvtColor(image, image, cv::COLOR_RGB2HSV);
