@@ -477,11 +477,13 @@ void Strategy::manualControl(void)
                     previous_command = manual_command;
                 }
 
+
                 switch (manual_command)
                 {
                     case FORWARD:
                         robot[n].destination = calculateDestination(n, 0, -1); break;
-                        //robot[n].destination = calculateDestination(n, previous_destination.x - robot[n].coord.x, previous_destination.y - robot[n].coord.y);
+                        /*previous_robot_angle = 0;
+                        robot[n].destination = calculateDestination(n, previous_destination.x - robot[n].coord.x, previous_destination.y - robot[n].coord.y);break;*/
                     case TURN_LEFT:
                         robot[n].destination = calculateDestination(n, -1, 0); break;
                     case TURN_RIGHT:
