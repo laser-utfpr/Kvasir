@@ -47,9 +47,27 @@ void Strategy::calculateMovementsFromDestinations(void)
         if(command == MANUAL_CONTROL && i == manual_controlled_robot && i != previous_manual_controlled_robot)
         {
             //moveStraight(M_PI_2);//passar o angulo do momento que foi pedido o comando
-            previous_robot_angle = robot[i].angle;
+            previous_robot_angle = 0;//robot[i].angle;
             previous_manual_controlled_robot = i;
-            previous_destination = calculatePreviousDestination(i);
+            switch (previous_command)
+            {
+                case FORWARD:
+                    previous_destination = calculatePreviousDestination(i);break;
+                case TURN_LEFT:
+                    previous_destination = calculatePreviousDestination(i, 3*M_PI_2);break;
+                case TURN_RIGHT:
+                    previous_destination = calculatePreviousDestination(i, M_PI_2);break;
+                case BACK:
+                    previous_destination = calculatePreviousDestination(i, M_PI);break;
+                case FL:
+                    previous_destination = calculatePreviousDestination(i, 7*M_PI_2/2);break;
+                case FR:
+                    previous_destination = calculatePreviousDestination(i, M_PI_2/2);break;
+                case BL:
+                    previous_destination = calculatePreviousDestination(i, 5*M_PI_2/2);break;
+                case BR:
+                    previous_destination = calculatePreviousDestination(i, 3*M_PI_2/2);break;
+            }
 
         }
         robot[i].movement.linear_vel_angle = robot[i].coord.angle(robot[i].destination) - robot[i].angle;
@@ -441,9 +459,9 @@ void Strategy::manualControl(void)
         }
         else
         {
-            //if(!robot[n].already_found)
+            if(!robot[n].already_found)
             {
-                /*switch (manual_command)
+                switch (manual_command)
                 {
                     case FORWARD:
                         robot[n].destination.x = 0;
@@ -469,21 +487,23 @@ void Strategy::manualControl(void)
                     case BR:
                         robot[n].destination.x = 1;
                         robot[n].destination.y = 1; break;
-                }*/
+                }
 
+            }
+            else
+            {
                 if (manual_command != previous_command)
                 {
                     previous_manual_controlled_robot = -1;
                     previous_command = manual_command;
                 }
 
-
-                switch (manual_command)
+                /*switch (manual_command)
                 {
                     case FORWARD:
-                        robot[n].destination = calculateDestination(n, 0, -1); break;
-                        /*previous_robot_angle = 0;
-                        robot[n].destination = calculateDestination(n, previous_destination.x - robot[n].coord.x, previous_destination.y - robot[n].coord.y);break;*/
+                        //robot[n].destination = calculateDestination(n, 0, -1); break;
+                        previous_robot_angle = 0;
+                        robot[n].destination = calculateDestination(n, previous_destination.x - robot[n].coord.x, previous_destination.y - robot[n].coord.y);break;
                     case TURN_LEFT:
                         robot[n].destination = calculateDestination(n, -1, 0); break;
                     case TURN_RIGHT:
@@ -498,13 +518,11 @@ void Strategy::manualControl(void)
                         robot[n].destination = calculateDestination(n, -1, 1); break;
                     case BR:
                         robot[n].destination = calculateDestination(n, 1, 1); break;
-                }
-            }
-            /*else
-            {
-                //pegar o angulo do robo e mirar no lado mais longe em linha reta em relação ao manual_command_name
+                }*/
 
-            }*/
+                robot[n].destination = calculateDestination(n, previous_destination.x - robot[n].coord.x, previous_destination.y - robot[n].coord.y);
+
+            }
         }
         robot[n].movement.angular_vel_scaling = 0;
     }
@@ -518,32 +536,33 @@ Coord Strategy::calculateDestination(int n, double x, double y)
     return destination;
 }
 
-Coord Strategy::calculatePreviousDestination(int i)
+Coord Strategy::calculatePreviousDestination(int n, double angle)
 {
-    Coord pos = robot[i].coord;
+    Coord pos = robot[n].coord;
+    double robot_angle = normalizeAngle(robot[n].angle + angle);
     double angle1, angle2, angle3, angle4;
     angle1 = atan2(rga_lrc.x - pos.x, pos.y - pf_ulc.y);
     angle2 = atan2(pf_lrc.x - pos.x, pf_lrc.y - pos.y);
     angle3 = atan2(pos.x - lga_ulc.x, pf_lrc.y - pos.y);
     angle4 = atan2(pos.x - lga_ulc.x, pos.y - pf_ulc.y);
 
-    if (robot[i].angle == 0)
+    if (robot_angle == 0)
         return Coord(pos.x, pf_ulc.y);
-    if (robot[i].angle > 0 && robot[i].angle <= angle1 || (robot[i].angle > - angle4 && robot[i].angle < 0))
+    if (robot_angle > 0 && robot_angle <= angle1 || (robot_angle > - angle4 && robot_angle < 0) || robot_angle > 2 * M_PI - angle4)
     {
-        return Coord(pos.x + (pos.y - pf_ulc.y) * tan(robot[i].angle), pf_ulc.y);
+        return Coord(pos.x + (pos.y - pf_ulc.y) * tan(robot_angle), pf_ulc.y);
     }
-    if (robot[i].angle > angle1 && robot[i].angle <= M_PI - angle2)
+    if (robot_angle > angle1 && robot_angle <= M_PI - angle2)
     {
-        return Coord(rga_lrc.x, pos.y - (rg_lrc.x - pos.x) / tan(robot[i].angle));
+        return Coord(rga_lrc.x, pos.y - (rg_lrc.x - pos.x) / tan(robot_angle));
     }
-    if (robot[i].angle > M_PI - angle2 && robot[i].angle <= M_PI + angle3 && robot[i].angle != M_PI)
+    if (robot_angle > M_PI - angle2 && robot_angle <= M_PI + angle3 && robot_angle != M_PI)
     {
-        return Coord(pos.x + (pos.y - pf_lrc.y) * tan(robot[i].angle), pf_lrc.y);
+        return Coord(pos.x + (pos.y - pf_lrc.y) * tan(robot_angle), pf_lrc.y);
     }
-    if (robot[i].angle > M_PI + angle3 && robot[i].angle <= 2 * M_PI - angle4 || (robot[i].angle < -angle4 && robot[i].angle < 0))
+    if (robot_angle > M_PI + angle3 && robot_angle <= 2 * M_PI - angle4 || (robot_angle < -angle4 && robot_angle < 0))
     {
-        return Coord(lga_ulc.x, pos.y + (pos.x - lga_ulc.x) / tan(robot[i].angle));
+        return Coord(lga_ulc.x, pos.y + (pos.x - lga_ulc.x) / tan(robot_angle));
     }
     return Coord(0,0);
 }

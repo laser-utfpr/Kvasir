@@ -63,7 +63,7 @@ private:
 
     void calculateMovementsFromDestinations(void);
     Coord calculateDestination(int robot, double x, double y);
-    Coord calculatePreviousDestination(int robot);
+    Coord calculatePreviousDestination(int robot, double angle = 0);
 
     double normalizeAngle(double angle);
     bool angleCompare(double angle1, double angle2, double epsilon);
