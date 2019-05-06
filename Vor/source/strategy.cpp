@@ -567,6 +567,34 @@ Coord Strategy::calculatePreviousDestination(int n, double angle)
     return Coord(0,0);
 }
 
+Coord Strategy::calculateMovementsToBall(int n)
+{
+    if (SIDE == LEFT)
+    {
+        if (robot.coord.x < ball.coord.x)
+            return calculateDestination(n, ball.coord.x - robot[n].coord.x, ball.coord.y - robot[n].coord.y);
+        else
+        {
+            if (robot[n].y < (pf_ulc.x + pf_lrc.x)/2)
+                return calculateDestination(n, ball.coord.x - BALL_OFFSET - robot[n].coord.x, ball.coord.y - BALL_OFFSET - robot[n].coord.y);
+            else
+                return calculateDestination(n, ball.coord.x - BALL_OFFSET - robot[n].coord.x, ball.coord.y + BALL_OFFSET - robot[n].coord.y);
+        }
+    }
+    else
+    {
+        if (robot.coord.x > ball.coord.x)
+            return calculateDestination(n, ball.coord.x - robot[n].coord.x, ball.coord.y - robot[n].coord.y);
+        else
+        {
+            if (robot[n].y < (pf_ulc.x + pf_lrc.x)/2)
+                return calculateDestination(n, ball.coord.x + BALL_OFFSET - robot[n].coord.x, ball.coord.y - BALL_OFFSET - robot[n].coord.y);
+            else
+                return calculateDestination(n, ball.coord.x + BALL_OFFSET - robot[n].coord.x, ball.coord.y + BALL_OFFSET - robot[n].coord.y);
+        }
+    }
+}
+
 double Strategy::normalizeAngle(double angle)
 {
     if(angle > 2.0*M_PI)
