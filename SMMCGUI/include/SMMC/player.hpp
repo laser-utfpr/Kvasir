@@ -13,6 +13,7 @@ private:
 
 public:
     Coord destination;
+    Coord previous_destination;
 
     Movement movement;
 
@@ -27,6 +28,7 @@ public:
         found_last_frame = copied.found_last_frame;
 
         destination = copied.destination;
+        previous_destination = copied.previous_destination;
         movement = copied.movement;
         //status = copied.status;
 
