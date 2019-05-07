@@ -6,8 +6,8 @@
 #define CALIBRATION_WINDOW_TITLE "Habrok Calibration"
 #define SAVED_CALIBRATION_FILENAME "calibration.cl"
 
-#define IMAGE_CAPTURE_WIDTH 1920.0
-#define IMAGE_CAPTURE_HEIGHT 1080.0
+#define IMAGE_CAPTURE_WIDTH 1080.0
+#define IMAGE_CAPTURE_HEIGHT 720.0
 
 typedef enum {NO_IMAGE = -1, RAW = 0, HSV, THRESHOLDED} ImageType;
 #define IMAGE_TYPE_MEMBER_NAMES {"Raw Image","HSV Image","Thresholded Image"}
