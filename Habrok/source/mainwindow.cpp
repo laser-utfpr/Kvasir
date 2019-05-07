@@ -169,7 +169,7 @@ void MainWindow::displayImage(void)
                 cv::gpu::bitwise_and(gpu_thresholded_image_split[4], gpu_thresholded_image_split[5], aux_gpu_thresholded_image[2]);
                 cv::gpu::bitwise_and(aux_gpu_thresholded_image[0], aux_gpu_thresholded_image[1], aux_thresholded_image);
                 cv::gpu::bitwise_and(aux_thresholded_image, aux_gpu_thresholded_image[2], gpu_image);
-                std::vector<cv::Vec3f> founded_circles;
+                /*std::vector<cv::Vec3f> founded_circles;
                 cv::gpu::GpuMat circles;
                 cv::Mat oi;
                 useconds_t time = (useconds_t)(clock()/(CLOCKS_PER_SEC*0.000001));
@@ -182,7 +182,7 @@ void MainWindow::displayImage(void)
                     //circles.row(0).download(Mat(founded_circles).reshape(3, 1));
                     //std::cout << "find "<<founded_circles.size()<<"circles"<<std::endl;
                 }
-                std::cout << "processou em "<<((clock()/(CLOCKS_PER_SEC*0.000001))-time)/1000000.0<< "s"<<std::endl;
+                std::cout << "processou em "<<((clock()/(CLOCKS_PER_SEC*0.000001))-time)/1000000.0<< "s"<<std::endl;*/
 
                 //gpu_image.download(image);
             #else
@@ -218,13 +218,13 @@ void MainWindow::displayImage(void)
                 gpu_image.download(image);
                 //cv::gpu::resize(gpu_image, gpu_resized_image, new_size, INTERPOLATION_METHOD);
                 //gpu_resized_image.download(resized_image);
-                for(int i=0; i<founded_circles.size(); i++)
+                /*for(int i=0; i<founded_circles.size(); i++)
                 {
                     cv::circle(image, cv::Point(founded_circles[i][0], founded_circles[i][1]), founded_circles[i][2],  cv::Scalar(100,100,100), CV_FILLED);
-                }
+                }*/
                 cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
             #else
-                std::vector<cv::Vec3f> founded_circles;
+                /*std::vector<cv::Vec3f> founded_circles;
                 cv::Mat circles;
                 useconds_t time = (useconds_t)(clock()/(CLOCKS_PER_SEC*0.000001));
                 cv::HoughCircles(image, circles, CV_HOUGH_GRADIENT, 1.0, minDist, cannyThreshold, votesThreshold, minRadius, maxRadius);
@@ -240,7 +240,7 @@ void MainWindow::displayImage(void)
                 for(int i=0; i<founded_circles.size(); i++)
                 {
                     cv::circle(image, cv::Point(founded_circles[i][0], founded_circles[i][1]), founded_circles[i][2],  cv::Scalar(100,100,100), CV_FILLED);
-                }
+                }*/
                 cv::resize(image, resized_image, new_size, INTERPOLATION_METHOD);
             #endif
 

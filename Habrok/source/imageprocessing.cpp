@@ -41,29 +41,46 @@ ImageProcessing::~ImageProcessing()
 void ImageProcessing::findObjects(HSVMask mask)
 {
     #ifdef USE_GPU
+        float minDist = 10, cannyThreshold = 255, votesThreshold = 10, minRadius = 5, maxRadius = 20;
         cv::gpu::GpuMat gpu_hsv_image_split[3];
-        cv::gpu::GpuMat gpu_thresholded_image_split[3];
-        cv::gpu::GpuMat aux_gpu_thresholded_image;
+        cv::gpu::GpuMat gpu_thresholded_image_split[6];
+        cv::gpu::GpuMat aux_gpu_thresholded_image[3];
+        cv::gpu::GpuMat aux_thresholded_image;
         cv::gpu::split(gpu_hsv_image, gpu_hsv_image_split);
-        cv::gpu::threshold(gpu_hsv_image_split[0], gpu_thresholded_image_split[0], mask.h_min, mask.h_max, cv::THRESH_BINARY);
-        cv::gpu::threshold(gpu_hsv_image_split[1], gpu_thresholded_image_split[1], mask.s_min, mask.s_max, cv::THRESH_BINARY);
-        cv::gpu::threshold(gpu_hsv_image_split[2], gpu_thresholded_image_split[2], mask.v_min, mask.v_max, cv::THRESH_BINARY);
-        cv::gpu::bitwise_and(gpu_thresholded_image_split[0], gpu_thresholded_image_split[1], aux_gpu_thresholded_image);
-        cv::gpu::bitwise_and(aux_gpu_thresholded_image, gpu_thresholded_image_split[2], gpu_thresholded_image);
-        //std::vector<cv::gpu::GpuMat> founded_circles;
-        /*cv::gpu::GpuMat circles;
-        std::vector<cv::Vec3f> founded_circles;
-        cv::gpu::HoughCircles(gpu_thresholded_image, circles, CV_HOUGH_GRADIENT, 1.0, 70, 200, 100, 10, 100, 4096);
-        for(std::vector<cv::Vec3f>::const_iterator it = founded_circles.begin() ; it != founded_circles.end() ; ++it)
+        cv::gpu::threshold(gpu_hsv_image_split[0], gpu_thresholded_image_split[0], mask.h_min, 255, cv::THRESH_BINARY);
+        cv::gpu::threshold(gpu_hsv_image_split[0], gpu_thresholded_image_split[1], mask.h_max, 255, cv::THRESH_BINARY_INV);
+        cv::gpu::threshold(gpu_hsv_image_split[1], gpu_thresholded_image_split[2], mask.s_min, 255, cv::THRESH_BINARY);
+        cv::gpu::threshold(gpu_hsv_image_split[1], gpu_thresholded_image_split[3], mask.s_max, 255, cv::THRESH_BINARY_INV);
+        cv::gpu::threshold(gpu_hsv_image_split[2], gpu_thresholded_image_split[4], mask.v_min, 255, cv::THRESH_BINARY);
+        cv::gpu::threshold(gpu_hsv_image_split[2], gpu_thresholded_image_split[5], mask.v_max, 255, cv::THRESH_BINARY_INV);
+        cv::gpu::bitwise_and(gpu_thresholded_image_split[0], gpu_thresholded_image_split[1], aux_gpu_thresholded_image[0]);
+        cv::gpu::bitwise_and(gpu_thresholded_image_split[2], gpu_thresholded_image_split[3], aux_gpu_thresholded_image[1]);
+        cv::gpu::bitwise_and(gpu_thresholded_image_split[4], gpu_thresholded_image_split[5], aux_gpu_thresholded_image[2]);
+        cv::gpu::bitwise_and(aux_gpu_thresholded_image[0], aux_gpu_thresholded_image[1], aux_thresholded_image);
+        cv::gpu::bitwise_and(aux_thresholded_image, aux_gpu_thresholded_image[2], gpu_thresholded_image);
+        /*std::vector<cv::Vec3f> founded_circles;
+        cv::gpu::GpuMat circles;
+        cv::Mat oi;
+        //useconds_t time = (useconds_t)(clock()/(CLOCKS_PER_SEC*0.000001));
+        cv::gpu::HoughCircles(gpu_thresholded_image, circles, CV_HOUGH_GRADIENT, 1.0, minDist, cannyThreshold, votesThreshold, minRadius, maxRadius);
+        founded_circles.resize(circles.size().width);
+        if(!founded_circles.empty())
         {
-            double area = it->val[2]*it->val[2]*M_PI;
+            circles.download(oi);
+            founded_circles = oi.reshape(3, 1);
+            std::cout << "achou "<<founded_circles.size()<<"circulos"<< std::endl;
+        }
+
+        for(int i=0; i<founded_circles.size(); i++)
+        {
+            double area = founded_circles[i][2]*founded_circles[i][2]*M_PI;
             if(area > image_processing_settings.getMinimumObjectArea())
             {
                 ColoredObject new_object;
                 new_object.color = mask.color;
                 new_object.area = area;
-                new_object.coord.x = it->val[0];
-                new_object.coord.y = it->val[1];
+                new_object.coord.x = founded_circles[i][0];
+                new_object.coord.y = founded_circles[i][1];
                 if(vision_field_handler.isInSearchedRegion(Coord(new_object.coord.x, new_object.coord.y)))
                     object.push_back(new_object);
             }
@@ -103,9 +120,9 @@ void ImageProcessing::findObjects(HSVMask mask)
     std::vector<std::vector<cv::Point>> contours;
     std::vector<cv::Vec4i> hierarchy;
 
-
+    //useconds_t time = (useconds_t)(clock()/(CLOCKS_PER_SEC*0.000001));
     findContours(thresholded_image, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
-
+    //
     if(hierarchy.size()>0)
     {
         for(int j=0; j>=0; j=hierarchy[j][0])
