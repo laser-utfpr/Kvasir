@@ -43,7 +43,6 @@ private:
     double previous_robot_angle;//futuramente usar para controle
     int previous_manual_controlled_robot = -1;
     Manual_Command previous_command = STOP;
-    Coord previous_destination;
 
     static Coord compared_object_coord;
 

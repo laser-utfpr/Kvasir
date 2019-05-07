@@ -52,21 +52,21 @@ void Strategy::calculateMovementsFromDestinations(void)
             switch (previous_command)
             {
                 case FORWARD:
-                    previous_destination = calculatePreviousDestination(i);break;
+                    robot[i].previous_destination = calculatePreviousDestination(i);break;
                 case TURN_LEFT:
-                    previous_destination = calculatePreviousDestination(i, 3*M_PI_2);break;
+                    robot[i].previous_destination = calculatePreviousDestination(i, 3*M_PI_2);break;
                 case TURN_RIGHT:
-                    previous_destination = calculatePreviousDestination(i, M_PI_2);break;
+                    robot[i].previous_destination = calculatePreviousDestination(i, M_PI_2);break;
                 case BACK:
-                    previous_destination = calculatePreviousDestination(i, M_PI);break;
+                    robot[i].previous_destination = calculatePreviousDestination(i, M_PI);break;
                 case FL:
-                    previous_destination = calculatePreviousDestination(i, 7*M_PI_2/2);break;
+                    robot[i].previous_destination = calculatePreviousDestination(i, 7*M_PI_2/2);break;
                 case FR:
-                    previous_destination = calculatePreviousDestination(i, M_PI_2/2);break;
+                    robot[i].previous_destination = calculatePreviousDestination(i, M_PI_2/2);break;
                 case BL:
-                    previous_destination = calculatePreviousDestination(i, 5*M_PI_2/2);break;
+                    robot[i].previous_destination = calculatePreviousDestination(i, 5*M_PI_2/2);break;
                 case BR:
-                    previous_destination = calculatePreviousDestination(i, 3*M_PI_2/2);break;
+                    robot[i].previous_destination = calculatePreviousDestination(i, 3*M_PI_2/2);break;
             }
 
         }
@@ -498,29 +498,7 @@ void Strategy::manualControl(void)
                     previous_command = manual_command;
                 }
 
-                /*switch (manual_command)
-                {
-                    case FORWARD:
-                        //robot[n].destination = calculateDestination(n, 0, -1); break;
-                        previous_robot_angle = 0;
-                        robot[n].destination = calculateDestination(n, previous_destination.x - robot[n].coord.x, previous_destination.y - robot[n].coord.y);break;
-                    case TURN_LEFT:
-                        robot[n].destination = calculateDestination(n, -1, 0); break;
-                    case TURN_RIGHT:
-                        robot[n].destination = calculateDestination(n, 1, 0); break;
-                    case BACK:
-                        robot[n].destination = calculateDestination(n, 0, 1); break;
-                    case FL:
-                        robot[n].destination = calculateDestination(n, -1, -1); break;
-                    case FR:
-                        robot[n].destination = calculateDestination(n, 1, -1); break;
-                    case BL:
-                        robot[n].destination = calculateDestination(n, -1, 1); break;
-                    case BR:
-                        robot[n].destination = calculateDestination(n, 1, 1); break;
-                }*/
-
-                robot[n].destination = calculateDestination(n, previous_destination.x - robot[n].coord.x, previous_destination.y - robot[n].coord.y);
+                robot[n].destination = calculateDestination(n, robot[n].previous_destination.x - robot[n].coord.x, robot[n].previous_destination.y - robot[n].coord.y);
 
             }
         }
@@ -531,7 +509,7 @@ void Strategy::manualControl(void)
 Coord Strategy::calculateDestination(int n, double x, double y)
 {
     Coord destination;
-    destination.x = x * (cos (robot[n].angle - previous_robot_angle)) + y * (sin(robot[n].angle - previous_robot_angle));
+    destination.x = x * (cos(robot[n].angle - previous_robot_angle)) + y * (sin(robot[n].angle - previous_robot_angle));
     destination.y = x * (-sin(robot[n].angle - previous_robot_angle)) + y * (cos(robot[n].angle - previous_robot_angle));
     return destination;
 }
