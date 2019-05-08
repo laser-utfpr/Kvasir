@@ -75,16 +75,20 @@ void Vard::start()
     }
     while(*mem_shutdown_key != shutdown_key.c_str())
     {
-        for(int i=0; i<N_ROBOTS; i++)
+        if(*mem_read_key == read_key.c_str())
         {
-            serial_comm->mountPacket(robot[i].getName(), robot[i].getRFAddress(), robot[i].getVelX(), robot[i].getVelY(), robot[i].getVelAng());
-            serial_comm->sendData();
-            /*//std::cout <<"robo: " << robot[i].getName() << ", endr: " << robot[i].getRFAddress() <<", x: "<<robot[i].getVelX()<<", y: "<< robot[i].getVelY()<<", ang: "<< robot[i].getVelAng() <<std::endl;
-            if(robot[i].getName() == 0)
+            for(int i=0; i<N_ROBOTS; i++)
             {
-                std::cout <<"robo: " << robot[0].getName() << ", endr: " << robot[0].getRFAddress() <<", x: "<<robot[0].getVelX()<<", y: "<< robot[0].getVelY()<<", ang: "<< robot[0].getVelAng() <<std::endl;
-            }*/
-            usleep(COMMUNICATION_DELAY);
+                serial_comm->mountPacket(robot[i].getName(), robot[i].getRFAddress(), robot[i].getVelX(), robot[i].getVelY(), robot[i].getVelAng());
+                serial_comm->sendData();
+                /*//std::cout <<"robo: " << robot[i].getName() << ", endr: " << robot[i].getRFAddress() <<", x: "<<robot[i].getVelX()<<", y: "<< robot[i].getVelY()<<", ang: "<< robot[i].getVelAng() <<std::endl;
+                if(robot[i].getName() == 0)
+                {
+                    std::cout <<"robo: " << robot[0].getName() << ", endr: " << robot[0].getRFAddress() <<", x: "<<robot[0].getVelX()<<", y: "<< robot[0].getVelY()<<", ang: "<< robot[0].getVelAng() <<std::endl;
+                }*/
+                //usleep(COMMUNICATION_DELAY);
+            }
+            *mem_read_key = EMPTY_KEY;
         }
 
     }
