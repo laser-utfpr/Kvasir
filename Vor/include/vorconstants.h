@@ -16,8 +16,11 @@ typedef enum {NO_ROLE = -1, GOALKEEPER = 0, DEFENDER, ATTACKER, SUPPORT} Role;
 typedef enum {LEFT, RIGHT} Side;
 #define SIDE LEFT
 
-#define ATTACKER_BALL_OFFSET 2 //60
-#define ATTACKER_OFFSET_RANGE 1//140
+#define ATTACKER_BALL_OFFSET 33 //60
+#define ATTACKER_OFFSET_RANGE 45//140
+
+#define GOALKEEPER_BALL_OFFSET 50//150
+#define GOALKEEPER_OFFSET_RANGE 20
 
 #define BALL_OFFSET 2
 
@@ -25,7 +28,7 @@ typedef enum {LEFT, RIGHT} Side;
 
 #define SPIN_WHEN_CLOSE false
 
-#define FRAMES_TO_SPIN 7
+#define FRAMES_TO_SPIN 3
 
 #define SPIN_RANGE 40
 
