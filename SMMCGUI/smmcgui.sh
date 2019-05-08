@@ -12,6 +12,8 @@ SMMCGUI_PATH=$SCRIPTPATH$"/build/bin"
 if [ ! -d "$SMMCGUI_PATH" ]; then
     mkdir build
     cd build && cmake .. && make && sudo make install
+else
+    cd build && make clean && make && sudo make install
 fi
 
 cd "$SCRIPTPATH"
@@ -20,6 +22,8 @@ HABROK_PATH=$SCRIPTPATH$"/../Habrok/build/bin"
 if [ ! -d "$HABROK_PATH" ]; then
     cd ../Habrok &&  mkdir build
     cd build  &&  cmake .. && make
+else
+    cd ../Habrok/build && make clean && make    
 fi
 
 cd "$SCRIPTPATH"
@@ -28,6 +32,8 @@ VOR_PATH=$SCRIPTPATH$"/../Vor/build/bin"
 if [ ! -d "$VOR_PATH" ]; then
     cd ../Vor &&  mkdir build
     cd build  &&  cmake .. && make
+else
+    cd ../Vor/build && make clean && make
 fi
 
 cd "$SCRIPTPATH"
@@ -36,6 +42,9 @@ VARD_PATH=$SCRIPTPATH$"/../Vard/build/bin"
 if [ ! -d "$VARD_PATH" ]; then
     cd ../Vard  &&  mkdir build
     cd build  &&  cmake .. && make
+
+else
+    cd ../Vard/build && make clean && make
 fi
 
 #execute

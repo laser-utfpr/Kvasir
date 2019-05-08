@@ -17,13 +17,13 @@ typedef enum {LEFT, RIGHT} Side;
 #define SIDE LEFT
 
 #define ATTACKER_BALL_OFFSET 2 //60
-#define ATTACKER_OFFSET_RANGE 10//140
+#define ATTACKER_OFFSET_RANGE 1//140
 
 #define BALL_OFFSET 2
 
 #define ADJUST_ANGLE false
 
-#define SPIN_WHEN_CLOSE true
+#define SPIN_WHEN_CLOSE false
 
 #define FRAMES_TO_SPIN 7
 

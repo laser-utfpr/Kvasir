@@ -382,13 +382,14 @@ void Strategy::moveAttacker(int n)
         //std::cout << robot[n].coord.distance(ball.coord) <<" "<< robot[n].coord.x <<" " <<robot[n].coord.y<<" "<<ball.coord.x<<" "<<ball.coord.y<< std::endl;
         if(SIDE == LEFT)
         {
-            if(robot[n].coord.distance(ball.coord) > ATTACKER_OFFSET_RANGE)
+            if((robot[n].coord.distance(ball.coord) > ATTACKER_OFFSET_RANGE) || (robot[n].coord.x > (ball.coord.x+ATTACKER_BALL_OFFSET)))
             {
                 robot[n].destination.y = ball.coord.y;
                 robot[n].destination.x = ball.coord.x - ATTACKER_BALL_OFFSET;
             }
             else //se a bola esta em reta com o gol -- melhorar
             {
+                std::cout << "indo para o gol"<<std::endl;
                 Coord goal_center(rg_ulc.x, (rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y);
                 robot[n].destination = goal_center;
             }
