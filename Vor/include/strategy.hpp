@@ -39,6 +39,8 @@ private:
     Coord rga_ulc;
     Coord rga_lrc;
 
+    Coord robot_destination;
+
     int manual_controlled_robot;
     double previous_robot_angle;//futuramente usar para controle
     int previous_manual_controlled_robot = -1;
