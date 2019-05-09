@@ -36,6 +36,13 @@ void Strategy::makeManualCommandList(void)
         ai_field_handler.addManualCommand(manual_command_name[i]);
 }
 
+void Strategy::makeSideList(void)
+{
+    const char *side_name[] = SIDE_NAMES;
+    for(int i=0; i < 2; i++)
+        ai_field_handler.addSide(side_name[i]);
+}
+
 void Strategy::calculateMovementsFromDestinations(void)
 {
     for(int i=0; i<N_ROBOTS; i++)
@@ -105,6 +112,16 @@ void Strategy::calculateMovements(void)
             robot[i].movement.stay_still = false;
     }
 
+    const char *side_name[] = SIDE_NAMES;
+    std::string side_received = ai_field_handler.getSide();
+    for(int i=0; i < N_COMMANDS; i++)
+    {
+        if(side_received == side_name[i])
+        {
+            side = static_cast<Side>(i);
+            break;
+        }
+    }
     pf_ulc = ai_field_handler.getPlayableFieldULC();
     pf_lrc = ai_field_handler.getPlayableFieldLRC();
     lg_ulc = ai_field_handler.getLeftGoalULC();
@@ -185,7 +202,7 @@ void Strategy::assignRoles(void)
                     goal_sorted.push_back(robot[i]);
                 }
             }
-            if(SIDE == LEFT)//ordenar em relacao a area do gol a ser defendida
+            if(side == LEFT)//ordenar em relacao a area do gol a ser defendida
             {
                 compared_object_coord.x = (lg_lrc.x - lg_ulc.x)/2 + lg_ulc.x;
                 compared_object_coord.y = (lg_lrc.y - lg_ulc.y)/2 + lg_ulc.x;
@@ -209,7 +226,7 @@ void Strategy::assignRoles(void)
             bool enemies_defending = true;
             for(int i=0; i<N_ROBOTS; i++)
             {
-                if(SIDE == LEFT)
+                if(side == LEFT)
                 {
                     if(enemy_robot[i].coord.isInRect(pf_ulc, Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_lrc.y)))
                     {
@@ -288,7 +305,7 @@ void Strategy::normalPlay(void)
 
 void Strategy::moveGoalkeeper(int n)
 {
-    if(SIDE == LEFT)
+    if(side == LEFT)
     {
         if(ball.coord.x < ((pf_lrc.x - pf_ulc.x)/2+pf_ulc.x))
         {
@@ -348,7 +365,7 @@ void Strategy::moveGoalkeeper(int n)
 
 void Strategy::moveDefender(int n)
 {
-    if(SIDE == LEFT)
+    if(side == LEFT)
     {
         Coord goal_center(lg_lrc.x, (lg_lrc.y-lg_ulc.y)/2 + lg_ulc.y);
         robot[n].destination.x = goal_center.x + (ball.coord.x - goal_center.x)/2;
@@ -397,7 +414,7 @@ void Strategy::moveAttacker(int n)
     else
         frames_close[n] = 0;
 
-    if(frames_close[n] >= FRAMES_TO_SPIN && ((SIDE == LEFT && robot[n].coord.x < (ball.coord.x-ATTACKER_BALL_OFFSET)) || (SIDE == RIGHT && robot[n].coord.x > ball.coord.x)))
+    if(frames_close[n] >= FRAMES_TO_SPIN && ((side == LEFT && robot[n].coord.x < (ball.coord.x-ATTACKER_BALL_OFFSET)) || (side == RIGHT && robot[n].coord.x > ball.coord.x)))
     {
         robot[n].movement.angular_vel_scaling = 1;
     }
@@ -418,7 +435,7 @@ void Strategy::moveAttacker(int n)
         }
 
         //std::cout << robot[n].coord.distance(ball.coord) <<" "<< robot[n].coord.x <<" " <<robot[n].coord.y<<" "<<ball.coord.x<<" "<<ball.coord.y<< std::endl;
-        if(SIDE == LEFT)
+        if(side == LEFT)
         {
             if((robot[n].coord.distance(ball.coord) > ATTACKER_OFFSET_RANGE) || (robot[n].coord.x > (ball.coord.x - ATTACKER_BALL_OFFSET)))
             {
@@ -473,7 +490,7 @@ void Strategy::freeKick(void)
 
 void Strategy::penalty(void)
 {
-    if(SIDE == LEFT)
+    if(side == LEFT)
     {
         Coord goal_center(rg_ulc.x, (rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y);
         robot[0].destination = goal_center;
@@ -597,7 +614,7 @@ Coord Strategy::calculatePreviousDestination(int n, double angle)
 
 Coord Strategy::calculateMovementsToBall(int n)
 {
-    if (SIDE == LEFT)
+    if (side == LEFT)
     {
         if (robot[n].coord.x < (ball.coord.x - BALL_OFFSET))
             return Coord(ball.coord.x, ball.coord.y);

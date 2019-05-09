@@ -31,6 +31,9 @@ public:
 
     int manualPlayer(void);
 
+    std::string getSide(void);
+    void addSide(const char* new_side);
+
     Entity getBall(void);
     Player getAlly(int n);
     Entity getEnemy(int n);

@@ -39,6 +39,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect(&players_menu, SIGNAL(aboutToShow()), this, SLOT(makePlayersMenu()));
     connect(&players_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeManualPlayer(QAction*)));
 
+    //creating the side menu
+    ui->players_menu->setMenu(&side_menu);
+    side_menu_action = nullptr;
+    n_sides = 0;
+    connect(&side_menu, SIGNAL(aboutToShow()), this, SLOT(makePlayersMenu()));
+    connect(&side_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeManualPlayer(QAction*)));
+
 
     force_stop = false;
 
@@ -683,10 +690,47 @@ void MainWindow::changeCommand(QAction *action)
     ui->command_menu->setText(action->text());
 }
 
+void MainWindow::makeSideMenu(void)
+{
+    side_menu.clear();
+    if(side_menu_action != nullptr)
+    {
+        for(int i=0; i<n_sides; i++)
+        {
+            if(side_menu_action[i] != nullptr)
+            {
+                delete side_menu_action[i];
+                side_menu_action[i] = nullptr;
+            }
+        }
+        delete side_menu_action;
+        side_menu_action = nullptr;
+    }
+
+    std::vector<std::string> side_list = shared_parameters.getSideList();
+    n_sides = side_list.size();
+    side_menu_action = new QAction*[n_sides];
+
+    QString qstr;
+    for(int i=0; i<n_sides; i++)
+    {
+        qstr = side_list[i].c_str();
+        side_menu_action[i] = new QAction(qstr,this);
+        side_menu.addAction(side_menu_action[i]);
+    }
+}
+
+void MainWindow::changeSide(QAction *action)
+{
+    ui->side_menu->setText(action->text());
+}
+
 void MainWindow::on_send_command_clicked(void)
 {
     QString qstr = ui->command_menu->text();
     shared_parameters.setAICommand(qstr.toStdString());
+    qstr = ui->side_menu->text();
+    shared_parameters.setAISide(qstr.toStdString());
     emit aiSettingsChanged();
 }
 

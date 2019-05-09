@@ -98,6 +98,10 @@ public:
     std::string getAIManualPlayer(void);
     void setAIManualPlayer(std::string str);
 
+    std::string getAISide(void);
+    void setAISide(std::string str);
+    std::vector<std::string> getSideList(void);
+
     void setForceStop(bool stop);
 
     std::vector<float> getImageData(void);

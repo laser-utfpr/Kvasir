@@ -45,6 +45,7 @@ private:
     double previous_robot_angle;//futuramente usar para controle
     int previous_manual_controlled_robot = -1;
     Manual_Command previous_command = STOP;
+    Side side = LEFT;
 
     static Coord compared_object_coord;
 
@@ -77,6 +78,8 @@ public:
 
     void makeCommandList(void);
     void makeManualCommandList(void);
+    void makeSideList(void);
+
     void calculateMovements(void);
 
     static bool comparePlayerDistance(Player p1, Player p2);

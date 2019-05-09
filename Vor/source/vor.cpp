@@ -63,6 +63,7 @@ int Vor::runVor(void)
 
     strategy->makeCommandList();
     strategy->makeManualCommandList();
+    strategy->makeSideList();
     ai_field_handler->writeChanges(*shared_memory);
     *sm_write_key = write_key.c_str();
 

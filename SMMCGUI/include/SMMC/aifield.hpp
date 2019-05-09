@@ -52,13 +52,14 @@ public:
     Coord right_goalkeeper_area_ulc;
     Coord right_goalkeeper_area_lrc;
 
-    BoostInterprocessString command, manual_command, manual_player;
-    StringVector command_list, manual_command_list;
+    BoostInterprocessString command, manual_command, manual_player, side;
+    StringVector command_list, manual_command_list, side_list;
 
     inline AIField(CharAllocator &char_allocator, StringAllocator &string_allocator) :
     image_width(0), image_height(0), time_us(0),
     command(char_allocator), command_list(string_allocator),
-    manual_command(char_allocator), manual_command_list(string_allocator), manual_player((char_allocator)){};
+    manual_command(char_allocator), manual_command_list(string_allocator), manual_player((char_allocator)),
+    side(char_allocator), side_list(string_allocator){};
 
     inline AIField& operator<<(const VisionField& vision)
     {
