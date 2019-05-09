@@ -7,7 +7,7 @@ typedef enum {UNCOLORED = -1, RED = 0, ORANGE, YELLOW, GREEN, BLUE, VIOLET} Colo
 #define COLOR_MEMBER_NAMES {"RED","ORANGE","YELLOW","GREEN","BLUE","VIOLET"}
 #define N_COLORS 6
 
-#define N_ROBOTS 1
+#define N_ROBOTS 3
 
 #define SAVED_SETTINGS_FILENAME "settings.sp"
 

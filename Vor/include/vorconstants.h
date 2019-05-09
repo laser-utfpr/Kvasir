@@ -21,8 +21,9 @@ typedef enum {LEFT, RIGHT} Side;
 
 #define GOALKEEPER_BALL_OFFSET 50//150
 #define GOALKEEPER_OFFSET_RANGE 20
+#define GOALKEEPER_AREA_OFFSET 10
 
-#define BALL_OFFSET 30
+#define BALL_OFFSET 45
 
 #define ADJUST_ANGLE false
 

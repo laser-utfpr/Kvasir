@@ -147,7 +147,7 @@ void Strategy::assignRoles(void)
 {
     //assign an attacker
     if(N_ROBOTS == 1)
-        role[0] = ATTACKER;
+        role[0] = GOALKEEPER;
     else
     {
         //assign an attacker
@@ -292,8 +292,10 @@ void Strategy::moveGoalkeeper(int n)
     {
         if(ball.coord.x < ((pf_lrc.x - pf_ulc.x)/2+pf_ulc.x))
         {
-            robot[n].destination.y = ball.coord.y;
-            robot[n].destination.x = ball.coord.x;
+            /*robot[n].destination.y = ball.coord.y;
+            robot[n].destination.x = ball.coord.x;*/
+
+            robot[n].destination = calculateMovementsToBall(n);
 
             //if (ball.coord.x <= lg_lrc.x)
             //    robot[n].destination.x = ball.coord.x;
@@ -303,6 +305,13 @@ void Strategy::moveGoalkeeper(int n)
                 robot[n].destination.y = lga_lrc.y - GOALKEEPER_BALL_OFFSET;
             if(robot[n].coord.x > (lga_lrc.x - GOALKEEPER_BALL_OFFSET))
                 robot[n].destination.x = lga_lrc.x - GOALKEEPER_BALL_OFFSET;
+
+            /*robot[n].destination.y = ball.coord.y;
+            if (robot[n].destination.y < lg_ulc.y + GOALKEEPER_AREA_OFFSET + 15)
+                robot[n].destination.y = lg_ulc.y + GOALKEEPER_AREA_OFFSET + 15;
+            else if (robot[n].destination.y > lg_lrc.y - GOALKEEPER_AREA_OFFSET - 15)
+                robot[n].destination.y = lg_lrc.y - GOALKEEPER_AREA_OFFSET - 15;
+            robot[n].destination.x = lga_ulc.x - GOALKEEPER_AREA_OFFSET;*/
         }
         else if(robot[n].coord.y < ((lg_lrc.y-lg_ulc.y)/2 + lg_ulc.y - GOALKEEPER_OFFSET_RANGE) || robot[n].coord.y > ((lg_lrc.y-lg_ulc.y)/2 + lg_ulc.y + GOALKEEPER_OFFSET_RANGE) || robot[n].coord.x > lga_lrc.x)
         {
@@ -385,18 +394,18 @@ void Strategy::moveAttacker(int n)
         //std::cout << robot[n].coord.distance(ball.coord) <<" "<< robot[n].coord.x <<" " <<robot[n].coord.y<<" "<<ball.coord.x<<" "<<ball.coord.y<< std::endl;
         if(SIDE == LEFT)
         {
-            if((robot[n].coord.distance(ball.coord) > ATTACKER_OFFSET_RANGE) || (robot[n].coord.x > (ball.coord.x - BALL_OFFSET)))
+            if((robot[n].coord.distance(ball.coord) > ATTACKER_OFFSET_RANGE) || (robot[n].coord.x > (ball.coord.x - ATTACKER_BALL_OFFSET)))
             {
                 //std::cout << "indo pra bola com "<< robot[n].coord.distance(ball.coord)<<std::endl;
                 /*robot[n].destination.y = ball.coord.y;
                 robot[n].destination.x = ball.coord.x - ATTACKER_BALL_OFFSET;*/
                 robot[n].destination = calculateMovementsToBall(n);
-                std::cout << robot[n].destination.x << ' ' << robot[n].destination.y << std::endl;
+                //std::cout << robot[n].destination.x << ' ' << robot[n].destination.y << std::endl;
 
             }
             else //se a bola esta em reta com o gol -- melhorar
             {
-                std::cout << "indo para o gol com "<<robot[n].coord.x -ball.coord.x<<std::endl;
+                //std::cout << "indo para o gol com "<<robot[n].coord.x -ball.coord.x<<std::endl;
                 Coord goal_center(rg_lrc.x, (rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y);
                 robot[n].destination = goal_center;
             }
@@ -557,14 +566,14 @@ Coord Strategy::calculateMovementsToBall(int n)
 {
     if (SIDE == LEFT)
     {
-        if (robot[n].coord.x < ball.coord.x - BALL_OFFSET)
+        if (robot[n].coord.x < (ball.coord.x - BALL_OFFSET))
             return Coord(ball.coord.x, ball.coord.y);
         else
         {
             if (robot[n].coord.y < (pf_ulc.x + pf_lrc.x)/2)
-                return Coord(ball.coord.x - BALL_OFFSET, ball.coord.y - BALL_OFFSET);
+                return Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y - BALL_OFFSET);
             else
-                return Coord(ball.coord.x - BALL_OFFSET, ball.coord.y + BALL_OFFSET);
+                return Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y + BALL_OFFSET);
         }
     }
     else
