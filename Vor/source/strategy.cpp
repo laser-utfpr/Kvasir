@@ -323,11 +323,24 @@ void Strategy::moveGoalkeeper(int n)
     }
     else
     {
-        robot[n].destination.x = (rga_lrc.x-rga_ulc.x)/2 + rga_ulc.x;
-        if(ball.coord.isInRect(Coord((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x, pf_ulc.y), pf_lrc) && ball.coord.y >= rga_ulc.y)
-            robot[n].destination.y = ball.coord.y;
+        if(ball.coord.x > ((pf_lrc.x - pf_ulc.x)/2 + pf_ulc.x))
+        {
+            robot[n].destination = calculateMovementsToBall(n);
+
+            if(robot[n].coord.y < (lga_ulc.y + GOALKEEPER_BALL_OFFSET))
+                robot[n].destination.y = lga_ulc.y + GOALKEEPER_BALL_OFFSET;
+            else if(robot[n].coord.y > (lga_lrc.y - GOALKEEPER_BALL_OFFSET))
+                robot[n].destination.y = lga_lrc.y - GOALKEEPER_BALL_OFFSET;
+            if(robot[n].coord.x < (rga_ulc.x + GOALKEEPER_BALL_OFFSET))
+                robot[n].destination.x = rga_ulc.x + GOALKEEPER_BALL_OFFSET;
+        }
+        else if(robot[n].coord.y < ((rg_lrc.y - rg_ulc.y)/2 + rg_ulc.y - GOALKEEPER_OFFSET_RANGE) || robot[n].coord.y > ((rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y + GOALKEEPER_OFFSET_RANGE) || robot[n].coord.x < lga_ulc.x)
+        {
+            robot[n].destination.x = (rga_lrc.x - rga_ulc.x)/2 + rga_ulc.x;
+            robot[n].destination.y = (rg_lrc.y - rg_ulc.y)/2 + rg_ulc.y;
+        }
         else
-            robot[n].destination.y = (rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y;
+            robot[n].movement.stay_still = true;
     }
 
     robot[n].movement.angular_vel_scaling = 0;
@@ -359,6 +372,19 @@ void Strategy::moveDefender(int n)
         Coord goal_center(rg_ulc.x, (rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y);
         robot[n].destination.x = goal_center.x + (ball.coord.x - goal_center.x)/2;
         robot[n].destination.y = goal_center.y + (ball.coord.y - goal_center.y)/2;
+        if(robot[n].destination.x < lga_lrc.x)//colocar deltas depois ou meio termo
+        {
+            if(robot[n].destination.y > rga_ulc.y && robot[n].destination.y < ((rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y))
+            {
+                robot[n].destination.y = rga_ulc.y;
+                //robot[n].destination.x = lga_lrc.x;
+            }
+            else if(robot[n].destination.y < rga_lrc.y && robot[n].destination.y > ((rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y))
+            {
+                robot[n].destination.y = rga_lrc.y;
+                //robot[n].destination.x = lga_lrc.x;
+            }
+        }
     }
 
     robot[n].movement.angular_vel_scaling = 0;
@@ -412,8 +438,15 @@ void Strategy::moveAttacker(int n)
         }
         else
         {
-            robot[n].destination.x = ball.coord.x + ATTACKER_BALL_OFFSET;
-            robot[n].destination.y = ball.coord.y;
+            if((robot[n].coord.distance(ball.coord) > ATTACKER_OFFSET_RANGE) || (robot[n].coord.x > (ball.coord.x - ATTACKER_BALL_OFFSET)))
+            {
+                robot[n].destination = calculateMovementsToBall(n);
+            }
+            else //se a bola esta em reta com o gol -- melhorar
+            {
+                Coord goal_center(lg_lrc.x, (lg_lrc.y-lg_ulc.y)/2 + lg_ulc.y);
+                robot[n].destination = goal_center;
+            }
         }
     }
 }
