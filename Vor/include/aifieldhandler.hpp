@@ -32,7 +32,7 @@ public:
     int manualPlayer(void);
 
     std::string getSide(void);
-    void addSide(const char* new_side);
+    void addSide(const char* new_command);
 
     Entity getBall(void);
     Player getAlly(int n);

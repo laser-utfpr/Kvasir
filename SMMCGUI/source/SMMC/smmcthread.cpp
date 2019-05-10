@@ -287,6 +287,7 @@ void SMMCThread::updateAIOutputSettings(void)
     sm_ai_field->command = (shared_parameters.getAICommand()).c_str();
     sm_ai_field->manual_command = (shared_parameters.getAIManualCommand()).c_str();
     sm_ai_field->manual_player = (shared_parameters.getAIManualPlayer()).c_str();
+    sm_ai_field->side = (shared_parameters.getAISide()).c_str();
 
     //writing key
     *sm_ai_read_key = ai_read_key.c_str();

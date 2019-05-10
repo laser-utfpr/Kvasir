@@ -114,10 +114,12 @@ void Strategy::calculateMovements(void)
 
     const char *side_name[] = SIDE_NAMES;
     std::string side_received = ai_field_handler.getSide();
-    for(int i=0; i < N_COMMANDS; i++)
+    //std::cout << "recebi o lado "<<side_received<<std::endl;
+    for(int i=0; i < 2; i++)
     {
         if(side_received == side_name[i])
         {
+    //        std::cout << "ta feio"<<std::endl;
             side = static_cast<Side>(i);
             break;
         }

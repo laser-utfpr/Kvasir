@@ -100,10 +100,10 @@ std::string AIFieldHandler::getSide(void)
     return sside;
 }
 
-void AIFieldHandler::addSide(const char* new_side)
+void AIFieldHandler::addSide(const char* new_command)
 {
     BoostInterprocessString s(char_allocator);
-    s = new_side;
+    s = new_command;
     side_list.push_back(s);
 }
 

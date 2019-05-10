@@ -40,11 +40,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect(&players_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeManualPlayer(QAction*)));
 
     //creating the side menu
-    ui->players_menu->setMenu(&side_menu);
+    ui->side_menu->setMenu(&side_menu);
     side_menu_action = nullptr;
     n_sides = 0;
-    connect(&side_menu, SIGNAL(aboutToShow()), this, SLOT(makePlayersMenu()));
-    connect(&side_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeManualPlayer(QAction*)));
+    connect(&side_menu, SIGNAL(aboutToShow()), this, SLOT(makeSideMenu()));
+    connect(&side_menu, SIGNAL(triggered(QAction*)), this, SLOT(changeSide(QAction*)));
 
 
     force_stop = false;
@@ -221,6 +221,20 @@ MainWindow::~MainWindow()
         }
         delete players_menu_action;
         players_menu_action = nullptr;
+    }
+
+    if(side_menu_action != nullptr)
+    {
+        for(int i=0; i<n_sides; i++)
+        {
+            if(side_menu_action[i] != nullptr)
+            {
+                delete side_menu_action[i];
+                side_menu_action[i] = nullptr;
+            }
+        }
+        delete side_menu_action;
+        side_menu_action = nullptr;
     }
 
     //deleting color actions
