@@ -416,9 +416,13 @@ void Strategy::moveAttacker(int n)
     else
         frames_close[n] = 0;
 
-    if(frames_close[n] >= FRAMES_TO_SPIN && ((side == LEFT && robot[n].coord.x < (ball.coord.x-ATTACKER_BALL_OFFSET)) || (side == RIGHT && robot[n].coord.x > ball.coord.x)))
+    if(frames_close[n] >= FRAMES_TO_SPIN && ((side == LEFT && (robot[n].coord.x < (ball.coord.x-ATTACKER_BALL_OFFSET)) && (robot[n].coord.y <= (pf_lrc.y+pf_ulc.y)/2)) || ((side == RIGHT && robot[n].coord.x > ball.coord.x) && robot[n].coord.y <= (pf_lrc.y+pf_ulc.y)/2)))
     {
         robot[n].movement.angular_vel_scaling = 1;
+    }
+    else if (frames_close[n] >= FRAMES_TO_SPIN && ((side == LEFT && (robot[n].coord.x < (ball.coord.x-ATTACKER_BALL_OFFSET)) && (robot[n].coord.y > (pf_lrc.y+pf_ulc.y)/2)) || ((side == RIGHT && robot[n].coord.x > ball.coord.x) && robot[n].coord.y > (pf_lrc.y+pf_ulc.y)/2)))
+    {
+        robot[n].movement.angular_vel_scaling = -1;
     }
     else
     {
