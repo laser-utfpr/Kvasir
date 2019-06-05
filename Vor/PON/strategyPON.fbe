@@ -1,0 +1,34 @@
+fbe Robot
+    attributes
+    
+    /******************************************************
+                        Entity
+    ******************************************************/
+    double atCoordX;
+    double atcoordY;
+    double atAngle;
+    bool atAlready_found;
+    bool atFound_last_frame;
+
+    /******************************************************
+                        Player
+    ******************************************************/
+    double atDestX;
+    double atDestY;
+    
+    /******************************************************
+                        Movement
+    ******************************************************/
+    bool atStay_still;
+    double atLinear_vel_angle;
+    double atLinear_vel_scaling;
+    double atAngular_vel_scaling;
+
+    end_attributes
+
+    methods
+
+        method mtDistance(double x, double y)
+
+    end_methods
+end_fbe
