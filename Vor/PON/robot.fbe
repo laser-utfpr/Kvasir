@@ -1,0 +1,1205 @@
+fbe Robot 
+    attributes	
+        pfloat atPosX 0
+        pfloat atPosY 0
+        pfloat atAngle 0
+
+        pfloat atPosToGoX 0
+        pfloat atPosToGoY 0
+        pfloat atAngleToGo 0
+
+        boolean atIsReady true
+        boolean atBallEnemyField false
+        boolean atClosestToBall false
+        boolean atEnemyOnGoalLine false
+
+        pfloat atBallPosY 0
+        pfloat atDistanceToBall 3025
+        pfloat atBallDistTeamGoal 3025
+
+        char atRefereeCmd 'N'
+        char atLastRefereeCmd 'N'
+
+        string atRole "OFF"
+        string atTeamSide "none"
+        string atTeamColor "none"
+        integer atNumPlayers 0
+
+        integer atPartnerFreeID -1       
+
+        boolean atSetPassBall false  
+
+    end_attributes
+
+    methods
+        method mtInfo() begin_method cout << "Method DEBUG called from Robot! "<< endl; end_method
+
+	method mtExecuteMove() begin_method executeMove(); end_method
+	method mtAngleMove() begin_method angleMove(); end_method
+	method mtMoveStopPosition() begin_method moveToStopPosition(); end_method
+	method mtResetKick() begin_method resetKickAndDribble(); end_method
+	method mtPosPassBall() begin_method positionTopassBallPartner(); end_method
+	method mtPassBallPartner() begin_method passBallPartner(); end_method
+	method mtMovePositionToKick() begin_method moveToKickPosition(); end_method
+	method mtReadyKickoff() begin_method readyKickoff(); end_method
+	method mtTargetToBall() begin_method targetToBall(); end_method
+	method mtGkEnemyPenalty() begin_method behaviorGkPenalty(); end_method
+	method mtGkOutArea() begin_method behaviorGkBallOutsideArea(); end_method
+	method mtMoveLeftPost() begin_method moveToLeftPost(); end_method
+	method mtMovePosAngleNeg() begin_method moveToStopPositionNegativeAngle(); end_method
+	method mtMovePosAngleNeg3pl() begin_method moveToStopPositionNegativeAngle3pl(); end_method
+	method mtMovePenaltyDefLeft() begin_method movePenaltyDefenseLeftPosition(); end_method
+	method mtMoveRightPost() begin_method moveToRightPost(); end_method
+	method mtMovePosAnglePos() begin_method moveToStopPositionPositiveAngle(); end_method
+	method mtMovePosAnglePos3pl() begin_method moveToStopPositionNegativeAngle3pl(); end_method
+	method mtMovePenaltyDefRight() begin_method movePenaltyDefenseRightPosition(); end_method
+	method mtMoveIndirectKick() begin_method moveToIndirectKickPosition(); end_method
+	method mtMovePenaltyKick() begin_method positionKickPenalty(); end_method
+	method mtPenaltyDefCenter() begin_method movePenaltyDefenseCenterPosition(); end_method
+	method mtReadyPenalty() begin_method readyPenalty(); end_method
+	method mtStrickerLeftDirect() begin_method moveStrikerPositionLeft(); end_method
+	method mtPenaltyAttackLeft() begin_method movePenaltyAttackLeftPosition(); end_method
+	method mtStrickerRightDirect() begin_method moveStrikerPositionRight(); end_method
+	method mtPenaltyAttackRight() begin_method movePenaltyAttackRightPosition(); end_method
+
+	method mtMoveLeftWarmUp() begin_method moveLeftWarmUpPos(); end_method
+	method mtMoveRightWarmUp() begin_method moveRightWarmUpPos(); end_method
+    end_methods
+
+    //*************************************************************
+    //		REGRAS DE POSICIONAMENTO
+    //*************************************************************
+
+    fbeRule rlRobotMoveX
+    	condition
+		subcondition condition1
+                        premise prRobotMoveX Robot.atPosX != Robot.atPosToGoX
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMoveX Robot.mtExecuteMove();
+    	end_action
+    end_fbeRule  
+
+
+    fbeRule rlRobotMoveY
+    	condition
+		subcondition condition2
+                        premise prRobotMoveY Robot.atPosY != Robot.atPosToGoY
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMoveY Robot.mtExecuteMove();
+    	end_action
+    end_fbeRule   
+
+    fbeRule rlAngleMove
+    	condition
+		subcondition condition3
+                        premise prAngleMove Robot.atAngle != Robot.atAngleToGo
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inAngleMove Robot.mtAngleMove();
+    	end_action
+    end_fbeRule
+
+    //*************************************************************
+    //		REGRAS GENERICAS PARA TODAS OS ROLES
+    //*************************************************************
+
+    fbeRule rlBallFar
+    	condition
+		subcondition condition4
+                        premise prBallIsFar Robot.atDistanceToBall >= 300 and
+			premise prActiveRole Robot.atRole != ""
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inReset Robot.mtResetKick();
+    	end_action
+    end_fbeRule
+    
+    fbeRule rlStartFreePartner
+    	condition
+		subcondition condition5
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+                        premise prLinePlayerRole Robot.atRole != "GOALKEEPER" and
+                        premise prBallTeamField Robot.atBallEnemyField == false and
+                        premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prFreePartner Robot.atPartnerFreeID >= 0 and
+                        premise prRobotIsNotReady Robot.atIsReady == false   
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inPosPassBallPartner Robot.mtPosPassBall();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlStartFreePartnerPass
+    	condition
+		subcondition condition6
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+                        premise prLinePlayerRole Robot.atRole != "GOALKEEPER" and 
+                        premise prBallTeamField Robot.atBallEnemyField == false and
+                        premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prFreePartner Robot.atPartnerFreeID >= 0 and
+                        premise prRobotIsReady Robot.atIsReady == true   
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inPassBallPartner Robot.mtPassBallPartner();
+    	end_action
+    end_fbeRule    
+
+    fbeRule rlStartNoFreePartner
+    	condition
+		subcondition condition7
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+                        premise prLinePlayerRole Robot.atRole != "GOALKEEPER" and
+                        premise prBallTeamField Robot.atBallEnemyField == false and
+                        premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prNoFreePartner Robot.atPartnerFreeID < 0 and
+                        premise prRobotIsNotReady Robot.atIsReady == false   
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inPosKickNoFreePartner Robot.mtMovePositionToKick();
+    	end_action
+    end_fbeRule
+
+
+    fbeRule rlStartNoFreePartnerKick
+    	condition
+		subcondition condition8
+			premise prRefereeCmdStartGame8 Robot.atRefereeCmd == ' ' and
+                        premise prLinePlayerRole Robot.atRole != "GOALKEEPER" and 
+                        premise prBallTeamField Robot.atBallEnemyField == false and
+                        premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prNoFreePartner Robot.atPartnerFreeID < 0 and
+                        premise prRobotIsReady Robot.atIsReady == true   
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inKickNoFreePartner Robot.mtReadyKickoff();
+    	end_action
+    end_fbeRule 
+
+    fbeRule rlStartEnemyFieldPositionKick
+    	condition
+		subcondition condition9
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+                        premise prLinePlayerRole Robot.atRole != "GOALKEEPER" and
+                        premise prBallEnemyField Robot.atBallEnemyField == true and
+			premise prNoEnemyOnLineGoal Robot.atEnemyOnGoalLine == false and
+                        premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prRobotIsNotReady Robot.atIsReady == false   
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inPosKickEnemyField Robot.mtMovePositionToKick();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlStartEnemyFieldKick
+    	condition
+		subcondition condition10
+			premise prRefereeeCmdStartGame10 Robot.atRefereeCmd == ' ' and
+	                premise prLinePlayerRole Robot.atRole != "GOALKEEPER" and 
+                        premise prBallEnemyField Robot.atBallEnemyField == true and
+			premise prNoEnemyOnLineGoal Robot.atEnemyOnGoalLine == false and
+                        premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prRobotIsReady10 Robot.atIsReady == true   
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inKickEnemyField Robot.mtReadyKickoff();
+    	end_action
+    end_fbeRule 
+
+    fbeRule rlStartTargetToBall
+    	condition
+		subcondition condition11
+			premise prRefereeeCmdStartGame10 Robot.atRefereeCmd == ' ' and
+			premise prActiveRole Robot.atRole != "" and
+			premise prNotClosestToBall Robot.atClosestToBall == false
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inTargetToBall Robot.mtTargetToBall();
+    	end_action
+    end_fbeRule 
+
+
+    //*************************************************************
+    //		REGRAS: GOLEIRO
+    //*************************************************************    
+    fbeRule rlGkStopCloseGoal
+    	condition
+		subcondition condition12
+			premise prRefereeCmdStop Robot.atRefereeCmd == 'S' and
+			premise prRoleGoalkeeper Robot.atRole == "GOALKEEPER" and
+			premise prBallCloseTeamGoal Robot.atBallDistTeamGoal <= 1800
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inGkStopClose Robot.mtGkEnemyPenalty();
+    	end_action
+    end_fbeRule 
+
+    fbeRule rlGkStopFarGoal
+    	condition
+		subcondition condition13
+			premise prRefereeCmdStop Robot.atRefereeCmd == 'S' and
+			premise prRoleGoalkeeper Robot.atRole == "GOALKEEPER" and
+			premise prBallFarTeamGoal Robot.atBallDistTeamGoal > 1800
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inGkStopFarGoal Robot.mtGkOutArea();
+    	end_action
+    end_fbeRule 
+
+    fbeRule rlGkStartInsideAreaClosestBall
+    	condition
+		subcondition condition14
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+			premise prRoleGoalkeeper Robot.atRole == "GOALKEEPER" and
+			premise prBallInsideGoalArea Robot.atBallDistTeamGoal <= 800 and
+                        premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prRobotIsNotReady Robot.atIsReady == false
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inGkStartInside Robot.mtMovePositionToKick();
+    	end_action
+    end_fbeRule 
+
+    fbeRule rlGkStartInsideAreaClosestBallKick
+    	condition
+		subcondition condition15
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+			premise prRoleGoalkeeper Robot.atRole == "GOALKEEPER" and
+			premise prBallInsideGoalArea Robot.atBallDistTeamGoal <= 800 and
+                        premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prRobotIsReady Robot.atIsReady == true
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inGkAreaKick Robot.mtReadyKickoff();
+    	end_action
+    end_fbeRule 
+
+    fbeRule rlGkStartInsideArea
+    	condition
+		subcondition condition16
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and 
+			premise prRoleGoalkeeper Robot.atRole == "GOALKEEPER" and
+			premise prBallInsideGoalArea Robot.atBallDistTeamGoal <= 800 and
+                        premise prNotClosestToBall Robot.atClosestToBall == false
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inGkStartInArea Robot.mtGkEnemyPenalty();
+    	end_action
+    end_fbeRule 
+
+    fbeRule rlGkStartOutsideArea
+    	condition
+		subcondition condition17
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+			premise prRoleGoalkeeper Robot.atRole == "GOALKEEPER" and
+			premise prBallNotInGoalArea Robot.atBallDistTeamGoal > 800
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inGkStartOutArea Robot.mtGkOutArea();
+    	end_action
+    end_fbeRule 
+
+    fbeRule rlGkBluePenaltyYellow
+    	condition
+		subcondition condition18
+			premise prRefereeCmdPenaltyYellow Robot.atRefereeCmd == 'p' and
+			premise prRoleGoalkeeper Robot.atRole == "GOALKEEPER" and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inGkEnemyPenalty1 Robot.mtGkEnemyPenalty();
+    	end_action
+    end_fbeRule 
+
+    fbeRule rlGkYellowPenaltyBlue
+    	condition
+		subcondition condition19
+			premise prRefereeCmdPenaltyYellow Robot.atRefereeCmd == 'P' and
+			premise prRoleGoalkeeper Robot.atRole == "GOALKEEPER" and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inGkEnemyPenalty2 Robot.mtGkEnemyPenalty();
+    	end_action
+    end_fbeRule 
+
+    //*************************************************************
+    //		REGRAS: DEFENDER LEFT [DL]
+    //************************************************************* 
+
+    fbeRule rlDLtStopBallFar
+    	condition
+		subcondition condition20
+			premise prRefereeCmdStop Robot.atRefereeCmd == 'S' and
+			premise prRoleDefenderLeft Robot.atRole == "DEFENDER_LEFT" and
+			premise prBallFarTeamGoal Robot.atBallDistTeamGoal > 1800
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inStopDLFar Robot.mtMoveLeftPost();
+    	end_action
+    end_fbeRule 
+
+    fbeRule rlDLStopBallClose
+    	condition
+		subcondition condition21
+			premise prRefereeCmdStop Robot.atRefereeCmd == 'S' and
+			premise prRoleDefenderLeft Robot.atRole == "DEFENDER_LEFT" and
+			premise prBallCloseTeamGoal Robot.atBallDistTeamGoal <= 1800
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDLStopBallClose Robot.mtMovePosAngleNeg3pl();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDLBlueDirectKickBlue
+    	condition
+		subcondition condition22
+			premise prRefereeCmdDirectKickBlue Robot.atRefereeCmd == 'F' and
+			premise prRoleDefenderLeft Robot.atRole == "DEFENDER_LEFT" and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDLBlueDirectKickBlue Robot.mtMoveLeftPost();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDLYellowDirectKickYellow
+    	condition
+		subcondition condition23
+			premise prRefereeCmdDirectKickYellow Robot.atRefereeCmd == 'f' and
+			premise prRoleDefenderLeft Robot.atRole == "DEFENDER_LEFT" and	
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDLYellowDirectKickYellow Robot.mtMoveLeftPost();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDLtBlueIndirectBlue
+    	condition
+		subcondition condition24
+			premise prRoleDefenderLeft Robot.atRole == "DEFENDER_LEFT" and	
+            premise prRefereeCmdIndirectKickBlue Robot.atRefereeCmd == 'I' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDLtBlueIndirectBlue Robot.mtMoveLeftPost();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDLYellowIndirectYellow
+    	condition
+		subcondition condition25
+			premise prRoleDefenderLeft Robot.atRole == "DEFENDER_LEFT" and	
+			premise prRefereeCmdIndirectKickYellow Robot.atRefereeCmd == 'i' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"	
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDLYellowIndirectYellow Robot.mtMoveLeftPost();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDLtBluePenaltyYellow
+    	condition
+		subcondition condition26
+			premise prRoleDefenderLeft Robot.atRole == "DEFENDER_LEFT" and	
+            premise prRefereeCmdPenaltyYellow Robot.atRefereeCmd == 'p' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDLtBluePenaltyYellow Robot.mtMovePenaltyDefLeft();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDLYellowPenaltyBlue
+    	condition
+		subcondition condition27
+			premise prRoleDefenderLeft Robot.atRole == "DEFENDER_LEFT" and	
+            premise prRefereeCmdPenaltyBlue Robot.atRefereeCmd == 'P' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDLYellowPenaltyBlue Robot.mtMovePenaltyDefLeft();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDLStartNotClose
+    	condition
+		subcondition condition28
+			premise prRoleDefenderLeft Robot.atRole == "DEFENDER_LEFT" and
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+			premise prNotClosestToBall Robot.atClosestToBall == false
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDLStartNotClose Robot.mtMoveLeftPost();
+    	end_action
+    end_fbeRule
+
+    //*************************************************************
+    //		REGRAS: DEFENDER RIGHT [DR]
+    //************************************************************* 
+
+    fbeRule rlDRStopBallFar
+    	condition
+		subcondition condition29
+			premise prRoleDefenderRight Robot.atRole == "DEFENDER_RIGHT" and 
+			premise prRefereeCmdStop Robot.atRefereeCmd == 'S' and
+			premise prBallFarTeamGoal Robot.atBallDistTeamGoal > 1800
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDRStopBallFar Robot.mtMoveRightPost();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDRStopBallClose
+    	condition
+		subcondition condition30
+			premise prRoleDefenderRight Robot.atRole == "DEFENDER_RIGHT" and 
+			premise prRefereeCmdStop Robot.atRefereeCmd == 'S' and
+			premise prBallCloseTeamGoal Robot.atBallDistTeamGoal <= 1800
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDRStopBallClose Robot.mtMovePosAnglePos3pl();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDRBlueDirectKickBlue
+    	condition
+		subcondition condition31
+			premise prRoleDefenderRight Robot.atRole == "DEFENDER_RIGHT" and 
+			premise prRefereeCmdDirectKickBlue Robot.atRefereeCmd == 'F' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDRBlueDirectKickBlue Robot.mtMoveRightPost();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDRYellowDirectKickYellow
+    	condition
+		subcondition condition32
+			premise prRoleDefenderRight Robot.atRole == "DEFENDER_RIGHT" and
+			premise prRefereeCmdDirectKickYellow Robot.atRefereeCmd == 'f' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDRYellowDirectKickYellow Robot.mtMoveRightPost();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDRBlueIndirectKickBlue
+    	condition
+		subcondition condition33
+			premise prRoleDefenderRight Robot.atRole == "DEFENDER_RIGHT" and
+            premise prRefereeCmdIndirectKickBlue Robot.atRefereeCmd == 'I' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDRBlueIndirectKickBlue  Robot.mtMoveRightPost();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDRtYellowIndirectKickYellow
+    	condition
+		subcondition condition34
+			premise prRoleDefenderRight Robot.atRole == "DEFENDER_RIGHT" and
+			premise prRefereeCmdIndirectKickYellow Robot.atRefereeCmd == 'i' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"	
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDRtYellowIndirectKickYellow Robot.mtMoveRightPost();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDRBluePenaltyYellow
+    	condition
+		subcondition condition35
+			premise prRoleDefenderRight Robot.atRole == "DEFENDER_RIGHT" and
+			premise prRefereeCmdPenaltyYellow Robot.atRefereeCmd == 'p' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDRBluePenaltyYellow Robot.mtMovePenaltyDefRight();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDRYellowPenaltyBlue
+    	condition
+		subcondition condition36
+			premise prRoleDefenderRight Robot.atRole == "DEFENDER_RIGHT" and
+            premise prRefereeCmdPenaltyBlue Robot.atRefereeCmd == 'P' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDRYellowPenaltyBlue Robot.mtMovePenaltyDefRight();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlDRStartBallNotClose
+    	condition
+		subcondition condition37
+			premise prRoleDefenderRight Robot.atRole == "DEFENDER_RIGHT" and
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+			premise prNotClosestToBall Robot.atClosestToBall == false
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inDRStartBallNotClose Robot.mtMoveRightPost();
+    	end_action
+    end_fbeRule
+
+    //*************************************************************
+    //		REGRAS: MIDFIELD ONLY [MO]
+    //************************************************************* 
+
+    fbeRule rlMOStop
+    	condition
+		subcondition condition38
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and
+			premise prRefereeCmdStop Robot.atRefereeCmd == 'S'
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOStop Robot.mtMoveStopPosition();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOBlueKickoff
+    	condition
+		subcondition condition39
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and
+            premise prRefereeCmdKickoffBlue Robot.atRefereeCmd == 'K' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOBlueKickoff Robot.mtMovePositionToKick();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOYellowKickoff
+    	condition
+		subcondition condition40
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and
+            premise prRefereeCmdKickoffYellow Robot.atRefereeCmd == 'k' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOYellowKickoff Robot.mtMovePositionToKick();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOBlueReadyKickoffBlue
+    	condition
+		subcondition condition41
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+			premise prLastRefereeCmdKickoffBlue Robot.atLastRefereeCmd == 'K'and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOBlueReadyKickoffBlue Robot.mtReadyKickoff();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOYellowReadyKickoffYellow
+    	condition
+		subcondition condition42
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+			premise prLastRefereeCmdKickoffYellow Robot.atLastRefereeCmd == 'k'and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOYellowReadyKickoffYellow Robot.mtReadyKickoff();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOBlueDirectKick
+    	condition
+		subcondition condition43
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and
+			premise prRefereeCmdDirectKickBlue Robot.atRefereeCmd == 'F' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOBlueDirectKick Robot.mtMovePositionToKick();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOYellowDirectKick
+    	condition
+		subcondition condition44
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and	
+			premise prRefereeCmdDirectKickYellow Robot.atRefereeCmd == 'f' and	
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOYellowDirectKick Robot.mtMovePositionToKick();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOBlueIndirectKick
+    	condition
+		subcondition condition45
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and	
+			premise prRefereeCmdIndirectKickBlue Robot.atRefereeCmd == 'I' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOBlueIndirectKick Robot.mtMoveIndirectKick();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOYellowIndirectKick
+    	condition
+		subcondition condition46
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and	
+			premise prRefereeCmdIndirectKickYellow Robot.atRefereeCmd == 'i' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOYellowIndirectKick Robot.mtMoveIndirectKick();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOBluePenaltyBlue
+    	condition
+		subcondition condition47
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and	
+			premise prRefereeCmdPenaltyBlue Robot.atRefereeCmd == 'P' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOBluePenaltyBlue Robot.mtMovePenaltyKick();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOBluePenaltyYellow
+    	condition
+		subcondition condition48
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and	
+			premise prRefereeCmdPenaltyYellow Robot.atRefereeCmd == 'p' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOBluePenaltyYellow Robot.mtPenaltyDefCenter();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOYellowPenaltyYellow
+    	condition
+		subcondition condition49
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and	
+			premise prRefereeCmdPenaltyYellow Robot.atRefereeCmd == 'p' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOYellowPenaltyYellow Robot.mtMovePenaltyKick();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOYellowPenaltyBlue
+    	condition
+		subcondition condition50
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and	
+			premise prRefereeCmdPenaltyBlue Robot.atRefereeCmd == 'P' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOYellowPenaltyBlue Robot.mtPenaltyDefCenter();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOBlueReadyPenaltyBlue
+    	condition
+		subcondition condition51
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and	
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+			premise prLastRefereeCmdPenaltyBlue Robot.atLastRefereeCmd == 'P' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOBlueReadyPenaltyBlue Robot.mtReadyPenalty();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlMOYellowReadyPenaltyYellow
+    	condition
+		subcondition condition52
+			premise prRoleMidfieldOnly Robot.atRole == "MIDFIELD_ONLY" and	
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+			premise prLastRefereeCmdPenaltyYellow Robot.atLastRefereeCmd == 'p' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inMOYellowReadyPenaltyYellow Robot.mtReadyPenalty();
+    	end_action
+    end_fbeRule
+
+    //*************************************************************
+    //		REGRAS: STRIKER LEFT [SL]
+    //************************************************************* 
+
+    fbeRule rlSLStopTeamLeft
+    	condition
+		subcondition condition53
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and	
+			premise prRefereeCmdStop Robot.atRefereeCmd == 'S' and
+			premise prTeamLeftSide Robot.atTeamSide == "LEFT"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLStopTeamLeft Robot.mtMovePosAngleNeg();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLStopTeamRight
+    	condition
+		subcondition condition54
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+			premise prRefereeCmdStop Robot.atRefereeCmd == 'S' and
+			premise prTeamRightSide Robot.atTeamSide == "RIGHT"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLStopTeamRight Robot.mtMovePosAnglePos();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLBlueDirectKick
+    	condition
+		subcondition condition55
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+			premise prRefereeCmdDirectKickBlue Robot.atRefereeCmd == 'F' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLBlueDirectKick Robot.mtStrickerLeftDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLYellowDirectKick
+    	condition
+		subcondition condition56
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+			premise prRefereeCmdDirectKickYellow Robot.atRefereeCmd == 'f' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"			
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLYellowDirectKick Robot.mtStrickerLeftDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLBlueIndirectKick
+    	condition
+		subcondition condition57
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+            premise prRefereeCmdIndirectKickBlue Robot.atRefereeCmd == 'I' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"			
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLBlueIndirectKick Robot.mtStrickerLeftDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLYellowIndirectKick
+    	condition
+		subcondition condition58
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+			premise prRefereeCmdIndirectKickYellow Robot.atRefereeCmd == 'i' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"			
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLYellowIndirectKick Robot.mtStrickerLeftDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLBluePenaltyBlue
+    	condition
+		subcondition condition59
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+            premise prRefereeCmdPenaltyBlue Robot.atRefereeCmd == 'P' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"			
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLBluePenaltyBlue Robot.mtPenaltyAttackLeft();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLBluePenaltyYellow
+    	condition
+		subcondition condition60
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+            premise prRefereeCmdPenaltyYellow Robot.atRefereeCmd == 'p' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"			
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLBluePenaltyYellow Robot.mtStrickerLeftDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLYellowPenaltyYellow
+    	condition
+		subcondition condition61
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+            premise prRefereeCmdPenaltyYellow Robot.atRefereeCmd == 'p' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"			
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLYellowPenaltyYellow Robot.mtPenaltyAttackLeft();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLYellowPenaltyBlue
+    	condition
+		subcondition condition62
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+            premise prRefereeCmdPenaltyBlue Robot.atRefereeCmd == 'P' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"			
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLYellowPenaltyBlue Robot.mtStrickerLeftDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLStartBallNotClose
+    	condition
+		subcondition condition63
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+			premise prNotClosestToBall Robot.atClosestToBall == false
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLStartBallNotClose Robot.mtStrickerLeftDirect();
+    	end_action
+    end_fbeRule
+
+    //*************************************************************
+    //		REGRAS: STRIKER RIGHT [SR]
+    //************************************************************* 
+
+    fbeRule rlSRStopTeamLeft
+    	condition
+		subcondition condition64
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and	
+			premise prRefereeCmdStop Robot.atRefereeCmd == 'S' and
+			premise prTeamLeftSide Robot.atTeamSide == "LEFT"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRStopTeamLeft Robot.mtMovePosAnglePos();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRStopTeamRight
+    	condition
+		subcondition condition65
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+			premise prRefereeCmdStop Robot.atRefereeCmd == 'S' and
+			premise prTeamRightSide Robot.atTeamSide == "RIGHT"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRStopTeamRight Robot.mtMovePosAngleNeg();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRBlueDirectKick
+    	condition
+		subcondition condition66
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+			premise prRefereeCmdDirectKickBlue Robot.atRefereeCmd == 'F' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRBlueDirectKick Robot.mtStrickerRightDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRYellowDirectKick
+    	condition
+		subcondition condition67
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+			premise prRefereeCmdDirectKickYellow Robot.atRefereeCmd == 'f' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRYellowDirectKick Robot.mtStrickerRightDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRBlueIndirectKick
+    	condition
+		subcondition condition68
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+            premise prRefereeCmdIndirectKickBlue Robot.atRefereeCmd == 'I' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRBlueIndirectKick Robot.mtStrickerRightDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRYellowIndirectKick
+    	condition
+		subcondition condition69
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+			premise prRefereeCmdIndirectKickYellow Robot.atRefereeCmd == 'i' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRYellowIndirectKick Robot.mtStrickerRightDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRBluePenaltyBlue
+    	condition
+		subcondition condition70
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+            premise prRefereeCmdPenaltyBlue Robot.atRefereeCmd == 'P' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRBluePenaltyBlue Robot.mtPenaltyAttackRight();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRBluePenaltyYellow
+    	condition
+		subcondition condition71
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+            premise prRefereeCmdPenaltyYellow Robot.atRefereeCmd == 'p' and
+			premise prTeamBlue Robot.atTeamColor == "BLUE"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRBluePenaltyYellow Robot.mtStrickerRightDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRYellowsPenaltyYellow
+    	condition
+		subcondition condition72
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+            premise prRefereeCmdPenaltyYellow Robot.atRefereeCmd == 'p' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRYellowsPenaltyYellow Robot.mtPenaltyAttackRight();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRYellowsPenaltyBlue
+    	condition
+		subcondition condition73
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+            premise prRefereeCmdPenaltyBlue Robot.atRefereeCmd == 'P' and
+			premise prTeamYellow Robot.atTeamColor == "YELLOW"
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRYellowsPenaltyBlue Robot.mtStrickerRightDirect();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRStartBallNotClose
+    	condition
+		subcondition condition74
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+			premise prRefereeCmdStartGame Robot.atRefereeCmd == ' ' and
+			premise prNotClosestToBall Robot.atClosestToBall == false
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRStartBallNotClose Robot.mtStrickerRightDirect();
+    	end_action
+    end_fbeRule
+
+    //*************************************************************
+    //		REGRAS: WARM-UP RULES
+    //************************************************************* 
+
+    fbeRule rlSRHaltNotClose
+    	condition
+		subcondition condition75
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+			premise prRefereeCmdHalt Robot.atRefereeCmd == 'H' and
+			premise prNotClosestToBall Robot.atClosestToBall == false
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRHaltNotClose Robot.mtMoveRightWarmUp();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRHaltClose
+    	condition
+		subcondition condition76
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+			premise prRefereeCmdHalt Robot.atRefereeCmd == 'H' and
+			premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prFreePartner Robot.atPartnerFreeID >= 0 and
+			premise prNotSetPassBall Robot.atSetPassBall == false
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRHaltClose Robot.mtMoveIndirectKick();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSRHaltCloseReady
+    	condition
+		subcondition condition77
+			premise prRoleStrickerRight Robot.atRole == "STRIKER_RIGHT" and
+			premise prRefereeCmdHalt Robot.atRefereeCmd == 'H' and
+			premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prFreePartner Robot.atPartnerFreeID >= 0 and
+			premise prSetPassBall Robot.atSetPassBall == true
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSRHaltCloseReady Robot.mtPassBallPartner();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLHaltNotClose
+    	condition
+		subcondition condition78
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+			premise prRefereeCmdHalt Robot.atRefereeCmd == 'H' and
+			premise prNotClosestToBall Robot.atClosestToBall == false
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLHaltNotClose Robot.mtMoveLeftWarmUp();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLHaltClose
+    	condition
+		subcondition condition79
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+			premise prRefereeCmdHalt Robot.atRefereeCmd == 'H' and
+			premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prFreePartner Robot.atPartnerFreeID >= 0 and
+			premise prNotSetPassBall Robot.atSetPassBall == false
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLHaltClose Robot.mtMoveIndirectKick();
+    	end_action
+    end_fbeRule
+
+    fbeRule rlSLHaltCloseReady
+    	condition
+		subcondition condition80
+			premise prRoleStrickerLeft Robot.atRole == "STRIKER_LEFT" and
+			premise prRefereeCmdHalt Robot.atRefereeCmd == 'H' and
+			premise prClosestToBall Robot.atClosestToBall == true and
+                        premise prFreePartner Robot.atPartnerFreeID >= 0 and
+			premise prSetPassBall Robot.atSetPassBall == true
+        	end_subcondition
+    	end_condition
+    	action
+                instigation inSLHaltCloseReady Robot.mtPassBallPartner();
+    	end_action
+    end_fbeRule
+
+//*************************************************************
+//************************************************************* 
+end_fbe
+
+inst
+    Robot robot1
+    Robot robot2
+    Robot robot3
+    Robot robot4
+    Robot robot5
+    Robot robot6
+end_inst
+
+strategy
+	no_one
+end_strategy
+
+rule rlTeste
+    condition
+	subcondition conditionNumber12
+            premise PrHasFired22 robot1.atPosX == 5000
+        end_subcondition
+    end_condition
+    action
+        instigation instigation12 robot1.mtInfo();
+    end_action
+end_rule
+
+main { 	
+}
+
+
