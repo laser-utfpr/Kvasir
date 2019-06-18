@@ -209,11 +209,11 @@ fbe Robot
         end_code
     end_method
 
-    public method mtMoveRightWarmUp
+    /*public method mtMoveRightWarmUp
         code NAMESPACES
             moveRightWarmUpPos();
         end_code
-    end_method
+    end_method se tiver mais de 30 da erro*/
 
     //*************************************************************
     //		REGRAS DE POSICIONAMENTO

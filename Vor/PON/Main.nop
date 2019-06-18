@@ -4,7 +4,6 @@ fbe Main
     public Robot robot3
     public Robot robot4
     public Robot robot5
-    public Robot robot6
 
     rule rlTeste
         condition
