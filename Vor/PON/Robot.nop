@@ -1,0 +1,50 @@
+fbe Robot
+
+    private int name
+
+    private double atCoordX = 0
+    private double atCoordY = 0
+    private double atDouble angle = 0
+    private boolean atAlready_found
+    private boolean atFound_last_frame
+
+    private double atDestX = -1
+    private double atDestY = -1
+
+    private boolean atStay_still
+    private double atLinear_vel_angle
+    private double atLinear_vel_scaling
+    private double atAngular_vel_scaling
+
+    private method mtSetDestination
+        params
+            double x
+            double y
+        end_params
+        assingment
+            this.atDestX = x
+            this.atDestY = y
+        end_assingment
+    end_method
+
+    rule rlTeste
+        condition
+            premise prDestinationX
+                this.atDestX != -1
+            end_premise
+            or
+            premise prDestinationY
+                this.atDestY != -1
+        end_condition
+        action
+            instigation instigation1
+                call this.mtSetDestination
+                    params
+                        0
+                        0
+                    end_params
+                end_call
+            end_instigation
+        end_action
+    end_rule
+end_fbe
