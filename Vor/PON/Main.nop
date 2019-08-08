@@ -1,24 +1,41 @@
 fbe Main
-    public Robot robot1
-    public Robot robot2
-    public Robot robot3
-    public Robot robot4
-    public Robot robot5
+
+    includes NAMESPACES
+        #include <iostream>
+        using namespace std;
+    end_includes
+
+    public boolean atStatus = false
+
+    private method mtMove
+        params
+            String cellphone
+        end_params
+        code NAMESPACES
+            cout << "Moving" << endl;
+        end_code
+    end_method
+
+    //public Robot robot1
+//    public Robot robot2
+//    public Robot robot3
+//    public Robot robot4
+//    public Robot robot5
 
     rule rlTeste
         condition
-            premise PrHasFired22
-                robot1.atPosX == 5000
+            premise PrTest
+                this.atStatus == true
             end_premise
         end_condition
         action
             instigation instigation12
-                call robot1.mtInfo
+                call this.mtMove
             end_instigation
         end_action
     end_rule
 
     main
-        robot1.atPosX = 0
+        this.atStatus = true
     end_main
 end_fbe
