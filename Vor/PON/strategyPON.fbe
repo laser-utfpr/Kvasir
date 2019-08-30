@@ -1,11 +1,11 @@
 fbe Robot
     attributes
-    
+
     /******************************************************
                         Entity
     ******************************************************/
     double atCoordX;
-    double atcoordY;
+    double atCoordY;
     double atAngle;
     bool atAlready_found;
     bool atFound_last_frame;
@@ -15,7 +15,7 @@ fbe Robot
     ******************************************************/
     double atDestX;
     double atDestY;
-    
+
     /******************************************************
                         Movement
     ******************************************************/
