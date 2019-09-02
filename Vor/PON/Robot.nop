@@ -17,7 +17,52 @@ fbe Robot
     private double atLinear_vel_scaling = 0
     private double atAngular_vel_scaling = 0
 
-    private method mtSetDestinationX
+    public method mtSetCoordX
+        params
+            double x
+        end_params
+        assignment
+            this.atCoordX = x
+        end_assignment
+    end_method
+
+    public method mtSetCoordY
+        params
+            double y
+        end_params
+        assignment
+            this.atCoordY = y
+        end_assignment
+    end_method
+
+    public method mtSetAngle
+        params
+            double angle
+        end_params
+        assignment
+            this.atAngle = angle
+        end_assignment
+    end_method
+
+    public method mtSetFound
+        params
+            boolean found
+        end_params
+        assignment
+            this.atAlready_found = found
+        end_assignment
+    end_method
+
+    public method mtSetFound_last_frame
+        params
+            boolean found
+        end_params
+        assignment
+            this.atFound_last_frame = found
+        end_assignment
+    end_method
+
+    public method mtSetDestinationX
         params
             double x
         end_params
@@ -26,7 +71,7 @@ fbe Robot
         end_assignment
     end_method
 
-    private method mtSetDestinationY
+    public method mtSetDestinationY
         params
             double y
         end_params
@@ -34,6 +79,43 @@ fbe Robot
             this.atDestY = y
         end_assignment
     end_method
+
+    public method mtSetStayStill
+        params
+            boolean stay
+        end_params
+        assignment
+            this.atStay_still = stay
+        end_assignment
+    end_method
+
+    public method mtSetLinear_vel_angle
+        params
+            double angle
+        end_params
+        assignment
+            this.atLinear_vel_angle = angle
+        end_assignment
+    end_method
+
+    public method mtSetLinear_vel_scaling
+        params
+            double vel_scaling
+        end_params
+        assignment
+            this.atLinear_vel_scaling = vel_scaling
+        end_assignment
+    end_method
+
+    public method mtSetAngular_vel_scaling
+        params
+            double vel_scaling
+        end_params
+        assignment
+            this.atAngular_vel_scaling = vel_scaling
+        end_assignment
+    end_method
+
 
    rule rlTeste
         condition

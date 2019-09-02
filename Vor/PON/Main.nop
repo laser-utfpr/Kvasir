@@ -1,13 +1,24 @@
 fbe Main
 
     includes NAMESPACES
+
         #include <iostream>
+
+        #include <smmclib.hpp>
+        #include <iostream>
+        #include <string>
+
+        #include "Vard.hpp"
+        #include <QApplication>
+
         using namespace std;
+
     end_includes
 
-    public boolean atStatus = false
 
-    private method mtMove
+    private boolean right_key_sizes = true
+
+    private method QApplication
         params
             String cellphone
         end_params
