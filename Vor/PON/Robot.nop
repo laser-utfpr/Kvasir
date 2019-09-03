@@ -1,21 +1,21 @@
 fbe Robot
 
 
-    private integer atName = -1
+    public integer atName = -1
 
-    private double atCoordX = 0
-    private double atCoordY = 0
-    private double atAngle = 0
-    private boolean atAlready_found = false
-    private boolean atFound_last_frame = false
+    public double atCoordX = 0
+    public double atCoordY = 0
+    public double atAngle = 0
+    public boolean atAlready_found = false
+    public boolean atFound_last_frame = false
 
-    private double atDestX = -1
-    private double atDestY = -1
+    public double atDestX = -1
+    public double atDestY = -1
 
-    private boolean atStay_still = false
-    private double atLinear_vel_angle = 0
-    private double atLinear_vel_scaling = 0
-    private double atAngular_vel_scaling = 0
+    public boolean atStay_still = false
+    public double atLinear_vel_angle = 0
+    public double atLinear_vel_scaling = 0
+    public double atAngular_vel_scaling = 0
 
     public method mtSetCoordX
         params

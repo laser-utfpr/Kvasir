@@ -1,0 +1,85 @@
+fbe strategy
+
+    includes NAMESPACES
+
+        #include "vorconstants.h"
+        #include "aifieldhandler.hpp"
+
+        #include <string>
+        #include <vector>
+        #include <cmath>
+        #include <algorithm>
+
+        #include <smmclib.hpp>
+
+        //  Mannual Command enum
+        #define STOP 0
+        #define FORWARD 1
+        #define TURN_LEFT 2
+        #define TURN_RIGHT 3
+        #define BACK 4
+        #define FL 5
+        #define FR 6
+        #define BL 7
+        #define BR 8
+
+        //  Side enum
+        #define LEFT 0
+        #define RIGHT 0
+    
+    end_includes
+
+
+    private double pf_ulc_x = 0
+    private double pf_ulc_y = 0
+    private double pf_lrc = 0
+    private double pf_lrc = 0
+
+
+    private double lg_ulc_x = 0
+    private double lg_ulc_y = 0
+    private double lg_lrc = 0
+    private double lg_lrc = 0
+
+    private double rg_ulc_x = 0
+    private double rg_ulc_y = 0
+    private double rg_lrc = 0
+    private double rg_lrc = 0
+
+
+    private double lga_ulc_x = 0
+    private double lga_ulc_y = 0
+    private double lga_lrc = 0
+    private double lga_lrc = 0
+
+    private double rga_ulc_x = 0
+    private double rga_ulc_y = 0
+    private double rga_lrc = 0
+    private double rga_lrc = 0
+
+
+    private double robot_destination_x = 0
+    private double robot_destination_y = 0
+
+
+    private integer manual_controlled_robot = 0
+    private double previous_robot_angle = 0
+    private integer previous_manual_controlled_robot = -1
+    private integer previous_command = STOP
+    private integer side = LEFT
+
+    private double compared_object_x 0
+    private double compared_object_y 0
+
+    
+
+
+
+    private method mtSetDestinationX
+        params
+            double x
+        end_params
+        assignment
+            this.atDestX = x
+        end_assignment
+    end_method
