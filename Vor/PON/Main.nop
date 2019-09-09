@@ -18,35 +18,83 @@ fbe Main
 
     private boolean right_key_sizes = true
 
-    private method QApplication
-        params
-            String cellphone
-        end_params
+    private boolean atGame_started = false
+
+    private double  ball_x = 0
+    private double  ball_y = 0
+
+    private method mtRead_robot1_pos_x
         code NAMESPACES
             cout << "Moving" << endl;
         end_code
+        assignment
+            robot1.atCoordX = ai_field_handler.getAlly(i).coord.x
     end_method
 
-//    public Robot robot1
+    private method mtRead_robot1_pos_y
+        code NAMESPACES
+            cout << "Moving" << endl;
+        end_code
+        assignment
+            robot1.atCoordY = ai_field_handler.getAlly(i).coord.y
+    end_method
+
+    public Robot robot1
 //    public Robot robot2
 //    public Robot robot3
 //    public Robot robot4
 //    public Robot robot5
 
+    rule rlRobot1_ball_dest_x
+        condition
+            premise prRobotPos
+                robot1.atCoordX != this.ball_x
+            end_premise
+        end_condition
+        action
+            instigation instigation13
+                call robot1.mtSetDestinationX
+                    params
+                        this.ball_x
+                    end_params
+                end_call
+            end_instigation
+        end_action
+    end_rule
+
+    rule rlRobot1_ball_dest_y
+        condition
+            premise prRobotPos
+                robot1.atCoordX != this.ball_y
+            end_premise
+        end_condition
+        action
+            instigation instigation14
+                call robot1.mtSetDestinationY
+                    params
+                        this.ball_y
+                    end_params
+                end_call
+            end_instigation
+        end_action
+    end_rule
+
     rule rlTeste
         condition
             premise PrTest
-                this.atStatus == true
+                this.atGame_started == true
             end_premise
         end_condition
         action
             instigation instigation12
-                call this.mtMove
+                call this.mtRead_robot1_pos_x
             end_instigation
         end_action
     end_rule
 
     main
-        this.atStatus = true
+        this.ball_x = ai_field_handler.getBall().coord.x
+        this.ball_y = ai_field_handler.getBall().coord.y
+        this.atGame_started = true
     end_main
 end_fbe
