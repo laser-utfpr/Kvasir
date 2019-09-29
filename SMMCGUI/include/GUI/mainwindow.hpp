@@ -19,7 +19,7 @@
 
 #include "sharedparameters.hpp"
 #include "smmcthread.hpp"
-
+#undef USE_GPU
 #ifdef USE_GPU
     #include <opencv2/gpu/gpu.hpp>
 #endif
