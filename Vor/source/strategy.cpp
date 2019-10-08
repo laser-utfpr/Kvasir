@@ -569,20 +569,26 @@ void Strategy::manualControl(void)
                 {
                     previous_manual_controlled_robot = -1;
                     previous_command = manual_command;
-                    
+
                 }
 
-                robot[n].destination = calculateDestination(n, robot[n].previous_destination.x - robot[n].coord.x, robot[n].previous_destination.y - robot[n].coord.y);
-                /*Coord t_vec = robot[n].coord - ball.coord;
+                //robot[n].destination = calculateDestination(n, robot[n].previous_destination.x - robot[n].coord.x, robot[n].previous_destination.y - robot[n].coord.y);
+                Coord t_vec = robot[n].coord - ball.coord;
                 Coord dest;
-                dest.x = (rg_ulc.x - robot[n].coord.x) + (t_vec.x)  * 500000 * (1/t_vec.norm() - 1/2) / (t_vec.norm() * t_vec.norm());
-                dest.y = (rg_ulc.y - robot[n].coord.y) + (t_vec.y)  * 500000 * (1/t_vec.norm() - 1/2) / (t_vec.norm() * t_vec.norm());
-                robot[n].destination = calculateDestination(n, dest.x - robot[n].previous_destination.x, dest.y - robot[n].previous_destination.y);*/
+                dest.x = (rg_ulc.x - robot[n].coord.x);
+                dest.y = (rg_ulc.y - robot[n].coord.y);
+                if (t_vec.norm() <= 300)
+                {
+                    dest.x += (t_vec.x)  * 750000 * 3 *(1/t_vec.norm() - 1/300) / (t_vec.norm() * t_vec.norm());
+                    dest.y += (t_vec.y)  * 750000 * 3 *(1/t_vec.norm() - 1/300) / (t_vec.norm() * t_vec.norm());
+                }
+                robot[n].destination = calculateDestination(n, dest.x, dest.y);
 
             }
         }
-        //Coord t_vec = robot[n].coord - ball.coord;
-        //std::cout << "att " << rg_ulc.x - robot[n].coord.x << " rep " << (t_vec.x)  * 500000 * (1/t_vec.norm() - 1/2) / (t_vec.norm() * t_vec.norm()) << std::endl;
+        Coord t_vec = robot[n].coord - ball.coord;
+        std::cout << "norm "<< t_vec.norm() << " att " << rg_ulc.x - robot[n].coord.x + (t_vec.x)  * 750000 * 3 *(1/t_vec.norm() - 1/300) / (t_vec.norm() * t_vec.norm())
+        << " rep1 " << (t_vec.x) << " rep2 " << 750000 * 3 << " rep3 " << (1/t_vec.norm() - 1/300) << " rep4 " << (t_vec.norm() * t_vec.norm()) << std::endl;
         //std::cout << "n: " << n << " x: " << robot[n].destination.x << " y: " << robot[n].destination.y << std::endl;
         robot[n].movement.angular_vel_scaling = 0;
     }
