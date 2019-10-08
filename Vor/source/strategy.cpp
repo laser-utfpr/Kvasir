@@ -573,22 +573,22 @@ void Strategy::manualControl(void)
                 }
 
                 //robot[n].destination = calculateDestination(n, robot[n].previous_destination.x - robot[n].coord.x, robot[n].previous_destination.y - robot[n].coord.y);
-                Coord t_vec = robot[n].coord - ball.coord;
+                Coord t_vec = robot[n].coord - robot[1].coord;
                 Coord dest;
                 dest.x = (rg_ulc.x - robot[n].coord.x);
                 dest.y = (rg_ulc.y - robot[n].coord.y);
-                if (t_vec.norm() <= 300)
+                if (t_vec.norm() <= 200)
                 {
-                    dest.x += (t_vec.x)  * 750000 * 3 *(1/t_vec.norm() - 1/300) / (t_vec.norm() * t_vec.norm());
-                    dest.y += (t_vec.y)  * 750000 * 3 *(1/t_vec.norm() - 1/300) / (t_vec.norm() * t_vec.norm());
+                    dest.x += (t_vec.x)  * 1000000 * 3 *(1/t_vec.norm() - 1/200) / (t_vec.norm() * t_vec.norm());
+                    dest.y += (t_vec.y)  * 1000000 * 3 *(1/t_vec.norm() - 1/200) / (t_vec.norm() * t_vec.norm());
                 }
                 robot[n].destination = calculateDestination(n, dest.x, dest.y);
 
             }
         }
-        Coord t_vec = robot[n].coord - ball.coord;
-        std::cout << "norm "<< t_vec.norm() << " att " << rg_ulc.x - robot[n].coord.x + (t_vec.x)  * 750000 * 3 *(1/t_vec.norm() - 1/300) / (t_vec.norm() * t_vec.norm())
-        << " rep1 " << (t_vec.x) << " rep2 " << 750000 * 3 << " rep3 " << (1/t_vec.norm() - 1/300) << " rep4 " << (t_vec.norm() * t_vec.norm()) << std::endl;
+        Coord t_vec = robot[n].coord - robot[1].coord;
+        //std::cout << "norm "<< t_vec.norm() << " att " << rg_ulc.x - robot[n].coord.x + (t_vec.x)  * 1000000 * 3 *(1/t_vec.norm() - 1/300) / (t_vec.norm() * t_vec.norm())
+        //<< " rep1 " << (t_vec.x) << " rep2 " << 1000000 * 3 << " rep3 " << (1/t_vec.norm() - 1/300) << " rep4 " << (t_vec.norm() * t_vec.norm()) << std::endl;
         //std::cout << "n: " << n << " x: " << robot[n].destination.x << " y: " << robot[n].destination.y << std::endl;
         robot[n].movement.angular_vel_scaling = 0;
     }
