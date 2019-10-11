@@ -646,6 +646,19 @@ Coord Strategy::calculateMovementsToBall(int n)
             else
                 return Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y + BALL_OFFSET);
         }
+        /*Coord t_vec = robot[n].coord - ball.coord;
+        Coord dest;
+        dest.x = (ball.coord.x - BALL_OFFSET - robot[n].coord.x);
+        dest.y = ball.coord.y;
+        if (t_vec.norm() <= 200)
+        {
+            std::cout << dest.x << ' ';
+            dest.x += (t_vec.x)  * 750000 *(1/t_vec.norm() - 1/200) / (t_vec.norm() * t_vec.norm());
+            std::cout << dest.x << std::endl;
+            dest.y += (t_vec.y)  * 750000 *(1/t_vec.norm() - 1/200) / (t_vec.norm() * t_vec.norm());
+        }*/
+        return dest;
+
     }
     else
     {
