@@ -637,25 +637,63 @@ Coord Strategy::calculateMovementsToBall(int n)
 {
     if (side == LEFT)
     {
-        if (robot[n].coord.x < ball.coord.x - BALL_OFFSET/2 && attacker_returning)
-        {
-            attacker_returning = false;
-            return Coord(ball.coord.x, ball.coord.y);
-        }
-        else
-        {
-            if (!attacker_returning)
+        Coord dest = Coord(pf_ulc.x, pf_lrc.y);
+        if (robot[n].coord.x > ball.coord.x)
             {
-                attacker_returning = true;
+            if (robot[n].coord.y < (pf_ulc.y + pf_lrc.y)/2)
+            {
+                if (ball.coord.y - BALL_OFFSET > pf_ulc.y + 30)
+                    dest = Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y - BALL_OFFSET);
+                else
+                    dest = Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y + BALL_OFFSET);
             }
             else
             {
-                if (robot[n].coord.y < (pf_ulc.y + pf_lrc.y)/2)
-                    return Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y - BALL_OFFSET);
+                if (ball.coord.y + BALL_OFFSET < pf_lrc.y - 30)
+                    dest = Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y + BALL_OFFSET);
                 else
-                    return Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y + BALL_OFFSET);   
+                    dest = Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y - BALL_OFFSET);
             }
         }
+        if (robot[n].coord.x < ball.coord.x + 20 && robot[n].coord.x > ball.coord.x - 20 && !attacker_returning)
+        {
+            attacker_returning = true;
+            dest = Coord(ball.coord.x - BALL_OFFSET, ball.coord.y);
+        }
+        Coord dist = robot[n].coord - Coord(ball.coord.x - BALL_OFFSET, ball.coord.y);
+        if (robot[n].coord.x < ball.coord.x && dist.norm() > 70 && attacker_returning)
+            attacker_returning = false;
+        else
+            dest = Coord(ball.coord.x - BALL_OFFSET, ball.coord.y);
+        if (robot[n].coord.x < ball.coord.x && !attacker_returning)
+        {
+            dest = ball.coord;
+        }
+        //std::cout << robot[n].coord.x - (ball.coord.x - BALL_OFFSET)
+        //<< ' ' << robot[n].coord.y - ball.coord.y << std::endl;
+
+
+
+        /*if (!attacker_returning && robot[n].coord.x < ball.coord.x)
+            return Coord(ball.coord.x, ball.coord.y);
+        if (robot[n].coord.x < ball.coord.x - BALL_OFFSET/2 && attacker_returning)
+        {
+            std::cout << "Parou de Voltar" << std::endl;
+            attacker_returning = false;
+            return Coord(ball.coord.x, ball.coord.y);
+        }
+        if (robot[n].coord.x > ball.coord.x)
+            attacker_returning = true;
+        if (attacker_returning)
+        {
+            if (robot[n].coord.y < (pf_ulc.y + pf_lrc.y)/2)
+                return Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y - BALL_OFFSET);
+            else
+                return Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y + BALL_OFFSET);
+        }*/
+
+
+
         /*Coord t_vec = robot[n].coord - ball.coord;
         Coord dest;
         dest.x = (ball.coord.x - BALL_OFFSET - robot[n].coord.x);
