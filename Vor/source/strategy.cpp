@@ -572,8 +572,8 @@ void Strategy::manualControl(void)
 
                 }
 
-                //robot[n].destination = calculateDestination(n, robot[n].previous_destination.x - robot[n].coord.x, robot[n].previous_destination.y - robot[n].coord.y);
-                Coord t_vec = robot[n].coord - robot[1].coord;
+                robot[n].destination = calculateDestination(n, robot[n].previous_destination.x - robot[n].coord.x, robot[n].previous_destination.y - robot[n].coord.y);
+                /*Coord t_vec = robot[n].coord - robot[1].coord;
                 Coord dest;
                 dest.x = (rg_ulc.x - robot[n].coord.x);
                 dest.y = (rg_ulc.y - robot[n].coord.y);
@@ -582,14 +582,10 @@ void Strategy::manualControl(void)
                     dest.x += (t_vec.x)  * 1000000 * 3 *(1/t_vec.norm() - 1/200) / (t_vec.norm() * t_vec.norm());
                     dest.y += (t_vec.y)  * 1000000 * 3 *(1/t_vec.norm() - 1/200) / (t_vec.norm() * t_vec.norm());
                 }
-                robot[n].destination = calculateDestination(n, dest.x, dest.y);
+                robot[n].destination = calculateDestination(n, dest.x, dest.y);*/
 
             }
         }
-        Coord t_vec = robot[n].coord - robot[1].coord;
-        //std::cout << "norm "<< t_vec.norm() << " att " << rg_ulc.x - robot[n].coord.x + (t_vec.x)  * 1000000 * 3 *(1/t_vec.norm() - 1/300) / (t_vec.norm() * t_vec.norm())
-        //<< " rep1 " << (t_vec.x) << " rep2 " << 1000000 * 3 << " rep3 " << (1/t_vec.norm() - 1/300) << " rep4 " << (t_vec.norm() * t_vec.norm()) << std::endl;
-        //std::cout << "n: " << n << " x: " << robot[n].destination.x << " y: " << robot[n].destination.y << std::endl;
         robot[n].movement.angular_vel_scaling = 0;
     }
 }
@@ -710,7 +706,39 @@ Coord Strategy::calculateMovementsToBall(int n)
     }
     else
     {
-        if (robot[n].coord.x > ball.coord.x)
+        Coord dest = Coord(pf_ulc.x, pf_lrc.y);
+        if (robot[n].coord.x < ball.coord.x)
+            {
+            if (robot[n].coord.y < (pf_ulc.y + pf_lrc.y)/2)
+            {
+                if (ball.coord.y - BALL_OFFSET > pf_ulc.y + 30)
+                    dest = Coord(ball.coord.x + BALL_OFFSET/2, ball.coord.y - BALL_OFFSET);
+                else
+                    dest = Coord(ball.coord.x + BALL_OFFSET/2, ball.coord.y + BALL_OFFSET);
+            }
+            else
+            {
+                if (ball.coord.y + BALL_OFFSET < pf_lrc.y - 30)
+                    dest = Coord(ball.coord.x + BALL_OFFSET/2, ball.coord.y + BALL_OFFSET);
+                else
+                    dest = Coord(ball.coord.x + BALL_OFFSET/2, ball.coord.y - BALL_OFFSET);
+            }
+        }
+        if (robot[n].coord.x > ball.coord.x - 20 && robot[n].coord.x < ball.coord.x + 20 && !attacker_returning)
+        {
+            attacker_returning = true;
+            dest = Coord(ball.coord.x + BALL_OFFSET, ball.coord.y);
+        }
+        Coord dist = robot[n].coord - Coord(ball.coord.x + BALL_OFFSET, ball.coord.y);
+        if (robot[n].coord.x > ball.coord.x && dist.norm() > 70 && attacker_returning)
+            attacker_returning = false;
+        else
+            dest = Coord(ball.coord.x + BALL_OFFSET, ball.coord.y);
+        if (robot[n].coord.x > ball.coord.x && !attacker_returning)
+        {
+            dest = ball.coord;
+        }
+        /*if (robot[n].coord.x > ball.coord.x)
             return Coord(ball.coord.x, ball.coord.y);
         else
         {
@@ -718,7 +746,8 @@ Coord Strategy::calculateMovementsToBall(int n)
                 return Coord(ball.coord.x + BALL_OFFSET, ball.coord.y - BALL_OFFSET);
             else
                 return Coord(ball.coord.x + BALL_OFFSET, ball.coord.y + BALL_OFFSET);
-        }
+        }*/
+        return dest;
     }
 }
 
