@@ -637,14 +637,24 @@ Coord Strategy::calculateMovementsToBall(int n)
 {
     if (side == LEFT)
     {
-        if (robot[n].coord.x < (ball.coord.x - BALL_OFFSET))
+        if (robot[n].coord.x < ball.coord.x - BALL_OFFSET/2 && attacker_returning)
+        {
+            attacker_returning = false;
             return Coord(ball.coord.x, ball.coord.y);
+        }
         else
         {
-            if (robot[n].coord.y < (pf_ulc.x + pf_lrc.x)/2)
-                return Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y - BALL_OFFSET);
+            if (!attacker_returning)
+            {
+                attacker_returning = true;
+            }
             else
-                return Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y + BALL_OFFSET);
+            {
+                if (robot[n].coord.y < (pf_ulc.y + pf_lrc.y)/2)
+                    return Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y - BALL_OFFSET);
+                else
+                    return Coord(ball.coord.x - BALL_OFFSET/2, ball.coord.y + BALL_OFFSET);   
+            }
         }
         /*Coord t_vec = robot[n].coord - ball.coord;
         Coord dest;
