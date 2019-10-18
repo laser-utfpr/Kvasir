@@ -372,17 +372,21 @@ void Strategy::moveDefender(int n)
         Coord goal_center(lg_lrc.x, (lg_lrc.y-lg_ulc.y)/2 + lg_ulc.y);
         robot[n].destination.x = goal_center.x + (ball.coord.x - goal_center.x)/2;
         robot[n].destination.y = goal_center.y + (ball.coord.y - goal_center.y)/2;
-        if(robot[n].destination.x < lga_lrc.x)//colocar deltas depois ou meio termo
+        if(robot[n].destination.x < lga_lrc.x + DEFENDER_OFFSET)//colocar deltas depois ou meio termo
         {
-            if(robot[n].destination.y > lga_ulc.y && robot[n].destination.y < ((lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y))
+            if(robot[n].destination.y > lga_ulc.y) //&& robot[n].destination.y < ((lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y))
             {
-                robot[n].destination.y = lga_ulc.y;
+                robot[n].destination.y = (lga_ulc.y + ball.coord.y) / 2;
                 //robot[n].destination.x = lga_lrc.x;
             }
-            else if(robot[n].destination.y < lga_lrc.y && robot[n].destination.y > ((lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y))
+            else if(robot[n].destination.y < lga_lrc.y) //&& robot[n].destination.y > ((lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y))
             {
-                robot[n].destination.y = lga_lrc.y;
+                robot[n].destination.y = (lga_lrc.y + ball.coord.y) / 2;
                 //robot[n].destination.x = lga_lrc.x;
+            }
+            else
+            {
+                robot[n].destination.x = lga_lrc.x + DEFENDER_OFFSET;
             }
         }
     }
@@ -391,16 +395,16 @@ void Strategy::moveDefender(int n)
         Coord goal_center(rg_ulc.x, (rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y);
         robot[n].destination.x = goal_center.x + (ball.coord.x - goal_center.x)/2;
         robot[n].destination.y = goal_center.y + (ball.coord.y - goal_center.y)/2;
-        if(robot[n].destination.x < lga_lrc.x)//colocar deltas depois ou meio termo
+        if(robot[n].destination.x > rga_ulc.x - DEFENDER_OFFSET)//colocar deltas depois ou meio termo
         {
-            if(robot[n].destination.y > rga_ulc.y && robot[n].destination.y < ((rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y))
+            if(robot[n].destination.y > rga_ulc.y) //&& robot[n].destination.y < ((rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y))
             {
-                robot[n].destination.y = rga_ulc.y;
+                robot[n].destination.y = (rga_ulc.y + ball.coord.y) / 2;
                 //robot[n].destination.x = lga_lrc.x;
             }
-            else if(robot[n].destination.y < rga_lrc.y && robot[n].destination.y > ((rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y))
+            else if(robot[n].destination.y < rga_lrc.y) //&& robot[n].destination.y > ((rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y))
             {
-                robot[n].destination.y = rga_lrc.y;
+                robot[n].destination.y = (rga_lrc.y + ball.coord.y) / 2;
                 //robot[n].destination.x = lga_lrc.x;
             }
         }
@@ -476,7 +480,48 @@ void Strategy::moveAttacker(int n)
 
 void Strategy::moveSupport(int n)
 {
-
+    if(side == LEFT)
+    {
+        Coord center((pf_lrc - pf_ulc.x) / 4, (pf_ulc.y - pf_lrc.y) / 2);
+        robot[n].destination.x = (center.x + ball.coord.x)/2;
+        robot[n].destination.y = (center.y + ball.coord.y)/2;
+        if(robot[n].destination.x < lga_lrc.x + DEFENDER_OFFSET)//colocar deltas depois ou meio termo
+        {
+            if(robot[n].destination.y > lga_ulc.y) //&& robot[n].destination.y < ((lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y))
+            {
+                robot[n].destination.y = (lga_ulc.y + ball.coord.y) / 2;
+                //robot[n].destination.x = lga_lrc.x;
+            }
+            else if(robot[n].destination.y < lga_lrc.y) //&& robot[n].destination.y > ((lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y))
+            {
+                robot[n].destination.y = (lga_lrc.y + ball.coord.y) / 2;
+                //robot[n].destination.x = lga_lrc.x;
+            }
+            else
+            {
+                robot[n].destination.x = lga_lrc.x + DEFENDER_OFFSET;
+            }
+        }
+    }
+    else
+    {
+        Coord center((pf_lrc - pf_ulc.x) * 3 / 4, (pf_ulc.y - pf_lrc.y) / 2);
+        robot[n].destination.x = (center.x + ball.coord.x)/2;
+        robot[n].destination.y = (center.y + ball.coord.y)/2;
+        if(robot[n].destination.x > rga_ulc.x - DEFENDER_OFFSET)//colocar deltas depois ou meio termo
+        {
+            if(robot[n].destination.y > rga_ulc.y) //&& robot[n].destination.y < ((rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y))
+            {
+                robot[n].destination.y = (rga_ulc.y + ball.coord.y) / 2;
+                //robot[n].destination.x = lga_lrc.x;
+            }
+            else if(robot[n].destination.y < rga_lrc.y) //&& robot[n].destination.y > ((rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y))
+            {
+                robot[n].destination.y = (rga_lrc.y + ball.coord.y) / 2;
+                //robot[n].destination.x = lga_lrc.x;
+            }
+        }
+    }
 }
 
 void Strategy::allyKickOff(void)
