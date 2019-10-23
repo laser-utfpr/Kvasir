@@ -28,7 +28,7 @@ void Principal::start()
               //Serial.println((char)address[4]);
               qt++;
             }
-            rWriter->setChannel(name);
+            //rWriter->setChannel(name);
 	          rWriter->setAddress(address);
             serial->getData(data);
 	          rWriter->sendData(data);
