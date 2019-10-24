@@ -381,7 +381,7 @@ void Strategy::moveDefender(int n)
             }
             else if((robot[n].destination.y < lga_lrc.y) && (robot[n].destination.y > ((lga_lrc.y + lga_ulc.y)/2)))
             {
-                robot[n].destination.y = (lga_lrc.y + DEFENDER_OFFSET;
+                robot[n].destination.y = lga_lrc.y + DEFENDER_OFFSET;
                 //robot[n].destination.x = lga_lrc.x;
             }
             else
@@ -395,7 +395,7 @@ void Strategy::moveDefender(int n)
         Coord goal_center(rg_ulc.x, (rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y);
         robot[n].destination.x = goal_center.x + (ball.coord.x - goal_center.x)/2;
         robot[n].destination.y = goal_center.y + (ball.coord.y - goal_center.y)/2;
-        if(robot[n].destination.x > rga_ulc.x - DEFENDER_OFFSET)//colocar deltas depois ou meio termo
+        if(robot[n].destination.x > (rga_ulc.x - DEFENDER_OFFSET))//colocar deltas depois ou meio termo
         {
             if((robot[n].destination.y > rga_ulc.y) && (robot[n].destination.y < ((rga_lrc.y + rga_ulc.y)/2)))
             {
@@ -406,6 +406,10 @@ void Strategy::moveDefender(int n)
             {
                 robot[n].destination.y = rga_lrc.y + DEFENDER_OFFSET;
                 //robot[n].destination.x = lga_lrc.x;
+            }
+            else
+            {
+                robot[n].destination.x = rga_ulc.x - DEFENDER_OFFSET;
             }
         }
     }
