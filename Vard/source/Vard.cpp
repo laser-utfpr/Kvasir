@@ -81,7 +81,11 @@ void Vard::start()
             {
                 serial_comm->mountPacket(robot[i].getName(), robot[i].getRFAddress(), robot[i].getVelX(), robot[i].getVelY(), robot[i].getVelAng());
                 serial_comm->sendData();
+<<<<<<< HEAD
+                std::cout <<"robo: " << robot[i].getName() << ", endr: " << robot[i].getRFAddress() <<", x: "<<robot[i].getVelX()<<", y: "<< robot[i].getVelY()<<", ang: "<< robot[i].getVelAng() <<std::endl;
+=======
                 //std::cout <<"robo: " << robot[i].getName() << ", endr: " << robot[i].getRFAddress() <<", x: "<<robot[i].getVelX()<<", y: "<< robot[i].getVelY()<<", ang: "<< robot[i].getVelAng() <<std::endl;
+>>>>>>> 84b3f0759b17860398e85a0b3416489a1388c097
                 /*if(robot[i].getName() == 0)
                 {
                     std::cout <<"robo: " << robot[0].getName() << ", endr: " << robot[0].getRFAddress() <<", x: "<<robot[0].getVelX()<<", y: "<< robot[0].getVelY()<<", ang: "<< robot[0].getVelAng() <<std::endl;

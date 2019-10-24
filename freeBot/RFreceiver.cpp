@@ -77,6 +77,10 @@ int RFreceiver::updateBuffer()
         vel_x = *(float*)&input_byte[0];
         vel_y = *(float*)&input_byte[4];
         vel_ang = *(float*)&input_byte[8];
+        /*Serial.print("x ");
+        Serial.print(vel_x);
+        Serial.print(" y ");
+        Serial.println(vel_y);*/
     }
     //if(queue!=NULL&&queue->getSize()>(DATA_SIZE+1))//significa que ainda tem um pacote inteiro a ser lido, nesse caso nao se verifica o Buffer do arduino ate que o Buffer local seja totalmente usado
     //{

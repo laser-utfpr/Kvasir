@@ -15,9 +15,9 @@
 
 #include <smmclib.hpp>
 
-#ifdef USE_GPU
-    #include <opencv2/gpu/gpu.hpp>
-#endif
+//#ifdef USE_GPU
+//    #include <opencv2/gpu/gpu.hpp>
+//#endif
 namespace Ui
 {
     class MainWindow;

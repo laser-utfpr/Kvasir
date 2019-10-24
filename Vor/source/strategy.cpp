@@ -372,16 +372,16 @@ void Strategy::moveDefender(int n)
         Coord goal_center(lg_lrc.x, (lg_lrc.y-lg_ulc.y)/2 + lg_ulc.y);
         robot[n].destination.x = goal_center.x + (ball.coord.x - goal_center.x)/2;
         robot[n].destination.y = goal_center.y + (ball.coord.y - goal_center.y)/2;
-        if(robot[n].destination.x < lga_lrc.x + DEFENDER_OFFSET)//colocar deltas depois ou meio termo
+        if(robot[n].destination.x < (lga_lrc.x + DEFENDER_OFFSET))//colocar deltas depois ou meio termo
         {
-            if(robot[n].destination.y > lga_ulc.y) //&& robot[n].destination.y < ((lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y))
+            if((robot[n].destination.y > lga_ulc.y) && (robot[n].destination.y < ((lga_lrc.y + lga_ulc.y)/2)))
             {
-                robot[n].destination.y = (lga_ulc.y + ball.coord.y) / 2;
+                robot[n].destination.y = lga_ulc.y - DEFENDER_OFFSET;
                 //robot[n].destination.x = lga_lrc.x;
             }
-            else if(robot[n].destination.y < lga_lrc.y) //&& robot[n].destination.y > ((lga_lrc.y - lga_ulc.y)/2 + lga_ulc.y))
+            else if((robot[n].destination.y < lga_lrc.y) && (robot[n].destination.y > ((lga_lrc.y + lga_ulc.y)/2)))
             {
-                robot[n].destination.y = (lga_lrc.y + ball.coord.y) / 2;
+                robot[n].destination.y = (lga_lrc.y + DEFENDER_OFFSET;
                 //robot[n].destination.x = lga_lrc.x;
             }
             else
@@ -397,14 +397,14 @@ void Strategy::moveDefender(int n)
         robot[n].destination.y = goal_center.y + (ball.coord.y - goal_center.y)/2;
         if(robot[n].destination.x > rga_ulc.x - DEFENDER_OFFSET)//colocar deltas depois ou meio termo
         {
-            if(robot[n].destination.y > rga_ulc.y) //&& robot[n].destination.y < ((rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y))
+            if((robot[n].destination.y > rga_ulc.y) && (robot[n].destination.y < ((rga_lrc.y + rga_ulc.y)/2)))
             {
-                robot[n].destination.y = (rga_ulc.y + ball.coord.y) / 2;
+                robot[n].destination.y = rga_ulc.y - DEFENDER_OFFSET;
                 //robot[n].destination.x = lga_lrc.x;
             }
             else if(robot[n].destination.y < rga_lrc.y) //&& robot[n].destination.y > ((rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y))
             {
-                robot[n].destination.y = (rga_lrc.y + ball.coord.y) / 2;
+                robot[n].destination.y = rga_lrc.y + DEFENDER_OFFSET;
                 //robot[n].destination.x = lga_lrc.x;
             }
         }
@@ -465,7 +465,7 @@ void Strategy::moveAttacker(int n)
         }
         else
         {
-            if((robot[n].coord.distance(ball.coord) > ATTACKER_OFFSET_RANGE) || (robot[n].coord.x > (ball.coord.x - ATTACKER_BALL_OFFSET)))
+            if((robot[n].coord.distance(ball.coord) > ATTACKER_OFFSET_RANGE) || (robot[n].coord.x < (ball.coord.x - ATTACKER_BALL_OFFSET)))
             {
                 robot[n].destination = calculateMovementsToBall(n);
             }
