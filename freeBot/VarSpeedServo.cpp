@@ -403,7 +403,7 @@ void VarSpeedServo::write(int value, uint8_t speed) {
 		}
 		// calculate and store the values for the given channel
 		byte channel = this->servoIndex;
-		if( (channel >= 0) && (channel < MAX_SERVOS) ) {   // ensure channel is valid
+		if( (channel >= 0) && (channel < MAX_SERVOS) ) {   // ensure channel is vVarSpeedServoalid
       		// updated to use constrain instead of if, pva
       		value = constrain(value, SERVO_MIN(), SERVO_MAX());
 

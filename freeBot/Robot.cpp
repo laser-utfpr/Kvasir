@@ -15,10 +15,15 @@ Robot::Robot()
 
 void Robot::move(float vel_x, float vel_y, float vel_ang)
 {
+    /*Serial.print("x ");
+        Serial.print(vel_x);
+        Serial.print(" y ");
+        Serial.println(vel_y);*/
     calculateMotorsVelocity(vel_x, vel_y, vel_ang);
     for(int i=0; i<4; i++)
     {
         motors[i]->setSpeed(velocity[i]);
+        //Serial.println(velocity[i]);
     }
 }
 

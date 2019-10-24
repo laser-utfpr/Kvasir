@@ -5,7 +5,9 @@
 
 #include "VarSpeedServo.h" //esta biblioteca eh usada para futuros aprimoramentos no controle da velocidade de cada motor. No momento, ela nao eh necessaria, podendo no lugar dela ser usada a Servo.h
 #include "BotConstants.h"
+//#include <Servo.h>
 #include <Arduino.h>
+
 
 class RotaryServoMotor{
 private:

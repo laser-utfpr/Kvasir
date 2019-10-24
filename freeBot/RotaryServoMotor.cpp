@@ -16,6 +16,7 @@ void RotaryServoMotor::setSpeed(float speed)
     ang = (speed*90)/max_speed; //regra de tres para transformar a velocidade recebida num angulo
     if(speed==0)
     {
+        //Serial.println("parado");
         servo->detach(); //o servo eh desligado para melhor controle da velocidade de parada, ja que com a temperatura a mesma vai mudando, e tambem para economizar energia
     }
     else
