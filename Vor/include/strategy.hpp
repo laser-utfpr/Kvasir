@@ -40,6 +40,7 @@ private:
     Coord rga_lrc;
 
     Coord robot_destination;
+    bool attacker_returning = false;
 
     int manual_controlled_robot;
     double previous_robot_angle;//futuramente usar para controle

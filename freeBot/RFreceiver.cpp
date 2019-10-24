@@ -22,6 +22,7 @@ void RFreceiver::receiveData()
     if(radio->available())
     {
         radio->read(&data,W_DATA);
+        Serial.print("recebendo ");
         if(data[0]==NAME && data[1]!=0)//se for 0 eh pq deu erro no envio
         {
             Serial.print("Data recebida: ");
@@ -36,7 +37,11 @@ void RFreceiver::receiveData()
             queue = NULL;
         Serial.println();
     }
-    //Serial.println("nao tem pacote");
+    if(!radio->isChipConnected())
+    {
+        Serial.println("nao tem pacote");
+    }
+    
 #else
     int siz = Serial.available();
     if(siz>0)
