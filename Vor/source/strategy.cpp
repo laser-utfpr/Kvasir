@@ -420,11 +420,11 @@ void Strategy::moveAttacker(int n)
     else
         frames_close[n] = 0;
 
-    if(frames_close[n] >= FRAMES_TO_SPIN && ((side == LEFT && (robot[n].coord.x < (ball.coord.x-ATTACKER_BALL_OFFSET)) && (robot[n].coord.y <= (pf_lrc.y+pf_ulc.y)/2)) || ((side == RIGHT && robot[n].coord.x > ball.coord.x) && robot[n].coord.y <= (pf_lrc.y+pf_ulc.y)/2)))
+    if(frames_close[n] >= FRAMES_TO_SPIN && ((side == LEFT) && (robot[n].coord.x < ball.coord.x) && (robot[n].coord.y < ball.coord.y)) || ((side == RIGHT) && (robot[n].coord.x > ball.coord.x) && (robot[n].coord.y > ball.coord.y)))
     {
         robot[n].movement.angular_vel_scaling = 1;
     }
-    else if (frames_close[n] >= FRAMES_TO_SPIN && ((side == LEFT && (robot[n].coord.x < (ball.coord.x-ATTACKER_BALL_OFFSET)) && (robot[n].coord.y > (pf_lrc.y+pf_ulc.y)/2)) || ((side == RIGHT && robot[n].coord.x > ball.coord.x) && robot[n].coord.y > (pf_lrc.y+pf_ulc.y)/2)))
+    else if(frames_close[n] >= FRAMES_TO_SPIN && ((side == LEFT) && (robot[n].coord.x < ball.coord.x) && (robot[n].coord.y > ball.coord.y)) || ((side == RIGHT) && (robot[n].coord.x > ball.coord.x) && (robot[n].coord.y < ball.coord.y)))
     {
         robot[n].movement.angular_vel_scaling = -1;
     }
@@ -462,6 +462,23 @@ void Strategy::moveAttacker(int n)
                 Coord goal_center(rg_lrc.x, (rg_lrc.y-rg_ulc.y)/2 + rg_ulc.y);
                 robot[n].destination = goal_center;
             }
+            if(robot[n].destination.x < (lga_lrc.x + DEFENDER_OFFSET))//colocar deltas depois ou meio termo
+            {
+                if((robot[n].destination.y > lga_ulc.y) && (robot[n].destination.y < ((lga_lrc.y + lga_ulc.y)/2)))
+                {
+                    robot[n].destination.y = lga_ulc.y - DEFENDER_OFFSET;
+                    //robot[n].destination.x = lga_lrc.x;
+                }
+                else if((robot[n].destination.y < lga_lrc.y) && (robot[n].destination.y > ((lga_lrc.y + lga_ulc.y)/2)))
+                {
+                    robot[n].destination.y = (lga_lrc.y + DEFENDER_OFFSET;
+                    //robot[n].destination.x = lga_lrc.x;
+                }
+               else
+                {
+                    robot[n].destination.x = lga_lrc.x + DEFENDER_OFFSET;
+                }
+            }
         }
         else
         {
@@ -473,6 +490,19 @@ void Strategy::moveAttacker(int n)
             {
                 Coord goal_center(lg_lrc.x, (lg_lrc.y-lg_ulc.y)/2 + lg_ulc.y);
                 robot[n].destination = goal_center;
+            }
+                if(robot[n].destination.x > rga_ulc.x - DEFENDER_OFFSET)//colocar deltas depois ou meio termo
+            {
+                if((robot[n].destination.y > rga_ulc.y) && (robot[n].destination.y < ((rga_lrc.y + rga_ulc.y)/2)))
+                {
+                    robot[n].destination.y = rga_ulc.y - DEFENDER_OFFSET;
+                    //robot[n].destination.x = lga_lrc.x;
+                }
+                else if(robot[n].destination.y < rga_lrc.y) //&& robot[n].destination.y > ((rga_lrc.y - rga_ulc.y)/2 + rga_ulc.y))
+                {
+                    robot[n].destination.y = rga_lrc.y + DEFENDER_OFFSET;
+                    //robot[n].destination.x = lga_lrc.x;
+                }
             }
         }
     }
