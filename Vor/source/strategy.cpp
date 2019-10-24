@@ -263,7 +263,7 @@ void Strategy::assignRoles(void)
                 {
                     if(role[i] == NO_ROLE)
                     {
-                        role[i] = SUPPORT;//role[i] = DEFENDER;
+                        role[i] = DEFENDER;
                     }
                 }
             }
@@ -300,7 +300,7 @@ void Strategy::normalPlay(void)
             case ATTACKER:
             moveAttacker(i); break;
             case SUPPORT:
-            moveSupport(i); break;
+            moveDefender(i); break;
         }
     }
 }
