@@ -178,7 +178,7 @@ void Strategy::assignRoles(void)
 
         for(int i=0; i<N_ROBOTS; i++)
         {
-            if(robot[i].coord == ball_sorted[0].coord)
+            if((robot[i].coord == ball_sorted[0].coord) && (role[i] != GOALKEEPER))
             {
                 role[i] = ATTACKER;
                 break;
