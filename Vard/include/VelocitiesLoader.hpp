@@ -13,7 +13,7 @@
 #include <boost/interprocess/allocators/allocator.hpp>
 
 #define MAX_LINEAR_VEL 0.3
-#define MAX_ANGULAR_VEL 5.0*M_PI_2
+#define MAX_ANGULAR_VEL 10.0*M_PI_2
 
 class VelocitiesLoader
 {

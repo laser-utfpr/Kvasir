@@ -19,23 +19,26 @@ typedef enum {LEFT, RIGHT} Side;
 #define X_SCALE (pf_lrc.x - pf_ulc.x) / 925
 #define Y_SCALE (pf_lrc.y - pf_ulc.y) / 720
 
-#define ATTACKER_BALL_OFFSET 35//60
-#define ATTACKER_OFFSET_RANGE 30//140
+#define ATTACKER_BALL_OFFSET 20//60
+#define ATTACKER_OFFSET_RANGE 45//140
 #define DEFENDER_OFFSET 20
 
 #define GOALKEEPER_BALL_OFFSET 50//150
 #define GOALKEEPER_OFFSET_RANGE 20
 #define GOALKEEPER_AREA_OFFSET 10
 
-#define BALL_OFFSET 35
+#define QUADRANT_SIZE 60
+#define FK_OFFSET 60
+
+#define BALL_OFFSET 45
 
 #define ADJUST_ANGLE false
 
 #define SPIN_WHEN_CLOSE true
 
-#define FRAMES_TO_SPIN 3
+#define FRAMES_TO_SPIN 5
 
-#define SPIN_RANGE 40
+#define SPIN_RANGE 25
 
 #define ANGLE_COMPARE_EPSILON 0.15
 
